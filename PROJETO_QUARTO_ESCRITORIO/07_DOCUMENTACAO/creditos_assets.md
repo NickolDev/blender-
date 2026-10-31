@@ -31,6 +31,8 @@ medidas reais).
 Livros e papelaria são **ilustrativos** e não entram no orçamento. A decoração escolhida (quadros P&B, nichos,
 plantas, luminária de mesa, suporte de headphone, relógio) entra na categoria **Decoração (opcional)** do orçamento,
 com preço estimado.
+As imagens das telas (`assets/textures/tela_monitor_codigo.jpg`, `tela_monitor_planta.jpg`, `tela_notebook_email.jpg`)
+foram geradas renderizando páginas HTML no Chromium; a da planta usa o próprio desenho do projeto. O e-mail é fictício.
 As 5 artes P&B dos quadros (`assets/textures/quadro_A…E.jpg`) e o papel de parede dos monitores foram gerados com
 ImageMagick; podem ser trocados por qualquer imagem.
 

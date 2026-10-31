@@ -106,4 +106,13 @@ instalado como módulo Python `bpy`; o Blender MCP não está disponível aqui).
 - **Renders desta rodada:** feitos em CPU (sem GPU na nuvem), com qualidade reduzida: vistas com 96 amostras e
   panoramas 360° com 2048 × 1024 px e 64 amostras. Para a qualidade final, rode no desktop (GPU RX 6750 XT) sem as
   opções `--amostras`/`--largura`: os padrões dos scripts continuam 256 amostras e 4096 px.
+- **Passe de realismo (31/10/2026, a pedido):** telas com conteúdo real renderizado no Chromium (editor de código,
+  planta do projeto num visualizador de PDF, e-mail no notebook) com orientação corrigida (sem espelhamento);
+  headphone modelado (arco, conchas e almofadas); fans do PC com 7 pás, moldura e anel de LED; cooler torre e
+  memórias dentro do gabinete; samambaia pendente com 6 touceiras caindo pela borda de um vaso cônico com terra
+  (ponta mais baixa das folhas a 1,92 m; o vaso continua com a base a 1,95 m); vidro com reflexo nos quadros; cabos
+  dos monitores, do PC e da luminária descendo até a tomada; caneca com café e alça; relógio com dígitos que acendem à
+  noite; teclado e touchpad no notebook; cúpula aberta com lâmpada na luminária.
+  Dois defeitos achados nos close-ups de teste e corrigidos: a luz pontual dentro do PC estourava as peças em branco
+  (removida) e as luzes apareciam como discos para a câmera (agora só as peças emissivas aparecem).
 - **Preços da decoração:** estimados. A Amazon não está liberada na rede desta sessão; pesquisar antes de comprar.

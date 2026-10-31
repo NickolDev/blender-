@@ -10,7 +10,11 @@ O que faz:
 - teclado com teclas, monitores com papel de parede;
 - materiais: brilho de tecido (sheen), verniz leve no piso, variação de rugosidade nas paredes;
 - modelos CC0 do Poly Haven: ventilador de teto, vasos, livros, porta-lápis, objetos dos nichos e samambaia;
-- câmeras panorâmicas 360° para o tour virtual.
+- câmeras panorâmicas 360° para o tour virtual;
+- detalhes do setup (31/10/2026): telas com conteúdo real (editor de código, planta do projeto, e-mail), headphone
+  modelado, fans do PC com pás e anel de LED, cooler torre e memórias, samambaia pendente cheia e caindo pela borda, vaso cônico com terra,
+  vidro nos quadros, cabos, caneca com café, relógio com dígitos, teclado/touchpad no notebook, cúpula aberta na
+  luminária.
 """
 import math
 import random
@@ -41,9 +45,12 @@ def col(nome):
 
 
 def remover(prefixos):
-    for ob in list(bpy.data.objects):
-        if ob.name.startswith(prefixos):
-            bpy.data.objects.remove(ob, do_unlink=True)
+    """Apaga os objetos com esses prefixos e todos os seus filhos (filho órfão cairia na origem)."""
+    alvo = [ob for ob in bpy.data.objects if ob.name.startswith(prefixos)]
+    for ob in alvo:
+        alvo += [c for c in ob.children_recursive if c not in alvo]
+    for ob in alvo:
+        bpy.data.objects.remove(ob, do_unlink=True)
 
 
 def novo_obj(nome, me, cname, mat=None):
@@ -321,10 +328,7 @@ def modelos():
         r, _ = importar_gltf(MODELS / modelo / f"{modelo}.gltf", "06_DECORACAO", f"Nicho_{k+1}_objeto_{modelo}")
         r.scale, r.rotation_euler = (esc,) * 3, (0, 0, math.radians(rot))
         assentar(r, (cx[k], yc), zi)
-    # samambaia no vaso pendente (base do vaso a 1,95 m; vaso de 16 cm)
-    fe, _ = importar_gltf(MODELS / "fern_02" / "fern_02.gltf", "06_DECORACAO", "Planta_pendente_samambaia")
-    fe.scale = (0.22, 0.22, 0.22)
-    assentar(fe, (0.30, 2.25), 1.95 + 0.16 - 0.025)
+    # samambaia do vaso pendente: ver planta_pendente_cheia()
     # livros: trecho do conjunto do Poly Haven (só os de até 24 cm de profundidade)
     blend = MODELS / "decorative_book_set_01" / "decorative_book_set_01.blend"
     with bpy.data.libraries.load(str(blend), link=False) as (src, dst):
@@ -406,6 +410,382 @@ def cameras_360():
         col("07_CAMERAS").objects.link(ob)
 
 
+# ------------------------------------------------------------------ detalhes do setup (31/10/2026)
+def malha_torus(nome, R, r, seg=48, seg_r=12):
+    me = bpy.data.meshes.new(nome)
+    bm = bmesh.new()
+    vs = []
+    for i in range(seg):
+        a = 2 * math.pi * i / seg
+        row = []
+        for j in range(seg_r):
+            b = 2 * math.pi * j / seg_r
+            row.append(bm.verts.new(((R + r * math.cos(b)) * math.cos(a), (R + r * math.cos(b)) * math.sin(a), r * math.sin(b))))
+        vs.append(row)
+    for i in range(seg):
+        for j in range(seg_r):
+            bm.faces.new((vs[i][j], vs[(i + 1) % seg][j], vs[(i + 1) % seg][(j + 1) % seg_r], vs[i][(j + 1) % seg_r]))
+    bm.to_mesh(me)
+    bm.free()
+    for p in me.polygons:
+        p.use_smooth = True
+    return me
+
+
+def malha_cone(nome, r0, r1, h, seg=48, tampa=True):
+    me = bpy.data.meshes.new(nome)
+    bm = bmesh.new()
+    bmesh.ops.create_cone(bm, cap_ends=tampa, segments=seg, radius1=r0, radius2=r1, depth=h)
+    bmesh.ops.translate(bm, verts=bm.verts, vec=(0, 0, h / 2))
+    bm.to_mesh(me)
+    bm.free()
+    return me
+
+
+def filho_da_mesa(ob):
+    mesa = bpy.data.objects["Mesa_Tampo_Freijo_170x70x2_5"]
+    bpy.context.view_layer.update()
+    ob.parent = mesa
+    ob.matrix_parent_inverse = mesa.matrix_world.inverted()
+
+
+def mat_tela(nome, imagem, dia=1.6, noite=0.9):
+    """Tela ligada: imagem emissiva. U = 1 − X da coordenada Generated, porque a face da tela aponta para +y e quem
+    olha da cadeira vê +x à esquerda (sem isso o texto sairia espelhado)."""
+    m = bpy.data.materials.new(nome)
+    nt = m.node_tree
+    b = principled(m)
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    sp = nt.nodes.new("ShaderNodeSeparateXYZ")
+    inv = nt.nodes.new("ShaderNodeMath")
+    inv.operation = "SUBTRACT"
+    inv.inputs[0].default_value = 1.0
+    cb = nt.nodes.new("ShaderNodeCombineXYZ")
+    im = nt.nodes.new("ShaderNodeTexImage")
+    im.image = bpy.data.images.load(str(ASSETS / "textures" / imagem), check_existing=True)
+    im.extension = "EXTEND"
+    nt.links.new(tc.outputs["Generated"], sp.inputs["Vector"])
+    nt.links.new(sp.outputs["X"], inv.inputs[1])
+    nt.links.new(inv.outputs["Value"], cb.inputs["X"])
+    nt.links.new(sp.outputs["Z"], cb.inputs["Y"])
+    nt.links.new(cb.outputs["Vector"], im.inputs["Vector"])
+    nt.links.new(im.outputs["Color"], b.inputs["Emission Color"])
+    b.inputs["Base Color"].default_value = (0.004, 0.004, 0.005, 1)
+    b.inputs["Roughness"].default_value = 0.12
+    b.inputs["Emission Strength"].default_value = noite
+    m["emissao_noite"], m["emissao_dia"] = noite, dia
+    return m
+
+
+def telas():
+    # Monitor_27_2 (x maior, junto do PC) fica à esquerda de quem está sentado
+    for ob_nome, img in (("Monitor_27_2_tela", "tela_monitor_codigo.jpg"), ("Monitor_27_1_tela", "tela_monitor_planta.jpg"),
+                         ("Notebook_tela", "tela_notebook_email.jpg")):
+        ob = bpy.data.objects[ob_nome]
+        ob.data = ob.data.copy()
+        ob.data.materials.clear()
+        ob.data.materials.append(mat_tela(f"Tela_{ob_nome}", img))
+
+
+def headphone():
+    M = bpy.data.materials
+    remover(("Headphone_",))
+    hx, hy, z = 2.50, 0.67, MESA_Z
+    R, zc = 0.085, z + 0.265 + 0.006 - 0.085
+    cu = bpy.data.curves.new("Headphone_arco", "CURVE")
+    cu.dimensions, cu.bevel_depth, cu.bevel_resolution = "3D", 0.006, 4
+    sp = cu.splines.new("POLY")
+    n = 24
+    sp.points.add(n)
+    for i in range(n + 1):
+        a = math.pi * i / n
+        sp.points[i].co = (hx + R * math.cos(a), hy, zc + R * math.sin(a), 1)
+    arco = novo_obj("Headphone_arco", cu, "03_MOBILIARIO", M["Preto_Fosco"])
+    # almofada do arco (couro sintético)
+    cu2 = cu.copy()
+    cu2.bevel_depth = 0.009
+    almo = novo_obj("Headphone_arco_almofada", cu2, "03_MOBILIARIO", M["Tecido_Cadeira"])
+    almo.location = (0, 0, -0.008)
+    pecas = [arco, almo]
+    for s_ in (-1, 1):
+        lado = "esq" if s_ < 0 else "dir"
+        cx = hx + s_ * R
+        concha = novo_obj(f"Headphone_concha_{lado}", malha_cone(f"Headphone_concha_{lado}", 0.045, 0.040, 0.028),
+                          "03_MOBILIARIO", M["Preto_Fosco"])
+        concha.location = (cx, hy, zc - 0.035)
+        concha.rotation_euler = (0, -s_ * math.pi / 2, 0)    # eixo da concha apontando para dentro (±x)
+        suave(concha, 0)
+        b = concha.modifiers.new("Chanfro", "BEVEL")
+        b.width, b.segments = 0.006, 3
+        coxim = novo_obj(f"Headphone_coxim_{lado}", malha_torus(f"Headphone_coxim_{lado}", 0.032, 0.011), "03_MOBILIARIO",
+                         M["Tecido_Cadeira"])
+        coxim.location = (cx - s_ * 0.034, hy, zc - 0.035)       # almofada na face interna da concha
+        coxim.rotation_euler = (0, math.pi / 2, 0)
+        pecas += [concha, coxim]
+    for o in pecas:
+        filho_da_mesa(o)
+
+
+def fans_pc():
+    M = bpy.data.materials
+    remover(("PC_Fan_",))
+    x = PT.PC_X0 + PT.PC_W / 2
+    y = PT.PC_Y0 + PT.PC_P - 0.030
+    from mathutils import Matrix
+    pas = bpy.data.materials.new("Plastico_Pas_Fan")
+    pb = principled(pas)
+    pb.inputs["Base Color"].default_value = (0.03, 0.03, 0.035, 1)
+    pb.inputs["Roughness"].default_value = 0.35
+    pecas = []
+    for i in range(3):
+        fz = MESA_Z + 0.17 + i * 0.125
+        anel = novo_obj(f"PC_Fan_{i+1}_anel_LED", malha_torus(f"PC_Fan_{i+1}_anel_LED", 0.056, 0.0035, 64, 8),
+                        "03_MOBILIARIO", M["LED_PC_3000K"])
+        anel.location, anel.rotation_euler = (x, y + 0.004, fz), (math.pi / 2, 0, 0)
+        moldura = novo_obj(f"PC_Fan_{i+1}_moldura", malha_torus(f"PC_Fan_{i+1}_moldura", 0.058, 0.007, 64, 8),
+                           "03_MOBILIARIO", M["Preto_Fosco"])
+        moldura.location, moldura.rotation_euler = (x, y - 0.006, fz), (math.pi / 2, 0, 0)
+        moldura.scale = (1, 1, 1.8)
+        hub = novo_obj(f"PC_Fan_{i+1}_hub", malha_cone(f"PC_Fan_{i+1}_hub", 0.019, 0.019, 0.012), "03_MOBILIARIO", pas)
+        hub.location, hub.rotation_euler = (x, y + 0.001, fz), (math.pi / 2, 0, 0)
+        pecas += [anel, moldura, hub]
+        for k in range(7):
+            me = bpy.data.meshes.new(f"PC_Fan_{i+1}_pa_{k+1}")
+            bm = bmesh.new()
+            bmesh.ops.create_cube(bm, size=1.0)
+            for v in bm.verts:
+                u = v.co.x + 0.5                          # 0 → raiz, 1 → ponta
+                v.co.x = 0.019 + u * 0.033
+                v.co.y *= 0.016 + 0.010 * u               # pá mais larga na ponta
+                v.co.z *= 0.0015
+            bm.to_mesh(me)
+            bm.free()
+            pa = novo_obj(f"PC_Fan_{i+1}_pa_{k+1}", me, "03_MOBILIARIO", pas)
+            # pá no plano XY → plano XZ (eixo da fan = y), com 25° de passo, distribuída em volta do eixo
+            pa.matrix_world = (Matrix.Translation((x, y - 0.004, fz)) @ Matrix.Rotation(k * 2 * math.pi / 7, 4, "Y")
+                               @ Matrix.Rotation(math.radians(90 + 25), 4, "X"))
+            pecas.append(pa)
+    for o in pecas:
+        filho_da_mesa(o)
+
+
+def planta_pendente_cheia():
+    """Vaso cônico com terra e samambaia de 6 touceiras caindo pela borda (a do modelo é uma touceira só, achatada)."""
+    M = bpy.data.materials
+    px, py, pz = 0.30, 2.25, 1.95
+    remover(("Planta_pendente_vaso", "Planta_pendente_samambaia"))
+    vaso = novo_obj("Planta_pendente_vaso", malha_cone("Planta_pendente_vaso", 0.068, 0.09, 0.16), "06_DECORACAO",
+                    M["Ceramica_Preta_Fosca"])
+    vaso.location = (px, py, pz)
+    b = vaso.modifiers.new("Chanfro", "BEVEL")
+    b.width, b.segments = 0.004, 3
+    borda = novo_obj("Planta_pendente_vaso_borda", malha_torus("Planta_pendente_vaso_borda", 0.088, 0.006), "06_DECORACAO",
+                     M["Ceramica_Preta_Fosca"])
+    borda.location = (px, py, pz + 0.16)
+    terra = bpy.data.materials.new("Terra_Vaso")
+    principled(terra).inputs["Base Color"].default_value = (0.035, 0.025, 0.018, 1)
+    principled(terra).inputs["Roughness"].default_value = 1.0
+    t = novo_obj("Planta_pendente_terra", malha_cone("Planta_pendente_terra", 0.084, 0.084, 0.004), "06_DECORACAO", terra)
+    t.location = (px, py, pz + 0.145)
+    raiz0, novos = importar_gltf(MODELS / "fern_02" / "fern_02.gltf", "06_DECORACAO", "Planta_pendente_samambaia_1")
+    filhos = [o for o in novos if o.parent == raiz0]
+    from mathutils import Matrix
+    topo = Vector((px, py, pz + 0.15))
+    rnd = random.Random(7)
+    for k in range(6):
+        if k == 0:
+            r = raiz0
+        else:
+            r = bpy.data.objects.new(f"Planta_pendente_samambaia_{k+1}", None)
+            col("06_DECORACAO").objects.link(r)
+            for f in filhos:
+                c = f.copy()                                  # malha compartilhada (instância leve)
+                col("06_DECORACAO").objects.link(c)
+                c.parent = r
+                c.matrix_parent_inverse = f.matrix_parent_inverse.copy()
+        esc = 0.17 + 0.04 * rnd.random()
+        inc = math.radians(24 + 10 * rnd.random())          # quanto a touceira tomba para fora do vaso
+        az = k * 2 * math.pi / 6 + rnd.uniform(-0.25, 0.25)
+        # as frondes do modelo se espalham para (+x, −y): gira 44° para alinhá-las a +x, tomba em y, distribui em z
+        r.matrix_world = (Matrix.Translation(topo) @ Matrix.Rotation(az, 4, "Z") @ Matrix.Rotation(inc, 4, "Y")
+                          @ Matrix.Rotation(math.radians(44), 4, "Z") @ Matrix.Scale(esc, 4))
+    bpy.context.view_layer.update()
+    lo = min((o.matrix_world @ Vector(c)).z for o in bpy.data.objects if o.name.startswith("fern") and o.type == "MESH"
+             for c in o.bound_box) if any(o.name.startswith("fern") for o in bpy.data.objects) else None
+    print("SAMAMBAIA ponto mais baixo z =", lo)
+
+
+def quadros_vidro():
+    for m in bpy.data.materials:
+        if m.name.startswith("Arte_PB_"):
+            b = principled(m)
+            b.inputs["Coat Weight"].default_value = 1.0      # vidro do quadro: reflexo nítido por cima da impressão
+            b.inputs["Coat Roughness"].default_value = 0.03
+
+
+def cabo(nome, pts, raio=0.0028, mesa=False):
+    cu = bpy.data.curves.new(nome, "CURVE")
+    cu.dimensions, cu.bevel_depth, cu.bevel_resolution = "3D", raio, 3
+    sp = cu.splines.new("NURBS")
+    sp.points.add(len(pts) - 1)
+    for i, p in enumerate(pts):
+        sp.points[i].co = (*p, 1)
+    sp.order_u, sp.use_endpoint_u = 3, True
+    ob = novo_obj(nome, cu, "03_MOBILIARIO", bpy.data.materials["Preto_Fosco"])
+    if mesa:
+        filho_da_mesa(ob)
+    return ob
+
+
+def cabos():
+    td = P.D / 2                                              # tomada da Parede D (x = 1,325; z ≈ 0,30)
+    mx = PT.MON_CX
+    # monitores → coluna do braço → passa-cabo no tampo
+    for i, sx in enumerate((-0.312, 0.312)):
+        cabo(f"Cabo_monitor_{i+1}", [(mx + sx, MY0 + 0.22, MESA_Z + 0.30), (mx + sx * 0.5, MY0 + 0.10, MESA_Z + 0.33),
+                                     (mx + 0.022, MY0 + 0.075, MESA_Z + 0.30), (mx + 0.022, MY0 + 0.075, MESA_Z + 0.02)],
+             mesa=True)
+    # feixe sob o tampo até a tomada (pende no vão entre a mesa e o ripado)
+    cabo("Cabo_feixe_tomada", [(mx, MY0 + 0.06, MESA_Z - 0.03), (mx - 0.10, 0.045, 0.55), (td + 0.08, 0.040, 0.34),
+                               (td, RIP + 0.012, 0.30)], raio=0.006)
+    pcx = PT.PC_X0 + 0.15
+    cabo("Cabo_PC_energia", [(pcx, PT.PC_Y0 + 0.002, MESA_Z + 0.07), (pcx, PT.PC_Y0 - 0.03, MESA_Z + 0.05),
+                             (pcx, 0.040, MESA_Z + 0.02),
+                             (pcx - 0.05, 0.045, 0.60), (td + 0.25, 0.040, 0.36), (td + 0.02, RIP + 0.012, 0.30)], raio=0.004)
+    lx = 1.01
+    cabo("Cabo_luminaria", [(lx + 0.05, 0.12, MESA_Z + 0.003), (lx + 0.03, MY0 + 0.012, MESA_Z + 0.003),
+                            (lx + 0.03, 0.044, MESA_Z),
+                            (lx + 0.04, 0.042, MESA_Z - 0.10), (td - 0.10, 0.040, 0.40), (td - 0.02, RIP + 0.012, 0.30)],
+         raio=0.0022)
+
+
+def caneca_relogio_notebook_luminaria():
+    M = bpy.data.materials
+    # caneca: alça em anel e café
+    remover(("Caneca_alca",))
+    z = MESA_Z
+    alca = novo_obj("Caneca_alca", malha_torus("Caneca_alca", 0.022, 0.0055), "06_DECORACAO", M["Ceramica_Caneca"])
+    alca.location, alca.rotation_euler = (2.338, 0.66, z + 0.05), (math.pi / 2, 0, 0)
+    alca.scale = (0.8, 1, 1)
+    cafe = bpy.data.materials.new("Cafe")
+    b = principled(cafe)
+    b.inputs["Base Color"].default_value = (0.03, 0.012, 0.004, 1)
+    b.inputs["Roughness"].default_value = 0.05
+    c = novo_obj("Caneca_cafe", malha_cone("Caneca_cafe", 0.034, 0.034, 0.0006), "06_DECORACAO", cafe)
+    c.location = (2.30, 0.66, z + 0.095)
+    filho_da_mesa(alca)
+    filho_da_mesa(c)
+    # relógio: visor escuro + dígitos (acendem à noite com o LED 3000 K)
+    disp = bpy.data.objects["Relogio_LED_display"]
+    disp.data.materials.clear()
+    disp.data.materials.append(M["Preto_Fosco"])
+    zp = PT.PRAT_H + 0.025
+    tx = bpy.data.curves.new("Relogio_LED_digitos", "FONT")
+    tx.body, tx.size, tx.align_x, tx.align_y = "22:41", 0.026, "CENTER", "CENTER"
+    tx.extrude = 0.0004
+    d = novo_obj("Relogio_LED_digitos", tx, "06_DECORACAO", M["LED_3000K"])
+    d.location = (2.08, RIP + 0.1425, zp + 0.030)
+    d.rotation_euler = (math.pi / 2, 0, math.pi)
+    # notebook: teclado e touchpad
+    nb = bpy.data.objects["Notebook_base"]
+    lo = Vector([min(v.co[i] for v in nb.data.vertices) for i in range(3)]) + nb.location
+    hi = Vector([max(v.co[i] for v in nb.data.vertices) for i in range(3)]) + nb.location
+    for nome, (ya, yb, xa, xb, cor) in {"Notebook_teclado": (0.025, 0.125, 0.02, 0.02, (0.02, 0.02, 0.022, 1)),
+                                        "Notebook_touchpad": (0.145, 0.205, 0.105, 0.105, (0.33, 0.34, 0.36, 1))}.items():
+        m = bpy.data.materials.new(nome)
+        principled(m).inputs["Base Color"].default_value = cor
+        principled(m).inputs["Roughness"].default_value = 0.45
+        me = bpy.data.meshes.new(nome)
+        bm = bmesh.new()
+        bmesh.ops.create_cube(bm, size=1.0)
+        bm.to_mesh(me)
+        bm.free()
+        ob = novo_obj(nome, me, "03_MOBILIARIO", m)
+        ob.scale = (hi.x - lo.x - xa - xb, yb - ya, 0.001)
+        ob.location = ((lo.x + xa + hi.x - xb) / 2, lo.y + (ya + yb) / 2, hi.z + 0.0004)
+        filho_da_mesa(ob)
+    # luminária: cúpula cônica aberta com lâmpada dentro
+    cup = bpy.data.objects["Luminaria_mesa_cupula"]
+    loc, rot = cup.matrix_world.translation.copy(), cup.matrix_world.to_euler()
+    bpy.data.objects.remove(cup, do_unlink=True)
+    me = malha_cone("Luminaria_mesa_cupula", 0.045, 0.022, 0.075, 48, tampa=False)
+    nova = novo_obj("Luminaria_mesa_cupula", me, "06_DECORACAO", M["Preto_Fosco"])
+    so = nova.modifiers.new("Espessura", "SOLIDIFY")
+    so.thickness = 0.0015
+    nova.location, nova.rotation_euler = loc, rot
+    bulbo = bpy.data.meshes.new("Luminaria_mesa_lampada")
+    bm = bmesh.new()
+    bmesh.ops.create_uvsphere(bm, u_segments=24, v_segments=12, radius=0.018)
+    bm.to_mesh(bulbo)
+    bm.free()
+    bl = novo_obj("Luminaria_mesa_lampada", bulbo, "06_DECORACAO", M["Lampada_3000K"])
+    bl.location = loc + rot.to_matrix() @ Vector((0, 0, 0.03))
+    filho_da_mesa(nova)
+    filho_da_mesa(bl)
+
+
+def caixa(nome, x0, y0, z0, x1, y1, z1, mat, cname="03_MOBILIARIO", chanfro=0.0):
+    me = bpy.data.meshes.new(nome)
+    bm = bmesh.new()
+    bmesh.ops.create_cube(bm, size=1.0)
+    for v in bm.verts:
+        v.co = Vector((x0 + (v.co.x + 0.5) * (x1 - x0), y0 + (v.co.y + 0.5) * (y1 - y0), z0 + (v.co.z + 0.5) * (z1 - z0)))
+    bm.to_mesh(me)
+    bm.free()
+    ob = novo_obj(nome, me, cname, mat)
+    if chanfro:
+        m = ob.modifiers.new("Chanfro", "BEVEL")
+        m.width, m.segments = chanfro, 2
+    return ob
+
+
+def interior_pc():
+    """Cooler torre em alumínio escuro (o cilindro cromado refletia os anéis de LED como um disco branco) e 2 pentes
+    de memória ao lado."""
+    M = bpy.data.materials
+    remover(("PC_Cooler_CPU",))
+    x1 = PT.PC_X0 + PT.PC_W - 0.010                         # face da placa-mãe
+    y0, z0 = PT.PC_Y0, MESA_Z
+    alu = bpy.data.materials.new("Aluminio_Anodizado_Escuro")
+    b = principled(alu)
+    b.inputs["Base Color"].default_value = (0.05, 0.05, 0.055, 1)
+    b.inputs["Metallic"].default_value = 1.0
+    b.inputs["Roughness"].default_value = 0.45
+    pecas = [caixa("PC_Cooler_CPU_dissipador", x1 - 0.105, y0 + 0.12, z0 + 0.30, x1 - 0.045, y0 + 0.24, z0 + 0.42, alu,
+                   chanfro=0.003),
+             caixa("PC_Cooler_CPU_fan", x1 - 0.105, y0 + 0.24, z0 + 0.30, x1 - 0.045, y0 + 0.265, z0 + 0.42,
+                   M["Preto_Fosco"], chanfro=0.004),
+             caixa("PC_Cooler_CPU_base", x1 - 0.045, y0 + 0.15, z0 + 0.33, x1, y0 + 0.21, z0 + 0.39, alu)]
+    for k in range(2):
+        pecas.append(caixa(f"PC_Memoria_RAM_{k+1}", x1 - 0.034, y0 + 0.285 + k * 0.012, z0 + 0.28, x1,
+                           y0 + 0.292 + k * 0.012, z0 + 0.42, M["Preto_Fosco"]))
+    for o in pecas:
+        filho_da_mesa(o)
+    em = next(n for n in M["LED_PC_3000K"].node_tree.nodes if n.type == "EMISSION")
+    em.inputs["Strength"].default_value = 6.0                # anéis das fans com brilho de LED de verdade
+
+
+def luzes_invisiveis_na_camera():
+    """No Cycles a luz pontual/spot/área aparece como disco para a câmera; quem deve aparecer são as peças emissivas
+    (fitas, lâmpadas, anéis das fans). Mantém a luz no ambiente e nos reflexos difusos."""
+    for ob in bpy.data.objects:
+        if ob.type == "LIGHT" and ob.data.type != "SUN" and not ob.name.startswith("Portal"):
+            ob.visible_camera = False
+            ob.visible_glossy = False
+
+
+def detalhes_setup():
+    luzes_invisiveis_na_camera()
+    interior_pc()
+    telas()
+    headphone()
+    fans_pc()
+    planta_pendente_cheia()
+    quadros_vidro()
+    cabos()
+    caneca_relogio_notebook_luminaria()
+
+
 def main():
     materiais()
     chanfros()
@@ -413,6 +793,7 @@ def main():
     cadeira()
     teclado()
     n = modelos()
+    detalhes_setup()
     cameras_360()
     bpy.ops.file.make_paths_relative()
     bpy.ops.wm.save_as_mainfile(filepath=str(SAIDA), relative_remap=True)

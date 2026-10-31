@@ -587,12 +587,7 @@ def pc_gabinete(M, mesa):
         miolo = cyl(f"PC_Fan_{i+1}_pas", (x0 + x1) / 2, y1 - 0.029, fz, 0.052, 0.014, M["preto"], c, verts=48,
                     rot=Euler((-math.pi / 2, 0, 0)))
         p += [anel, miolo]
-    luz = bpy.data.lights.new("L7_Luz_PC_fans", "POINT")
-    luz.energy, luz.shadow_soft_size, luz.color = 1.5, 0.06, kelvin(3000)
-    ob = bpy.data.objects.new("L7_Luz_PC_fans", luz)
-    ob.location = ((x0 + x1) / 2, y1 - 0.08, z0 + 0.30)
-    link(ob, "05_ILUMINACAO")
-    p.append(ob)
+    # sem luz pontual dentro do gabinete: a 10 cm das peças ela estourava em branco; os anéis emissivos já iluminam
     for o in p:
         parent(o, mesa)
     mesa["pc_sobre_tampo"] = "gabinete 23 × 45 × 46, ≈ 12 kg; carga total ≈ 64 kg < 80 kg (Starlift)"

@@ -52,9 +52,10 @@ def modo(m):
         if n in bpy.data.materials:
             em = next(x for x in bpy.data.materials[n].node_tree.nodes if x.type == "EMISSION")
             em.inputs["Strength"].default_value = forca if noite else 0.0
-    tela = bpy.data.materials["Tela_Monitor"]
-    b = next(x for x in tela.node_tree.nodes if x.type == "BSDF_PRINCIPLED")
-    b.inputs["Emission Strength"].default_value = tela.get("emissao_noite", 0.9) if noite else tela.get("emissao_dia", 1.6)
+    for tela in bpy.data.materials:                 # telas (monitores e notebook): mais fortes de dia
+        if "emissao_noite" in tela:
+            b = next(x for x in tela.node_tree.nodes if x.type == "BSDF_PRINCIPLED")
+            b.inputs["Emission Strength"].default_value = tela["emissao_noite"] if noite else tela["emissao_dia"]
     bpy.data.objects["Sol_Manha_Leste"].hide_render = noite
     env = sc.world.node_tree.nodes["HDRI"]
     env.image = bpy.data.images["modern_buildings_night_2k.hdr" if noite else "modern_buildings_2_2k.hdr"]
