@@ -226,7 +226,9 @@ def tinta(name, color, rough=0.85):
     return m
 
 
-def emissor(name, kel, estr):
+def emissor(name, kel, estr, difusor="#EFEBE4"):
+    """Luz = emissão + difusor opalino. Com a luz apagada (força 0, de dia) aparece o acrílico branco leitoso, como
+    numa luminária real, e não um buraco preto."""
     m = bpy.data.materials.new(name)
     m.use_nodes = True
     nt = m.node_tree
@@ -236,7 +238,13 @@ def emissor(name, kel, estr):
     em = nt.nodes.new("ShaderNodeEmission")
     em.inputs["Color"].default_value = (*kelvin(kel), 1)
     em.inputs["Strength"].default_value = estr
-    nt.links.new(em.outputs["Emission"], nt.nodes["Material Output"].inputs["Surface"])
+    bs = nt.nodes.new("ShaderNodeBsdfPrincipled")
+    bs.inputs["Base Color"].default_value = srgb_lin(difusor)
+    bs.inputs["Roughness"].default_value = 0.35
+    soma = nt.nodes.new("ShaderNodeAddShader")
+    nt.links.new(em.outputs["Emission"], soma.inputs[0])
+    nt.links.new(bs.outputs["BSDF"], soma.inputs[1])
+    nt.links.new(soma.outputs["Shader"], nt.nodes["Material Output"].inputs["Surface"])
     return m
 
 
