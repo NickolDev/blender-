@@ -96,6 +96,7 @@ dialog button { position: absolute; top: 10px; right: 10px; font: 600 13px var(-
 .tema-img { background: none; border: 0; padding: 0; cursor: zoom-in; display: block; width: 100%; }
 .tema-img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); display: block; background: var(--surface); }
 .tema-cap { font: 500 12px var(--font-mono); color: var(--muted); margin: 6px 2px 0; }
+.tema-cap a { color: var(--accent); }
 .ficha { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 10px; font-size: 14px; align-content: start; }
 .ficha h3 { font: 600 18px/1.2 var(--font-display); margin: 0; }
 .ficha h4 { font: 600 12px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 4px 0 0; }
@@ -175,6 +176,7 @@ dialog button { position: absolute; top: 10px; right: 10px; font: 600 13px var(-
       <div>
         <button type="button" class="tema-img" id="t-img-btn" aria-label="Ampliar imagem"><img id="t-img" alt=""></button>
         <p class="tema-cap" id="t-cap"></p>
+        <p class="tema-cap"><a id="t-tour" target="_blank" rel="noopener">Abrir este tema no tour 360° (layout A) ↗</a></p>
       </div>
       <div class="ficha" id="f-tema"></div>
     </div>
@@ -259,6 +261,7 @@ function render() {
   const alt = `${t.nome} — layout ${EST.layout} — ${EST.modo === "dia" ? "de dia" : "à noite"}`;
   $("t-img").src = img(EST.tema, EST.layout, EST.modo); $("t-img").alt = alt;
   $("t-cap").textContent = `${t.nome} · ${L.nome} · ${EST.modo === "dia" ? "dia (sol da manhã)" : "noite (LEDs e persiana baixada)"}`;
+  $("t-tour").href = "../09_TOUR_360/index.html" + (EST.tema === "escuro" ? "" : `?tema=${EST.tema}`);
   $("f-tema").innerHTML = `<h3>${esc(t.nome)}</h3><p>${esc(t.resumo)}</p>
     <h4>Paleta</h4><div class="pal">${t.paleta.map(([n, c]) => `<div><span style="background:${c}"></span>${esc(n)}<code>${c}</code></div>`).join("")}</div>
     <h4>Materiais</h4><ul>${t.materiais.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>

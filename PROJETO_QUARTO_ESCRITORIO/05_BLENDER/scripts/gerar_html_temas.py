@@ -46,6 +46,15 @@ def main():
     if n != 1:
         raise SystemExit("marcadores não encontrados no index.html")
     HTML.write_text(novo, encoding="utf-8")
+    # tour 360°: temas com panoramas (layout A); o "escuro" é o aprovado (pano/<ponto>_<modo>.jpg)
+    tour = PROJ / "09_TOUR_360" / "index.html"
+    tt = {k: {"nome": v["nome"], "materiais": v["materiais"]} for k, v in TEMAS.items() if k != "escuro"}
+    bloco_t = "/*TOUR-TEMAS-INICIO*/\nconst TT = " + json.dumps(tt, ensure_ascii=False) + ";\n/*TOUR-TEMAS-FIM*/"
+    ht = tour.read_text(encoding="utf-8")
+    ht, n = re.subn(r"/\*TOUR-TEMAS-INICIO\*/.*?/\*TOUR-TEMAS-FIM\*/", lambda m: bloco_t, ht, flags=re.S)
+    if n != 1:
+        raise SystemExit("marcadores não encontrados no tour")
+    tour.write_text(ht, encoding="utf-8")
     print("HTML OK", HTML, "miniaturas", len(list(mini.glob("*.jpg"))))
     escrever_md(dados)
 
