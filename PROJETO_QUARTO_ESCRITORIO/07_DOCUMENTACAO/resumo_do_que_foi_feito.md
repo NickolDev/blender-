@@ -50,12 +50,14 @@ pediu verificação de conta e não foi usado. Cada preço está marcado como:
 ### Orçamento (`04_ORCAMENTO/orcamento_completo.xlsx`)
 | Cenário | Itens | Reserva 10% | **Total** | Parte estimada |
 |---|---:|---:|---:|---:|
-| Econômico | R$ 7.708 | R$ 771 | **R$ 8.479** | R$ 3.621 |
-| Equilibrado | R$ 12.095 | R$ 1.209 | **R$ 13.304** | R$ 6.887 |
-| Premium | R$ 20.486 | R$ 2.049 | **R$ 22.535** | R$ 10.799 |
+| Econômico | R$ 9.196 | R$ 920 | **R$ 10.115** | R$ 3.175 |
+| Equilibrado | R$ 13.258 | R$ 1.326 | **R$ 14.584** | R$ 6.117 |
+| Premium | R$ 21.001 | R$ 2.100 | **R$ 23.101** | R$ 9.381 |
 
-*Valores atualizados em 31/10/2026 (Fase E). Incluem a categoria "Decoração (opcional)", com preços estimados:
-R$ 756 / R$ 1.080 / R$ 1.728. Sem ela, o Equilibrado fica em ≈ R$ 12.117 com a reserva.*
+*Valores atualizados em 31/10/2026. Incluem a categoria "Decoração (opcional)" (R$ 2.243, igual nos 3 cenários): o
+pacote de decoração do tema aprovado com preços pesquisados na busca da web (persiana romana de linho sob medida,
+luminária de braço, almofadas, planta de chão, samambaia pendente, quadros, roupa de cama e manta). Sem ela, o
+Equilibrado fica em ≈ R$ 12.117 com a reserva.*
 
 A planilha tem fórmulas: mude quantidades e preços (em azul) e os totais se recalculam. A aba
 **Quantitativos** calcula áreas, galões de tinta, metros de LED e barras de perfil. Os totais foram

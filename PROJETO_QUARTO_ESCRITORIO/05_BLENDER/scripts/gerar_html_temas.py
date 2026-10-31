@@ -9,13 +9,13 @@ import re
 import subprocess
 from pathlib import Path
 
-from temas_dados import DESCARTADOS, LAYOUTS, TEMAS
+from temas_dados import DATA_PRECOS, DESCARTADOS, LAYOUTS, PRECOS, TEMAS, pacote
 
 PROJ = Path(__file__).resolve().parents[2]
 HTML = PROJ / "08_VISUALIZADOR_3D" / "index.html"
 TEMAS_DIR = PROJ / "08_VISUALIZADOR_3D" / "temas"
 VALID = PROJ / "07_DOCUMENTACAO" / "validacao_layouts.json"
-CAMPOS_T = ("nome", "resumo", "paleta", "materiais", "decoracao", "custo_extra")
+CAMPOS_T = ("nome", "resumo", "paleta", "materiais", "decoracao", "parede")
 CAMPOS_L = ("nome", "curto", "resumo", "pros", "contras")
 
 
@@ -29,8 +29,13 @@ def main():
     mini.mkdir(exist_ok=True)
     for f in sorted(TEMAS_DIR.glob("*_*_*.jpg")):
         subprocess.run(["convert", str(f), "-resize", "480x300", "-quality", "78", str(mini / f.name)], check=True)
+    def lista(t):
+        itens, total, est = pacote(t)
+        return {"total": total, "est": est, "data": DATA_PRECOS,
+                "itens": [dict(zip(("item", "produto", "loja", "link", "preco", "status", "obs"), PRECOS[k]), qtd=q)
+                          for k, q in itens]}
     dados = {
-        "temas": {k: {c: v[c] for c in CAMPOS_T} for k, v in TEMAS.items()},
+        "temas": {k: {**{c: v[c] for c in CAMPOS_T}, "compras": lista(k)} for k, v in TEMAS.items()},
         "layouts": {k: {c: v[c] for c in CAMPOS_L} for k, v in LAYOUTS.items()},
         "descartados": DESCARTADOS,
         "validacao": json.loads(VALID.read_text(encoding="utf-8")) if VALID.exists() else {},
@@ -49,6 +54,10 @@ def brl(v):
     return f"{v:,}".replace(",", ".")
 
 
+def brl2(v):
+    return f"{v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
 def escrever_md(dados):
     L = ["# Temas, layouts e decoração", "",
          "Gerado por `05_BLENDER/scripts/gerar_html_temas.py` a partir de `temas_dados.py` e da validação de cada layout.",
@@ -63,8 +72,13 @@ def escrever_md(dados):
               "Paleta: " + " · ".join(f"{n} `{c}`" for n, c in t["paleta"]), "",
               "Materiais: " + "; ".join(t["materiais"]) + ".", "",
               "Decoração: " + "; ".join(t["decoracao"]) + ".", "",
-              f"Pacote de decoração (estimativa, fora a obra já orçada): R$ {brl(t['custo_extra'][0])} – "
-              f"R$ {brl(t['custo_extra'][1])}", ""]
+              f"**Lista de compras da decoração** (preços de {DATA_PRECOS}, fora a obra já orçada): "
+              f"**R$ {brl2(dados['temas'][k]['compras']['total'])}**, dos quais R$ {brl2(dados['temas'][k]['compras']['est'])} "
+              "estimados.", "", "| Item | Produto | Loja | Qtd | Preço | Status |", "|---|---|---|---|---|---|",
+              *[f"| {i['item']} | {i['produto']} | " + (f"[{i['loja']}]({i['link']})" if i['link'] else i['loja'])
+                + f" | {i['qtd']} | R$ {brl2(i['preco'] * i['qtd'])} | "
+                + ("busca web — conferir no link" if i['status'] == "BUSCA" else "estimativa") + " |"
+                for i in dados['temas'][k]['compras']['itens']], ""]
     L += ["## Layouts", ""]
     for k, l in LAYOUTS.items():
         V = dados["validacao"].get(k, [])

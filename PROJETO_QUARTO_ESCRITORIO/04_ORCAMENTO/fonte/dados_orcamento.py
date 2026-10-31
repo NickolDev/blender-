@@ -67,14 +67,6 @@ ECONOMICO = [
     ("Complementares", "Organização de cabos", "Organizador de fios 19 mm × 1,5 m", "Amazon", AMZ + "B08R58CWKD", "—", "—", "LIST", 1, 16.17, "un"),
     ("Complementares", "Abraçadeiras", "Abraçadeira nylon preta 2,5 × 100 mm (100 un)", "Amazon", AMZ + "B0GWNHFSCY", "—", "—", "LIST", 1, 10.20, "pct"),
     ("Complementares", "Suporte de notebook", "Suporte dobrável alumínio c/ regulagem", "Amazon", AMZ + "B0H13G1VTW", "—", "Alumínio", "LIST", 1, 65.78, "un"),
-    ("Decoração (opcional)", "Luminária de mesa articulada", "Luminária articulada preta, E27, lâmpada 2700 K", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 84.00, "un"),
-    ("Decoração (opcional)", "Suporte de headphone", "Suporte de mesa em metal preto", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 42.00, "un"),
-    ("Decoração (opcional)", "Quadros P&B (3 na parede + 2 na prateleira)", "Impressões P&B 40×55, 2× 36×26, 20×25, 15×20 c/ moldura preta e passe-partout", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 245.00, "un"),
-    ("Decoração (opcional)", "Planta pendente", "Vaso cerâmica preta Ø18 + suporte de corda + samambaia + gancho de teto", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 84.00, "un"),
-    ("Decoração (opcional)", "Objetos dos nichos", "Vaso cerâmica + elefante em madeira + escultura de baleia (~15 cm)", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 140.00, "un"),
-    ("Decoração (opcional)", "Plantas da prateleira", "Vaso médio c/ planta + suculenta", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 70.00, "un"),
-    ("Decoração (opcional)", "Relógio LED de prateleira", "Relógio digital LED 12 cm", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 49.00, "un"),
-    ("Decoração (opcional)", "Caneca e acessórios de mesa", "Caneca de cerâmica + porta-lápis", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 42.00, "un"),
     ("Serviços", "Mão de obra de pintura", "Pintor (paredes + teto), sem preparo pesado", "Profissional local", FONTE_PINTOR,
      "—", "—", "EST", "Q:area_pintura_total", 25.00, "m²"),
     ("Serviços", "Frete (itens sem frete grátis)", "Reserva de frete", "—", "Estimativa", "—", "—", "EST", 1, 150.00, "vb"),
@@ -121,14 +113,6 @@ EQUILIBRADO = [
     ("Complementares", "Prolongador da tomada (ripado)", "Margirius prolongador caixa 4×2", "Amazon", AMZ + "B089M44PPG", "—", "—", "LIST", 1, 23.27, "un"),
     ("Complementares", "Bandeja de cabos sob a mesa", "Bandeja organizadora sem perfuração", "Amazon", AMZ + "B0GJRDZM82", "—", "Metal", "LIST", 1, 119.69, "un"),
     ("Complementares", "Suporte de notebook", "Suporte dobrável alumínio c/ regulagem", "Amazon", AMZ + "B0H13G1VTW", "—", "Alumínio", "LIST", 1, 65.78, "un"),
-    ("Decoração (opcional)", "Luminária de mesa articulada", "Luminária articulada preta, E27, lâmpada 2700 K", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 120.00, "un"),
-    ("Decoração (opcional)", "Suporte de headphone", "Suporte de mesa em metal preto", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 60.00, "un"),
-    ("Decoração (opcional)", "Quadros P&B (3 na parede + 2 na prateleira)", "Impressões P&B 40×55, 2× 36×26, 20×25, 15×20 c/ moldura preta e passe-partout", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 350.00, "un"),
-    ("Decoração (opcional)", "Planta pendente", "Vaso cerâmica preta Ø18 + suporte de corda + samambaia + gancho de teto", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 120.00, "un"),
-    ("Decoração (opcional)", "Objetos dos nichos", "Vaso cerâmica + elefante em madeira + escultura de baleia (~15 cm)", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 200.00, "un"),
-    ("Decoração (opcional)", "Plantas da prateleira", "Vaso médio c/ planta + suculenta", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 100.00, "un"),
-    ("Decoração (opcional)", "Relógio LED de prateleira", "Relógio digital LED 12 cm", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 70.00, "un"),
-    ("Decoração (opcional)", "Caneca e acessórios de mesa", "Caneca de cerâmica + porta-lápis", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 60.00, "un"),
     ("Serviços", "Mão de obra de pintura", "Pintor c/ preparo (paredes + teto)", "Profissional local", FONTE_PINTOR,
      "—", "—", "EST", "Q:area_pintura_total", 35.00, "m²"),
     ("Serviços", "Instalação da iluminação", "Montagem das fitas/perfis/fonte (marceneiro ou eletricista)", "Profissional local",
@@ -178,20 +162,30 @@ PREMIUM = [
     ("Complementares", "Filtro de linha c/ DPS", "iCLAMPER Energia 5 tomadas", "Amazon", AMZ + "B0D8V17JSG", "—", "—", "LIST", 1, 71.98, "un"),
     ("Complementares", "Prolongador da tomada (ripado)", "Margirius prolongador caixa 4×2", "Amazon", AMZ + "B089M44PPG", "—", "—", "LIST", 1, 23.27, "un"),
     ("Complementares", "Suporte de notebook", "Suporte aço carbono base giratória 360°", "Amazon", AMZ + "B0HFNYSZHZ", "—", "Aço", "LIST", 1, 109.15, "un"),
-    ("Decoração (opcional)", "Luminária de mesa articulada", "Luminária articulada preta, E27, lâmpada 2700 K", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 192.00, "un"),
-    ("Decoração (opcional)", "Suporte de headphone", "Suporte de mesa em metal preto", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 96.00, "un"),
-    ("Decoração (opcional)", "Quadros P&B (3 na parede + 2 na prateleira)", "Impressões P&B 40×55, 2× 36×26, 20×25, 15×20 c/ moldura preta e passe-partout", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 560.00, "un"),
-    ("Decoração (opcional)", "Planta pendente", "Vaso cerâmica preta Ø18 + suporte de corda + samambaia + gancho de teto", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 192.00, "un"),
-    ("Decoração (opcional)", "Objetos dos nichos", "Vaso cerâmica + elefante em madeira + escultura de baleia (~15 cm)", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 320.00, "un"),
-    ("Decoração (opcional)", "Plantas da prateleira", "Vaso médio c/ planta + suculenta", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 160.00, "un"),
-    ("Decoração (opcional)", "Relógio LED de prateleira", "Relógio digital LED 12 cm", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 112.00, "un"),
-    ("Decoração (opcional)", "Caneca e acessórios de mesa", "Caneca de cerâmica + porta-lápis", "A pesquisar", "Estimativa (preço não pesquisado)", "—", "—", "EST", 1, 96.00, "un"),
     ("Serviços", "Mão de obra de pintura", "Pintor c/ preparo completo (paredes + teto)", "Profissional local", FONTE_PINTOR,
      "—", "—", "EST", "Q:area_pintura_total", 55.00, "m²"),
     ("Serviços", "Instalação da iluminação", "Montagem das fitas/perfis/fontes (marceneiro ou eletricista)", "Profissional local",
      "Estimativa", "—", "—", "EST", 1, 400.00, "vb"),
     ("Serviços", "Frete e taxas de importação", "Reserva (Amazon Global pode ter impostos)", "—", "Estimativa", "—", "—", "EST", 1, 450.00, "vb"),
 ]
+
+# Decoração (opcional): pacote do tema aprovado (Moderno Escuro), pesquisado em 31/10/2026 — mesmo nos 3 cenários.
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[2] / "05_BLENDER" / "scripts"))
+from temas_dados import PRECOS as _PRECOS, pacote as _pacote  # noqa: E402
+
+DECORACAO = [("Decoração (opcional)", _PRECOS[k][0], _PRECOS[k][1], _PRECOS[k][2], _PRECOS[k][3] or "Estimativa", "—", "—",
+              _PRECOS[k][5], q, _PRECOS[k][4], "un") for k, q in _pacote("escuro")[0]]
+DECORACAO += [
+    ("Decoração (opcional)", "Suporte de headphone", "Suporte de mesa em metal preto", "A pesquisar", "Estimativa", "—", "—",
+     "EST", 1, 60.00, "un"),
+    ("Decoração (opcional)", "Relógio LED de prateleira", "Relógio digital LED 12 cm", "A pesquisar", "Estimativa", "—", "—",
+     "EST", 1, 70.00, "un"),
+]
+for _lista in (ECONOMICO, EQUILIBRADO, PREMIUM):
+    _i = next(i for i, it in enumerate(_lista) if it[0] == "Serviços")
+    _lista[_i:_i] = DECORACAO
 
 CENARIOS = {"Econômico": ECONOMICO, "Equilibrado": EQUILIBRADO, "Premium": PREMIUM}
 

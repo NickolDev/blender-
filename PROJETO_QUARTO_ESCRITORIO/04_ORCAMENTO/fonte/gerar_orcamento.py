@@ -19,7 +19,8 @@ from openpyxl.workbook.defined_name import DefinedName
 from dados_orcamento import CAT, CENARIOS, DATA, QUANT
 
 OUT = Path(__file__).resolve().parents[1]
-STATUS_TXT = {"PESQ": "Pesquisado (página do produto)", "LIST": "Pesquisado (listagem da loja)", "EST": "Estimativa"}
+STATUS_TXT = {"PESQ": "Pesquisado (página do produto)", "LIST": "Pesquisado (listagem da loja)",
+              "BUSCA": "Pesquisado (busca web, conferir no link)", "EST": "Estimativa"}
 
 # ------------------------------------------------------------- quantitativos (valores p/ gráficos)
 def avaliar_quant():
@@ -157,7 +158,8 @@ def gerar_xlsx():
                 f = fn(col)
             elif "pesquisados" in lab:
                 f = (f"=SUMIF('{cen}'!$H:$H,\"{STATUS_TXT['PESQ']}\",'{cen}'!$M:$M)"
-                     f"+SUMIF('{cen}'!$H:$H,\"{STATUS_TXT['LIST']}\",'{cen}'!$M:$M)")
+                     f"+SUMIF('{cen}'!$H:$H,\"{STATUS_TXT['LIST']}\",'{cen}'!$M:$M)"
+                     f"+SUMIF('{cen}'!$H:$H,\"{STATUS_TXT['BUSCA']}\",'{cen}'!$M:$M)")
             elif "estimativas" in lab:
                 f = f"=SUMIF('{cen}'!$H:$H,\"{STATUS_TXT['EST']}\",'{cen}'!$M:$M)"
             else:
@@ -173,7 +175,7 @@ def gerar_xlsx():
         "• Preços Pichau = à vista no PIX. Amazon = preço do anúncio no dia; frete pode variar por CEP.",
         "• Tinta grafite: o preço é o da base branca; a cor preparada em loja pode custar mais. Confirmar na loja.",
         "• Marcenaria (ripado, tampo, prateleira, nichos) e mão de obra = estimativas por faixa de mercado; pedir 3 orçamentos locais.",
-        "• Decoração (opcional): preços estimados, não pesquisados (loja bloqueada na sessão de 31/10/2026). Pesquisar antes de comprar.",
+        "• Decoração (opcional): pacote do tema aprovado, preços vistos na busca da web em 31/10/2026 (conferir no link); 4 itens estimados.",
         "• PC: fica sobre o tampo (suporte de gabinete removido em 31/10/2026). Monitores, PC e notebook são do usuário.",
         "• Premium: a estrutura Marsail é vendida pela Amazon Global (importação); prazo e impostos podem variar.",
     ]):
@@ -193,7 +195,7 @@ def gerar_csv():
         for cen, itens in CENARIOS.items():
             for it in itens:
                 q = qtd(it[8])
-                disp = "Não verificada" if it[7] == "EST" else ("Em estoque no dia" if it[7] == "PESQ" else "Listado no dia")
+                disp = {"EST": "Não verificada", "PESQ": "Em estoque no dia", "BUSCA": "Ver no link"}.get(it[7], "Listado no dia")
                 w.writerow([cen, it[0], it[1], it[2], it[3], it[4], it[5], it[6], STATUS_TXT[it[7]], DATA,
                             f"{q:g}", it[10], f"{it[9]:.2f}", f"{q*it[9]:.2f}", disp])
     return path

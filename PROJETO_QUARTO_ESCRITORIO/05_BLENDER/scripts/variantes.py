@@ -2,7 +2,7 @@
 
 Uso:
     blender -b quarto_escritorio_realista.blend --python variantes.py -- --tema japandi --layout C \\
-        [--render dia,noite,planta] [--amostras 64] [--res 1440x900] [--salvar] [--teste]
+        [--render dia,noite,planta,pano_dia,pano_noite] [--amostras 64] [--res 1440x900] [--pano 2048] [--salvar] [--teste]
 
 Ordem: 1) decoração/materiais do tema no layout A (coordenadas do projeto aprovado); 2) rearranjo da mesa e
 transformação dos grupos para o layout; 3) cabos, planta de chão e planta pendente na posição do layout;
@@ -39,6 +39,8 @@ LAYOUT = arg("--layout", "A")
 RENDER = [m for m in arg("--render", "").split(",") if m]
 AMOSTRAS = int(arg("--amostras", "64"))
 RES = tuple(int(v) for v in arg("--res", "1440x900").split("x"))
+PANO_LARG = int(arg("--pano", "2048"))
+PANO_OUT = PROJ / "09_TOUR_360" / "pano" / "temas"
 TESTE = "--teste" in ARGS
 ASSETS = PROJ / "05_BLENDER" / "assets"
 TEX, MODELS = ASSETS / "textures", ASSETS / "models"
@@ -827,6 +829,10 @@ def renderizar(L):
     OUT.mkdir(parents=True, exist_ok=True)
     base = {o.name: o.hide_render for o in bpy.data.objects}
     for m in RENDER:
+        if m.startswith("pano_"):
+            panoramas(m[5:], modo, base)
+            continue
+        sc.render.resolution_x, sc.render.resolution_y = (RES[0] // 2, RES[1] // 2) if TESTE else RES
         for o in bpy.data.objects:
             o.hide_render = base[o.name]
             o.pop("_hide_base", None)
@@ -845,6 +851,35 @@ def renderizar(L):
             sc.render.filepath = str(OUT / f"{TEMA}_{L}_{m}.jpg")
         bpy.ops.render.render(write_still=True)
         print("RENDER", TEMA, L, m, sc.render.filepath)
+
+
+def panoramas(m, modo, base):
+    """Panoramas 360° do tour (câmeras PANO_* do layout A): 09_TOUR_360/pano/temas/<tema>_<ponto>_<modo>.jpg + prévia."""
+    import subprocess
+    sc = bpy.context.scene
+    PANO_OUT.mkdir(parents=True, exist_ok=True)
+    (PANO_OUT / "prev").mkdir(exist_ok=True)
+    largura = 1024 if TESTE else PANO_LARG
+    sc.render.resolution_x, sc.render.resolution_y = largura, largura // 2
+    for cam in sorted((o for o in bpy.data.objects if o.name.startswith("PANO_")), key=lambda o: o.name):
+        for o in bpy.data.objects:
+            o.hide_render = base[o.name]
+            o.pop("_hide_base", None)
+        modo(m)
+        exp_dia, exp_noite = TEMAS[TEMA].get("exp", (0.0, 0.0))
+        sc.view_settings.exposure += exp_noite if m == "noite" else exp_dia
+        for o in bpy.data.objects:
+            if "modo" in o:
+                o.hide_render = o["modo"] != m
+            if cam.name == "PANO_mesa" and o.name.startswith("Cadeira_"):   # sentado à mesa: a cadeira some da vista
+                o.hide_render = True
+        sc.camera = cam
+        nome = f"{TEMA}_{cam.name.replace('PANO_', '')}_{m}.jpg"
+        sc.render.filepath = str(PANO_OUT / nome)
+        bpy.ops.render.render(write_still=True)
+        subprocess.run(["convert", str(PANO_OUT / nome), "-resize", "1024x512", "-quality", "80",
+                        str(PANO_OUT / "prev" / nome)], check=False)
+        print("PANO", TEMA, nome)
 
 
 def main():

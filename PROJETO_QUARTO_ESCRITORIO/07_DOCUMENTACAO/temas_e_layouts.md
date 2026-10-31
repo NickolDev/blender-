@@ -23,7 +23,26 @@ Materiais: Parede grafite fosco; Ripado e marcenaria em freijó; Tampo freijó 2
 
 Decoração: Persiana romana de linho grafite; Almofadas de veludo caramelo e linho grafite; Quadros P&B; Planta de chão no canto morto; Samambaia pendente; Nichos com vaso, elefante e baleia.
 
-Pacote de decoração (estimativa, fora a obra já orçada): R$ 650 – R$ 1.100
+**Lista de compras da decoração** (preços de 31/10/2026, fora a obra já orçada): **R$ 2.113,18**, dos quais R$ 180,00 estimados.
+
+| Item | Produto | Loja | Qtd | Preço | Status |
+|---|---|---|---|---|---|
+| Persiana romana de linho sob medida (≈1,57 × 1,30 m = 2,04 m²) | Viena Linho blackout, R$ 319,90/m² | [Andrelux](https://andrelux.com.br/persiana-romana-blackout/persiana-romana-blackout-viena-linho-claro-produto/) | 1 | R$ 652,60 | busca web — conferir no link |
+| Refil para almofada 45 × 45 (kit 4, fibra siliconada) | Kit 4 refis 45 × 45 | [Magazine Luiza](https://www.magazineluiza.com.br/busca/capa+45x45) | 1 | R$ 38,90 | busca web — conferir no link |
+| Planta de chão com vaso | Ficus Verde Figueira artificial com vaso decorativo | [Magazine Luiza](https://m.magazineluiza.com.br/busca/planta+de+ficus/) | 1 | R$ 189,99 | busca web — conferir no link |
+| Suporte de macramê 85 cm | Suporte de macramê para vaso | [MF Rural](https://www.mfrural.com.br/busca/macrame) | 1 | R$ 45,90 | busca web — conferir no link |
+| Cuia 21 com gancho (kit 5) | Kit 5 vasos cuia 21 com ganchos para samambaia | [Mercado Livre](https://lista.mercadolivre.com.br/gancho-para-samambaias) | 1 | R$ 23,50 | busca web — conferir no link |
+| Samambaia natural em cuia 21 | Samambaia Renda Francesa cuia 21 (pendente) | [Magazine Luiza](https://www.magazineluiza.com.br/busca/samambaia+renda) | 1 | R$ 47,50 | busca web — conferir no link |
+| Kit 3 quadros 40 × 60 com moldura preta | Kit 3 Quadros Folhagem Palha Nude (EQUADROS) | [MadeiraMadeira](https://www.madeiramadeira.com.br/kit-3-quadros-folhagem-palha-nude-com-moldura-preta-749682936.html) | 1 | R$ 169,65 | busca web — conferir no link |
+| Porta-retrato 20 × 25 moldura preta | Moldura preta lisa 20 × 25 | [Mercado Livre](https://www.mercadolivre.com.br/pagina/silvaaquadross) | 2 | R$ 35,66 | busca web — conferir no link |
+| Manta para a cama 1,50 × 2,10 m | Manta decorativa Dohler Marrocos | [Buscapé](https://www.buscape.com.br/capa-para-almofada-e-sofa/manta-decorativa-para-sofa-dohler-marrocos-1-50-x-2-10-cores-bege) | 1 | R$ 78,99 | busca web — conferir no link |
+| Edredom solteiro 100% algodão | Edredom malha 100% algodão Gran Moratta solteiro | [Zoom](https://www.zoom.com.br/edredom/edredom-malha-100-algodao-gran-moratta-1-peca-solteiro-avela-pink) | 1 | R$ 232,78 | busca web — conferir no link |
+| Luminária de mesa de braço articulado (preta) | Bronzearte Versaty com garra, E27 | [Telhanorte](https://www.telhanorte.com.br/luminaria-versaty-garra-de-aco-e27-40w-pretabronzearte-746967/p) | 1 | R$ 99,90 | busca web — conferir no link |
+| Capa de almofada de veludo 45 × 45 | Kadife (Westwing) | [Fast Shop](https://site.fastshop.com.br/capa-de-almofada-de-veludo-com-abas-kadife---amarelo-160996/p) | 1 | R$ 115,01 | busca web — conferir no link |
+| Capa de almofada de linho 45 × 45 | Tuffato 45 × 45 linho | [Ponto Frio](https://www.pontofrio.com.br/capa-de-almofada-tuffato-decorativa-45x45cm-lino/p/1572652665) | 1 | R$ 40,90 | busca web — conferir no link |
+| Vaso pequeno de cerâmica (~18 cm) | — | A escolher | 1 | R$ 60,00 | estimativa |
+| Elefante decorativo 16 cm | Elefante indiano em resina 16 cm | [Extra](https://www.extra.com.br/elefante-decorativo-indiano-em-resina/p/1582481627) | 1 | R$ 161,90 | busca web — conferir no link |
+| Escultura pequena (baleia ~15 cm) | — | A escolher | 1 | R$ 120,00 | estimativa |
 
 ### Escandinavo Claro (`escandinavo`)
 
@@ -35,7 +54,29 @@ Materiais: Paredes off-white quente; Ripado e marcenaria em carvalho claro; Fund
 
 Decoração: Persiana romana de linho cru; Almofadas verde-sálvia (veludo) e mostarda; Arte em traço fino; Cesto de vime sob a mesa; Vaso alto de cerâmica branca na prateleira; Planta de chão; Tigela de madeira e suculenta nos nichos.
 
-Pacote de decoração (estimativa, fora a obra já orçada): R$ 700 – R$ 1.200
+**Lista de compras da decoração** (preços de 31/10/2026, fora a obra já orçada): **R$ 2.337,48**, dos quais R$ 105,00 estimados.
+
+| Item | Produto | Loja | Qtd | Preço | Status |
+|---|---|---|---|---|---|
+| Persiana romana de linho sob medida (≈1,57 × 1,30 m = 2,04 m²) | Viena Linho blackout, R$ 319,90/m² | [Andrelux](https://andrelux.com.br/persiana-romana-blackout/persiana-romana-blackout-viena-linho-claro-produto/) | 1 | R$ 652,60 | busca web — conferir no link |
+| Refil para almofada 45 × 45 (kit 4, fibra siliconada) | Kit 4 refis 45 × 45 | [Magazine Luiza](https://www.magazineluiza.com.br/busca/capa+45x45) | 1 | R$ 38,90 | busca web — conferir no link |
+| Planta de chão com vaso | Ficus Verde Figueira artificial com vaso decorativo | [Magazine Luiza](https://m.magazineluiza.com.br/busca/planta+de+ficus/) | 1 | R$ 189,99 | busca web — conferir no link |
+| Suporte de macramê 85 cm | Suporte de macramê para vaso | [MF Rural](https://www.mfrural.com.br/busca/macrame) | 1 | R$ 45,90 | busca web — conferir no link |
+| Cuia 21 com gancho (kit 5) | Kit 5 vasos cuia 21 com ganchos para samambaia | [Mercado Livre](https://lista.mercadolivre.com.br/gancho-para-samambaias) | 1 | R$ 23,50 | busca web — conferir no link |
+| Samambaia natural em cuia 21 | Samambaia Renda Francesa cuia 21 (pendente) | [Magazine Luiza](https://www.magazineluiza.com.br/busca/samambaia+renda) | 1 | R$ 47,50 | busca web — conferir no link |
+| Kit 3 quadros 40 × 60 com moldura preta | Kit 3 Quadros Folhagem Palha Nude (EQUADROS) | [MadeiraMadeira](https://www.madeiramadeira.com.br/kit-3-quadros-folhagem-palha-nude-com-moldura-preta-749682936.html) | 1 | R$ 169,65 | busca web — conferir no link |
+| Porta-retrato 20 × 25 moldura preta | Moldura preta lisa 20 × 25 | [Mercado Livre](https://www.mercadolivre.com.br/pagina/silvaaquadross) | 2 | R$ 35,66 | busca web — conferir no link |
+| Manta para a cama 1,50 × 2,10 m | Manta decorativa Dohler Marrocos | [Buscapé](https://www.buscape.com.br/capa-para-almofada-e-sofa/manta-decorativa-para-sofa-dohler-marrocos-1-50-x-2-10-cores-bege) | 1 | R$ 78,99 | busca web — conferir no link |
+| Edredom solteiro 100% algodão | Edredom malha 100% algodão Gran Moratta solteiro | [Zoom](https://www.zoom.com.br/edredom/edredom-malha-100-algodao-gran-moratta-1-peca-solteiro-avela-pink) | 1 | R$ 232,78 | busca web — conferir no link |
+| Luminária de mesa de braço articulado (branca) | Bronzearte Versaty com garra, E27, branca | [Telhanorte](https://www.telhanorte.com.br/luminaria-versaty-garra-de-aco-e27-40w-branca-bronzearte-746932/p) | 1 | R$ 99,90 | busca web — conferir no link |
+| Capa de almofada de veludo 45 × 45 | Kadife (Westwing) | [Fast Shop](https://site.fastshop.com.br/capa-de-almofada-de-veludo-com-abas-kadife---amarelo-160996/p) | 1 | R$ 115,01 | busca web — conferir no link |
+| Capa de almofada de linho 45 × 45 | Tuffato 45 × 45 linho | [Ponto Frio](https://www.pontofrio.com.br/capa-de-almofada-tuffato-decorativa-45x45cm-lino/p/1572652665) | 1 | R$ 40,90 | busca web — conferir no link |
+| Tapete 1,40 × 2,00 m bege claro | Tapete peludo bege mesclado claro 1,40 × 2,00 | [Buscapé](https://www.buscape.com.br/tapetes/tapete-para-sala-peludo-felpudo-macio-1-40x2-00-bege-mesclado-claro) | 1 | R$ 119,90 | busca web — conferir no link |
+| Cesto de rattan com tampa (30 L) | Cesto rattan com tampa 30 L (Monte Libano) | [Magazine Luiza](https://www.magazineluiza.com.br/busca/cesto+retangular+em+vime) | 1 | R$ 94,40 | busca web — conferir no link |
+| Vaso alto de cerâmica off-white (38 cm) | Vaso Décent menor off-white (Westwing) | [Fast Shop](https://site.fastshop.com.br/vaso-em-ceramica-decent-menor-off-white-111072/p) | 1 | R$ 175,84 | busca web — conferir no link |
+| Tigela de madeira 9 × 20 cm | Tigela Madeira Preto 9 × 20 Le Souk | [Magazine Luiza](https://magazineluiza.com.br/busca/bowl+madeira) | 1 | R$ 71,06 | busca web — conferir no link |
+| Vaso pequeno de cerâmica (~18 cm) | — | A escolher | 1 | R$ 60,00 | estimativa |
+| Planta pequena em vaso (prateleira/nicho) | — | Floricultura | 1 | R$ 45,00 | estimativa |
 
 ### Japandi (`japandi`)
 
@@ -47,7 +88,27 @@ Materiais: Paredes greige com efeito cal; Ripado e marcenaria em freixo; Fundo d
 
 Decoração: Persiana romana de linho natural; Almofadas de linho preto e creme; Arte sumi-e (ensō); Cesto de vime sob a mesa; Tapete de juta; Planta de chão; Tigela e vaso de cerâmica nos nichos.
 
-Pacote de decoração (estimativa, fora a obra já orçada): R$ 750 – R$ 1.300
+**Lista de compras da decoração** (preços de 31/10/2026, fora a obra já orçada): **R$ 2.522,53**, dos quais R$ 60,00 estimados.
+
+| Item | Produto | Loja | Qtd | Preço | Status |
+|---|---|---|---|---|---|
+| Persiana romana de linho sob medida (≈1,57 × 1,30 m = 2,04 m²) | Viena Linho blackout, R$ 319,90/m² | [Andrelux](https://andrelux.com.br/persiana-romana-blackout/persiana-romana-blackout-viena-linho-claro-produto/) | 1 | R$ 652,60 | busca web — conferir no link |
+| Refil para almofada 45 × 45 (kit 4, fibra siliconada) | Kit 4 refis 45 × 45 | [Magazine Luiza](https://www.magazineluiza.com.br/busca/capa+45x45) | 1 | R$ 38,90 | busca web — conferir no link |
+| Planta de chão com vaso | Ficus Verde Figueira artificial com vaso decorativo | [Magazine Luiza](https://m.magazineluiza.com.br/busca/planta+de+ficus/) | 1 | R$ 189,99 | busca web — conferir no link |
+| Suporte de macramê 85 cm | Suporte de macramê para vaso | [MF Rural](https://www.mfrural.com.br/busca/macrame) | 1 | R$ 45,90 | busca web — conferir no link |
+| Cuia 21 com gancho (kit 5) | Kit 5 vasos cuia 21 com ganchos para samambaia | [Mercado Livre](https://lista.mercadolivre.com.br/gancho-para-samambaias) | 1 | R$ 23,50 | busca web — conferir no link |
+| Samambaia natural em cuia 21 | Samambaia Renda Francesa cuia 21 (pendente) | [Magazine Luiza](https://www.magazineluiza.com.br/busca/samambaia+renda) | 1 | R$ 47,50 | busca web — conferir no link |
+| Kit 3 quadros 40 × 60 com moldura preta | Kit 3 Quadros Folhagem Palha Nude (EQUADROS) | [MadeiraMadeira](https://www.madeiramadeira.com.br/kit-3-quadros-folhagem-palha-nude-com-moldura-preta-749682936.html) | 1 | R$ 169,65 | busca web — conferir no link |
+| Porta-retrato 20 × 25 moldura preta | Moldura preta lisa 20 × 25 | [Mercado Livre](https://www.mercadolivre.com.br/pagina/silvaaquadross) | 2 | R$ 35,66 | busca web — conferir no link |
+| Manta para a cama 1,50 × 2,10 m | Manta decorativa Dohler Marrocos | [Buscapé](https://www.buscape.com.br/capa-para-almofada-e-sofa/manta-decorativa-para-sofa-dohler-marrocos-1-50-x-2-10-cores-bege) | 1 | R$ 78,99 | busca web — conferir no link |
+| Edredom solteiro 100% algodão | Edredom malha 100% algodão Gran Moratta solteiro | [Zoom](https://www.zoom.com.br/edredom/edredom-malha-100-algodao-gran-moratta-1-peca-solteiro-avela-pink) | 1 | R$ 232,78 | busca web — conferir no link |
+| Luminária de mesa de braço articulado (preta) | Bronzearte Versaty com garra, E27 | [Telhanorte](https://www.telhanorte.com.br/luminaria-versaty-garra-de-aco-e27-40w-pretabronzearte-746967/p) | 1 | R$ 99,90 | busca web — conferir no link |
+| Capa de almofada de linho 45 × 45 | Tuffato 45 × 45 linho | [Ponto Frio](https://www.pontofrio.com.br/capa-de-almofada-tuffato-decorativa-45x45cm-lino/p/1572652665) | 2 | R$ 81,80 | busca web — conferir no link |
+| Tapete de juta 1,40 × 2,00 m | Tapete em Juta | Pequeno | [Casa Potyguara](https://casapotyguara.com.br/produtos/tapete-em-juta-pequeno/) | 1 | R$ 438,00 | busca web — conferir no link |
+| Cesto de rattan com tampa (30 L) | Cesto rattan com tampa 30 L (Monte Libano) | [Magazine Luiza](https://www.magazineluiza.com.br/busca/cesto+retangular+em+vime) | 1 | R$ 94,40 | busca web — conferir no link |
+| Tigela de madeira 9 × 20 cm | Tigela Madeira Preto 9 × 20 Le Souk | [Magazine Luiza](https://magazineluiza.com.br/busca/bowl+madeira) | 1 | R$ 71,06 | busca web — conferir no link |
+| Vaso pequeno de cerâmica (~18 cm) | — | A escolher | 1 | R$ 60,00 | estimativa |
+| Elefante decorativo 16 cm | Elefante indiano em resina 16 cm | [Extra](https://www.extra.com.br/elefante-decorativo-indiano-em-resina/p/1582481627) | 1 | R$ 161,90 | busca web — conferir no link |
 
 ### Industrial Urbano (`industrial`)
 
@@ -59,7 +120,28 @@ Materiais: Paredes com efeito cimento queimado; Ripado e marcenaria em nogueira;
 
 Decoração: Persiana romana de linho chumbo; Almofadas de couro conhaque e linho; Arte gráfica P&B; Coleção de livros de capa dura na prateleira; Planta de chão; Tapete espinha de peixe.
 
-Pacote de decoração (estimativa, fora a obra já orçada): R$ 900 – R$ 1.700
+**Lista de compras da decoração** (preços de 31/10/2026, fora a obra já orçada): **R$ 2.252,52**, dos quais R$ 180,00 estimados.
+
+| Item | Produto | Loja | Qtd | Preço | Status |
+|---|---|---|---|---|---|
+| Persiana romana de linho sob medida (≈1,57 × 1,30 m = 2,04 m²) | Viena Linho blackout, R$ 319,90/m² | [Andrelux](https://andrelux.com.br/persiana-romana-blackout/persiana-romana-blackout-viena-linho-claro-produto/) | 1 | R$ 652,60 | busca web — conferir no link |
+| Refil para almofada 45 × 45 (kit 4, fibra siliconada) | Kit 4 refis 45 × 45 | [Magazine Luiza](https://www.magazineluiza.com.br/busca/capa+45x45) | 1 | R$ 38,90 | busca web — conferir no link |
+| Planta de chão com vaso | Ficus Verde Figueira artificial com vaso decorativo | [Magazine Luiza](https://m.magazineluiza.com.br/busca/planta+de+ficus/) | 1 | R$ 189,99 | busca web — conferir no link |
+| Suporte de macramê 85 cm | Suporte de macramê para vaso | [MF Rural](https://www.mfrural.com.br/busca/macrame) | 1 | R$ 45,90 | busca web — conferir no link |
+| Cuia 21 com gancho (kit 5) | Kit 5 vasos cuia 21 com ganchos para samambaia | [Mercado Livre](https://lista.mercadolivre.com.br/gancho-para-samambaias) | 1 | R$ 23,50 | busca web — conferir no link |
+| Samambaia natural em cuia 21 | Samambaia Renda Francesa cuia 21 (pendente) | [Magazine Luiza](https://www.magazineluiza.com.br/busca/samambaia+renda) | 1 | R$ 47,50 | busca web — conferir no link |
+| Kit 3 quadros 40 × 60 com moldura preta | Kit 3 Quadros Folhagem Palha Nude (EQUADROS) | [MadeiraMadeira](https://www.madeiramadeira.com.br/kit-3-quadros-folhagem-palha-nude-com-moldura-preta-749682936.html) | 1 | R$ 169,65 | busca web — conferir no link |
+| Porta-retrato 20 × 25 moldura preta | Moldura preta lisa 20 × 25 | [Mercado Livre](https://www.mercadolivre.com.br/pagina/silvaaquadross) | 2 | R$ 35,66 | busca web — conferir no link |
+| Manta para a cama 1,50 × 2,10 m | Manta decorativa Dohler Marrocos | [Buscapé](https://www.buscape.com.br/capa-para-almofada-e-sofa/manta-decorativa-para-sofa-dohler-marrocos-1-50-x-2-10-cores-bege) | 1 | R$ 78,99 | busca web — conferir no link |
+| Edredom solteiro 100% algodão | Edredom malha 100% algodão Gran Moratta solteiro | [Zoom](https://www.zoom.com.br/edredom/edredom-malha-100-algodao-gran-moratta-1-peca-solteiro-avela-pink) | 1 | R$ 232,78 | busca web — conferir no link |
+| Luminária de mesa de braço articulado (preta) | Bronzearte Versaty com garra, E27 | [Telhanorte](https://www.telhanorte.com.br/luminaria-versaty-garra-de-aco-e27-40w-pretabronzearte-746967/p) | 1 | R$ 99,90 | busca web — conferir no link |
+| Capa de almofada de couro sintético caramelo 45 × 45 | Kit 3 capas (R$ 78,90 o kit) | [Mercado Livre](https://mercadolivre.com.br/sec/1hPnWta) | 1 | R$ 78,90 | busca web — conferir no link |
+| Capa de almofada de linho 45 × 45 | Tuffato 45 × 45 linho | [Ponto Frio](https://www.pontofrio.com.br/capa-de-almofada-tuffato-decorativa-45x45cm-lino/p/1572652665) | 1 | R$ 40,90 | busca web — conferir no link |
+| Tapete 1,40 × 2,00 m cinza | Casen pelo alto 2,00 × 1,40 (várias cores) | [MadeiraMadeira](https://escorregaopreco.com.br/ofertas/madeiramadeira/3538858) | 1 | R$ 117,90 | busca web — conferir no link |
+| Kit 3 livros decorativos (caixas) | Livros falsos decorativos porta-objetos | [Mercado Livre](https://www.mercadolivre.com.br/pagina/decoramaiss) | 1 | R$ 57,55 | busca web — conferir no link |
+| Vaso pequeno de cerâmica (~18 cm) | — | A escolher | 1 | R$ 60,00 | estimativa |
+| Elefante decorativo 16 cm | Elefante indiano em resina 16 cm | [Extra](https://www.extra.com.br/elefante-decorativo-indiano-em-resina/p/1582481627) | 1 | R$ 161,90 | busca web — conferir no link |
+| Escultura pequena (baleia ~15 cm) | — | A escolher | 1 | R$ 120,00 | estimativa |
 
 ### Botânico Verde (`botanico`)
 
@@ -71,7 +153,28 @@ Materiais: Paredes verde musgo; Ripado e marcenaria em nogueira; Roupa de cama o
 
 Decoração: Persiana romana de linho cru; Almofadas de veludo verde e linho terracota; Gravuras botânicas; Planta de chão; Vaso de barro com planta na prateleira; Suculenta no nicho; Cesto de vime sob a mesa; Samambaia pendente.
 
-Pacote de decoração (estimativa, fora a obra já orçada): R$ 850 – R$ 1.500
+**Lista de compras da decoração** (preços de 31/10/2026, fora a obra já orçada): **R$ 2.206,64**, dos quais R$ 150,00 estimados.
+
+| Item | Produto | Loja | Qtd | Preço | Status |
+|---|---|---|---|---|---|
+| Persiana romana de linho sob medida (≈1,57 × 1,30 m = 2,04 m²) | Viena Linho blackout, R$ 319,90/m² | [Andrelux](https://andrelux.com.br/persiana-romana-blackout/persiana-romana-blackout-viena-linho-claro-produto/) | 1 | R$ 652,60 | busca web — conferir no link |
+| Refil para almofada 45 × 45 (kit 4, fibra siliconada) | Kit 4 refis 45 × 45 | [Magazine Luiza](https://www.magazineluiza.com.br/busca/capa+45x45) | 1 | R$ 38,90 | busca web — conferir no link |
+| Planta de chão com vaso | Ficus Verde Figueira artificial com vaso decorativo | [Magazine Luiza](https://m.magazineluiza.com.br/busca/planta+de+ficus/) | 1 | R$ 189,99 | busca web — conferir no link |
+| Suporte de macramê 85 cm | Suporte de macramê para vaso | [MF Rural](https://www.mfrural.com.br/busca/macrame) | 1 | R$ 45,90 | busca web — conferir no link |
+| Cuia 21 com gancho (kit 5) | Kit 5 vasos cuia 21 com ganchos para samambaia | [Mercado Livre](https://lista.mercadolivre.com.br/gancho-para-samambaias) | 1 | R$ 23,50 | busca web — conferir no link |
+| Samambaia natural em cuia 21 | Samambaia Renda Francesa cuia 21 (pendente) | [Magazine Luiza](https://www.magazineluiza.com.br/busca/samambaia+renda) | 1 | R$ 47,50 | busca web — conferir no link |
+| Kit 3 quadros 40 × 60 com moldura preta | Kit 3 Quadros Folhagem Palha Nude (EQUADROS) | [MadeiraMadeira](https://www.madeiramadeira.com.br/kit-3-quadros-folhagem-palha-nude-com-moldura-preta-749682936.html) | 1 | R$ 169,65 | busca web — conferir no link |
+| Porta-retrato 20 × 25 moldura preta | Moldura preta lisa 20 × 25 | [Mercado Livre](https://www.mercadolivre.com.br/pagina/silvaaquadross) | 2 | R$ 35,66 | busca web — conferir no link |
+| Manta para a cama 1,50 × 2,10 m | Manta decorativa Dohler Marrocos | [Buscapé](https://www.buscape.com.br/capa-para-almofada-e-sofa/manta-decorativa-para-sofa-dohler-marrocos-1-50-x-2-10-cores-bege) | 1 | R$ 78,99 | busca web — conferir no link |
+| Edredom solteiro 100% algodão | Edredom malha 100% algodão Gran Moratta solteiro | [Zoom](https://www.zoom.com.br/edredom/edredom-malha-100-algodao-gran-moratta-1-peca-solteiro-avela-pink) | 1 | R$ 232,78 | busca web — conferir no link |
+| Luminária de mesa de braço articulado (preta) | Bronzearte Versaty com garra, E27 | [Telhanorte](https://www.telhanorte.com.br/luminaria-versaty-garra-de-aco-e27-40w-pretabronzearte-746967/p) | 1 | R$ 99,90 | busca web — conferir no link |
+| Capa de almofada de veludo 45 × 45 | Kadife (Westwing) | [Fast Shop](https://site.fastshop.com.br/capa-de-almofada-de-veludo-com-abas-kadife---amarelo-160996/p) | 1 | R$ 115,01 | busca web — conferir no link |
+| Capa de almofada de linho 45 × 45 | Tuffato 45 × 45 linho | [Ponto Frio](https://www.pontofrio.com.br/capa-de-almofada-tuffato-decorativa-45x45cm-lino/p/1572652665) | 1 | R$ 40,90 | busca web — conferir no link |
+| Tapete 1,40 × 2,00 m bege claro | Tapete peludo bege mesclado claro 1,40 × 2,00 | [Buscapé](https://www.buscape.com.br/tapetes/tapete-para-sala-peludo-felpudo-macio-1-40x2-00-bege-mesclado-claro) | 1 | R$ 119,90 | busca web — conferir no link |
+| Cesto de rattan com tampa (30 L) | Cesto rattan com tampa 30 L (Monte Libano) | [Magazine Luiza](https://www.magazineluiza.com.br/busca/cesto+retangular+em+vime) | 1 | R$ 94,40 | busca web — conferir no link |
+| Planta pequena em vaso (prateleira/nicho) | — | Floricultura | 2 | R$ 90,00 | estimativa |
+| Vaso pequeno de cerâmica (~18 cm) | — | A escolher | 1 | R$ 60,00 | estimativa |
+| Tigela de madeira 9 × 20 cm | Tigela Madeira Preto 9 × 20 Le Souk | [Magazine Luiza](https://magazineluiza.com.br/busca/bowl+madeira) | 1 | R$ 71,06 | busca web — conferir no link |
 
 ### Terracota Mediterrâneo (`terracota`)
 
@@ -83,7 +186,29 @@ Materiais: Paredes em reboco terracota; Ripado e marcenaria em carvalho; Fundo d
 
 Decoração: Persiana romana de linho cru; Almofada estampada + almofada de linho oliva; Arte com arcos e sol; Tapete listrado de algodão; Cesto de vime sob a mesa; Vaso de barro na prateleira; Planta de chão.
 
-Pacote de decoração (estimativa, fora a obra já orçada): R$ 800 – R$ 1.400
+**Lista de compras da decoração** (preços de 31/10/2026, fora a obra já orçada): **R$ 2.326,63**, dos quais R$ 105,00 estimados.
+
+| Item | Produto | Loja | Qtd | Preço | Status |
+|---|---|---|---|---|---|
+| Persiana romana de linho sob medida (≈1,57 × 1,30 m = 2,04 m²) | Viena Linho blackout, R$ 319,90/m² | [Andrelux](https://andrelux.com.br/persiana-romana-blackout/persiana-romana-blackout-viena-linho-claro-produto/) | 1 | R$ 652,60 | busca web — conferir no link |
+| Refil para almofada 45 × 45 (kit 4, fibra siliconada) | Kit 4 refis 45 × 45 | [Magazine Luiza](https://www.magazineluiza.com.br/busca/capa+45x45) | 1 | R$ 38,90 | busca web — conferir no link |
+| Planta de chão com vaso | Ficus Verde Figueira artificial com vaso decorativo | [Magazine Luiza](https://m.magazineluiza.com.br/busca/planta+de+ficus/) | 1 | R$ 189,99 | busca web — conferir no link |
+| Suporte de macramê 85 cm | Suporte de macramê para vaso | [MF Rural](https://www.mfrural.com.br/busca/macrame) | 1 | R$ 45,90 | busca web — conferir no link |
+| Cuia 21 com gancho (kit 5) | Kit 5 vasos cuia 21 com ganchos para samambaia | [Mercado Livre](https://lista.mercadolivre.com.br/gancho-para-samambaias) | 1 | R$ 23,50 | busca web — conferir no link |
+| Samambaia natural em cuia 21 | Samambaia Renda Francesa cuia 21 (pendente) | [Magazine Luiza](https://www.magazineluiza.com.br/busca/samambaia+renda) | 1 | R$ 47,50 | busca web — conferir no link |
+| Kit 3 quadros 40 × 60 com moldura preta | Kit 3 Quadros Folhagem Palha Nude (EQUADROS) | [MadeiraMadeira](https://www.madeiramadeira.com.br/kit-3-quadros-folhagem-palha-nude-com-moldura-preta-749682936.html) | 1 | R$ 169,65 | busca web — conferir no link |
+| Porta-retrato 20 × 25 moldura preta | Moldura preta lisa 20 × 25 | [Mercado Livre](https://www.mercadolivre.com.br/pagina/silvaaquadross) | 2 | R$ 35,66 | busca web — conferir no link |
+| Manta para a cama 1,50 × 2,10 m | Manta decorativa Dohler Marrocos | [Buscapé](https://www.buscape.com.br/capa-para-almofada-e-sofa/manta-decorativa-para-sofa-dohler-marrocos-1-50-x-2-10-cores-bege) | 1 | R$ 78,99 | busca web — conferir no link |
+| Edredom solteiro 100% algodão | Edredom malha 100% algodão Gran Moratta solteiro | [Zoom](https://www.zoom.com.br/edredom/edredom-malha-100-algodao-gran-moratta-1-peca-solteiro-avela-pink) | 1 | R$ 232,78 | busca web — conferir no link |
+| Luminária de mesa de braço articulado (preta) | Bronzearte Versaty com garra, E27 | [Telhanorte](https://www.telhanorte.com.br/luminaria-versaty-garra-de-aco-e27-40w-pretabronzearte-746967/p) | 1 | R$ 99,90 | busca web — conferir no link |
+| Capa de almofada estampada 45 × 45 | Capa de linho estampada com drapeado | [Magazine Luiza](https://www.magazineluiza.com.br/busca/capa+45x45) | 1 | R$ 99,00 | busca web — conferir no link |
+| Capa de almofada de linho 45 × 45 | Tuffato 45 × 45 linho | [Ponto Frio](https://www.pontofrio.com.br/capa-de-almofada-tuffato-decorativa-45x45cm-lino/p/1572652665) | 1 | R$ 40,90 | busca web — conferir no link |
+| Tapete de algodão 1,40 × 2,00 m | Tapete Sala Tear 100% Algodão rústico | [Zoom (Amazon)](https://www.zoom.com.br/tapetes/tapete-sala-tear-100-algodao-1-40x2-00m-rustico) | 1 | R$ 139,00 | busca web — conferir no link |
+| Cesto de rattan com tampa (30 L) | Cesto rattan com tampa 30 L (Monte Libano) | [Magazine Luiza](https://www.magazineluiza.com.br/busca/cesto+retangular+em+vime) | 1 | R$ 94,40 | busca web — conferir no link |
+| Vaso pequeno de cerâmica (~18 cm) | — | A escolher | 1 | R$ 60,00 | estimativa |
+| Tigela de madeira 9 × 20 cm | Tigela Madeira Preto 9 × 20 Le Souk | [Magazine Luiza](https://magazineluiza.com.br/busca/bowl+madeira) | 1 | R$ 71,06 | busca web — conferir no link |
+| Elefante decorativo 16 cm | Elefante indiano em resina 16 cm | [Extra](https://www.extra.com.br/elefante-decorativo-indiano-em-resina/p/1582481627) | 1 | R$ 161,90 | busca web — conferir no link |
+| Planta pequena em vaso (prateleira/nicho) | — | Floricultura | 1 | R$ 45,00 | estimativa |
 
 ## Layouts
 
