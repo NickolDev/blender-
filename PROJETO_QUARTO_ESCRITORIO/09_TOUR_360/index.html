@@ -73,6 +73,7 @@ body { margin: 0; background: #0d0d0f; color: var(--ink); font-family: var(--fon
   position: fixed; right: max(14px, env(safe-area-inset-right, 0px)); top: calc(env(safe-area-inset-top, 0px) + 74px);
   width: min(340px, calc(100vw - 28px)); padding: 16px; display: grid; gap: 8px;
 }
+#card[hidden] { display: none; }   /* sem isto o display: grid acima vence o atributo hidden */
 #card h2 { font: 600 18px/1.2 var(--font-display); margin: 0; padding-right: 28px; }
 #card .dim { font: 500 13px var(--font-mono); color: var(--led); }
 #card p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
