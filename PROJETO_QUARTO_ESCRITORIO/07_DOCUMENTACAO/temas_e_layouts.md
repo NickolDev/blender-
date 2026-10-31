@@ -142,7 +142,7 @@ Contra:
 - Sem tomada junto à cama: extensão ou ponto novo para a arandela
 - Ao entrar no quarto a cama é a primeira coisa vista
 
-Verificação no modelo 3D: **18 OK, 3 atenção, 1 falha(s)**
+Verificação no modelo 3D: **20 OK, 2 atenção, 0 falha(s)**
 
 | Status | Verificação | Medição |
 |---|---|---|
@@ -154,18 +154,18 @@ Verificação no modelo 3D: **18 OK, 3 atenção, 1 falha(s)**
 | OK | Cadeira × armário (recuo + passagem) | folga 136.0 cm (mínimo 60.0 cm) |
 | OK | PC longe da cabeceira (ruído e LED) | folga 159.0 cm (mínimo 90.0 cm) |
 | OK | Monitores × prateleira com a mesa no máximo | topo 1.715 m · prateleira 1.95 m |
-| ATENÇÃO | Janela: frente livre acima do peitoril | na frente da janela: planta de chão (topo 1.08 m) |
+| OK | Janela: frente livre acima do peitoril | nada acima do peitoril |
 | ATENÇÃO | Ar-condicionado: ninguém no jato direto | a menos de 0,6 m do aparelho: cama — direcionar as aletas para o centro do quarto |
 | OK | Faixa de entrada e porta do banheiro livres | livres |
 | ATENÇÃO | Arco das portas do armário (se forem de abrir) | no arco: planta pendente (até y = 2.34) — ok se as portas forem de correr |
 | OK | Nichos ≥ 0,90 m acima do colchão | folga 93.0 cm (mínimo 90.0 cm) |
 | OK | Planta pendente: folhas acima de 1,90 m | folga 3.9 cm (mínimo 0.0 cm) |
 | OK | Planta pendente × ventilador | folga 19.0 cm (mínimo 10.0 cm) |
-| OK | Planta de chão × cadeira | folga 14.7 cm (mínimo 5.0 cm) |
-| OK | Planta de chão × mesa e cama | folga 9.1 cm (mínimo 0.0 cm) |
-| OK | Planta de chão dentro do quarto | x 0.08–0.52, y 0.84–1.36 |
+| OK | Planta de chão × cadeira | folga 17.5 cm (mínimo 5.0 cm) |
+| OK | Planta de chão × mesa e cama | folga 12.3 cm (mínimo 0.0 cm) |
+| OK | Planta de chão dentro do quarto | x 0.10–0.50, y 0.87–1.33 |
 | OK | Tapete dentro do quarto | x 0.17–1.57, y 0.78–2.78 |
-| FALHA | Luminária de braço × monitores | folga -1.4 cm (mínimo 1.5 cm) |
+| OK | Luminária de braço × monitores | folga 2.7 cm (mínimo 1.5 cm) |
 | OK | Luminária de braço × ripado/paredes | folga 1.0 cm (mínimo 0.5 cm) |
 | OK | Tomada usada pela mesa (Parede D) | cabos descem até (1.32, 0.04, 0.30) |
 

@@ -154,8 +154,8 @@
   },
   {
    "verificacao": "Janela: frente livre acima do peitoril",
-   "status": "ATENÇÃO",
-   "detalhe": "na frente da janela: planta de chão (topo 1.08 m)"
+   "status": "OK",
+   "detalhe": "nada acima do peitoril"
   },
   {
    "verificacao": "Ar-condicionado: ninguém no jato direto",
@@ -190,17 +190,17 @@
   {
    "verificacao": "Planta de chão × cadeira",
    "status": "OK",
-   "detalhe": "folga 14.7 cm (mínimo 5.0 cm)"
+   "detalhe": "folga 17.5 cm (mínimo 5.0 cm)"
   },
   {
    "verificacao": "Planta de chão × mesa e cama",
    "status": "OK",
-   "detalhe": "folga 9.1 cm (mínimo 0.0 cm)"
+   "detalhe": "folga 12.3 cm (mínimo 0.0 cm)"
   },
   {
    "verificacao": "Planta de chão dentro do quarto",
    "status": "OK",
-   "detalhe": "x 0.08–0.52, y 0.84–1.36"
+   "detalhe": "x 0.10–0.50, y 0.87–1.33"
   },
   {
    "verificacao": "Tapete dentro do quarto",
@@ -209,8 +209,8 @@
   },
   {
    "verificacao": "Luminária de braço × monitores",
-   "status": "FALHA",
-   "detalhe": "folga -1.4 cm (mínimo 1.5 cm)"
+   "status": "OK",
+   "detalhe": "folga 2.7 cm (mínimo 1.5 cm)"
   },
   {
    "verificacao": "Luminária de braço × ripado/paredes",
