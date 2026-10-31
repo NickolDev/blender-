@@ -1,4 +1,7 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tour Suíte 01</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -190,7 +193,7 @@ function lonlatDe(de, para) {
 const TT = {"escandinavo": {"nome": "Escandinavo Claro", "materiais": ["Paredes off-white quente", "Ripado e marcenaria em carvalho claro", "Fundo do ripado off-white", "Roupa de cama de linho branco", "Manta waffle cinza", "Metais brancos"]}, "japandi": {"nome": "Japandi", "materiais": ["Paredes greige com efeito cal", "Ripado e marcenaria em freixo", "Fundo do ripado preto quente", "Roupa de cama de linho areia", "Tapete de juta", "Metais pretos", "LED 2700 K"]}, "industrial": {"nome": "Industrial Urbano", "materiais": ["Paredes com efeito cimento queimado", "Ripado e marcenaria em nogueira", "Fundo do ripado preto", "Roupa de cama chumbo", "Almofada de couro conhaque", "Tapete espinha de peixe grafite", "LED 2700 K"]}, "botanico": {"nome": "Botânico Verde", "materiais": ["Paredes verde musgo", "Ripado e marcenaria em nogueira", "Roupa de cama off-white", "Almofada de veludo verde", "Metais em latão", "Tapete creme"]}, "terracota": {"nome": "Terracota Mediterrâneo", "materiais": ["Paredes em reboco terracota", "Ripado e marcenaria em carvalho", "Fundo do ripado marrom café", "Roupa de cama de linho cru", "Manta ferrugem", "Luminárias em fibra natural", "LED 2700 K"]}};
 /*TOUR-TEMAS-FIM*/
 const TEMAS_TOUR = Object.assign({aprovado: {nome: "Moderno Escuro (aprovado)", materiais: []}}, TT);
-let tema = new URLSearchParams(location.search).get("tema") || "aprovado";
+let tema = location.hash.slice(1) || new URLSearchParams(location.search).get("tema") || "aprovado";   // #japandi
 if (!TEMAS_TOUR[tema]) tema = "aprovado";
 const caminho = (p, m, prev) => tema === "aprovado" ? `pano/${prev ? "prev/" : ""}${p}_${m}.jpg`
   : `pano/temas/${prev ? "prev/" : ""}${tema}_${p}_${m}.jpg`;
@@ -299,9 +302,7 @@ for (const [id, T] of Object.entries(TEMAS_TOUR)) {
 }
 sel.addEventListener("change", () => {
   tema = sel.value;
-  const u = new URL(location.href);
-  if (tema === "aprovado") u.searchParams.delete("tema"); else u.searchParams.set("tema", tema);
-  history.replaceState(null, "", u);
+  try { history.replaceState(null, "", tema === "aprovado" ? location.pathname : `#${tema}`); } catch (e) { /* moldura sem histórico */ }
   card.hidden = true;
   mostrar(ponto, modo);
 });
