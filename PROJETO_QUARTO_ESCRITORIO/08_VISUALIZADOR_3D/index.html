@@ -1,0 +1,166 @@
+<meta charset="utf-8">
+<title>Suíte 01 em 3D</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: uma "sala de projeção" — o modelo 3D ocupa o palco, vistas prontas logo abaixo, renders em grade. */
+:root {
+  --bg: #16171a;          /* grafite profundo (parede do projeto, à noite) */
+  --surface: #202125;
+  --line: #34353a;
+  --fg: #ece8e1;          /* teto off-white */
+  --muted: #a8a196;
+  --accent: #e7a964;      /* LED 3000 K */
+  --wood: #b8875a;        /* freijó */
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #eceae6; --surface: #f7f6f3; --line: #d6d2cb; --fg: #1d1e20; --muted: #5d5850;
+    --accent: #a05a22; --wood: #8a5f36; color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #eceae6; --surface: #f7f6f3; --line: #d6d2cb; --fg: #1d1e20; --muted: #5d5850;
+  --accent: #a05a22; --wood: #8a5f36; color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1180px; margin: 0 auto; padding-block: 28px 48px; display: grid; gap: 28px; }
+header { display: grid; gap: 6px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 5vw, 48px); line-height: 1.05; margin: 0; text-wrap: balance; }
+.lede { color: var(--muted); max-width: 64ch; margin: 0; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 18px; font-family: var(--font-mono); font-size: 13px; color: var(--fg); margin-top: 6px; }
+.facts span b { color: var(--muted); font-weight: 400; margin-right: 6px; }
+
+.stage { display: grid; gap: 12px; }
+model-viewer {
+  width: 100%; max-width: 100%; height: clamp(340px, 58vw, 74vh); display: block;
+  background: radial-gradient(120% 90% at 50% 40%, var(--surface), var(--bg));
+  border: 1px solid var(--line); border-radius: 10px;
+  --poster-color: transparent; --progress-bar-color: var(--accent);
+}
+.views { display: flex; flex-wrap: wrap; gap: 8px; }
+.views button {
+  font: 500 14px/1 var(--font-body); color: var(--fg); background: transparent; border: 1px solid var(--line);
+  border-radius: 999px; padding: 10px 16px; cursor: pointer; transition: border-color .15s, background .15s;
+}
+.views button:hover { border-color: var(--wood); }
+.views button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #1a140d; }
+.views button:focus-visible, .shot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hint { font-size: 13px; color: var(--muted); margin: 0; }
+
+h2 { font-family: var(--font-display); font-weight: 500; font-size: 24px; margin: 0; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 14px; }
+.shot { display: grid; gap: 6px; background: none; border: 0; padding: 0; text-align: left; color: inherit; cursor: zoom-in; font: inherit; }
+.shot img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); display: block; }
+.shot span { font-size: 14px; }
+.shot small { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+dialog { border: 0; padding: 0; background: transparent; max-width: min(1400px, 96vw); }
+dialog::backdrop { background: rgba(8, 8, 10, .86); }
+dialog img { width: 100%; height: auto; border-radius: 8px; display: block; }
+dialog p { color: #ece8e1; margin: 10px 2px 0; font-size: 14px; }
+dialog button { position: absolute; top: 10px; right: 10px; font: 600 13px var(--font-body); background: #16171a; color: #ece8e1; border: 1px solid #444; border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 18px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 20px; }
+.notes h3 { font: 600 13px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--fg); margin: 0 0 6px; }
+.notes p { margin: 0; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Quarto + escritório · Layout A · cenário Equilibrado</div>
+    <h1>Suíte 01 em 3D</h1>
+    <p class="lede">Gire, aproxime e escolha uma vista pronta. O teto foi removido para dar para olhar de cima. As medidas são as mesmas da planta cotada.</p>
+    <div class="facts">
+      <span><b>Área livre</b>2,65 × 2,85 m</span>
+      <span><b>Pé-direito</b>2,64 m</span>
+      <span><b>Mesa</b>170 × 70 cm, 73–118 cm</span>
+      <span><b>Cama</b>88 × 188 cm</span>
+      <span><b>Ripado</b>2,65 × 2,64 m</span>
+      <span><b>Total</b>R$ 11.620</span>
+    </div>
+  </header>
+
+  <section class="stage" aria-label="Modelo 3D interativo">
+    <model-viewer id="mv" src="quarto.json" alt="Modelo 3D do quarto com mesa, ripado de madeira e cama de solteiro"
+      camera-controls touch-action="pan-y" interaction-prompt="none" environment-image="neutral" exposure="1.05"
+      shadow-intensity="0.7" min-camera-orbit="auto 0deg 0.3m" max-camera-orbit="auto 180deg 14m"
+      field-of-view="45deg" min-field-of-view="20deg" max-field-of-view="80deg" interpolation-decay="120"
+      camera-target="1.45m 0.3m -1.25m" camera-orbit="145deg 22deg 6.0m"></model-viewer>
+    <div class="views" role="group" aria-label="Vistas prontas">
+      <button type="button" id="v-geral" data-target="1.45m 0.3m -1.25m" data-orbit="145deg 22deg 6.0m" data-fov="45deg" aria-pressed="true">Visão geral</button>
+      <button type="button" id="v-planta" data-target="2.25m 0m -1.6m" data-orbit="0deg 0.5deg 7.5m" data-fov="45deg" aria-pressed="false">De cima</button>
+      <button type="button" id="v-mesa" data-target="1.78m 1.05m -0.35m" data-orbit="176deg 78deg 2.3m" data-fov="60deg" aria-pressed="false">Mesa e ripado</button>
+      <button type="button" id="v-cama" data-target="0.45m 0.7m -1.0m" data-orbit="128deg 70deg 2.7m" data-fov="65deg" aria-pressed="false">Cama e janela</button>
+      <button type="button" id="v-entrada" data-target="1.0m 1.0m -1.1m" data-orbit="112deg 82deg 3.6m" data-fov="62deg" aria-pressed="false">Entrada</button>
+    </div>
+    <p class="hint">Arraste para girar · role ou faça pinça para aproximar · dois dedos ou botão direito para mover.</p>
+  </section>
+
+  <section style="display:grid;gap:14px" aria-labelledby="t-renders">
+    <h2 id="t-renders">Renders (Cycles)</h2>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <section class="notes">
+    <div><h3>O que é real</h3><p>Paredes, janela, portas, armário e ar-condicionado seguem a planta e as medidas que você passou. Móveis com as dimensões declaradas pelos fabricantes.</p></div>
+    <div><h3>O que é aproximado</h3><p>Os móveis foram modelados em volume, não são os modelos oficiais. Cor do armário existente, espessura das paredes e largura do ar ainda são estimadas.</p></div>
+    <div><h3>Verificação</h3><p>Uma auditoria automática reabriu o arquivo do Blender e conferiu 37 medidas e folgas. Todas bateram com a planta.</p></div>
+  </section>
+</div>
+
+<dialog id="lb" aria-label="Render ampliado">
+  <button type="button" id="lb-close">Fechar</button>
+  <img id="lb-img" alt="">
+  <p id="lb-cap"></p>
+</dialog>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<script>
+const RENDERS = [
+  ["iluminacao_noite", "Noite: LEDs, arandela e luz do ventilador", "mesma câmera da vista de dia"],
+  ["iluminacao_dia", "Dia: sol da manhã pela janela leste", "câmera do canto do armário"],
+  ["area_trabalho", "Área de trabalho à noite", "mesa 170 × 70 · prateleira a 1,95 m"],
+  ["marcenaria_ripado", "Parede D: ripado do piso ao teto", "75 ripas · LED vertical a 0,91 m"],
+  ["area_descanso", "Área de descanso e janela", "cama 88 × 188 · peitoril 1,00 m"],
+  ["vista_entrada", "Vista de quem entra", "faixa de 0,86 m até o quarto"],
+  ["vista_superior", "Vista superior, sem teto", "confere com a planta mobiliada"],
+  ["vista_isometrica", "Isométrica em corte", "paredes da frente ocultas"],
+];
+const g = document.getElementById("gallery");
+for (const [f, t, s] of RENDERS) {
+  const b = document.createElement("button");
+  b.className = "shot"; b.type = "button";
+  b.innerHTML = `<img src="renders/${f}.jpg" alt="${t}" loading="lazy"><span>${t}</span><small>${s}</small>`;
+  b.addEventListener("click", () => {
+    document.getElementById("lb-img").src = `renders/${f}.jpg`;
+    document.getElementById("lb-img").alt = t;
+    document.getElementById("lb-cap").textContent = `${t} · ${s}`;
+    document.getElementById("lb").showModal();
+  });
+  g.appendChild(b);
+}
+const lb = document.getElementById("lb");
+document.getElementById("lb-close").addEventListener("click", () => lb.close());
+lb.addEventListener("click", (e) => { if (e.target === lb) lb.close(); });
+
+const mv = document.getElementById("mv");
+const btns = document.querySelectorAll(".views button");
+btns.forEach((b) => b.addEventListener("click", () => {
+  mv.cameraTarget = b.dataset.target;
+  mv.cameraOrbit = b.dataset.orbit;
+  mv.fieldOfView = b.dataset.fov;
+  btns.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+}));
+</script>

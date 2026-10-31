@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1410" height="882" viewBox="0 0 1410 882" font-family="DejaVu Sans, Arial, sans-serif">
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="context-stroke"/></marker>
+<pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ececec"/><line x1="0" y1="0" x2="0" y2="9" stroke="#cfcfcf" stroke-width="3"/></pattern>
+<pattern id="rip" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#b07a4a"/><line x1="0" y1="0" x2="0" y2="6" stroke="#7a5230" stroke-width="2"/></pattern>
+<pattern id="wood" width="40" height="14" patternUnits="userSpaceOnUse"><rect width="40" height="14" fill="#efe6da"/><line x1="0" y1="13.5" x2="40" y2="13.5" stroke="#e2d4c2" stroke-width="1"/><line x1="20" y1="0" x2="20" y2="14" stroke="#e2d4c2" stroke-width="0.6"/></pattern>
+</defs>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="30" y="42" font-size="22" font-weight="bold">Layout A — cama sob a janela · mesa na Parede D  (RECOMENDADO)</text>
+<text x="30" y="66" font-size="13" fill="#555">Suíte 01 · planta mobiliada preliminar · medidas em metros · v1 (30/10/2026)</text>
+<g>
+<polygon points="177.0,691.0 548.0,691.0 548.0,411.0 821.0,411.0 821.0,292.0 177.0,292.0" fill="url(#wood)"/>
+</g>
+<rect x="562.0" y="427.8" width="275.8" height="280.0" fill="url(#hatch)" fill-opacity="1" stroke="none" stroke-width="1" />
+<text x="691.5" y="544.0" font-size="17" fill="#1c1c1c" text-anchor="middle" font-weight="bold">BANHO</text>
+<text x="691.5" y="570.6" font-size="11" fill="#666" text-anchor="middle">fora do escopo</text>
+<rect x="177.0" y="208.0" width="644.0" height="84.0" fill="#e3263a" fill-opacity="0.18" stroke="#e3263a" stroke-width="1.5" stroke-dasharray="2 5"/>
+<line x1="177.0" y1="292.0" x2="821.0" y2="292.0" stroke="#e3263a" stroke-width="4" />
+<text x="499.0" y="241.6" font-size="13" fill="#e3263a" text-anchor="middle" font-weight="bold">ARMÁRIO EXISTENTE — 4,60 m (parede a parede)</text>
+<text x="499.0" y="268.2" font-size="11" fill="#e3263a" text-anchor="middle">profundidade estimada 0,60 — não interfere no layout</text>
+<rect x="160.2" y="691.0" width="401.8" height="16.8" fill="#3b3b3b" fill-opacity="1" stroke="none" stroke-width="1" />
+<rect x="160.2" y="537.0" width="16.8" height="170.8" fill="#3b3b3b" fill-opacity="1" stroke="none" stroke-width="1" />
+<rect x="160.2" y="191.2" width="16.8" height="142.8" fill="#3b3b3b" fill-opacity="1" stroke="none" stroke-width="1" />
+<rect x="548.0" y="411.0" width="14.0" height="280.0" fill="#3b3b3b" fill-opacity="1" stroke="none" stroke-width="1" />
+<rect x="548.0" y="411.0" width="56.0" height="16.8" fill="#3b3b3b" fill-opacity="1" stroke="none" stroke-width="1" />
+<rect x="706.2" y="411.0" width="114.8" height="16.8" fill="#3b3b3b" fill-opacity="1" stroke="none" stroke-width="1" />
+<rect x="821.0" y="406.8" width="16.8" height="21.0" fill="#3b3b3b" fill-opacity="1" stroke="none" stroke-width="1" />
+<rect x="821.0" y="191.2" width="16.8" height="103.6" fill="#3b3b3b" fill-opacity="1" stroke="none" stroke-width="1" />
+<rect x="160.2" y="191.2" width="677.6" height="16.8" fill="#3b3b3b" fill-opacity="1" stroke="none" stroke-width="1" />
+<line x1="177.0" y1="688.2" x2="548.0" y2="688.2" stroke="#18a52b" stroke-width="4" />
+<line x1="545.2" y1="691.0" x2="545.2" y2="411.0" stroke="#0f9a9a" stroke-width="4" />
+<line x1="179.8" y1="691.0" x2="179.8" y2="537.0" stroke="#a12de0" stroke-width="4" />
+<line x1="179.8" y1="334.0" x2="179.8" y2="292.0" stroke="#e8b400" stroke-width="4" />
+<line x1="548.0" y1="408.2" x2="604.0" y2="408.2" stroke="#1f5fe0" stroke-width="4" />
+<line x1="706.2" y1="408.2" x2="821.0" y2="408.2" stroke="#f08a1c" stroke-width="4" stroke-dasharray="10 6"/>
+<line x1="163.0" y1="537.0" x2="163.0" y2="334.0" stroke="#3a7bd5" stroke-width="1.4" />
+<line x1="168.6" y1="537.0" x2="168.6" y2="334.0" stroke="#3a7bd5" stroke-width="1.4" />
+<line x1="174.2" y1="537.0" x2="174.2" y2="334.0" stroke="#3a7bd5" stroke-width="1.4" />
+<line x1="165.8" y1="537.0" x2="165.8" y2="421.5" stroke="#3a7bd5" stroke-width="3" />
+<line x1="171.4" y1="449.5" x2="171.4" y2="334.0" stroke="#3a7bd5" stroke-width="3" />
+<path d="M 697.1 427.8 A 84.0 84.0 0 0 1 613.1 511.8" fill="none" stroke="#333" stroke-width="1.2" stroke-dasharray="6 4"/>
+<line x1="613.1" y1="427.8" x2="613.1" y2="511.8" stroke="#333" stroke-width="2" />
+<path d="M 821.0 403.3 A 105.0 105.0 0 0 1 716.0 298.3" fill="none" stroke="#333" stroke-width="1.2" stroke-dasharray="6 4"/>
+<line x1="821.0" y1="298.3" x2="716.0" y2="298.3" stroke="#333" stroke-width="2" />
+<text x="863.0" y="348.0" font-size="11" fill="#333" text-anchor="middle" font-weight="bold" transform="rotate(-90 863.0 348.0)">ENTRADA</text>
+<rect x="517.2" y="491.5" width="30.8" height="119.0" fill="#cfe6ff" fill-opacity="0.8" stroke="#3a7bd5" stroke-width="1.5" stroke-dasharray="2 5"/>
+<text x="532.6" y="551.0" font-size="10" fill="#1d4f91" text-anchor="middle" font-weight="bold" transform="rotate(-90 532.6 551.0)">AR-COND.</text>
+<circle cx="362.5" cy="682.6" r="7" fill="#fff" stroke="#000" stroke-width="1.5"/><line x1="359.5" y1="679.6" x2="359.5" y2="685.6" stroke="#000"/><line x1="365.5" y1="679.6" x2="365.5" y2="685.6" stroke="#000"/>
+<circle cx="185.4" cy="491.5" r="7" fill="#fff" stroke="#000" stroke-width="1.5"/><line x1="182.4" y1="488.5" x2="182.4" y2="494.5" stroke="#000"/><line x1="188.4" y1="488.5" x2="188.4" y2="494.5" stroke="#000"/>
+<circle cx="362.5" cy="491.5" r="74.2" fill="none" stroke="#888" stroke-dasharray="3 4"/><circle cx="362.5" cy="491.5" r="9" fill="#d4a017" stroke="#000"/>
+<text x="362.5" y="515.3" font-size="10" fill="#555" text-anchor="middle">ventilador + luz</text>
+<circle cx="655.1" cy="350.8" r="9" fill="#d4a017" stroke="#000"/>
+<g transform="translate(86.0,768.0)"><circle r="24" fill="#fff" stroke="#333"/><polygon points="0,22 -8,-10 0,-4 8,-10" fill="#222"/><text y="40" font-size="13" text-anchor="middle" font-weight="bold">N</text></g>
+<rect x="177.0" y="686.8" width="371.0" height="4.2" fill="url(#rip)" fill-opacity="1" stroke="#5a3a1e" stroke-width="1" />
+<rect x="177.0" y="423.6" width="123.2" height="263.2" fill="#6b6e73" fill-opacity="1" stroke="#111" stroke-width="1.4" />
+<text x="238.6" y="549.6" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold" transform="rotate(-90 238.6 549.6)">CAMA SOLTEIRO</text>
+<text x="258.2" y="555.2" font-size="10" fill="#fff" text-anchor="middle" transform="rotate(-90 258.2 555.2)">88 × 188</text>
+<rect x="185.4" y="630.8" width="106.4" height="50.4" fill="#d9d9d9" fill-opacity="1" stroke="#555" stroke-width="1" />
+<rect x="307.2" y="586.0" width="238.0" height="98.0" fill="#1f1f1f" fill-opacity="1" stroke="#111" stroke-width="1.4" />
+<text x="426.2" y="615.4" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">MESA REGULÁVEL</text>
+<text x="426.2" y="639.2" font-size="10" fill="#fff" text-anchor="middle">170 × 70 (alt. 62–127)</text>
+<rect x="307.2" y="651.8" width="238.0" height="35.0" fill="none" fill-opacity="1" stroke="#c58c55" stroke-width="2" stroke-dasharray="10 6"/>
+<text x="426.2" y="577.6" font-size="9" fill="#1c1c1c" text-anchor="middle"></text>
+<circle cx="405.2" cy="532.8" r="42.0" fill="none" stroke="#666" stroke-dasharray="4 3"/>
+<rect x="370.2" y="502.0" width="70.0" height="65.8" fill="#3d3f44" fill-opacity="1" stroke="#111" stroke-width="1.2" />
+<rect x="374.4" y="490.8" width="61.6" height="14.0" fill="#26282c" fill-opacity="1" stroke="#111" stroke-width="1" />
+<text x="405.2" y="541.2" font-size="10" fill="#fff" text-anchor="middle">cadeira</text>
+<rect x="317.0" y="348.0" width="203.0" height="210.0" fill="#2b2b2b" fill-opacity="0.12" stroke="#2b2b2b" stroke-width="1" stroke-dasharray="2 5"/>
+<rect x="177.0" y="292.0" width="371.0" height="131.6" fill="#2e9e5b" fill-opacity="0.1" stroke="#2e9e5b" stroke-width="1.2" stroke-dasharray="10 6"/>
+<text x="362.5" y="357.8" font-size="10" fill="#2e9e5b" text-anchor="middle" font-weight="bold"></text>
+<text x="361.8" y="334.0" font-size="10" fill="#2e9e5b" text-anchor="middle" font-weight="bold">circulação / acesso ao armário</text>
+<line x1="177.0" y1="749.8" x2="300.2" y2="749.8" stroke="#6b6e73" stroke-width="1.3" marker-start="url(#a)" marker-end="url(#a)" />
+<line x1="177.0" y1="742.8" x2="177.0" y2="756.8" stroke="#6b6e73"/>
+<line x1="300.2" y1="742.8" x2="300.2" y2="756.8" stroke="#6b6e73"/>
+<text x="238.6" y="743.8" font-size="12" fill="#6b6e73" text-anchor="middle" font-weight="bold">0,88</text>
+<line x1="300.2" y1="749.8" x2="307.2" y2="749.8" stroke="#444" stroke-width="1.3" marker-start="url(#a)" marker-end="url(#a)" />
+<line x1="300.2" y1="742.8" x2="300.2" y2="756.8" stroke="#444"/>
+<line x1="307.2" y1="742.8" x2="307.2" y2="756.8" stroke="#444"/>
+<text x="303.7" y="763.8" font-size="10" fill="#444" text-anchor="middle" font-weight="bold">0,05</text>
+<line x1="307.2" y1="749.8" x2="545.2" y2="749.8" stroke="#1f1f1f" stroke-width="1.3" marker-start="url(#a)" marker-end="url(#a)" />
+<line x1="307.2" y1="742.8" x2="307.2" y2="756.8" stroke="#1f1f1f"/>
+<line x1="545.2" y1="742.8" x2="545.2" y2="756.8" stroke="#1f1f1f"/>
+<text x="426.2" y="743.8" font-size="12" fill="#1f1f1f" text-anchor="middle" font-weight="bold">1,70</text>
+<line x1="545.2" y1="789.0" x2="548.0" y2="789.0" stroke="#444" stroke-width="1.3" marker-start="url(#a)" marker-end="url(#a)" />
+<line x1="545.2" y1="782.0" x2="545.2" y2="796.0" stroke="#444"/>
+<line x1="548.0" y1="782.0" x2="548.0" y2="796.0" stroke="#444"/>
+<text x="546.6" y="803.0" font-size="10" fill="#444" text-anchor="middle" font-weight="bold">0,02</text>
+<line x1="121.0" y1="686.8" x2="121.0" y2="423.6" stroke="#6b6e73" stroke-width="1.3" marker-start="url(#a)" marker-end="url(#a)" />
+<line x1="114.0" y1="686.8" x2="128.0" y2="686.8" stroke="#6b6e73"/>
+<line x1="114.0" y1="423.6" x2="128.0" y2="423.6" stroke="#6b6e73"/>
+<text x="115.0" y="555.2" font-size="12" fill="#6b6e73" text-anchor="middle" font-weight="bold" transform="rotate(-90 115.0 555.2)">1,88 (cama)</text>
+<line x1="121.0" y1="423.6" x2="121.0" y2="292.0" stroke="#444" stroke-width="1.3" marker-start="url(#a)" marker-end="url(#a)" />
+<line x1="114.0" y1="423.6" x2="128.0" y2="423.6" stroke="#444"/>
+<line x1="114.0" y1="292.0" x2="128.0" y2="292.0" stroke="#444"/>
+<text x="115.0" y="357.8" font-size="12" fill="#444" text-anchor="middle" font-weight="bold" transform="rotate(-90 115.0 357.8)">0,94</text>
+<line x1="569.0" y1="684.0" x2="569.0" y2="586.0" stroke="#1f1f1f" stroke-width="1.3" marker-start="url(#a)" marker-end="url(#a)" />
+<line x1="562.0" y1="684.0" x2="576.0" y2="684.0" stroke="#1f1f1f"/>
+<line x1="562.0" y1="586.0" x2="576.0" y2="586.0" stroke="#1f1f1f"/>
+<text x="585.0" y="635.0" font-size="12" fill="#1f1f1f" text-anchor="middle" font-weight="bold" transform="rotate(-90 585.0 635.0)">0,70</text>
+<line x1="515.8" y1="586.0" x2="515.8" y2="292.0" stroke="#2e9e5b" stroke-width="1.3" marker-start="url(#a)" marker-end="url(#a)" stroke-dasharray="10 6"/>
+<line x1="508.8" y1="586.0" x2="522.8" y2="586.0" stroke="#2e9e5b"/>
+<line x1="508.8" y1="292.0" x2="522.8" y2="292.0" stroke="#2e9e5b"/>
+<text x="509.8" y="439.0" font-size="12" fill="#2e9e5b" text-anchor="middle" font-weight="bold" transform="rotate(-90 509.8 439.0)">2,10</text>
+<line x1="300.2" y1="464.2" x2="548.0" y2="464.2" stroke="#2e9e5b" stroke-width="1.3" marker-start="url(#a)" marker-end="url(#a)" stroke-dasharray="10 6"/>
+<line x1="300.2" y1="457.2" x2="300.2" y2="471.2" stroke="#2e9e5b"/>
+<line x1="548.0" y1="457.2" x2="548.0" y2="471.2" stroke="#2e9e5b"/>
+<text x="424.1" y="458.2" font-size="12" fill="#2e9e5b" text-anchor="middle" font-weight="bold">1,77</text>
+<text x="492.0" y="726.0" font-size="10" fill="#5a3a1e" text-anchor="middle">ripado 3 cm + folga 2 cm</text>
+<text x="950.0" y="140" font-size="15" font-weight="bold">LEGENDA</text>
+<line x1="950.0" y1="158" x2="976.0" y2="158" stroke="#333" stroke-width="2.5" /><text x="984.0" y="162" font-size="12">Confirmada</text>
+<line x1="950.0" y1="178" x2="976.0" y2="178" stroke="#333" stroke-width="2.5" stroke-dasharray="10 6"/><text x="984.0" y="182" font-size="12">Calculada</text>
+<line x1="950.0" y1="198" x2="976.0" y2="198" stroke="#333" stroke-width="2.5" stroke-dasharray="2 5"/><text x="984.0" y="202" font-size="12">Estimada</text>
+<rect x="950.0" y="211" width="26" height="13" fill="#3b3b3b" stroke="#333" /><text x="984.0" y="222" font-size="12">Parede (espessura estimada 12 cm)</text>
+<rect x="950.0" y="231" width="26" height="13" fill="#cfe6ff" stroke="#333" stroke-dasharray="2 5"/><text x="984.0" y="242" font-size="12">Ar-condicionado existente (larg. est.)</text>
+<rect x="950.0" y="251" width="26" height="13" fill="#d4a017" stroke="#333" /><text x="984.0" y="262" font-size="12">Ponto de luz existente</text>
+<text x="950.0" y="282" font-size="12" fill="#333">○ ‖  Tomada existente (meio da Parede D e E)</text>
+<text x="950.0" y="310" font-size="15" font-weight="bold">MÓVEIS (L × P × A, cm)</text>
+<rect x="950.0" y="321" width="26" height="13" fill="#1f1f1f" stroke="#333" /><text x="984.0" y="332" font-size="12">Mesa regulável 170 × 70 × 62–127 (a definir)</text>
+<rect x="950.0" y="341" width="26" height="13" fill="#6b6e73" stroke="#333" /><text x="984.0" y="352" font-size="12">Cama solteiro 88 × 188 × ~45</text>
+<rect x="950.0" y="361" width="26" height="13" fill="url(#rip)" stroke="#333" /><text x="984.0" y="372" font-size="12">Painel ripado 265 × 3 × 264 (marcenaria)</text>
+<rect x="950.0" y="381" width="26" height="13" fill="#ffffff" stroke="#333" stroke-dasharray="10 6"/><text x="984.0" y="392" font-size="12">Prateleira 170 × 25 c/ LED a ~170 cm</text>
+<rect x="950.0" y="401" width="26" height="13" fill="#3d3f44" stroke="#333" /><text x="984.0" y="412" font-size="12">Cadeira ergonômica ~65 × 65</text>
+<rect x="950.0" y="421" width="26" height="13" fill="#d8d8d8" stroke="#333" stroke-dasharray="2 5"/><text x="984.0" y="432" font-size="12">Tapete 1,50 × 2,00 (opcional)</text>
+<text x="950.0" y="462" font-size="15" font-weight="bold">VERIFICAÇÕES</text>
+<text x="950.0" y="484" font-size="12" fill="#333">✓ Cadeira recua até 1,45 m sem tocar a cama</text>
+<text x="950.0" y="502" font-size="12" fill="#333">✓ 0,94 m livres entre o pé da cama e o armário</text>
+<text x="950.0" y="520" font-size="12" fill="#333">✓ Portas de entrada e banheiro livres</text>
+<text x="950.0" y="538" font-size="12" fill="#333">✓ Tomada da Parede E fica junto à cama</text>
+<text x="950.0" y="556" font-size="12" fill="#333">✓ Tomada da Parede D fica atrás da mesa</text>
+<text x="950.0" y="574" font-size="12" fill="#333">✓ Luz natural pela direita de quem está na mesa</text>
+<text x="950.0" y="592" font-size="12" fill="#c0392b" font-weight="bold">⚠ O ar-condicionado sopra em direção à cama:</text>
+<text x="950.0" y="610" font-size="12" fill="#333">   direcionar as aletas para o centro/teto</text>
+<text x="950.0" y="628" font-size="12" fill="#c0392b" font-weight="bold">⚠ Para abrir a janela é preciso se debruçar na cama</text>
+<text x="950.0" y="646" font-size="12" fill="#c0392b" font-weight="bold">⚠ Recorte no ripado para a tomada da Parede D</text>
+<rect x="950.0" y="812" width="70.0" height="8" fill="#000"/><rect x="1020.0" y="812" width="70.0" height="8" fill="#fff" stroke="#000"/><text x="950.0" y="836" font-size="11" text-anchor="middle">0</text><text x="1020.0" y="836" font-size="11" text-anchor="middle">0,5</text><text x="1090.0" y="836" font-size="11" text-anchor="middle">1 m</text><text x="1110.0" y="821" font-size="11">escala gráfica (1 m = 140 px)</text>
+</svg>

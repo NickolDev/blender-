@@ -1,0 +1,187 @@
+[
+ {
+  "verificacao": "Piso do quarto 2,65 × 2,85",
+  "status": "OK",
+  "detalhe": "medido (2.65, 2.85, 0.02) m · esperado (2.65, 2.85, 0.02) m"
+ },
+ {
+  "verificacao": "Pé-direito 2,64 m",
+  "status": "OK",
+  "detalhe": "face inferior do teto em z = 2.640"
+ },
+ {
+  "verificacao": "Peitoril da janela a 1,00 m",
+  "status": "OK",
+  "detalhe": "topo do peitoril z = 1.000"
+ },
+ {
+  "verificacao": "Janela com 1,20 m de altura",
+  "status": "OK",
+  "detalhe": "verga em z = 2.200"
+ },
+ {
+  "verificacao": "Tampo da mesa 170 × 70 × 2,5",
+  "status": "OK",
+  "detalhe": "medido (1.7, 0.7, 0.025) m · esperado (1.7, 0.7, 0.025) m"
+ },
+ {
+  "verificacao": "Mesa na posição da planta",
+  "status": "OK",
+  "detalhe": "canto em (0.930, 0.050) · planta (0.930, 0.050)"
+ },
+ {
+  "verificacao": "Altura do tampo (sentado) 0,73",
+  "status": "OK",
+  "detalhe": "z = 0.730"
+ },
+ {
+  "verificacao": "Cama 88 × 188 × 62",
+  "status": "OK",
+  "detalhe": "medido (0.88, 1.88, 0.62)"
+ },
+ {
+  "verificacao": "Prateleira 170 × 25 × 2,5",
+  "status": "OK",
+  "detalhe": "medido (1.7, 0.25, 0.025) m · esperado (1.7, 0.25, 0.025) m"
+ },
+ {
+  "verificacao": "Prateleira a 1,95 m",
+  "status": "OK",
+  "detalhe": "face inferior z = 1.950"
+ },
+ {
+  "verificacao": "Ripas dentro dos 2,65 m da Parede D",
+  "status": "OK",
+  "detalhe": "ripas de x = 0.0075 a 2.6175"
+ },
+ {
+  "verificacao": "Fundo do ripado 2,65 × 2,64",
+  "status": "OK",
+  "detalhe": "medido (2.65, 0.012, 2.64) m · esperado (2.65, 0.012, 2.64) m"
+ },
+ {
+  "verificacao": "Tapete 140 × 200",
+  "status": "OK",
+  "detalhe": "medido (1.4, 2.0, 0.008) m · esperado (1.4, 2.0, 0.008) m"
+ },
+ {
+  "verificacao": "Mesa × ripado (mesa elétrica não pode raspar)",
+  "status": "OK",
+  "detalhe": "folga 2.0 cm (mínimo 1.9 cm)"
+ },
+ {
+  "verificacao": "Mesa × cama (partes rígidas; planta = 5 cm)",
+  "status": "OK",
+  "detalhe": "folga 5.0 cm (mínimo 4.9 cm)"
+ },
+ {
+  "verificacao": "Roupa de cama abaixo do tampo na altura mínima (sem contato)",
+  "status": "OK",
+  "detalhe": "topo da roupa de cama 0.685 m · face inferior do tampo ≥ 0.705 m"
+ },
+ {
+  "verificacao": "Mesa × Parede C",
+  "status": "OK",
+  "detalhe": "folga 2.0 cm (mínimo 1.9 cm)"
+ },
+ {
+  "verificacao": "PC × perna direita da estrutura",
+  "status": "OK",
+  "detalhe": "folga 3.3 cm (mínimo 2.0 cm)"
+ },
+ {
+  "verificacao": "PC × perna esquerda da estrutura",
+  "status": "OK",
+  "detalhe": "folga 86.2 cm (mínimo 50.0 cm)"
+ },
+ {
+  "verificacao": "Cadeira × cama",
+  "status": "OK",
+  "detalhe": "folga 46.5 cm (mínimo 5.0 cm)"
+ },
+ {
+  "verificacao": "Cama × face das portas do armário (partes rígidas; planta = 0,94)",
+  "status": "OK",
+  "detalhe": "folga 94.0 cm (mínimo 93.9 cm)"
+ },
+ {
+  "verificacao": "Cama × puxadores do armário (puxadores estimados, 1,5 cm)",
+  "status": "OK",
+  "detalhe": "folga 92.5 cm (mínimo 92.0 cm)"
+ },
+ {
+  "verificacao": "Roupa de cama × armário (circulação real)",
+  "status": "OK",
+  "detalhe": "folga 89.5 cm (mínimo 85.0 cm)"
+ },
+ {
+  "verificacao": "Cama × Parede E",
+  "status": "OK",
+  "detalhe": "folga 0.0 cm (mínimo 0.0 cm)"
+ },
+ {
+  "verificacao": "Ar-condicionado × prateleira",
+  "status": "OK",
+  "detalhe": "folga 29.5 cm (mínimo 10.0 cm)"
+ },
+ {
+  "verificacao": "Cadeira × armário (circulação atrás da cadeira)",
+  "status": "OK",
+  "detalhe": "folga 137.3 cm (mínimo 100.0 cm)"
+ },
+ {
+  "verificacao": "Monitores na altura da elevação (0,90–1,265 sentado)",
+  "status": "OK",
+  "detalhe": "monitores de z = 0.900 a 1.265"
+ },
+ {
+  "verificacao": "Monitores centrados na mesa",
+  "status": "OK",
+  "detalhe": "centro x = 1.780 · mesa 1.780"
+ },
+ {
+  "verificacao": "Monitores × prateleira com a mesa no máximo (1,18)",
+  "status": "OK",
+  "detalhe": "topo dos monitores no máximo = 1.715 m · prateleira = 1.95 m"
+ },
+ {
+  "verificacao": "Cama abaixo do peitoril (janela operável)",
+  "status": "OK",
+  "detalhe": "topo da cama+travesseiros = 0.999 m"
+ },
+ {
+  "verificacao": "Cama fora da faixa de entrada (x > 2,65, y 2,00–2,86)",
+  "status": "OK",
+  "detalhe": "x máx 0.915, y máx 1.940"
+ },
+ {
+  "verificacao": "Mesa_Tampo_Freijo_170x70x2_5 fora da faixa de entrada (x > 2,65, y 2,00–2,86)",
+  "status": "OK",
+  "detalhe": "x máx 2.630, y máx 0.750"
+ },
+ {
+  "verificacao": "Cadeira fora da faixa de entrada (x > 2,65, y 2,00–2,86)",
+  "status": "OK",
+  "detalhe": "x máx 2.020, y máx 1.462"
+ },
+ {
+  "verificacao": "Tapete_140x200 fora da faixa de entrada (x > 2,65, y 2,00–2,86)",
+  "status": "OK",
+  "detalhe": "x máx 2.480, y máx 2.780"
+ },
+ {
+  "verificacao": "Texturas e HDRIs encontrados (caminhos relativos)",
+  "status": "OK",
+  "detalhe": "faltando: nenhum"
+ },
+ {
+  "verificacao": "Arquivo .blend reaberto em processo novo",
+  "status": "OK",
+  "detalhe": "/home/nickolas/Documentos/room/PROJETO_QUARTO_ESCRITORIO/05_BLENDER/quarto_escritorio.blend"
+ },
+ {
+  "verificacao": "Coleções 01–08 presentes",
+  "status": "OK",
+  "detalhe": "01_ESTRUTURA, 02_PORTAS_JANELAS, 03_MOBILIARIO, 04_MARCENARIA, 05_ILUMINACAO, 06_DECORACAO, 07_CAMERAS, 08_COTAS_REFERENCIAS"
+ }
+]

@@ -1,0 +1,367 @@
+<meta charset="utf-8">
+<title>Tour Suíte 01</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: tela cheia imersiva (look único escuro, por escolha). O panorama é o palco; a interface flutua nas bordas. */
+:root {
+  --ink: #f1ede6;            /* texto sobre a imagem */
+  --ink-2: #c9c1b5;
+  --glass: rgba(18, 18, 20, .62);
+  --glass-line: rgba(255, 255, 255, .14);
+  --led: #f0b46e;            /* LED 3000 K */
+  --wood: #c08e5c;           /* freijó */
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body { margin: 0; background: #0d0d0f; color: var(--ink); font-family: var(--font-body); overflow: hidden; }
+#stage { position: fixed; inset: 0; touch-action: none; cursor: grab; }
+#stage.dragging { cursor: grabbing; }
+#stage canvas { display: block; width: 100%; height: 100%; }
+#fade { position: fixed; inset: 0; background: #000; opacity: 0; pointer-events: none; transition: opacity .28s ease; }
+#fade.on { opacity: 1; }
+
+.panel { background: var(--glass); border: 1px solid var(--glass-line); border-radius: 12px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+#top {
+  position: fixed; top: calc(env(safe-area-inset-top, 0px) + 14px); left: max(14px, env(safe-area-inset-left, 0px));
+  right: max(14px, env(safe-area-inset-right, 0px)); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; pointer-events: none;
+}
+#title { padding: 10px 14px; pointer-events: auto; max-width: min(60vw, 420px); }
+#title .eyebrow { font: 500 11px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--led); }
+#title h1 { font: 600 clamp(18px, 2.4vw, 24px)/1.15 var(--font-display); margin: 2px 0 0; text-wrap: balance; }
+#title p { margin: 4px 0 0; font-size: 13px; color: var(--ink-2); }
+
+.seg { display: flex; padding: 4px; gap: 4px; pointer-events: auto; }
+.seg button, #points button {
+  font: 600 13px/1 var(--font-body); color: var(--ink); background: transparent; border: 0; border-radius: 8px;
+  padding: 9px 14px; cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--led); color: #1c130a; }
+.seg button:focus-visible, #points button:focus-visible, .hs:focus-visible, .info:focus-visible, #card button:focus-visible { outline: 2px solid var(--led); outline-offset: 2px; }
+
+#bottom {
+  position: fixed; bottom: calc(env(safe-area-inset-bottom, 0px) + 14px); left: max(14px, env(safe-area-inset-left, 0px));
+  right: max(14px, env(safe-area-inset-right, 0px)); display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; pointer-events: none;
+}
+#points { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; pointer-events: auto; }
+#points button[aria-current="true"] { background: rgba(255, 255, 255, .16); }
+#points button span { display: block; font: 400 11px/1.2 var(--font-mono); color: var(--ink-2); margin-top: 3px; }
+#map { padding: 8px; pointer-events: auto; width: 190px; }
+#map svg { display: block; width: 100%; height: auto; }
+#map .lbl { font: 500 10px var(--font-mono); fill: var(--ink-2); }
+
+.hs {
+  position: fixed; left: 0; top: 0; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, .85); background: rgba(255, 255, 255, .12); cursor: pointer; padding: 0;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, .08); transition: transform .15s ease, background .15s; will-change: transform;
+}
+.hs::after { content: ""; position: absolute; inset: 22px; border-radius: 50%; background: #fff; }
+.hs:hover { background: rgba(240, 180, 110, .35); }
+.hs .tip { position: absolute; top: 70px; left: 50%; transform: translateX(-50%); white-space: nowrap; font: 600 12px var(--font-body); color: #fff; background: rgba(0,0,0,.55); padding: 4px 8px; border-radius: 6px; }
+.info {
+  position: fixed; left: 0; top: 0; margin: -15px 0 0 -15px; width: 30px; height: 30px; border-radius: 50%; padding: 0;
+  border: 1.5px solid #fff; background: rgba(20, 20, 22, .55); color: #fff; font: 600 15px/1 var(--font-display); cursor: pointer;
+  will-change: transform;
+}
+.info:hover { background: var(--led); color: #1c130a; }
+
+#card {
+  position: fixed; right: max(14px, env(safe-area-inset-right, 0px)); top: calc(env(safe-area-inset-top, 0px) + 74px);
+  width: min(340px, calc(100vw - 28px)); padding: 16px; display: grid; gap: 8px;
+}
+#card h2 { font: 600 18px/1.2 var(--font-display); margin: 0; padding-right: 28px; }
+#card .dim { font: 500 13px var(--font-mono); color: var(--led); }
+#card p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+#card a { color: var(--led); }
+#card button { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--glass-line); background: transparent; color: var(--ink); cursor: pointer; font-size: 16px; }
+#hint { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 12px 16px; font-size: 14px; pointer-events: none; transition: opacity .6s; text-align: center; }
+#loading { position: fixed; left: 50%; bottom: 90px; transform: translateX(-50%); font: 500 12px var(--font-mono); padding: 6px 10px; }
+
+@media (max-width: 640px) {
+  #map { width: 130px; }
+  #points button { padding: 8px 10px; }
+  #points button span { display: none; }
+  #title p { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { #fade, .hs { transition: none; } }
+</style>
+
+<div id="stage" aria-label="Panorama 360° do quarto. Arraste para olhar em volta."></div>
+<div id="fade"></div>
+<div id="hotspots"></div>
+
+<div id="top">
+  <div id="title" class="panel">
+    <div class="eyebrow">Tour virtual · renderizado em Cycles</div>
+    <h1 id="pt-name">Suíte 01</h1>
+    <p id="pt-desc">Arraste para olhar em volta. Clique nos círculos do chão para andar.</p>
+  </div>
+  <div class="seg panel" role="group" aria-label="Iluminação">
+    <button type="button" id="b-dia" aria-pressed="false">Dia</button>
+    <button type="button" id="b-noite" aria-pressed="true">Noite</button>
+  </div>
+</div>
+
+<div id="bottom">
+  <div id="points" class="panel" role="group" aria-label="Pontos do tour"></div>
+  <div id="map" class="panel" aria-label="Planta com a sua posição">
+    <svg id="mapsvg" viewBox="-0.25 -0.25 5.1 3.5" role="img" aria-label="Mini planta"></svg>
+  </div>
+</div>
+
+<div id="card" class="panel" hidden role="dialog" aria-labelledby="card-t">
+  <button type="button" id="card-x" aria-label="Fechar">×</button>
+  <h2 id="card-t"></h2>
+  <div class="dim" id="card-d"></div>
+  <p id="card-p"></p>
+</div>
+<div id="hint" class="panel">Arraste para olhar em volta · role para aproximar</div>
+<div id="loading" class="panel" hidden>carregando em alta resolução…</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ---------- dados do projeto (coordenadas do Blender, em metros; y aponta para o armário) ----------
+const PONTOS = {
+  entrada: { nome: "Entrada do quarto", sub: "em pé · 1,60 m", pos: [2.40, 2.42, 1.60], lon0: -112 },
+  centro:  { nome: "Centro do quarto",  sub: "em pé · 1,60 m", pos: [1.30, 1.72, 1.60], lon0: 180 },
+  mesa:    { nome: "Sentado à mesa",    sub: "sentado · 1,18 m", pos: [1.68, 1.17, 1.18], lon0: 180 },
+  cama:    { nome: "Sentado na cama",   sub: "na cama · 1,05 m", pos: [0.48, 1.40, 1.05], lon0: 90 },
+};
+const ORDEM = ["entrada", "centro", "mesa", "cama"];
+const ITENS = [
+  { p: [1.05, 0.0, 1.62], t: "Painel ripado em freijó", d: "2,65 × 2,64 m · 75 ripas 2 × 1,8 cm", x: "Parede D inteira, do piso ao teto, sobre fundo MDF preto. Funciona como fundo da mesa e cabeceira da cama. Perfil de LED vertical no vão a 0,91 m. Marcenaria: estimativa de R$ 400/m²." },
+  { p: [1.92, 0.40, 0.73], t: "Mesa regulável", d: "170 × 70 cm · altura 73–118 cm", x: "Estrutura elétrica Pichau Starlift Pro com tampo de freijó de 25 mm sob medida. Braço ELG F160N para dois monitores de 27\" fixado por furo no tampo. PC em suporte suspenso entre as pernas." },
+  { p: [1.78, 0.16, 1.95], t: "Prateleira com LED", d: "170 × 25 cm · face inferior a 1,95 m", x: "Fita COB 24 V 3000 K embaixo. Fica acima dos monitores mesmo com a mesa na altura máxima (topo dos monitores a 1,72 m)." },
+  { p: [0.44, 1.05, 0.66], t: "Cama box de solteiro", d: "88 × 188 × 62 cm", x: "Gazin Maximus, molas ensacadas, linho grafite. A cabeceira é o próprio ripado. 0,94 m livres entre o pé da cama e o armário." },
+  { p: [0.0, 1.82, 1.60], t: "Janela de correr", d: "1,45 × 1,20 m · peitoril 1,00 m", x: "Duas folhas e persiana metálica externa (blackout). Fica a leste: sol da manhã. A largura é calculada pela planta; confirmar com trena." },
+  { p: [2.30, 2.85, 1.40], t: "Armário existente", d: "4,60 m de parede a parede", x: "Mantido. Cor e tipo de porta ainda pendentes; se as portas forem de abrir, a folha invade a área da cama quando aberta." },
+  { p: [2.55, 1.00, 2.25], t: "Ar-condicionado existente", d: "meio da Parede C", x: "Mantido no lugar. Direcione as aletas para o centro do quarto para não soprar direto na cama." },
+  { p: [1.32, 1.42, 2.25], t: "Ventilador de teto (existente)", d: "Ø ~1,10 m (estimado)", x: "Ponto existente no centro do quarto. Lâmpada trocada por LED 3000 K para combinar com o restante da iluminação." },
+];
+const MAPA = { sala: [[0,0],[2.65,0],[2.65,2.0],[4.6,2.0],[4.6,2.85],[0,2.85]], cama: [0,0.03,0.88,1.88], mesa: [0.93,0.05,1.70,0.70], arm: [0,2.85,4.6,0.6], bwc: [2.75,0,1.85,1.88] };
+
+// ---------- three.js ----------
+const stage = document.getElementById("stage");
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.outputEncoding = THREE.sRGBEncoding;
+stage.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1100);
+const geo = new THREE.SphereGeometry(500, 96, 64);
+geo.scale(-1, 1, 1);
+const mat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+scene.add(new THREE.Mesh(geo, mat));
+const loader = new THREE.TextureLoader();
+const cache = {};
+
+// convenção: lon = 0 é o centro da imagem (direção +y do Blender); lon positivo = para a direita (+x).
+const R = Math.PI / 180;
+function dir3(lon, lat) {
+  return new THREE.Vector3(-Math.cos(lat * R) * Math.cos(lon * R), Math.sin(lat * R), -Math.cos(lat * R) * Math.sin(lon * R));
+}
+function lonlatDe(de, para) {
+  const dx = para[0] - de[0], dy = para[1] - de[1], dz = para[2] - de[2];
+  return [Math.atan2(dx, dy) / R, Math.atan2(dz, Math.hypot(dx, dy)) / R];
+}
+
+let lon = 0, lat = -5, fov = 75, ponto = "entrada", modo = "noite";
+let alvoLon = null;
+
+function tex(url) {
+  if (!cache[url]) {
+    cache[url] = new Promise((ok, err) => loader.load(url, (t) => {
+      t.encoding = THREE.sRGBEncoding;
+      t.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      ok(t);
+    }, undefined, err));
+  }
+  return cache[url];
+}
+const loading = document.getElementById("loading");
+async function mostrar(p, m) {
+  const prev = await tex(`pano/prev/${p}_${m}.jpg`);
+  if (p !== ponto || m !== modo) return;
+  mat.map = prev; mat.needsUpdate = true;
+  loading.hidden = false;
+  try {
+    const full = await tex(`pano/${p}_${m}.jpg`);
+    if (p === ponto && m === modo) { mat.map = full; mat.needsUpdate = true; }
+  } catch (e) { /* mantém a prévia se a imagem cheia falhar */ }
+  loading.hidden = true;
+  // pré-carrega as prévias dos vizinhos
+  ORDEM.forEach((q) => tex(`pano/prev/${q}_${m}.jpg`));
+}
+
+// ---------- hotspots ----------
+const hsBox = document.getElementById("hotspots");
+let marcadores = [];
+function montarHotspots() {
+  hsBox.innerHTML = "";
+  marcadores = [];
+  const de = PONTOS[ponto].pos;
+  for (const q of ORDEM) {
+    if (q === ponto) continue;
+    const alvo = [PONTOS[q].pos[0], PONTOS[q].pos[1], 0.0];
+    const [lo, la] = lonlatDe(de, alvo);
+    const b = document.createElement("button");
+    b.className = "hs"; b.type = "button";
+    b.setAttribute("aria-label", `Ir para ${PONTOS[q].nome}`);
+    b.innerHTML = `<span class="tip">${PONTOS[q].nome}</span>`;
+    b.addEventListener("click", () => ir(q));
+    hsBox.appendChild(b);
+    marcadores.push({ el: b, v: dir3(lo, la), escala: true, dist: Math.hypot(alvo[0] - de[0], alvo[1] - de[1], de[2]) });
+  }
+  ITENS.forEach((it, i) => {
+    if (ponto === "mesa" && it.t.startsWith("Mesa")) return;
+    const [lo, la] = lonlatDe(de, it.p);
+    const b = document.createElement("button");
+    b.className = "info"; b.type = "button"; b.textContent = "i";
+    b.setAttribute("aria-label", it.t);
+    b.addEventListener("click", (e) => { e.stopPropagation(); abrirCard(it); });
+    hsBox.appendChild(b);
+    marcadores.push({ el: b, v: dir3(lo, la), escala: false });
+  });
+}
+const card = document.getElementById("card");
+function abrirCard(it) {
+  document.getElementById("card-t").textContent = it.t;
+  document.getElementById("card-d").textContent = it.d;
+  document.getElementById("card-p").textContent = it.x;
+  card.hidden = false;
+}
+document.getElementById("card-x").addEventListener("click", () => { card.hidden = true; });
+
+// ---------- navegação ----------
+const fade = document.getElementById("fade");
+function ir(q) {
+  if (q === ponto) return;
+  const [lo] = lonlatDe(PONTOS[ponto].pos, PONTOS[q].pos);
+  fade.classList.add("on");
+  setTimeout(() => {
+    ponto = q; lon = lo; lat = -5; fov = 75;
+    atualizarUI(); montarHotspots(); mostrar(ponto, modo);
+    setTimeout(() => fade.classList.remove("on"), 60);
+  }, 280);
+}
+function setModo(m) {
+  modo = m;
+  document.getElementById("b-dia").setAttribute("aria-pressed", String(m === "dia"));
+  document.getElementById("b-noite").setAttribute("aria-pressed", String(m === "noite"));
+  mostrar(ponto, modo);
+}
+document.getElementById("b-dia").addEventListener("click", () => setModo("dia"));
+document.getElementById("b-noite").addEventListener("click", () => setModo("noite"));
+
+const pts = document.getElementById("points");
+ORDEM.forEach((q) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.id = `p-${q}`;
+  b.innerHTML = `${PONTOS[q].nome}<span>${PONTOS[q].sub}</span>`;
+  b.addEventListener("click", () => ir(q));
+  pts.appendChild(b);
+});
+
+// mini planta
+const svg = document.getElementById("mapsvg");
+const NS = "http://www.w3.org/2000/svg";
+const Y = (y) => 3.0 - y;                 // planta: armário em cima
+function el(t, a) { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e; }
+el("polygon", { points: MAPA.sala.map(([x, y]) => `${x},${Y(y)}`).join(" "), fill: "rgba(255,255,255,.06)", stroke: "rgba(255,255,255,.55)", "stroke-width": 0.04 });
+el("rect", { x: MAPA.arm[0], y: Y(MAPA.arm[1] + MAPA.arm[3]), width: MAPA.arm[2], height: MAPA.arm[3], fill: "rgba(255,255,255,.14)" });
+el("rect", { x: MAPA.bwc[0], y: Y(MAPA.bwc[1] + MAPA.bwc[3]), width: MAPA.bwc[2], height: MAPA.bwc[3], fill: "rgba(255,255,255,.05)" });
+el("rect", { x: MAPA.cama[0], y: Y(MAPA.cama[1] + MAPA.cama[3]), width: MAPA.cama[2], height: MAPA.cama[3], fill: "rgba(150,155,165,.55)" });
+el("rect", { x: MAPA.mesa[0], y: Y(MAPA.mesa[1] + MAPA.mesa[3]), width: MAPA.mesa[2], height: MAPA.mesa[3], fill: "rgba(192,142,92,.8)" });
+el("rect", { x: 0, y: Y(0.03), width: 2.65, height: 0.06, fill: "#c08e5c" });
+const tBwc = el("text", { x: 3.3, y: Y(0.9), class: "lbl", "text-anchor": "middle" }); tBwc.textContent = "banho";
+const cone = el("path", { fill: "rgba(240,180,110,.35)" });
+const dots = {};
+ORDEM.forEach((q) => {
+  const [x, y] = PONTOS[q].pos;
+  const c = el("circle", { cx: x, cy: Y(y), r: 0.11, fill: "#fff", stroke: "#000", "stroke-width": 0.02, style: "cursor:pointer" });
+  c.addEventListener("click", () => ir(q));
+  dots[q] = c;
+});
+function atualizarMapa() {
+  const [x, y] = PONTOS[ponto].pos;
+  const a = lon * R, w = (fov / 2) * R * (stage.clientWidth / Math.max(1, stage.clientHeight)) * 0.75, r = 0.9;
+  const p = (ang) => `${x + r * Math.sin(ang)},${Y(y) - r * Math.cos(ang)}`;
+  cone.setAttribute("d", `M${x},${Y(y)} L${p(a - w)} L${p(a + w)} Z`);
+  ORDEM.forEach((q) => dots[q].setAttribute("fill", q === ponto ? "#f0b46e" : "#fff"));
+}
+function atualizarUI() {
+  document.getElementById("pt-name").textContent = PONTOS[ponto].nome;
+  ORDEM.forEach((q) => document.getElementById(`p-${q}`).setAttribute("aria-current", String(q === ponto)));
+}
+
+// ---------- interação ----------
+const ptrs = new Map();
+let vLon = 0, vLat = 0, pinch0 = null;
+const hint = document.getElementById("hint");
+function esconderHint() { hint.style.opacity = "0"; }
+stage.addEventListener("pointerdown", (e) => {
+  stage.setPointerCapture(e.pointerId);
+  ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  stage.classList.add("dragging"); esconderHint();
+  if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; pinch0 = { d: Math.hypot(a.x - b.x, a.y - b.y), fov }; }
+});
+stage.addEventListener("pointermove", (e) => {
+  if (!ptrs.has(e.pointerId)) return;
+  const p = ptrs.get(e.pointerId);
+  if (ptrs.size === 2 && pinch0) {
+    p.x = e.clientX; p.y = e.clientY;
+    const [a, b] = [...ptrs.values()];
+    fov = Math.min(95, Math.max(35, pinch0.fov * pinch0.d / Math.max(1, Math.hypot(a.x - b.x, a.y - b.y))));
+    return;
+  }
+  const k = fov / stage.clientHeight;
+  vLon = -(e.clientX - p.x) * k; vLat = (e.clientY - p.y) * k;
+  lon += vLon; lat += vLat;
+  p.x = e.clientX; p.y = e.clientY;
+});
+function soltar(e) { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinch0 = null; if (!ptrs.size) stage.classList.remove("dragging"); }
+stage.addEventListener("pointerup", soltar);
+stage.addEventListener("pointercancel", soltar);
+stage.addEventListener("wheel", (e) => { e.preventDefault(); fov = Math.min(95, Math.max(35, fov + e.deltaY * 0.04)); esconderHint(); }, { passive: false });
+window.addEventListener("keydown", (e) => {
+  const m = { ArrowLeft: [-4, 0], ArrowRight: [4, 0], ArrowUp: [0, 3], ArrowDown: [0, -3] }[e.key];
+  if (m) { lon += m[0]; lat += m[1]; esconderHint(); }
+  if (e.key === "Escape") card.hidden = true;
+});
+setTimeout(esconderHint, 4500);
+
+function resize() {
+  const w = stage.clientWidth, h = stage.clientHeight;
+  renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+window.addEventListener("resize", resize);
+
+const tmp = new THREE.Vector3();
+function frame() {
+  if (!ptrs.size) { lon += vLon; lat += vLat; vLon *= 0.9; vLat *= 0.9; if (Math.abs(vLon) < 0.001) vLon = 0; if (Math.abs(vLat) < 0.001) vLat = 0; }
+  lat = Math.max(-85, Math.min(85, lat));
+  camera.fov = fov; camera.updateProjectionMatrix();
+  camera.lookAt(dir3(lon, lat));
+  renderer.render(scene, camera);
+  const w = stage.clientWidth, h = stage.clientHeight;
+  for (const m of marcadores) {
+    tmp.copy(m.v).multiplyScalar(100).project(camera);
+    const vis = tmp.z < 1 && Math.abs(tmp.x) < 1.2 && Math.abs(tmp.y) < 1.2;
+    m.el.style.display = vis ? "" : "none";
+    if (!vis) continue;
+    const sx = (tmp.x + 1) / 2 * w, sy = (1 - tmp.y) / 2 * h;
+    const s = m.escala ? Math.max(0.45, Math.min(1.2, 1.6 / m.dist)) * (75 / fov) : 1;
+    m.el.style.transform = `translate(${sx}px, ${sy}px) scale(${s.toFixed(3)})`;
+  }
+  atualizarMapa();
+  requestAnimationFrame(frame);
+}
+
+// início: ponto da entrada, olhando para o quarto
+lon = lonlatDe(PONTOS.entrada.pos, [1.0, 0.7, 1.2])[0];   // da entrada, olhando para a mesa e a cama
+resize(); atualizarUI(); montarHotspots(); mostrar(ponto, modo); frame();
+</script>

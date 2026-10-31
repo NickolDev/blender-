@@ -1,0 +1,26 @@
+id;elemento;medida_m;status;origem;observacao
+ARM;Armário existente (parede a parede);4.60;Confirmada;planta + usuário;Largura interna total do quarto na linha do armário
+E;Parede E (frente do armário → Parede D);2.85;Confirmada;planta + usuário;
+D;Parede D;2.65;Confirmada;planta;Voltada ao NORTE
+C;Parede C (banheiro voltado ao quarto);2.00;Confirmada;planta;Ar-condicionado no meio
+EE;Parede E E (abaixo da janela no desenho);1.10;Confirmada;planta;
+ED;Parede E D;0.30;Confirmada;planta;
+BLE;Banheiro L E;1.10;Confirmada;planta;Soma com BLD+porta excede 4,60 (ver pendências)
+BLD;Banheiro L D;0.30;Confirmada;planta;
+FAIXA;Frente do armário → banheiro;0.86;Confirmada;usuário;2,00+0,86=2,86 vs 2,85 (1 cm, tolerância)
+PE_DIREITO;Pé-direito;2.64;Confirmada;usuário;
+JAN_PEIT;Peitoril da janela;1.00;Confirmada;usuário;
+JAN_H;Altura da janela;1.20;Confirmada*;usuário;*Interpretado como altura — confirmar
+JAN_L;Largura da janela;1.45;Calculada;2.85-1.10-0.30;Confirmar com trena
+JAN_TIPO;Janela;;Confirmada;usuário;Correr 2 folhas, persiana de enrolar metálica externa
+P_ENT;Porta de entrada (com batente / folha);0.80 / 0.75;Confirmada;usuário;Parede leste da faixa; sentido estimado
+P_BWC;Porta do banheiro (com batente / folha);0.73 / 0.60;Confirmada;usuário;
+AC;Ar-condicionado;;Confirmada (posição);usuário;Meio da Parede C; largura est. 0,85 e altura est. ~2,10-2,40
+TOM_D;Tomada;;Confirmada (posição);usuário;Meio da Parede D; altura não informada
+TOM_E;Tomada;;Confirmada (posição);usuário;Meio da Parede E (sob a janela); altura não informada
+LUZ_1;Ventilador de teto + luz;;Confirmada (posição);usuário;Centro do quarto
+LUZ_2;Ponto de luz;;Confirmada (posição);usuário;Em frente à porta do banheiro
+AREA_P;Área livre principal;7.55;Calculada;2.65 x 2.85;m²
+AREA_F;Faixa de entrada;1.66;Calculada;1.95 x 0.85;m², apenas circulação
+ESP_PAR;Espessura das paredes;0.12;Estimada;;Usuário não sabe; afeta só o desenho/3D, não o layout
+PROF_ARM;Profundidade do armário;0.60;Estimada;;Armário existente, fora do layout
