@@ -1,0 +1,338 @@
+{
+ "A": [
+  {
+   "verificacao": "Mesa × cama (partes rígidas)",
+   "status": "OK",
+   "detalhe": "folga 5.0 cm (mínimo 4.0 cm)"
+  },
+  {
+   "verificacao": "Mesa × ripado / Parede E / Parede C",
+   "status": "OK",
+   "detalhe": "folga 2.0 cm (mínimo 1.9 cm)"
+  },
+  {
+   "verificacao": "Mesa × portas do armário",
+   "status": "OK",
+   "detalhe": "folga 210.0 cm (mínimo 15.0 cm)"
+  },
+  {
+   "verificacao": "Cama × portas do armário (circulação)",
+   "status": "OK",
+   "detalhe": "folga 94.0 cm (mínimo 60.0 cm)"
+  },
+  {
+   "verificacao": "Cadeira × cama",
+   "status": "OK",
+   "detalhe": "folga 46.3 cm (mínimo 5.0 cm)"
+  },
+  {
+   "verificacao": "Cadeira × armário (recuo + passagem)",
+   "status": "OK",
+   "detalhe": "folga 136.0 cm (mínimo 60.0 cm)"
+  },
+  {
+   "verificacao": "PC longe da cabeceira (ruído e LED)",
+   "status": "OK",
+   "detalhe": "folga 159.0 cm (mínimo 90.0 cm)"
+  },
+  {
+   "verificacao": "Monitores × prateleira com a mesa no máximo",
+   "status": "OK",
+   "detalhe": "topo 1.715 m · prateleira 1.95 m"
+  },
+  {
+   "verificacao": "Janela: frente livre acima do peitoril",
+   "status": "OK",
+   "detalhe": "nada acima do peitoril"
+  },
+  {
+   "verificacao": "Ar-condicionado: ninguém no jato direto",
+   "status": "OK",
+   "detalhe": "nada a menos de 0,6 m do aparelho"
+  },
+  {
+   "verificacao": "Faixa de entrada e porta do banheiro livres",
+   "status": "OK",
+   "detalhe": "livres"
+  },
+  {
+   "verificacao": "Arco das portas do armário (se forem de abrir)",
+   "status": "ATENÇÃO",
+   "detalhe": "no arco: planta pendente (até y = 2.34) — ok se as portas forem de correr"
+  },
+  {
+   "verificacao": "Nichos ≥ 0,90 m acima do colchão",
+   "status": "OK",
+   "detalhe": "folga 93.0 cm (mínimo 90.0 cm)"
+  },
+  {
+   "verificacao": "Planta pendente: folhas acima de 1,90 m",
+   "status": "OK",
+   "detalhe": "folga 3.9 cm (mínimo 0.0 cm)"
+  },
+  {
+   "verificacao": "Planta pendente × ventilador",
+   "status": "OK",
+   "detalhe": "folga 19.0 cm (mínimo 10.0 cm)"
+  },
+  {
+   "verificacao": "Planta de chão × cadeira",
+   "status": "OK",
+   "detalhe": "folga 8.7 cm (mínimo 5.0 cm)"
+  },
+  {
+   "verificacao": "Planta de chão × mesa e cama",
+   "status": "OK",
+   "detalhe": "folga 11.1 cm (mínimo 0.0 cm)"
+  },
+  {
+   "verificacao": "Planta de chão dentro do quarto",
+   "status": "OK",
+   "detalhe": "x 2.11–2.55, y 0.86–1.38"
+  },
+  {
+   "verificacao": "Tapete dentro do quarto",
+   "status": "OK",
+   "detalhe": "x 1.08–2.48, y 0.78–2.78"
+  },
+  {
+   "verificacao": "Luminária de braço × monitores",
+   "status": "OK",
+   "detalhe": "folga 2.7 cm (mínimo 1.5 cm)"
+  },
+  {
+   "verificacao": "Luminária de braço × ripado/paredes",
+   "status": "OK",
+   "detalhe": "folga 1.0 cm (mínimo 0.5 cm)"
+  },
+  {
+   "verificacao": "Tomada usada pela mesa (Parede D)",
+   "status": "OK",
+   "detalhe": "cabos descem até (1.32, 0.04, 0.30)"
+  }
+ ],
+ "B": [
+  {
+   "verificacao": "Mesa × cama (partes rígidas)",
+   "status": "OK",
+   "detalhe": "folga 5.0 cm (mínimo 4.0 cm)"
+  },
+  {
+   "verificacao": "Mesa × ripado / Parede E / Parede C",
+   "status": "OK",
+   "detalhe": "folga 2.0 cm (mínimo 1.9 cm)"
+  },
+  {
+   "verificacao": "Mesa × portas do armário",
+   "status": "OK",
+   "detalhe": "folga 210.0 cm (mínimo 15.0 cm)"
+  },
+  {
+   "verificacao": "Cama × portas do armário (circulação)",
+   "status": "OK",
+   "detalhe": "folga 94.0 cm (mínimo 60.0 cm)"
+  },
+  {
+   "verificacao": "Cadeira × cama",
+   "status": "OK",
+   "detalhe": "folga 42.3 cm (mínimo 5.0 cm)"
+  },
+  {
+   "verificacao": "Cadeira × armário (recuo + passagem)",
+   "status": "OK",
+   "detalhe": "folga 136.0 cm (mínimo 60.0 cm)"
+  },
+  {
+   "verificacao": "PC longe da cabeceira (ruído e LED)",
+   "status": "OK",
+   "detalhe": "folga 159.0 cm (mínimo 90.0 cm)"
+  },
+  {
+   "verificacao": "Monitores × prateleira com a mesa no máximo",
+   "status": "OK",
+   "detalhe": "topo 1.715 m · prateleira 1.95 m"
+  },
+  {
+   "verificacao": "Janela: frente livre acima do peitoril",
+   "status": "OK",
+   "detalhe": "nada acima do peitoril"
+  },
+  {
+   "verificacao": "Ar-condicionado: ninguém no jato direto",
+   "status": "ATENÇÃO",
+   "detalhe": "a menos de 0,6 m do aparelho: cama — direcionar as aletas para o centro do quarto"
+  },
+  {
+   "verificacao": "Faixa de entrada e porta do banheiro livres",
+   "status": "OK",
+   "detalhe": "livres"
+  },
+  {
+   "verificacao": "Arco das portas do armário (se forem de abrir)",
+   "status": "ATENÇÃO",
+   "detalhe": "no arco: planta pendente (até y = 2.34) — ok se as portas forem de correr"
+  },
+  {
+   "verificacao": "Nichos ≥ 0,90 m acima do colchão",
+   "status": "OK",
+   "detalhe": "folga 93.0 cm (mínimo 90.0 cm)"
+  },
+  {
+   "verificacao": "Planta pendente: folhas acima de 1,90 m",
+   "status": "OK",
+   "detalhe": "folga 3.9 cm (mínimo 0.0 cm)"
+  },
+  {
+   "verificacao": "Planta pendente × ventilador",
+   "status": "OK",
+   "detalhe": "folga 19.0 cm (mínimo 10.0 cm)"
+  },
+  {
+   "verificacao": "Planta de chão × cadeira",
+   "status": "OK",
+   "detalhe": "folga 17.5 cm (mínimo 5.0 cm)"
+  },
+  {
+   "verificacao": "Planta de chão × mesa e cama",
+   "status": "OK",
+   "detalhe": "folga 12.3 cm (mínimo 0.0 cm)"
+  },
+  {
+   "verificacao": "Planta de chão dentro do quarto",
+   "status": "OK",
+   "detalhe": "x 0.10–0.50, y 0.87–1.33"
+  },
+  {
+   "verificacao": "Tapete dentro do quarto",
+   "status": "OK",
+   "detalhe": "x 0.17–1.57, y 0.78–2.78"
+  },
+  {
+   "verificacao": "Luminária de braço × monitores",
+   "status": "OK",
+   "detalhe": "folga 2.7 cm (mínimo 1.5 cm)"
+  },
+  {
+   "verificacao": "Luminária de braço × ripado/paredes",
+   "status": "OK",
+   "detalhe": "folga 1.0 cm (mínimo 0.5 cm)"
+  },
+  {
+   "verificacao": "Tomada usada pela mesa (Parede D)",
+   "status": "OK",
+   "detalhe": "cabos descem até (1.32, 0.04, 0.30)"
+  }
+ ],
+ "C": [
+  {
+   "verificacao": "Mesa × cama (partes rígidas)",
+   "status": "OK",
+   "detalhe": "folga 4.0 cm (mínimo 4.0 cm)"
+  },
+  {
+   "verificacao": "Mesa × ripado / Parede E / Parede C",
+   "status": "OK",
+   "detalhe": "folga 2.0 cm (mínimo 1.9 cm)"
+  },
+  {
+   "verificacao": "Mesa × portas do armário",
+   "status": "OK",
+   "detalhe": "folga 20.0 cm (mínimo 15.0 cm)"
+  },
+  {
+   "verificacao": "Cama × portas do armário (circulação)",
+   "status": "OK",
+   "detalhe": "folga 194.0 cm (mínimo 60.0 cm)"
+  },
+  {
+   "verificacao": "Cadeira × cama",
+   "status": "OK",
+   "detalhe": "folga 41.3 cm (mínimo 5.0 cm)"
+  },
+  {
+   "verificacao": "Cadeira × armário (recuo + passagem)",
+   "status": "OK",
+   "detalhe": "folga 83.5 cm (mínimo 60.0 cm)"
+  },
+  {
+   "verificacao": "PC longe da cabeceira (ruído e LED)",
+   "status": "OK",
+   "detalhe": "folga 158.0 cm (mínimo 90.0 cm)"
+  },
+  {
+   "verificacao": "Prateleira fora da mesa",
+   "status": "OK",
+   "detalhe": "a prateleira não fica sobre a mesa neste layout"
+  },
+  {
+   "verificacao": "Janela: frente livre acima do peitoril",
+   "status": "ATENÇÃO",
+   "detalhe": "na frente da janela: monitores (topo 1.26 m), PC (topo 1.19 m)"
+  },
+  {
+   "verificacao": "Ar-condicionado: ninguém no jato direto",
+   "status": "OK",
+   "detalhe": "nada a menos de 0,6 m do aparelho"
+  },
+  {
+   "verificacao": "Faixa de entrada e porta do banheiro livres",
+   "status": "OK",
+   "detalhe": "livres"
+  },
+  {
+   "verificacao": "Arco das portas do armário (se forem de abrir)",
+   "status": "ATENÇÃO",
+   "detalhe": "no arco: mesa (até y = 2.65) — ok se as portas forem de correr"
+  },
+  {
+   "verificacao": "Nichos ≥ 0,90 m acima do colchão",
+   "status": "OK",
+   "detalhe": "folga 93.0 cm (mínimo 90.0 cm)"
+  },
+  {
+   "verificacao": "Planta pendente: folhas acima de 1,90 m",
+   "status": "OK",
+   "detalhe": "folga 3.9 cm (mínimo 0.0 cm)"
+  },
+  {
+   "verificacao": "Planta pendente × ventilador",
+   "status": "OK",
+   "detalhe": "folga 13.5 cm (mínimo 10.0 cm)"
+  },
+  {
+   "verificacao": "Planta de chão × cadeira",
+   "status": "OK",
+   "detalhe": "folga 65.1 cm (mínimo 5.0 cm)"
+  },
+  {
+   "verificacao": "Planta de chão × mesa e cama",
+   "status": "OK",
+   "detalhe": "folga 19.7 cm (mínimo 0.0 cm)"
+  },
+  {
+   "verificacao": "Planta de chão dentro do quarto",
+   "status": "OK",
+   "detalhe": "x 2.08–2.52, y 0.19–0.71"
+  },
+  {
+   "verificacao": "Tapete dentro do quarto",
+   "status": "OK",
+   "detalhe": "x 0.62–2.62, y 1.05–2.45"
+  },
+  {
+   "verificacao": "Luminária de braço × monitores",
+   "status": "OK",
+   "detalhe": "folga 2.7 cm (mínimo 1.5 cm)"
+  },
+  {
+   "verificacao": "Luminária de braço × ripado/paredes",
+   "status": "OK",
+   "detalhe": "folga 1.0 cm (mínimo 0.5 cm)"
+  },
+  {
+   "verificacao": "Tomada usada pela mesa (Parede E)",
+   "status": "OK",
+   "detalhe": "cabos descem até (0.01, 1.43, 0.33)"
+  }
+ ]
+}

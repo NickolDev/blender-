@@ -316,9 +316,7 @@ def modelos():
     pl2, _ = importar_gltf(MODELS / "potted_plant_02" / "potted_plant_02.gltf", "06_DECORACAO", "Vaso_planta_prateleira")
     pl2.scale = (0.36, 0.36, 0.36)
     assentar(pl2, (1.375, RIP + 0.125), PT.PRAT_H + 0.025)
-    # porta-lápis e papelaria (canto direito da mesa)
-    st, _ = importar_gltf(MODELS / "stationery_supplies" / "stationery_supplies.gltf", "06_DECORACAO", "Papelaria_mesa")
-    st.location, st.rotation_euler = (MX0 + MESA_W - 0.20, MY0 + 0.12, MESA_Z + 0.074), (0, 0, math.radians(-90))
+    # (porta-lápis removido em 31/10/2026: depois que o PC foi para o tampo ele ficava dentro do gabinete)
     # objetos dos nichos (centro interno: y = RIP + 0,085; piso interno a 1,565)
     zi = PT.NICHO_Z0 + 0.015
     yc = RIP + 0.006 + (PT.NICHO_P - 0.006) / 2
@@ -675,7 +673,7 @@ def caneca_relogio_notebook_luminaria():
     c.location = (2.30, 0.66, z + 0.095)
     filho_da_mesa(alca)
     filho_da_mesa(c)
-    # relógio: visor escuro + dígitos (acendem à noite com o LED 3000 K)
+    # relógio: visor escuro + dígitos acesos (dia e noite)
     disp = bpy.data.objects["Relogio_LED_display"]
     disp.data.materials.clear()
     disp.data.materials.append(M["Preto_Fosco"])
@@ -683,7 +681,16 @@ def caneca_relogio_notebook_luminaria():
     tx = bpy.data.curves.new("Relogio_LED_digitos", "FONT")
     tx.body, tx.size, tx.align_x, tx.align_y = "22:41", 0.026, "CENTER", "CENTER"
     tx.extrude = 0.0004
-    d = novo_obj("Relogio_LED_digitos", tx, "06_DECORACAO", M["LED_3000K"])
+    led = bpy.data.materials.new("LED_Relogio_sempre_aceso")     # relógio fica ligado de dia também
+    nt = led.node_tree
+    for n in list(nt.nodes):
+        if n.type != "OUTPUT_MATERIAL":
+            nt.nodes.remove(n)
+    em = nt.nodes.new("ShaderNodeEmission")
+    em.inputs["Color"].default_value = (1.0, 0.62, 0.32, 1)
+    em.inputs["Strength"].default_value = 4.0
+    nt.links.new(em.outputs["Emission"], nt.nodes["Material Output"].inputs["Surface"])
+    d = novo_obj("Relogio_LED_digitos", tx, "06_DECORACAO", led)
     d.location = (2.08, RIP + 0.1425, zp + 0.030)
     d.rotation_euler = (math.pi / 2, 0, math.pi)
     # notebook: teclado e touchpad

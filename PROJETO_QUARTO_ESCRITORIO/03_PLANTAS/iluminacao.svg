@@ -60,8 +60,17 @@
 <text x="531.2" y="649.0" font-size="12" fill="#e08a00" text-anchor="middle" font-weight="bold">L1</text>
 <circle cx="303.7" cy="688.9" r="7" fill="#e08a00" stroke="#000"/>
 <text x="306.5" y="733.0" font-size="10" fill="#e08a00" text-anchor="middle" font-weight="bold">L2 · perfil vertical 2,40 m</text>
-<line x1="370.2" y1="625.2" x2="482.2" y2="625.2" stroke="#6250d6" stroke-width="4" />
-<text x="426.2" y="616.8" font-size="12" fill="#6250d6" text-anchor="middle" font-weight="bold">L3</text>
+<line x1="343.3" y1="656.0" x2="404.9" y2="656.0" stroke="#6250d6" stroke-width="4" />
+<text x="374.1" y="647.6" font-size="12" fill="#6250d6" text-anchor="middle" font-weight="bold">L3</text>
+<rect x="185.4" y="664.4" width="33.6" height="22.4" fill="none" fill-opacity="1" stroke="#c58c55" stroke-width="1.2" stroke-dasharray="10 6"/>
+<line x1="189.6" y1="667.9" x2="214.8" y2="667.9" stroke="#e08a00" stroke-width="4" />
+<rect x="221.8" y="664.4" width="33.6" height="22.4" fill="none" fill-opacity="1" stroke="#c58c55" stroke-width="1.2" stroke-dasharray="10 6"/>
+<line x1="226.0" y1="667.9" x2="251.2" y2="667.9" stroke="#e08a00" stroke-width="4" />
+<rect x="258.2" y="664.4" width="33.6" height="22.4" fill="none" fill-opacity="1" stroke="#c58c55" stroke-width="1.2" stroke-dasharray="10 6"/>
+<line x1="262.4" y1="667.9" x2="287.6" y2="667.9" stroke="#e08a00" stroke-width="4" />
+<text x="272.2" y="653.2" font-size="12" fill="#e08a00" text-anchor="middle" font-weight="bold">L5</text>
+<circle cx="318.4" cy="674.2" r="7" fill="#fff" stroke="#c46a00" stroke-width="3"/>
+<text x="328.2" y="672.8" font-size="12" fill="#c46a00" text-anchor="start" font-weight="bold">L6</text>
 <circle cx="238.6" cy="679.8" r="8" fill="#fff" stroke="#e08a00" stroke-width="3"/>
 <text x="238.6" y="604.2" font-size="10" fill="#e08a00" text-anchor="middle" font-weight="bold" transform="rotate(-90 238.6 604.2)">L4 · arandela h 1,10</text>
 <rect x="383.5" y="664.4" width="30.8" height="11.2" fill="#333" fill-opacity="1" stroke="#000" stroke-width="1" />
@@ -69,6 +78,7 @@
 <path d="M 362.5 682.6 L 383.5 670.0" fill="none" stroke="#555" stroke-width="1.4" stroke-dasharray="5 4"/>
 <path d="M 397.5 670.0 L 397.5 658.8" fill="none" stroke="#555" stroke-width="1.4" stroke-dasharray="5 4"/>
 <path d="M 383.5 672.8 L 303.7 677.0 L 303.7 688.9" fill="none" stroke="#555" stroke-width="1.4" stroke-dasharray="5 4"/>
+<path d="M 303.7 688.9 L 291.8 681.2" fill="none" stroke="#555" stroke-width="1.4" stroke-dasharray="5 4"/>
 <path d="M 185.4 491.5 L 219.0 491.5 L 219.0 674.2 L 238.6 679.8" fill="none" stroke="#999" stroke-width="1.4" stroke-dasharray="5 4"/>
 <text x="950.0" y="140" font-size="15" font-weight="bold">LEGENDA</text>
 <line x1="950.0" y1="158" x2="976.0" y2="158" stroke="#333" stroke-width="2.5" /><text x="984.0" y="162" font-size="12">Confirmada</text>
@@ -78,20 +88,23 @@
 <rect x="950.0" y="231" width="26" height="13" fill="#cfe6ff" stroke="#333" stroke-dasharray="2 5"/><text x="984.0" y="242" font-size="12">Ar-condicionado existente (larg. est.)</text>
 <rect x="950.0" y="251" width="26" height="13" fill="#d4a017" stroke="#333" /><text x="984.0" y="262" font-size="12">Ponto de luz existente</text>
 <text x="950.0" y="282" font-size="12" fill="#333">○ ‖  Tomada existente (meio da Parede D e E)</text>
-<text x="950.0" y="310" font-size="15" font-weight="bold">ILUMINAÇÃO PROPOSTA (tudo em 3000 K)</text>
+<text x="950.0" y="310" font-size="15" font-weight="bold">ILUMINAÇÃO PROPOSTA (luz quente 2700–3000 K)</text>
 <text x="950.0" y="332" font-size="12" fill="#333">Geral: ventilador c/ luz existente → lâmpada LED 3000 K</text>
 <text x="950.0" y="350" font-size="12" fill="#333">L1  Fita COB 24 V sob a prateleira — tarefa/ambiente</text>
 <text x="950.0" y="368" font-size="12" fill="#333">L2  Fita COB em perfil vertical no ripado — decorativa</text>
 <text x="950.0" y="386" font-size="12" fill="#333">L3  Barra de luz no monitor — tarefa, sem reflexo na tela</text>
 <text x="950.0" y="404" font-size="12" fill="#333">L4  Arandela articulada na cabeceira — leitura</text>
-<text x="950.0" y="422" font-size="12" fill="#333">F   Filtro c/ DPS + fonte 24 V presos sob o tampo</text>
-<text x="950.0" y="440" font-size="12" fill="#333">L1 + L2 dimerizáveis por controle Wi-Fi (cena “noite”)</text>
-<text x="950.0" y="468" font-size="15" font-weight="bold">ALIMENTAÇÃO (sem pontos novos)</text>
-<text x="950.0" y="490" font-size="12" fill="#333">Tomada Parede D → filtro c/ DPS → PC, monitores, fonte LED</text>
-<text x="950.0" y="508" font-size="12" fill="#333">Tomada Parede E → arandela + carregador da cama</text>
-<text x="950.0" y="526" font-size="12" fill="#333">Tomada D recebe prolongador de caixa (ripado de 3 cm)</text>
-<text x="950.0" y="544" font-size="12" fill="#c0392b" font-weight="bold">⚠ Conferir com eletricista: circuito e bitola da</text>
-<text x="950.0" y="562" font-size="12" fill="#333">   tomada D (PC + 2 monitores + LED ≈ 600–900 W)</text>
-<text x="950.0" y="580" font-size="12" fill="#c0392b" font-weight="bold">⚠ Fonte 24 V sempre ventilada e acessível</text>
+<text x="950.0" y="422" font-size="12" fill="#333">L5  Fita COB nos 3 nichos (0,72 m), mesma fonte 24 V</text>
+<text x="950.0" y="440" font-size="12" fill="#333">L6  Luminária de mesa 2700 K — plugue no filtro</text>
+<text x="950.0" y="458" font-size="12" fill="#333">F   Filtro c/ DPS + fonte 24 V presos sob o tampo</text>
+<text x="950.0" y="476" font-size="12" fill="#333">L1 + L2 + L5 dimerizáveis por controle Wi-Fi</text>
+<text x="950.0" y="494" font-size="12" fill="#333">Fonte 24 V: 5,3 m × 16 W/m ≈ 85 W (fonte de 120 W)</text>
+<text x="950.0" y="522" font-size="15" font-weight="bold">ALIMENTAÇÃO (sem pontos novos)</text>
+<text x="950.0" y="544" font-size="12" fill="#333">Tomada Parede D → filtro c/ DPS → PC, monitores, fonte LED</text>
+<text x="950.0" y="562" font-size="12" fill="#333">Tomada Parede E → arandela + carregador da cama</text>
+<text x="950.0" y="580" font-size="12" fill="#333">Tomada D recebe prolongador de caixa (ripado de 3 cm)</text>
+<text x="950.0" y="598" font-size="12" fill="#c0392b" font-weight="bold">⚠ Conferir com eletricista: circuito e bitola da</text>
+<text x="950.0" y="616" font-size="12" fill="#333">   tomada D (PC + 2 monitores + LED ≈ 600–900 W)</text>
+<text x="950.0" y="634" font-size="12" fill="#c0392b" font-weight="bold">⚠ Fonte 24 V sempre ventilada e acessível</text>
 <rect x="950.0" y="812" width="70.0" height="8" fill="#000"/><rect x="1020.0" y="812" width="70.0" height="8" fill="#fff" stroke="#000"/><text x="950.0" y="836" font-size="11" text-anchor="middle">0</text><text x="1020.0" y="836" font-size="11" text-anchor="middle">0,5</text><text x="1090.0" y="836" font-size="11" text-anchor="middle">1 m</text><text x="1110.0" y="821" font-size="11">escala gráfica (1 m = 140 px)</text>
 </svg>

@@ -36,7 +36,7 @@ def main():
             q = qtd(q)
             qs = f"{q:g}"
             desc = f"[{prod}]({link})" if link.startswith("http") and st != "EST" else prod
-            nota = " *(estimativa — pedir orçamento)*" if st == "EST" else ""
+            nota = {"EST": " *(estimativa — pedir orçamento)*", "BUSCA": " *(preço da busca web — conferir no link)*"}.get(st, "")
             L.append(f"- [ ] **{item}** — {desc} · {qs} {un} × R$ {pu:.2f} = **R$ {q * pu:.2f}**{nota}")
     L += ["", ORDEM]
     OUT.write_text("\n".join(L), encoding="utf-8")

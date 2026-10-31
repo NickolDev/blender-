@@ -1,6 +1,6 @@
 # Lista de compras — cenário Equilibrado
 
-Preços consultados em 30/10/2026 (reconfirmar antes de comprar). Total com reserva de 10%: **R$ 13.304**. Detalhes e fórmulas em `04_ORCAMENTO/orcamento_completo.xlsx`.
+Preços consultados em 30/10/2026 (reconfirmar antes de comprar). Total com reserva de 10%: **R$ 14.584**. Detalhes e fórmulas em `04_ORCAMENTO/orcamento_completo.xlsx`.
 
 Itens marcados *estimativa* não têm cotação: pedir orçamento ou pesquisar o preço antes de comprar.
 
@@ -48,14 +48,24 @@ Itens marcados *estimativa* não têm cotação: pedir orçamento ou pesquisar o
 
 ## Decoração (opcional)
 
-- [ ] **Luminária de mesa articulada** — Luminária articulada preta, E27, lâmpada 2700 K · 1 un × R$ 120.00 = **R$ 120.00** *(estimativa — pedir orçamento)*
+- [ ] **Persiana romana de linho sob medida (≈1,57 × 1,30 m = 2,04 m²)** — [Viena Linho blackout, R$ 319,90/m²](https://andrelux.com.br/persiana-romana-blackout/persiana-romana-blackout-viena-linho-claro-produto/) · 1 un × R$ 652.60 = **R$ 652.60** *(preço da busca web — conferir no link)*
+- [ ] **Refil para almofada 45 × 45 (kit 4, fibra siliconada)** — [Kit 4 refis 45 × 45](https://www.magazineluiza.com.br/busca/capa+45x45) · 1 un × R$ 38.90 = **R$ 38.90** *(preço da busca web — conferir no link)*
+- [ ] **Planta de chão com vaso** — [Ficus Verde Figueira artificial com vaso decorativo](https://m.magazineluiza.com.br/busca/planta+de+ficus/) · 1 un × R$ 189.99 = **R$ 189.99** *(preço da busca web — conferir no link)*
+- [ ] **Suporte de macramê 85 cm** — [Suporte de macramê para vaso](https://www.mfrural.com.br/busca/macrame) · 1 un × R$ 45.90 = **R$ 45.90** *(preço da busca web — conferir no link)*
+- [ ] **Cuia 21 com gancho (kit 5)** — [Kit 5 vasos cuia 21 com ganchos para samambaia](https://lista.mercadolivre.com.br/gancho-para-samambaias) · 1 un × R$ 23.50 = **R$ 23.50** *(preço da busca web — conferir no link)*
+- [ ] **Samambaia natural em cuia 21** — [Samambaia Renda Francesa cuia 21 (pendente)](https://www.magazineluiza.com.br/busca/samambaia+renda) · 1 un × R$ 47.50 = **R$ 47.50** *(preço da busca web — conferir no link)*
+- [ ] **Kit 3 quadros 40 × 60 com moldura preta** — [Kit 3 Quadros Folhagem Palha Nude (EQUADROS)](https://www.madeiramadeira.com.br/kit-3-quadros-folhagem-palha-nude-com-moldura-preta-749682936.html) · 1 un × R$ 169.65 = **R$ 169.65** *(preço da busca web — conferir no link)*
+- [ ] **Porta-retrato 20 × 25 moldura preta** — [Moldura preta lisa 20 × 25](https://www.mercadolivre.com.br/pagina/silvaaquadross) · 2 un × R$ 17.83 = **R$ 35.66** *(preço da busca web — conferir no link)*
+- [ ] **Manta para a cama 1,50 × 2,10 m** — [Manta decorativa Dohler Marrocos](https://www.buscape.com.br/capa-para-almofada-e-sofa/manta-decorativa-para-sofa-dohler-marrocos-1-50-x-2-10-cores-bege) · 1 un × R$ 78.99 = **R$ 78.99** *(preço da busca web — conferir no link)*
+- [ ] **Edredom solteiro 100% algodão** — [Edredom malha 100% algodão Gran Moratta solteiro](https://www.zoom.com.br/edredom/edredom-malha-100-algodao-gran-moratta-1-peca-solteiro-avela-pink) · 1 un × R$ 232.78 = **R$ 232.78** *(preço da busca web — conferir no link)*
+- [ ] **Luminária de mesa de braço articulado (preta)** — [Bronzearte Versaty com garra, E27](https://www.telhanorte.com.br/luminaria-versaty-garra-de-aco-e27-40w-pretabronzearte-746967/p) · 1 un × R$ 99.90 = **R$ 99.90** *(preço da busca web — conferir no link)*
+- [ ] **Capa de almofada de veludo 45 × 45** — [Kadife (Westwing)](https://site.fastshop.com.br/capa-de-almofada-de-veludo-com-abas-kadife---amarelo-160996/p) · 1 un × R$ 115.01 = **R$ 115.01** *(preço da busca web — conferir no link)*
+- [ ] **Capa de almofada de linho 45 × 45** — [Tuffato 45 × 45 linho](https://www.pontofrio.com.br/capa-de-almofada-tuffato-decorativa-45x45cm-lino/p/1572652665) · 1 un × R$ 40.90 = **R$ 40.90** *(preço da busca web — conferir no link)*
+- [ ] **Vaso pequeno de cerâmica (~18 cm)** — — · 1 un × R$ 60.00 = **R$ 60.00** *(estimativa — pedir orçamento)*
+- [ ] **Elefante decorativo 16 cm** — [Elefante indiano em resina 16 cm](https://www.extra.com.br/elefante-decorativo-indiano-em-resina/p/1582481627) · 1 un × R$ 161.90 = **R$ 161.90** *(preço da busca web — conferir no link)*
+- [ ] **Escultura pequena (baleia ~15 cm)** — — · 1 un × R$ 120.00 = **R$ 120.00** *(estimativa — pedir orçamento)*
 - [ ] **Suporte de headphone** — Suporte de mesa em metal preto · 1 un × R$ 60.00 = **R$ 60.00** *(estimativa — pedir orçamento)*
-- [ ] **Quadros P&B (3 na parede + 2 na prateleira)** — Impressões P&B 40×55, 2× 36×26, 20×25, 15×20 c/ moldura preta e passe-partout · 1 un × R$ 350.00 = **R$ 350.00** *(estimativa — pedir orçamento)*
-- [ ] **Planta pendente** — Vaso cerâmica preta Ø18 + suporte de corda + samambaia + gancho de teto · 1 un × R$ 120.00 = **R$ 120.00** *(estimativa — pedir orçamento)*
-- [ ] **Objetos dos nichos** — Vaso cerâmica + elefante em madeira + escultura de baleia (~15 cm) · 1 un × R$ 200.00 = **R$ 200.00** *(estimativa — pedir orçamento)*
-- [ ] **Plantas da prateleira** — Vaso médio c/ planta + suculenta · 1 un × R$ 100.00 = **R$ 100.00** *(estimativa — pedir orçamento)*
 - [ ] **Relógio LED de prateleira** — Relógio digital LED 12 cm · 1 un × R$ 70.00 = **R$ 70.00** *(estimativa — pedir orçamento)*
-- [ ] **Caneca e acessórios de mesa** — Caneca de cerâmica + porta-lápis · 1 un × R$ 60.00 = **R$ 60.00** *(estimativa — pedir orçamento)*
 
 ## Serviços
 

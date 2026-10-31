@@ -73,7 +73,13 @@ body { margin: 0; background: #0d0d0f; color: var(--ink); font-family: var(--fon
   position: fixed; right: max(14px, env(safe-area-inset-right, 0px)); top: calc(env(safe-area-inset-top, 0px) + 74px);
   width: min(340px, calc(100vw - 28px)); padding: 16px; display: grid; gap: 8px;
 }
-#card[hidden] { display: none; }   /* sem isto o display: grid acima vence o atributo hidden */
+#card[hidden] { display: none; }
+.direita { display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; justify-content: flex-end; }
+.tema-sel { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font: 500 12px var(--font-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); }
+.tema-sel select { font: 500 14px var(--font-body); color: var(--ink); background: transparent; border: 1px solid var(--glass-line); border-radius: 8px; padding: 6px 8px; text-transform: none; letter-spacing: 0; }
+.tema-sel select option { color: #111; }
+.tema-sel select:focus-visible { outline: 2px solid var(--led); outline-offset: 2px; }
+#card .tema-nota { font-size: 12.5px; color: var(--ink-2); border-top: 1px solid var(--glass-line); padding-top: 8px; }   /* sem isto o display: grid acima vence o atributo hidden */
 #card h2 { font: 600 18px/1.2 var(--font-display); margin: 0; padding-right: 28px; }
 #card .dim { font: 500 13px var(--font-mono); color: var(--led); }
 #card p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
@@ -101,9 +107,14 @@ body { margin: 0; background: #0d0d0f; color: var(--ink); font-family: var(--fon
     <h1 id="pt-name">Suíte 01</h1>
     <p id="pt-desc">Arraste para olhar em volta. Clique nos círculos do chão para andar.</p>
   </div>
-  <div class="seg panel" role="group" aria-label="Iluminação">
-    <button type="button" id="b-dia" aria-pressed="false">Dia</button>
-    <button type="button" id="b-noite" aria-pressed="true">Noite</button>
+  <div class="direita">
+    <label class="panel tema-sel">Tema
+      <select id="tema" aria-label="Tema do quarto"></select>
+    </label>
+    <div class="seg panel" role="group" aria-label="Iluminação">
+      <button type="button" id="b-dia" aria-pressed="false">Dia</button>
+      <button type="button" id="b-noite" aria-pressed="true">Noite</button>
+    </div>
   </div>
 </div>
 
@@ -174,6 +185,15 @@ function lonlatDe(de, para) {
   return [Math.atan2(dx, dy) / R, Math.atan2(dz, Math.hypot(dx, dy)) / R];
 }
 
+// temas: o aprovado usa pano/<ponto>_<modo>.jpg; os outros, pano/temas/<tema>_<ponto>_<modo>.jpg (layout A)
+/*TOUR-TEMAS-INICIO*/
+const TT = {"escandinavo": {"nome": "Escandinavo Claro", "materiais": ["Paredes off-white quente", "Ripado e marcenaria em carvalho claro", "Fundo do ripado off-white", "Roupa de cama de linho branco", "Manta waffle cinza", "Metais brancos"]}, "japandi": {"nome": "Japandi", "materiais": ["Paredes greige com efeito cal", "Ripado e marcenaria em freixo", "Fundo do ripado preto quente", "Roupa de cama de linho areia", "Tapete de juta", "Metais pretos", "LED 2700 K"]}, "industrial": {"nome": "Industrial Urbano", "materiais": ["Paredes com efeito cimento queimado", "Ripado e marcenaria em nogueira", "Fundo do ripado preto", "Roupa de cama chumbo", "Almofada de couro conhaque", "Tapete espinha de peixe grafite", "LED 2700 K"]}, "botanico": {"nome": "Botânico Verde", "materiais": ["Paredes verde musgo", "Ripado e marcenaria em nogueira", "Roupa de cama off-white", "Almofada de veludo verde", "Metais em latão", "Tapete creme"]}, "terracota": {"nome": "Terracota Mediterrâneo", "materiais": ["Paredes em reboco terracota", "Ripado e marcenaria em carvalho", "Fundo do ripado marrom café", "Roupa de cama de linho cru", "Manta ferrugem", "Luminárias em fibra natural", "LED 2700 K"]}};
+/*TOUR-TEMAS-FIM*/
+const TEMAS_TOUR = Object.assign({aprovado: {nome: "Moderno Escuro (aprovado)", materiais: []}}, TT);
+let tema = new URLSearchParams(location.search).get("tema") || "aprovado";
+if (!TEMAS_TOUR[tema]) tema = "aprovado";
+const caminho = (p, m, prev) => tema === "aprovado" ? `pano/${prev ? "prev/" : ""}${p}_${m}.jpg`
+  : `pano/temas/${prev ? "prev/" : ""}${tema}_${p}_${m}.jpg`;
 let lon = 0, lat = -5, fov = 75, ponto = "entrada", modo = "noite";
 let alvoLon = null;
 
@@ -189,17 +209,24 @@ function tex(url) {
 }
 const loading = document.getElementById("loading");
 async function mostrar(p, m) {
-  const prev = await tex(`pano/prev/${p}_${m}.jpg`);
-  if (p !== ponto || m !== modo) return;
+  const t = tema;
+  let prev;
+  try { prev = await tex(caminho(p, m, true)); }
+  catch (e) {                                   // panorama inexistente: avisa em vez de quebrar o tour
+    if (p === ponto && m === modo && t === tema) { loading.textContent = "panorama não encontrado para este tema"; loading.hidden = false; }
+    return;
+  }
+  loading.textContent = "carregando em alta resolução…";
+  if (p !== ponto || m !== modo || t !== tema) return;
   mat.map = prev; mat.needsUpdate = true;
   loading.hidden = false;
   try {
-    const full = await tex(`pano/${p}_${m}.jpg`);
-    if (p === ponto && m === modo) { mat.map = full; mat.needsUpdate = true; }
+    const full = await tex(caminho(p, m, false));
+    if (p === ponto && m === modo && t === tema) { mat.map = full; mat.needsUpdate = true; }
   } catch (e) { /* mantém a prévia se a imagem cheia falhar */ }
   loading.hidden = true;
   // pré-carrega as prévias dos vizinhos
-  ORDEM.forEach((q) => tex(`pano/prev/${q}_${m}.jpg`));
+  ORDEM.forEach((q) => tex(caminho(q, m, true)).catch(() => {}));
 }
 
 // ---------- hotspots ----------
@@ -237,6 +264,11 @@ function abrirCard(it) {
   document.getElementById("card-t").textContent = it.t;
   document.getElementById("card-d").textContent = it.d;
   document.getElementById("card-p").textContent = it.x;
+  let nota = card.querySelector(".tema-nota");
+  if (!nota) { nota = document.createElement("p"); nota.className = "tema-nota"; card.appendChild(nota); }
+  const T = TEMAS_TOUR[tema];
+  nota.hidden = tema === "aprovado";
+  nota.textContent = tema === "aprovado" ? "" : `Tema ${T.nome}: medidas iguais ao aprovado; materiais — ${T.materiais.join("; ")}.`;
   card.hidden = false;
 }
 document.getElementById("card-x").addEventListener("click", () => { card.hidden = true; });
@@ -259,6 +291,20 @@ function setModo(m) {
   document.getElementById("b-noite").setAttribute("aria-pressed", String(m === "noite"));
   mostrar(ponto, modo);
 }
+const sel = document.getElementById("tema");
+for (const [id, T] of Object.entries(TEMAS_TOUR)) {
+  const o = document.createElement("option");
+  o.value = id; o.textContent = T.nome; o.selected = id === tema;
+  sel.appendChild(o);
+}
+sel.addEventListener("change", () => {
+  tema = sel.value;
+  const u = new URL(location.href);
+  if (tema === "aprovado") u.searchParams.delete("tema"); else u.searchParams.set("tema", tema);
+  history.replaceState(null, "", u);
+  card.hidden = true;
+  mostrar(ponto, modo);
+});
 document.getElementById("b-dia").addEventListener("click", () => setModo("dia"));
 document.getElementById("b-noite").addEventListener("click", () => setModo("noite"));
 

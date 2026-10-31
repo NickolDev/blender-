@@ -16,16 +16,45 @@ Download feito em 30/10/2026, resolução 2k, em `05_BLENDER/assets/`.
 | potted_plant_04 | Modelo 3D | Suculenta na prateleira | James Ray Cock | 0,27 m de altura |
 | potted_plant_02 | Modelo 3D | Planta na prateleira (escala 36%) | Rico Cilliers | 0,84 m original |
 | decorative_book_set_01 | Modelo 3D | 10 livros na prateleira (trecho do conjunto) | James Ray Cock | — |
-| ceramic_vase_02 | Modelo 3D | Vaso no nicho 1 (escala 60% → 13 × 19 cm) | ver https://polyhaven.com/a/ceramic_vase_02 | 0,22 × 0,31 m original |
-| carved_wooden_elephant | Modelo 3D | Elefante de madeira no nicho 2 (escala 150% → 18 × 14 cm) | ver https://polyhaven.com/a/carved_wooden_elephant | 0,11 × 0,10 m original |
-| bronze_whale_statue | Modelo 3D | Escultura de baleia no nicho 3 (escala 14% → 19 × 15 cm) | ver https://polyhaven.com/a/bronze_whale_statue | 1,37 × 1,07 m original |
-| fern_02 | Modelo 3D | Samambaia do vaso pendente (escala 22% → 43 × 38 cm) | ver https://polyhaven.com/a/fern_02 | 1,97 × 1,72 m original |
+| ceramic_vase_02 | Modelo 3D | Vaso no nicho 1 (escala 60% → 13 × 19 cm) | James Ray Cock | 0,22 × 0,31 m original |
+| carved_wooden_elephant | Modelo 3D | Elefante de madeira no nicho 2 (escala 150% → 18 × 14 cm) | Greg Zaal | 0,11 × 0,10 m original |
+| bronze_whale_statue | Modelo 3D | Escultura de baleia no nicho 3 (escala 14% → 19 × 15 cm) | Tina | 1,37 × 1,07 m original |
+| fern_02 | Modelo 3D | Samambaia do vaso pendente (6 touceiras, escala 17–21%) | Rob Tuytel, Rico Cilliers | 1,97 × 1,72 m original |
 | stationery_supplies | Modelo 3D | Porta-lápis e papelaria na mesa | Mateusz Sadek | — |
 
-Os autores dos 4 modelos acima não estão gravados nos arquivos baixados, e o site do Poly Haven não estava acessível
-na sessão de 31/10/2026; consulte a página de cada asset. A licença CC0 não exige atribuição.
 O modelo `hanging_picture_frame_01` continua baixado, mas saiu da cena (os quadros P&B novos são modelados com as
 medidas reais).
+
+## Assets dos temas e layouts (31/10/2026)
+
+Baixados da API do Poly Haven (CC0). A escala de cada textura no Blender é o tamanho real da amostra informado
+pela API, para que trama de tecido, veio de madeira e textura de parede tenham o tamanho certo.
+
+| Asset | Tipo | Uso | Autor(es) | Tamanho real |
+|---|---|---|---|---|
+| rough_linen | Textura | Linho: persiana romana, roupa de cama, almofadas, tapetes (recolorido por tema) | colormass, Rico Cilliers | 27 × 27 cm |
+| waffle_pique_cotton | Textura | Mantas e almofadas em piquet waffle | colormass, Rico Cilliers | 28 × 28 cm |
+| velour_velvet | Textura | Almofadas de veludo | colormass, Rico Cilliers | 28 × 27 cm |
+| fabric_leather_02 | Textura | Almofada de couro (Industrial) | Rob Tuytel | 50 × 50 cm |
+| oak_veneer_01 | Textura | Carvalho (Escandinavo, Terracota) | Jenelle van Heerden | 1,83 × 1,83 m |
+| ash_veneer | Textura | Freixo (Japandi) | Jenelle van Heerden | 1,0 × 1,0 m |
+| walnut_veneer | Textura | Nogueira (Industrial, Botânico) | Jenelle van Heerden | 1,8 × 1,8 m |
+| painted_plaster_wall | Textura | Paredes pintadas (relevo de rolo/reboco) | Amal Kumar | 2,0 × 2,0 m |
+| clay_plaster | Textura | Efeito cal (Japandi) e reboco terracota | Amal Kumar | 2,0 × 2,0 m |
+| plaster_grey_04 | Textura | Efeito cimento queimado (Industrial) | Rob Tuytel | 1,5 × 1,5 m |
+| throw_pillows_01 | Modelo | Estampa da almofada (Terracota) | Serhii Khromov | 45 × 45 cm cada |
+| wicker_basket_02 | Modelo | Cesto de vime sob a mesa | Kuutti Siitonen | 37 × 27 × 22 cm |
+| wicker_basket_01 | Modelo | (baixado, não usado) | Kuutti Siitonen | 38 × 30 × 12 cm |
+| potted_plant_01 | Modelo | Planta de chão (80% → 1,08 m) e planta da prateleira | Rico Cilliers | 1,35 m de altura |
+| planter_pot_clay | Modelo | (baixado, não usado) | Amal Kumar | 27 cm |
+| ceramic_vase_01 | Modelo | (baixado, não usado) | James Ray Cock | 40 cm |
+| ceramic_vase_03 | Modelo | Vaso alto na prateleira e no nicho | James Ray Cock | 41 cm |
+| wooden_bowl_01 | Modelo | Tigela nos nichos | Oliver Harries | 31 cm |
+| desk_lamp_arm_01 | Modelo | Luminária de braço articulado (85% → 76 cm), em todos os temas | Yann Kervran, Kuutti Siitonen | 89 cm |
+| book_encyclopedia_set_01 | Modelo | Livros de capa dura (Industrial) | John Malcolm | 55 cm de largura |
+
+As 25 artes dos quadros dos temas (`assets/arte_temas/*.svg` → `assets/textures/<tema>_A…E.jpg`) foram desenhadas
+em SVG por `05_BLENDER/scripts/gerar_artes_temas.py`.
 
 ## Observação sobre a decoração
 Livros e papelaria são **ilustrativos** e não entram no orçamento. A decoração escolhida (quadros P&B, nichos,

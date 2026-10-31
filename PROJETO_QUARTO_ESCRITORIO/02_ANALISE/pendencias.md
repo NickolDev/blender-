@@ -1,4 +1,4 @@
-# Pendências — atualizado em 30/10/2026 (após o levantamento)
+# Pendências — atualizado em 31/10/2026
 
 ## Resolvidas
 Pé-direito, armário (existente, parede a parede), janela (tipo e peitoril), portas,
@@ -22,3 +22,13 @@ piso (madeira colante, fora do orçamento), símbolos (descartados) e pilares (e
 - Cama de solteiro 88 × 188; tapete incluído; sem gaveteiro, nicho ou cortina
 - Prateleira a 1,95 m (para não colidir com os monitores com a mesa na altura máxima)
 - Cenário de orçamento a escolher: Econômico / Equilibrado / Premium
+
+## Novas (31/10/2026, após decoração + PC na mesa)
+| # | Item | Situação |
+|---|------|----------|
+| 8 | Peso real do gabinete do PC | Estimado em ~12 kg (carga total ≈ 64 kg; limite da mesa 80 kg) — pesar |
+| 9 | Fixação dos nichos e do gancho da planta pendente | Depende do tipo de parede/laje — verificar antes de furar |
+| 10 | Preços da decoração (luminária, quadros, vasos, objetos, relógio, suporte de headphone) | Estimados — pesquisar |
+| 11 | Renders finais em GPU | Os desta rodada saíram em CPU com qualidade reduzida; rodar no desktop sem `--amostras`/`--largura` |
+| 12 | Tipo de porta do armário (correr ou abrir) | Agora decide também o layout C (mesa a 20 cm do armário) e a planta pendente do A/B |
+| 13 | Cor de parede dos temas | Os hex são referência de tom; escolher no leque da marca de tinta e testar amostra na parede |
