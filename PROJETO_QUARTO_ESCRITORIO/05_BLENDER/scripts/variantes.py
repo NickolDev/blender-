@@ -278,10 +278,10 @@ def mat_simples(nome, cor, rough=0.5, metal=0.0):
     return m
 
 
-TECIDOS = {   # textura, tile (m), variação, normal, sheen, ext
-    "linho": ("rough_linen", 0.30, 0.10, 0.6, 0.5, "1k"),
-    "waffle": ("waffle_pique_cotton", 0.18, 0.12, 0.8, 0.4, "1k"),
-    "veludo": ("velour_velvet", 0.35, 0.10, 0.4, 0.9, "1k"),
+TECIDOS = {   # textura, tile (m) = tamanho real da amostra no Poly Haven, variação, normal, sheen, ext
+    "linho": ("rough_linen", 0.27, 0.10, 0.6, 0.5, "1k"),
+    "waffle": ("waffle_pique_cotton", 0.28, 0.12, 0.8, 0.4, "1k"),
+    "veludo": ("velour_velvet", 0.28, 0.10, 0.4, 0.9, "1k"),
     "espinha": ("poly_wool_herringbone", 0.27, 0.10, 0.8, 0.6, "2k"),
     "trico": ("knitted_fleece", 0.27, 0.12, 0.9, 0.7, "2k"),
 }
@@ -289,7 +289,7 @@ TECIDOS = {   # textura, tile (m), variação, normal, sheen, ext
 
 def tecido(nome, tipo, cor):
     if tipo == "couro":
-        return mat_textura(nome, "fabric_leather_02", 0.45, None, nor=0.6, rough=(0.35, 0.6), sheen=0.1)
+        return mat_textura(nome, "fabric_leather_02", 0.50, None, nor=0.6, rough=(0.35, 0.6), sheen=0.1)
     if tipo == "estampada":
         m = mat_textura(nome, "throw_pillows_01", 0.45, None, nor=0.5, rough=(0.8, 0.95), sheen=0.6)
         return m
@@ -312,13 +312,14 @@ def objs_material(nome):
 
 METAIS = {"preto": ("#1A1A1A", 0.42, 0.0), "branco": ("#ECEBE7", 0.38, 0.0), "latao": ("#B08D57", 0.28, 1.0),
           "palha": ("#C8A26B", 0.8, 0.0)}
-MADEIRAS = {"carvalho": ("oak_veneer_01", (0.5, 0.9, 1.2)), "freixo": ("ash_veneer", (0.5, 0.9, 1.3)),
-            "nogueira": ("walnut_veneer", (0.5, 1.05, 0.72)), "nogueira_media": ("walnut_veneer", (0.5, 1.0, 0.95))}
+MADEIRAS = {   # textura, (matiz, saturação, valor), tamanho real da amostra (m)
+    "carvalho": ("oak_veneer_01", (0.5, 0.9, 1.2), 1.83), "freixo": ("ash_veneer", (0.5, 0.9, 1.3), 1.0),
+    "nogueira": ("walnut_veneer", (0.5, 1.05, 0.72), 1.8), "nogueira_media": ("walnut_veneer", (0.5, 1.0, 0.95), 1.8)}
 
 
 def madeira(nome, wid, rot90):
-    tex, (h, s_, v) = MADEIRAS[wid]
-    m = mat_textura(nome, tex, 1.0, None, nor=0.35, rough=(0.35, 0.7), rot90=rot90, coat=0.12)
+    tex, (h, s_, v), tile = MADEIRAS[wid]
+    m = mat_textura(nome, tex, tile, None, nor=0.35, rough=(0.35, 0.7), rot90=rot90, coat=0.12)
     nt = m.node_tree
     b = bsdf(m)
     link = next(lk for lk in nt.links if lk.to_socket == b.inputs["Base Color"])
@@ -352,7 +353,7 @@ def almofada(nome, sx, sy, sz, mat, loc, rot):
 
 def persiana_romana(cor):
     """Persiana romana de linho por dentro da janela (Parede E): recolhida de dia, baixada até o peitoril à noite."""
-    mat = mat_textura("Linho_Persiana_Romana", "rough_linen", 0.30, cor, var=0.10, nor=0.6, rough=(0.8, 0.95), sheen=0.4,
+    mat = mat_textura("Linho_Persiana_Romana", "rough_linen", 0.27, cor, var=0.10, nor=0.6, rough=(0.8, 0.95), sheen=0.4,
                       translucido=0.25)
     y0, y1 = JAN_Y0 - 0.06, JAN_Y1 + 0.06
     z_top = JAN_PEIT + JAN_H + 0.10
@@ -507,8 +508,8 @@ def aplicar_tema(t):
     # paredes
     pa = t["parede"]
     tipo = pa["tipo"]
-    base, tile, var, nor = {"pintura": ("painted_plaster_wall", 1.2, 0.05, 0.35), "cal": ("clay_plaster", 1.5, 0.10, 0.45),
-                            "cimento": ("plaster_grey_04", 1.6, 0.22, 0.4), "argila": ("clay_plaster", 1.5, 0.16, 0.6)}[tipo]
+    base, tile, var, nor = {"pintura": ("painted_plaster_wall", 2.0, 0.05, 0.35), "cal": ("clay_plaster", 2.0, 0.10, 0.45),
+                            "cimento": ("plaster_grey_04", 1.5, 0.22, 0.4), "argila": ("clay_plaster", 2.0, 0.16, 0.6)}[tipo]
     parede = mat_textura(f"Parede_{TEMA}", base, tile, pa["cor"], var=var, nor=nor, rough=(0.78, 0.93))
     trocar_material("Tinta_Grafite_3A3C40", parede)
     # madeira (ripado, tampo, prateleira, nichos)

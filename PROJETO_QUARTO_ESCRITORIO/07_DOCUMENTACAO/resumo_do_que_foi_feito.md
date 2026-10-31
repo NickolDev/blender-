@@ -1,4 +1,4 @@
-# O que foi feito até agora — Fases A a E
+# O que foi feito até agora — Fases A a F
 
 Atualizado em 31/10/2026. Projeto: Suíte 01 (quarto + escritório).
 
@@ -117,3 +117,28 @@ instalado como módulo Python `bpy`; o Blender MCP não está disponível aqui).
   difusor branco leitoso); a luz pontual dentro do PC estourava as peças em branco
   (removida) e as luzes apareciam como discos para a câmera (agora só as peças emissivas aparecem).
 - **Preços da decoração:** estimados. A Amazon não está liberada na rede desta sessão; pesquisar antes de comprar.
+
+## Fase F — Temas, layouts e decoração (31/10/2026)
+
+- **6 temas** sobre o mesmo quarto e as mesmas medidas: Moderno Escuro Aconchegante (o aprovado), Escandinavo
+  Claro, Japandi, Industrial Urbano, Botânico Verde e Terracota Mediterrâneo. Cada um troca paredes (com textura real
+  de reboco pintado, cal, cimento queimado ou argila), madeira do ripado e da marcenaria (freijó, carvalho, freixo,
+  nogueira), roupa de cama, almofadas, tapete, persiana, acabamento das luminárias, temperatura do LED, quadros e os
+  objetos dos nichos.
+- **3 layouts** que cabem de verdade: A (aprovado), B (cama na Parede C, mesa junto à janela) e C (mesa de frente para a
+  janela, cama ao longo do ripado). Três outros arranjos foram descartados com motivo (página e
+  `temas_e_layouts.md`). Na troca de layout a mesa é rearranjada para o PC ficar longe da cabeceira, e cabos, planta de
+  chão e planta pendente vão para posições válidas do layout.
+- **Decoração nova em todos os temas:** persiana romana de linho (recolhida de dia, baixada à noite), duas almofadas,
+  planta de chão no "canto morto" de cada layout, luminária de braço articulado (modelo real) e, conforme o tema,
+  cesto de vime sob a mesa, vaso alto, livros de capa dura ou planta na prateleira.
+- **Validação por layout** (`validacao_layouts.json`), com folgas medidas no modelo: mesa × cama, mesa × paredes,
+  circulação até o armário, recuo da cadeira, PC × cabeceira, janela, ar-condicionado, faixa de entrada, arco das
+  portas do armário, nichos, plantas, tapete, luminária e tomada usada. Os pontos de atenção estão na página.
+- **Realismo:** texturas na escala real da amostra (dado da API do Poly Haven); cor final das paredes e tecidos igual ao
+  hex da paleta (a textura vira só relevo/variação); exposição ajustada por tema (paredes claras refletem mais).
+- **Página de apresentação:** nova seção *Temas, layouts e decoração* em `08_VISUALIZADOR_3D/index.html`, com escolha de
+  tema, layout e dia/noite, paleta com códigos, materiais, decoração, custo estimado do pacote, prós e contras, planta
+  vista de cima e a verificação completa do layout.
+- **Correção achada no caminho:** o porta-lápis da mesa ficava dentro do gabinete do PC (sobra de antes de o PC ir para
+  o tampo). Foi removido.

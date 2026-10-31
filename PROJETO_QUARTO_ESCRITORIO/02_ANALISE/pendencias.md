@@ -30,3 +30,5 @@ piso (madeira colante, fora do orçamento), símbolos (descartados) e pilares (e
 | 9 | Fixação dos nichos e do gancho da planta pendente | Depende do tipo de parede/laje — verificar antes de furar |
 | 10 | Preços da decoração (luminária, quadros, vasos, objetos, relógio, suporte de headphone) | Estimados — pesquisar |
 | 11 | Renders finais em GPU | Os desta rodada saíram em CPU com qualidade reduzida; rodar no desktop sem `--amostras`/`--largura` |
+| 12 | Tipo de porta do armário (correr ou abrir) | Agora decide também o layout C (mesa a 20 cm do armário) e a planta pendente do A/B |
+| 13 | Cor de parede dos temas | Os hex são referência de tom; escolher no leque da marca de tinta e testar amostra na parede |

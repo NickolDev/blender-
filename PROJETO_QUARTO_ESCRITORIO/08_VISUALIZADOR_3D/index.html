@@ -74,6 +74,54 @@ dialog button { position: absolute; top: 10px; right: 10px; font: 600 13px var(-
 .notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 18px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 20px; }
 .notes h3 { font: 600 13px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--fg); margin: 0 0 6px; }
 .notes p { margin: 0; }
+/* Temas e layouts: configurador (escolha → imagem grande → fichas do tema e do layout) */
+.temas { display: grid; gap: 16px; }
+.temas .lede { margin-top: -6px; }
+.ctrl { display: grid; gap: 10px; }
+.ctrl-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ctrl-row > .lbl { font: 500 12px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); min-width: 64px; }
+.chip {
+  font: 500 14px/1 var(--font-body); color: var(--fg); background: transparent; border: 1px solid var(--line);
+  border-radius: 999px; padding: 9px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+  transition: border-color .15s, background .15s;
+}
+.chip:hover { border-color: var(--wood); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #1a140d; }
+.chip:focus-visible, .mini:focus-visible, .tema-img:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.dots { display: inline-flex; }
+.dots i { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0,0,0,.25); margin-left: -3px; }
+.dots i:first-child { margin-left: 0; }
+.tema-main { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 900px) { .tema-main { grid-template-columns: 1fr; } }
+.tema-img { background: none; border: 0; padding: 0; cursor: zoom-in; display: block; width: 100%; }
+.tema-img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); display: block; background: var(--surface); }
+.tema-cap { font: 500 12px var(--font-mono); color: var(--muted); margin: 6px 2px 0; }
+.ficha { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 10px; font-size: 14px; }
+.ficha h3 { font: 600 18px/1.2 var(--font-display); margin: 0; }
+.ficha h4 { font: 600 12px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 4px 0 0; }
+.ficha p { margin: 0; color: var(--muted); }
+.ficha ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; }
+.pal { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.pal div { display: grid; gap: 3px; font-size: 11px; color: var(--muted); }
+.pal span { height: 34px; border-radius: 6px; border: 1px solid var(--line); }
+.pal code { font-family: var(--font-mono); font-size: 11px; color: var(--fg); }
+.custo { font-family: var(--font-mono); font-size: 13px; color: var(--fg); }
+.pros li::marker { content: "✓  "; color: #5fae78; }
+.contras li::marker { content: "⚠  "; color: var(--accent); }
+.fichas2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+.valid summary { cursor: pointer; font-size: 14px; color: var(--fg); }
+.valid table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 8px; }
+.valid td { border-top: 1px solid var(--line); padding: 5px 4px; vertical-align: top; color: var(--muted); }
+.valid td:first-child { white-space: nowrap; font-family: var(--font-mono); font-size: 11.5px; }
+.st-ok { color: #5fae78 !important; } .st-at { color: var(--accent) !important; } .st-fa { color: #d9534f !important; }
+.planta-mini { width: 100%; border-radius: 8px; border: 1px solid var(--line); display: block; }
+.strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 720px) { .strip { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.mini { background: none; border: 1px solid var(--line); border-radius: 8px; padding: 0; cursor: pointer; overflow: hidden; display: grid; color: var(--fg); font: 500 12px var(--font-body); text-align: left; }
+.mini img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.mini span { padding: 5px 7px; }
+.mini[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.descart { font-size: 13px; color: var(--muted); margin: 0; padding-left: 18px; display: grid; gap: 3px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
@@ -113,10 +161,38 @@ dialog button { position: absolute; top: 10px; right: 10px; font: 600 13px var(-
     <div class="gallery" id="gallery"></div>
   </section>
 
+  <section class="temas" id="temas" aria-labelledby="t-temas">
+    <h2 id="t-temas">Temas, layouts e decoração</h2>
+    <p class="lede">O mesmo quarto, com as mesmas medidas, em 6 estilos e 3 arranjos de móveis que cabem de verdade. Cada combinação foi renderizada no Cycles e cada layout passou por uma verificação automática de folgas.</p>
+    <div class="ctrl">
+      <div class="ctrl-row" role="group" aria-label="Tema"><span class="lbl">Tema</span><span id="c-tema" style="display:contents"></span></div>
+      <div class="ctrl-row" role="group" aria-label="Layout"><span class="lbl">Layout</span><span id="c-layout" style="display:contents"></span></div>
+      <div class="ctrl-row" role="group" aria-label="Hora do dia"><span class="lbl">Luz</span>
+        <button type="button" class="chip" data-modo="dia" aria-pressed="true">Dia</button>
+        <button type="button" class="chip" data-modo="noite" aria-pressed="false">Noite</button></div>
+    </div>
+    <div class="tema-main">
+      <div>
+        <button type="button" class="tema-img" id="t-img-btn" aria-label="Ampliar imagem"><img id="t-img" alt=""></button>
+        <p class="tema-cap" id="t-cap"></p>
+      </div>
+      <div class="ficha" id="f-tema"></div>
+    </div>
+    <div class="strip" id="t-strip" role="group" aria-label="Comparar temas neste layout"></div>
+    <div class="fichas2">
+      <div class="ficha" id="f-layout"></div>
+      <div class="ficha" id="f-valid"></div>
+    </div>
+    <div class="ficha">
+      <h4>Arranjos descartados (não cabem ou pioram o uso)</h4>
+      <ul class="descart" id="t-descart"></ul>
+    </div>
+  </section>
+
   <section class="notes">
     <div><h3>O que é real</h3><p>Paredes, janela, portas, armário e ar-condicionado seguem a planta e as medidas que você passou. Móveis com as dimensões declaradas pelos fabricantes.</p></div>
     <div><h3>O que é aproximado</h3><p>Os móveis foram modelados em volume, não são os modelos oficiais. Cor do armário existente, espessura das paredes e largura do ar ainda são estimadas.</p></div>
-    <div><h3>Verificação</h3><p>Uma auditoria automática reabriu o arquivo do Blender e conferiu 37 medidas e folgas. Todas bateram com a planta.</p></div>
+    <div><h3>Verificação</h3><p>Uma auditoria automática reabriu o arquivo do Blender e conferiu 58 medidas e folgas do projeto aprovado. Todas bateram com a planta. Cada layout alternativo tem a sua própria verificação (seção de temas).</p></div>
   </section>
 </div>
 
@@ -154,6 +230,68 @@ for (const [f, t, s] of RENDERS) {
 const lb = document.getElementById("lb");
 document.getElementById("lb-close").addEventListener("click", () => lb.close());
 lb.addEventListener("click", (e) => { if (e.target === lb) lb.close(); });
+
+// ---------- temas e layouts (dados gerados por 05_BLENDER/scripts/gerar_html_temas.py) ----------
+/*TEMAS-DADOS-INICIO*/
+const TD = {"temas": {"escuro": {"nome": "Moderno Escuro Aconchegante", "resumo": "O projeto aprovado: grafite, ripado de freijó e luz âmbar. Ambiente de foco à noite.", "paleta": [["Grafite", "#3A3C40"], ["Freijó", "#A87A4F"], ["Caramelo", "#B5653A"], ["Cinza linho", "#9EA2A8"], ["Preto", "#151515"]], "materiais": ["Parede grafite fosco", "Ripado e marcenaria em freijó", "Tampo freijó 25 mm", "Roupa de cama cinza em espinha de peixe", "Manta caramelo de tricô", "Metais pretos"], "decoracao": ["Persiana romana de linho grafite", "Almofadas de veludo caramelo e linho grafite", "Quadros P&B", "Planta de chão no canto morto", "Samambaia pendente", "Nichos com vaso, elefante e baleia"], "custo_extra": [650, 1100]}, "escandinavo": {"nome": "Escandinavo Claro", "resumo": "Off-white quente, carvalho claro e linho. O quarto parece maior e mais iluminado de dia.", "paleta": [["Off-white quente", "#E8E4DC"], ["Carvalho claro", "#C9A77C"], ["Linho branco", "#EEECE7"], ["Verde sálvia", "#8E9C84"], ["Mostarda", "#C49A45"]], "materiais": ["Paredes off-white quente", "Ripado e marcenaria em carvalho claro", "Fundo do ripado off-white", "Roupa de cama de linho branco", "Manta waffle cinza", "Metais brancos"], "decoracao": ["Persiana romana de linho cru", "Almofadas verde-sálvia (veludo) e mostarda", "Arte em traço fino", "Cesto de vime sob a mesa", "Vaso alto de cerâmica branca na prateleira", "Planta de chão", "Tigela de madeira e suculenta nos nichos"], "custo_extra": [700, 1200]}, "japandi": {"nome": "Japandi", "resumo": "Greige com textura de cal, freixo claro, preto pontual e linho. Calmo e organizado.", "paleta": [["Greige", "#D5CABB"], ["Freixo", "#D7C3A3"], ["Linho areia", "#D2C5B1"], ["Terracota suave", "#A9765C"], ["Preto quente", "#2B2A28"]], "materiais": ["Paredes greige com efeito cal", "Ripado e marcenaria em freixo", "Fundo do ripado preto quente", "Roupa de cama de linho areia", "Tapete de juta", "Metais pretos", "LED 2700 K"], "decoracao": ["Persiana romana de linho natural", "Almofadas de linho preto e creme", "Arte sumi-e (ensō)", "Cesto de vime sob a mesa", "Tapete de juta", "Planta de chão", "Tigela e vaso de cerâmica nos nichos"], "custo_extra": [750, 1300]}, "industrial": {"nome": "Industrial Urbano", "resumo": "Cimento queimado, nogueira escura, couro conhaque e metal preto. Personalidade forte.", "paleta": [["Cimento queimado", "#8E8D88"], ["Nogueira", "#5C3F2A"], ["Chumbo", "#55575B"], ["Conhaque", "#8A4B2A"], ["Preto", "#151515"]], "materiais": ["Paredes com efeito cimento queimado", "Ripado e marcenaria em nogueira", "Fundo do ripado preto", "Roupa de cama chumbo", "Almofada de couro conhaque", "Tapete espinha de peixe grafite", "LED 2700 K"], "decoracao": ["Persiana romana de linho chumbo", "Almofadas de couro conhaque e linho", "Arte gráfica P&B", "Coleção de livros de capa dura na prateleira", "Planta de chão", "Tapete espinha de peixe"], "custo_extra": [900, 1700]}, "botanico": {"nome": "Botânico Verde", "resumo": "Verde musgo, nogueira e latão, com muitas plantas. Aconchegante e vivo.", "paleta": [["Verde musgo", "#5B6B55"], ["Nogueira", "#7A5536"], ["Off-white", "#E5E0D5"], ["Mostarda", "#B88A3B"], ["Latão", "#B08D57"]], "materiais": ["Paredes verde musgo", "Ripado e marcenaria em nogueira", "Roupa de cama off-white", "Almofada de veludo verde", "Metais em latão", "Tapete creme"], "decoracao": ["Persiana romana de linho cru", "Almofadas de veludo verde e linho terracota", "Gravuras botânicas", "Planta de chão", "Vaso de barro com planta na prateleira", "Suculenta no nicho", "Cesto de vime sob a mesa", "Samambaia pendente"], "custo_extra": [850, 1500]}, "terracota": {"nome": "Terracota Mediterrâneo", "resumo": "Reboco terracota, carvalho, linho cru e fibras naturais. Quente e ensolarado.", "paleta": [["Terracota", "#B87458"], ["Carvalho", "#C9A77C"], ["Linho cru", "#E7DDCC"], ["Ferrugem", "#9C4F2E"], ["Oliva", "#6E6B3E"]], "materiais": ["Paredes em reboco terracota", "Ripado e marcenaria em carvalho", "Fundo do ripado marrom café", "Roupa de cama de linho cru", "Manta ferrugem", "Luminárias em fibra natural", "LED 2700 K"], "decoracao": ["Persiana romana de linho cru", "Almofada estampada + almofada de linho oliva", "Arte com arcos e sol", "Tapete listrado de algodão", "Cesto de vime sob a mesa", "Vaso de barro na prateleira", "Planta de chão"], "custo_extra": [800, 1400]}}, "layouts": {"A": {"nome": "A — cama na Parede E, mesa na Parede D (aprovado)", "curto": "Aprovado", "resumo": "Cama encostada na parede da janela com a cabeceira no ripado; mesa de 1,70 m no ripado.", "pros": ["Usa a tomada existente junto à cama (sem elétrica nova)", "Entrada e circulação até o armário livres", "Luz natural lateral na mesa, sem ofuscar os monitores", "Ripado contínuo: fundo da mesa e cabeceira"], "contras": ["Cama sob a janela: a persiana precisa ser operada por cima da cama", "Planta pendente fica no arco das portas do armário se elas forem de abrir"]}, "B": {"nome": "B — cama na Parede C, mesa na Parede D junto à janela", "curto": "Cama na Parede C", "resumo": "Cama sob o ar-condicionado com a cabeceira no ripado; mesa no ripado, colada na janela.", "pros": ["Mesa recebe a luz da janela pela esquerda (ideal para destros)", "Área livre maior junto à janela", "PC fica longe da cabeceira (na ponta da mesa junto à janela)"], "contras": ["Ar-condicionado sobre a cama (jato de ar, dreno e manutenção sobre quem dorme)", "Sem tomada junto à cama: extensão ou ponto novo para a arandela", "Ao entrar no quarto a cama é a primeira coisa vista"]}, "C": {"nome": "C — mesa sob a janela, cama na Parede D", "curto": "Mesa sob a janela", "resumo": "Mesa de frente para a janela; cama com a lateral no ripado e a cabeceira na Parede E.", "pros": ["Centro do quarto mais livre (1,9 m entre a cama e o armário)", "Vista para fora enquanto trabalha", "Cama fora do caminho e longe do ar-condicionado"], "contras": ["Monitores na frente da janela: contraluz e ofuscamento de dia (persiana necessária)", "A ponta da mesa fica a 20 cm do armário: a 1ª porta só abre se for de correr", "Sem prateleira sobre a mesa (ela vai para cima da cama)"]}}, "descartados": [["Mesa na Parede C", "O ar-condicionado ficaria sobre os monitores e a janela atrás de quem usa a mesa (reflexo na tela)."], ["Cama no centro do ripado", "Sobram menos de 0,90 m de cada lado; a mesa de 1,70 m não cabe mais na Parede D."], ["Cama atravessada sob a janela (cabeceira na Parede E) e mesa na D", "A cama ocuparia a faixa atrás da cadeira: a cadeira não teria onde recuar ao levantar."]], "validacao": {"A": [{"verificacao": "Mesa × cama (partes rígidas)", "status": "OK", "detalhe": "folga 5.0 cm (mínimo 4.0 cm)"}, {"verificacao": "Mesa × ripado / Parede E / Parede C", "status": "OK", "detalhe": "folga 2.0 cm (mínimo 1.9 cm)"}, {"verificacao": "Mesa × portas do armário", "status": "OK", "detalhe": "folga 210.0 cm (mínimo 15.0 cm)"}, {"verificacao": "Cama × portas do armário (circulação)", "status": "OK", "detalhe": "folga 94.0 cm (mínimo 60.0 cm)"}, {"verificacao": "Cadeira × cama", "status": "OK", "detalhe": "folga 46.3 cm (mínimo 5.0 cm)"}, {"verificacao": "Cadeira × armário (recuo + passagem)", "status": "OK", "detalhe": "folga 136.0 cm (mínimo 60.0 cm)"}, {"verificacao": "PC longe da cabeceira (ruído e LED)", "status": "OK", "detalhe": "folga 159.0 cm (mínimo 90.0 cm)"}, {"verificacao": "Monitores × prateleira com a mesa no máximo", "status": "OK", "detalhe": "topo 1.715 m · prateleira 1.95 m"}, {"verificacao": "Janela: frente livre acima do peitoril", "status": "OK", "detalhe": "nada acima do peitoril"}, {"verificacao": "Ar-condicionado: ninguém no jato direto", "status": "OK", "detalhe": "nada a menos de 0,6 m do aparelho"}, {"verificacao": "Faixa de entrada e porta do banheiro livres", "status": "OK", "detalhe": "livres"}, {"verificacao": "Arco das portas do armário (se forem de abrir)", "status": "ATENÇÃO", "detalhe": "no arco: planta pendente (até y = 2.34) — ok se as portas forem de correr"}, {"verificacao": "Nichos ≥ 0,90 m acima do colchão", "status": "OK", "detalhe": "folga 93.0 cm (mínimo 90.0 cm)"}, {"verificacao": "Planta pendente: folhas acima de 1,90 m", "status": "OK", "detalhe": "folga 3.9 cm (mínimo 0.0 cm)"}, {"verificacao": "Planta pendente × ventilador", "status": "OK", "detalhe": "folga 19.0 cm (mínimo 10.0 cm)"}, {"verificacao": "Planta de chão × cadeira", "status": "OK", "detalhe": "folga 8.7 cm (mínimo 5.0 cm)"}, {"verificacao": "Planta de chão × mesa e cama", "status": "OK", "detalhe": "folga 11.1 cm (mínimo 0.0 cm)"}, {"verificacao": "Planta de chão dentro do quarto", "status": "OK", "detalhe": "x 2.11–2.55, y 0.86–1.38"}, {"verificacao": "Tapete dentro do quarto", "status": "OK", "detalhe": "x 1.08–2.48, y 0.78–2.78"}, {"verificacao": "Luminária de braço × monitores", "status": "OK", "detalhe": "folga 2.7 cm (mínimo 1.5 cm)"}, {"verificacao": "Luminária de braço × ripado/paredes", "status": "OK", "detalhe": "folga 1.0 cm (mínimo 0.5 cm)"}, {"verificacao": "Tomada usada pela mesa (Parede D)", "status": "OK", "detalhe": "cabos descem até (1.32, 0.04, 0.30)"}], "B": [{"verificacao": "Mesa × cama (partes rígidas)", "status": "OK", "detalhe": "folga 5.0 cm (mínimo 4.0 cm)"}, {"verificacao": "Mesa × ripado / Parede E / Parede C", "status": "OK", "detalhe": "folga 2.0 cm (mínimo 1.9 cm)"}, {"verificacao": "Mesa × portas do armário", "status": "OK", "detalhe": "folga 210.0 cm (mínimo 15.0 cm)"}, {"verificacao": "Cama × portas do armário (circulação)", "status": "OK", "detalhe": "folga 94.0 cm (mínimo 60.0 cm)"}, {"verificacao": "Cadeira × cama", "status": "OK", "detalhe": "folga 42.3 cm (mínimo 5.0 cm)"}, {"verificacao": "Cadeira × armário (recuo + passagem)", "status": "OK", "detalhe": "folga 136.0 cm (mínimo 60.0 cm)"}, {"verificacao": "PC longe da cabeceira (ruído e LED)", "status": "OK", "detalhe": "folga 159.0 cm (mínimo 90.0 cm)"}, {"verificacao": "Monitores × prateleira com a mesa no máximo", "status": "OK", "detalhe": "topo 1.715 m · prateleira 1.95 m"}, {"verificacao": "Janela: frente livre acima do peitoril", "status": "ATENÇÃO", "detalhe": "na frente da janela: planta de chão (topo 1.08 m)"}, {"verificacao": "Ar-condicionado: ninguém no jato direto", "status": "ATENÇÃO", "detalhe": "a menos de 0,6 m do aparelho: cama — direcionar as aletas para o centro do quarto"}, {"verificacao": "Faixa de entrada e porta do banheiro livres", "status": "OK", "detalhe": "livres"}, {"verificacao": "Arco das portas do armário (se forem de abrir)", "status": "ATENÇÃO", "detalhe": "no arco: planta pendente (até y = 2.34) — ok se as portas forem de correr"}, {"verificacao": "Nichos ≥ 0,90 m acima do colchão", "status": "OK", "detalhe": "folga 93.0 cm (mínimo 90.0 cm)"}, {"verificacao": "Planta pendente: folhas acima de 1,90 m", "status": "OK", "detalhe": "folga 3.9 cm (mínimo 0.0 cm)"}, {"verificacao": "Planta pendente × ventilador", "status": "OK", "detalhe": "folga 19.0 cm (mínimo 10.0 cm)"}, {"verificacao": "Planta de chão × cadeira", "status": "OK", "detalhe": "folga 14.7 cm (mínimo 5.0 cm)"}, {"verificacao": "Planta de chão × mesa e cama", "status": "OK", "detalhe": "folga 9.1 cm (mínimo 0.0 cm)"}, {"verificacao": "Planta de chão dentro do quarto", "status": "OK", "detalhe": "x 0.08–0.52, y 0.84–1.36"}, {"verificacao": "Tapete dentro do quarto", "status": "OK", "detalhe": "x 0.17–1.57, y 0.78–2.78"}, {"verificacao": "Luminária de braço × monitores", "status": "FALHA", "detalhe": "folga -1.4 cm (mínimo 1.5 cm)"}, {"verificacao": "Luminária de braço × ripado/paredes", "status": "OK", "detalhe": "folga 1.0 cm (mínimo 0.5 cm)"}, {"verificacao": "Tomada usada pela mesa (Parede D)", "status": "OK", "detalhe": "cabos descem até (1.32, 0.04, 0.30)"}], "C": [{"verificacao": "Mesa × cama (partes rígidas)", "status": "OK", "detalhe": "folga 4.0 cm (mínimo 4.0 cm)"}, {"verificacao": "Mesa × ripado / Parede E / Parede C", "status": "OK", "detalhe": "folga 2.0 cm (mínimo 1.9 cm)"}, {"verificacao": "Mesa × portas do armário", "status": "OK", "detalhe": "folga 20.0 cm (mínimo 15.0 cm)"}, {"verificacao": "Cama × portas do armário (circulação)", "status": "OK", "detalhe": "folga 194.0 cm (mínimo 60.0 cm)"}, {"verificacao": "Cadeira × cama", "status": "OK", "detalhe": "folga 41.3 cm (mínimo 5.0 cm)"}, {"verificacao": "Cadeira × armário (recuo + passagem)", "status": "OK", "detalhe": "folga 83.5 cm (mínimo 60.0 cm)"}, {"verificacao": "PC longe da cabeceira (ruído e LED)", "status": "OK", "detalhe": "folga 158.0 cm (mínimo 90.0 cm)"}, {"verificacao": "Prateleira fora da mesa", "status": "OK", "detalhe": "a prateleira não fica sobre a mesa neste layout"}, {"verificacao": "Janela: frente livre acima do peitoril", "status": "ATENÇÃO", "detalhe": "na frente da janela: monitores (topo 1.26 m), PC (topo 1.19 m), luminária (topo 1.41 m)"}, {"verificacao": "Ar-condicionado: ninguém no jato direto", "status": "ATENÇÃO", "detalhe": "a menos de 0,6 m do aparelho: cama — direcionar as aletas para o centro do quarto"}, {"verificacao": "Faixa de entrada e porta do banheiro livres", "status": "OK", "detalhe": "livres"}, {"verificacao": "Arco das portas do armário (se forem de abrir)", "status": "ATENÇÃO", "detalhe": "no arco: mesa (até y = 2.65) — ok se as portas forem de correr"}, {"verificacao": "Nichos ≥ 0,90 m acima do colchão", "status": "OK", "detalhe": "folga 93.0 cm (mínimo 90.0 cm)"}, {"verificacao": "Planta pendente: folhas acima de 1,90 m", "status": "OK", "detalhe": "folga 3.9 cm (mínimo 0.0 cm)"}, {"verificacao": "Planta pendente × ventilador", "status": "FALHA", "detalhe": "folga 8.5 cm (mínimo 10.0 cm)"}, {"verificacao": "Planta de chão × cadeira", "status": "OK", "detalhe": "folga 65.1 cm (mínimo 5.0 cm)"}, {"verificacao": "Planta de chão × mesa e cama", "status": "OK", "detalhe": "folga 19.7 cm (mínimo 0.0 cm)"}, {"verificacao": "Planta de chão dentro do quarto", "status": "OK", "detalhe": "x 2.08–2.52, y 0.19–0.71"}, {"verificacao": "Tapete dentro do quarto", "status": "OK", "detalhe": "x 0.62–2.62, y 1.05–2.45"}, {"verificacao": "Luminária de braço × monitores", "status": "FALHA", "detalhe": "folga -1.4 cm (mínimo 1.5 cm)"}, {"verificacao": "Luminária de braço × ripado/paredes", "status": "OK", "detalhe": "folga 1.0 cm (mínimo 0.5 cm)"}, {"verificacao": "Tomada usada pela mesa (Parede E)", "status": "OK", "detalhe": "cabos descem até (0.01, 1.43, 0.33)"}]}};
+/*TEMAS-DADOS-FIM*/
+const EST = {tema: "escuro", layout: "A", modo: "dia"};
+const $ = (id) => document.getElementById(id);
+const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const brl = (v) => "R$ " + v.toLocaleString("pt-BR");
+function chips(alvo, itens, chave) {
+  const el = $(alvo);
+  for (const [id, rot, pal] of itens) {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.dataset[chave] = id;
+    b.innerHTML = (pal ? `<span class="dots" aria-hidden="true">${pal.map((c) => `<i style="background:${c[1]}"></i>`).join("")}</span>` : "") + esc(rot);
+    b.addEventListener("click", () => { EST[chave] = id; render(); });
+    el.appendChild(b);
+  }
+}
+function img(t, L, m) { return `temas/${t}_${L}_${m}.jpg`; }
+function render() {
+  const t = TD.temas[EST.tema], L = TD.layouts[EST.layout];
+  document.querySelectorAll("[data-tema]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.tema === EST.tema)));
+  document.querySelectorAll("[data-layout]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.layout === EST.layout)));
+  document.querySelectorAll("[data-modo]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.modo === EST.modo)));
+  const alt = `${t.nome} — layout ${EST.layout} — ${EST.modo === "dia" ? "de dia" : "à noite"}`;
+  $("t-img").src = img(EST.tema, EST.layout, EST.modo); $("t-img").alt = alt;
+  $("t-cap").textContent = `${t.nome} · ${L.nome} · ${EST.modo === "dia" ? "dia (sol da manhã)" : "noite (LEDs e persiana baixada)"}`;
+  $("f-tema").innerHTML = `<h3>${esc(t.nome)}</h3><p>${esc(t.resumo)}</p>
+    <h4>Paleta</h4><div class="pal">${t.paleta.map(([n, c]) => `<div><span style="background:${c}"></span>${esc(n)}<code>${c}</code></div>`).join("")}</div>
+    <h4>Materiais</h4><ul>${t.materiais.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+    <h4>Decoração</h4><ul>${t.decoracao.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+    <h4>Pacote de decoração (estimativa)</h4><p class="custo">${brl(t.custo_extra[0])} – ${brl(t.custo_extra[1])}</p>
+    <p style="font-size:12px">Fora a obra já orçada. Cores de parede são referência de tom: conferir no leque da marca de tinta.</p>`;
+  $("f-layout").innerHTML = `<h3>${esc(L.nome)}</h3><p>${esc(L.resumo)}</p>
+    <img class="planta-mini" src="temas/planta_${EST.layout}.jpg" alt="Planta vista de cima do layout ${EST.layout}" loading="lazy">
+    <h4>A favor</h4><ul class="pros">${L.pros.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+    <h4>Contra</h4><ul class="contras">${L.contras.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`;
+  const V = TD.validacao[EST.layout] || [];
+  const n = (s) => V.filter((r) => r.status === s).length;
+  const cls = {"OK": "st-ok", "ATENÇÃO": "st-at", "FALHA": "st-fa"};
+  $("f-valid").innerHTML = `<h3>Verificação do layout ${EST.layout}</h3>
+    <p>${n("OK")} de ${V.length} itens OK · ${n("ATENÇÃO")} pontos de atenção · ${n("FALHA")} falhas. Medido no modelo 3D (caixas reais dos objetos).</p>
+    <details class="valid"><summary>Ver todos os itens</summary><table>${V.map((r) => `<tr><td class="${cls[r.status]}">${esc(r.status)}</td><td><b>${esc(r.verificacao)}</b><br>${esc(r.detalhe)}</td></tr>`).join("")}</table></details>`;
+  const st = $("t-strip"); st.innerHTML = "";
+  for (const [id, tt] of Object.entries(TD.temas)) {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "mini"; b.setAttribute("aria-pressed", String(id === EST.tema));
+    b.innerHTML = `<img src="temas/mini/${id}_${EST.layout}_${EST.modo}.jpg" alt="" loading="lazy"><span>${esc(tt.nome)}</span>`;
+    b.addEventListener("click", () => { EST.tema = id; render(); });
+    st.appendChild(b);
+  }
+}
+chips("c-tema", Object.entries(TD.temas).map(([id, t]) => [id, t.nome, t.paleta]), "tema");
+chips("c-layout", Object.entries(TD.layouts).map(([id, L]) => [id, `${id} · ${L.curto}`]), "layout");
+document.querySelectorAll("[data-modo]").forEach((b) => b.addEventListener("click", () => { EST.modo = b.dataset.modo; render(); }));
+$("t-descart").innerHTML = TD.descartados.map(([n, m]) => `<li><b>${esc(n)}:</b> ${esc(m)}</li>`).join("");
+$("t-img-btn").addEventListener("click", () => {
+  $("lb-img").src = $("t-img").src; $("lb-img").alt = $("t-img").alt; $("lb-cap").textContent = $("t-cap").textContent;
+  lb.showModal();
+});
+render();
 
 const mv = document.getElementById("mv");
 const btns = document.querySelectorAll(".views button");
