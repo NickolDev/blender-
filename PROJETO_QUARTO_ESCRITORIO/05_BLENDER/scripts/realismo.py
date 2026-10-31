@@ -316,9 +316,7 @@ def modelos():
     pl2, _ = importar_gltf(MODELS / "potted_plant_02" / "potted_plant_02.gltf", "06_DECORACAO", "Vaso_planta_prateleira")
     pl2.scale = (0.36, 0.36, 0.36)
     assentar(pl2, (1.375, RIP + 0.125), PT.PRAT_H + 0.025)
-    # porta-lápis e papelaria (canto direito da mesa)
-    st, _ = importar_gltf(MODELS / "stationery_supplies" / "stationery_supplies.gltf", "06_DECORACAO", "Papelaria_mesa")
-    st.location, st.rotation_euler = (MX0 + MESA_W - 0.20, MY0 + 0.12, MESA_Z + 0.074), (0, 0, math.radians(-90))
+    # (porta-lápis removido em 31/10/2026: depois que o PC foi para o tampo ele ficava dentro do gabinete)
     # objetos dos nichos (centro interno: y = RIP + 0,085; piso interno a 1,565)
     zi = PT.NICHO_Z0 + 0.015
     yc = RIP + 0.006 + (PT.NICHO_P - 0.006) / 2
