@@ -101,9 +101,18 @@ def iluminacao():
     # LED vertical
     s.add(f'<circle cx="{s.X(LED_V_X):.1f}" cy="{s.Y(RIP/2):.1f}" r="7" fill="{amb}" stroke="#000"/>')
     s.text(LED_V_X + 0.02, -0.30, "L2 · perfil vertical 2,40 m", 10, amb, bold=True, anchor="middle")
-    # light bar
-    s.line(MX0 + 0.45, MY0 + 0.42, MX0 + 1.25, MY0 + 0.42, "#6250d6", 4)
-    s.text(MX0 + 0.85, MY0 + 0.48, "L3", 12, "#6250d6", bold=True)
+    # light bar (sobre o monitor 1, à direita de quem senta; eixo dos monitores em MON_CX)
+    s.line(MON_CX - 0.312 - 0.22, MY0 + 0.20, MON_CX - 0.312 + 0.22, MY0 + 0.20, "#6250d6", 4)
+    s.text(MON_CX - 0.312, MY0 + 0.26, "L3", 12, "#6250d6", bold=True)
+    # L5 — fita nos 3 nichos sobre a cabeceira (topo a 1,81 m)
+    for k in range(3):
+        nx = NICHOS_X0 + k * (NICHO_W + NICHO_GAP)
+        s.rect(nx, RIP, nx + NICHO_W, RIP + NICHO_P, "none", C_["marc"], 1.2, "calc")
+        s.line(nx + 0.03, RIP + NICHO_P - 0.025, nx + NICHO_W - 0.03, RIP + NICHO_P - 0.025, amb, 4)
+    s.text(0.68, RIP + NICHO_P + 0.08, "L5", 12, amb, bold=True)
+    # L6 — luminária de mesa (plugue no filtro)
+    s.add(f'<circle cx="{s.X(1.01):.1f}" cy="{s.Y(0.12):.1f}" r="7" fill="#fff" stroke="#c46a00" stroke-width="3"/>')
+    s.text(1.08, 0.13, "L6", 12, "#c46a00", bold=True, anchor="start")
     # arandela
     s.add(f'<circle cx="{s.X(ARAND_X):.1f}" cy="{s.Y(0.08):.1f}" r="8" fill="#fff" stroke="{amb}" stroke-width="3"/>')
     s.text(ARAND_X, 0.62, "L4 · arandela h 1,10", 10, amb, bold=True, rot=-90)
@@ -118,16 +127,20 @@ def iluminacao():
     fio([(TOM_D, 0.06), (fx - 0.10, fy)])
     fio([(fx, fy), (fx, RIP + 0.20)])
     fio([(fx - 0.10, fy - 0.02), (LED_V_X, MY0 + 0.05), (LED_V_X, RIP / 2)])
+    fio([(LED_V_X, RIP / 2), (NICHOS_X0 + 3 * NICHO_W + 2 * NICHO_GAP, RIP + 0.04)])   # sobe pelo vão do L2 até os nichos
     fio([(0.06, E / 2), (0.30, E / 2), (0.30, 0.12), (ARAND_X, 0.08)], "#999")
     painel = painel_base() + [
-        ("h", "ILUMINAÇÃO PROPOSTA (tudo em 3000 K)"),
+        ("h", "ILUMINAÇÃO PROPOSTA (luz quente 2700–3000 K)"),
         ("t", "Geral: ventilador c/ luz existente → lâmpada LED 3000 K"),
         ("t", "L1  Fita COB 24 V sob a prateleira — tarefa/ambiente"),
         ("t", "L2  Fita COB em perfil vertical no ripado — decorativa"),
         ("t", "L3  Barra de luz no monitor — tarefa, sem reflexo na tela"),
         ("t", "L4  Arandela articulada na cabeceira — leitura"),
+        ("t", "L5  Fita COB nos 3 nichos (0,72 m), mesma fonte 24 V"),
+        ("t", "L6  Luminária de mesa 2700 K — plugue no filtro"),
         ("t", "F   Filtro c/ DPS + fonte 24 V presos sob o tampo"),
-        ("t", "L1 + L2 dimerizáveis por controle Wi-Fi (cena “noite”)"),
+        ("t", "L1 + L2 + L5 dimerizáveis por controle Wi-Fi"),
+        ("t", "Fonte 24 V: 5,3 m × 16 W/m ≈ 85 W (fonte de 120 W)"),
         ("h", "ALIMENTAÇÃO (sem pontos novos)"),
         ("t", "Tomada Parede D → filtro c/ DPS → PC, monitores, fonte LED"),
         ("t", "Tomada Parede E → arandela + carregador da cama"),

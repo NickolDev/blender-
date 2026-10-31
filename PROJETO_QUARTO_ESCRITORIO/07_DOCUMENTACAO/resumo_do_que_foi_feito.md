@@ -81,7 +81,7 @@ conferidos recalculando as fórmulas de forma independente.
 - **Scripts:** `construir_cena.py` (gera a cena), `renderizar.py` (vistas dia/noite) e `validar_cena.py` (auditoria).
 - **Materiais:** Poly Haven CC0 (freijó, piso, tecidos) + tintas procedurais. HDRIs de dia e de noite vistos pela janela.
 - **Sketchfab:** não usado (exige token). Todos os móveis foram modelados com as medidas reais.
-- **Validação:** 35 de 35 verificações OK depois de duas correções reais (posição do PC e comprimento do tapete),
+- **Validação (Fase D):** 35 de 35 verificações OK depois de duas correções reais (posição do PC e comprimento do tapete),
   aplicadas também na planta 2D. Detalhes em `07_DOCUMENTACAO/validacao_tecnica.md`.
 
 ## Fase E — Decoração e PC sobre a mesa (31/10/2026)
@@ -101,7 +101,8 @@ instalado como módulo Python `bpy`; o Blender MCP não está disponível aqui).
   média movida para a prateleira.
 - **Validação:** 58 de 58 verificações OK, incluindo as novas (`validacao_tecnica.md`).
 - **Atualizados:** plantas 2D (mobiliada, iluminação, elevação da Parede D), orçamento (XLSX, CSV, gráficos), lista de
-  compras (agora gerada por `04_ORCAMENTO/fonte/gerar_lista_compras.py`), renders, panoramas do tour 360°, modelo do
+  compras (agora gerada por `04_ORCAMENTO/fonte/gerar_lista_compras.py`), planta de iluminação (L5 nichos,
+  L6 luminária de mesa), renders, panoramas do tour 360°, modelo do
   visualizador 3D e créditos.
 - **Renders desta rodada:** feitos em CPU (sem GPU na nuvem), com qualidade reduzida: vistas com 96 amostras e
   panoramas 360° com 2048 × 1024 px e 64 amostras. Para a qualidade final, rode no desktop (GPU RX 6750 XT) sem as

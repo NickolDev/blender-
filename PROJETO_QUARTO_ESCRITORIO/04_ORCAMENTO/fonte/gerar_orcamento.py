@@ -172,7 +172,9 @@ def gerar_xlsx():
         "• Piso de madeira colante: fora do orçamento, conforme combinado.",
         "• Preços Pichau = à vista no PIX. Amazon = preço do anúncio no dia; frete pode variar por CEP.",
         "• Tinta grafite: o preço é o da base branca; a cor preparada em loja pode custar mais. Confirmar na loja.",
-        "• Marcenaria (ripado, tampo, prateleira) e mão de obra = estimativas por faixa de mercado; pedir 3 orçamentos locais.",
+        "• Marcenaria (ripado, tampo, prateleira, nichos) e mão de obra = estimativas por faixa de mercado; pedir 3 orçamentos locais.",
+        "• Decoração (opcional): preços estimados, não pesquisados (loja bloqueada na sessão de 31/10/2026). Pesquisar antes de comprar.",
+        "• PC: fica sobre o tampo (suporte de gabinete removido em 31/10/2026). Monitores, PC e notebook são do usuário.",
         "• Premium: a estrutura Marsail é vendida pela Amazon Global (importação); prazo e impostos podem variar.",
     ]):
         ws_r.cell(row=nota + k, column=1, value=t).font = Font(bold=(k == 0))
@@ -266,7 +268,7 @@ def grafico_distribuicao(T):
     _estilo(ax)
     ax.set_xlim(0, 100)
     ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, _: f"{x:.0f}%"))
-    ax.legend(ncol=7, loc="upper left", bbox_to_anchor=(0, -0.1), frameon=False, fontsize=9.5)
+    ax.legend(ncol=4, loc="upper left", bbox_to_anchor=(0, -0.1), frameon=False, fontsize=9.5)
     fig.suptitle("Distribuição percentual dos gastos por cenário", x=0.02, ha="left", fontsize=14,
                  fontweight="bold", color=INK)
     fig.tight_layout(rect=(0, 0, 1, 0.93))
@@ -284,7 +286,7 @@ def grafico_cenarios(T):
     _estilo(ax)
     ax.set_xlim(0, max(tot) * 1.15)
     ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, _: brl(x)))
-    ax.legend(ncol=7, loc="upper left", bbox_to_anchor=(0, -0.1), frameon=False, fontsize=9.5)
+    ax.legend(ncol=4, loc="upper left", bbox_to_anchor=(0, -0.1), frameon=False, fontsize=9.5)
     fig.suptitle("Comparação entre cenários — custo total por categoria", x=0.02, ha="left", fontsize=14,
                  fontweight="bold", color=INK)
     fig.text(0.02, 0.89, "Sem teto de orçamento informado: não há comparação com orçamento disponível",
