@@ -1,6 +1,8 @@
 # Lista de compras — cenário Equilibrado
 
-Preços consultados em 30/10/2026 (reconfirmar antes de comprar). Total com reserva de 10%: **R$ 11.620**. Detalhes e fórmulas em `04_ORCAMENTO/orcamento_completo.xlsx`.
+Preços consultados em 30/10/2026 (reconfirmar antes de comprar). Total com reserva de 10%: **R$ 13.304**. Detalhes e fórmulas em `04_ORCAMENTO/orcamento_completo.xlsx`.
+
+Itens marcados *estimativa* não têm cotação: pedir orçamento ou pesquisar o preço antes de comprar.
 
 
 ## Mobiliário
@@ -10,16 +12,16 @@ Preços consultados em 30/10/2026 (reconfirmar antes de comprar). Total com rese
 - [ ] **Cadeira ergonômica** — [DT3 Elin Black 14881-2 (braço 5D, encosto de cabeça 3D, lombar)](https://www.pichau.com.br/cadeira-ergonomica-dt3-elin-black-14881-2) · 1 un × R$ 1199.99 = **R$ 1199.99**
 - [ ] **Cama box + colchão solteiro** — [Gazin Maximus molas ensacadas, linho grafite/preto](https://www.amazon.com.br/dp/B0D1J7X17Z) · 1 un × R$ 899.10 = **R$ 899.10**
 - [ ] **Braço articulado 2 monitores** — [ELG F160N 17–35" (2–9 kg/braço; borda ou furo)](https://www.amazon.com.br/dp/B0765KZDWP) · 1 un × R$ 218.87 = **R$ 218.87**
-- [ ] **Suporte de gabinete** — [Suporte suspenso sob a mesa, giratório (10–15 kg)](https://www.amazon.com.br/dp/B0GWDYZB8F) · 1 un × R$ 199.49 = **R$ 199.49**
 
 ## Marcenaria
 
 - [ ] **Painel ripado Parede D (piso→teto)** — Ripado MDF BP freijó + fundo preto, recortes, instalado · 6.996 m² × R$ 400.00 = **R$ 2798.40** *(estimativa — pedir orçamento)*
 - [ ] **Prateleira sobre a mesa** — Prateleira freijó 170×25 c/ rasgo para LED, h = 1,95 m · 1 un × R$ 500.00 = **R$ 500.00** *(estimativa — pedir orçamento)*
+- [ ] **Nichos iluminados 3× (cabeceira)** — MDF BP freijó 15 mm, fundo preto, rasgo p/ LED · 1 vb × R$ 450.00 = **R$ 450.00** *(estimativa — pedir orçamento)*
 
 ## Iluminação
 
-- [ ] **Fita LED COB 3000 K** — [Stella All Light Pro 16W/m 24V COB 3000K IRC 95+ 5 m](https://www.amazon.com.br/dp/B0F7ZGD3M2) · 1 rolo × R$ 200.69 = **R$ 200.69**
+- [ ] **Fita LED COB 3000 K** — [Stella All Light Pro 16W/m 24V COB 3000K IRC 95+ 5 m](https://www.amazon.com.br/dp/B0F7ZGD3M2) · 2 rolo × R$ 200.69 = **R$ 401.38**
 - [ ] **Fonte 24 V** — [Fonte chaveada slim 24V 5A 120W bivolt](https://www.amazon.com.br/dp/B0H7CQ2BY2) · 1 un × R$ 61.99 = **R$ 61.99**
 - [ ] **Perfil de alumínio p/ LED** — [Perfil LED embutir 24×7 mm slim 2 m preto](https://www.amazon.com.br/dp/B0F1ZBZZTP) · 3 barra × R$ 29.90 = **R$ 89.70**
 - [ ] **Controle Wi-Fi da fita** — [Controlador Wi-Fi c/ dimmer (Alexa/Google)](https://www.amazon.com.br/dp/B0FS91PKKL) · 1 un × R$ 43.02 = **R$ 43.02**
@@ -44,6 +46,17 @@ Preços consultados em 30/10/2026 (reconfirmar antes de comprar). Total com rese
 - [ ] **Bandeja de cabos sob a mesa** — [Bandeja organizadora sem perfuração](https://www.amazon.com.br/dp/B0GJRDZM82) · 1 un × R$ 119.69 = **R$ 119.69**
 - [ ] **Suporte de notebook** — [Suporte dobrável alumínio c/ regulagem](https://www.amazon.com.br/dp/B0H13G1VTW) · 1 un × R$ 65.78 = **R$ 65.78**
 
+## Decoração (opcional)
+
+- [ ] **Luminária de mesa articulada** — Luminária articulada preta, E27, lâmpada 2700 K · 1 un × R$ 120.00 = **R$ 120.00** *(estimativa — pedir orçamento)*
+- [ ] **Suporte de headphone** — Suporte de mesa em metal preto · 1 un × R$ 60.00 = **R$ 60.00** *(estimativa — pedir orçamento)*
+- [ ] **Quadros P&B (3 na parede + 2 na prateleira)** — Impressões P&B 40×55, 2× 36×26, 20×25, 15×20 c/ moldura preta e passe-partout · 1 un × R$ 350.00 = **R$ 350.00** *(estimativa — pedir orçamento)*
+- [ ] **Planta pendente** — Vaso cerâmica preta Ø18 + suporte de corda + samambaia + gancho de teto · 1 un × R$ 120.00 = **R$ 120.00** *(estimativa — pedir orçamento)*
+- [ ] **Objetos dos nichos** — Vaso cerâmica + elefante em madeira + escultura de baleia (~15 cm) · 1 un × R$ 200.00 = **R$ 200.00** *(estimativa — pedir orçamento)*
+- [ ] **Plantas da prateleira** — Vaso médio c/ planta + suculenta · 1 un × R$ 100.00 = **R$ 100.00** *(estimativa — pedir orçamento)*
+- [ ] **Relógio LED de prateleira** — Relógio digital LED 12 cm · 1 un × R$ 70.00 = **R$ 70.00** *(estimativa — pedir orçamento)*
+- [ ] **Caneca e acessórios de mesa** — Caneca de cerâmica + porta-lápis · 1 un × R$ 60.00 = **R$ 60.00** *(estimativa — pedir orçamento)*
+
 ## Serviços
 
 - [ ] **Mão de obra de pintura** — Pintor c/ preparo (paredes + teto) · 24.2349 m² × R$ 35.00 = **R$ 848.22** *(estimativa — pedir orçamento)*
@@ -55,6 +68,9 @@ Preços consultados em 30/10/2026 (reconfirmar antes de comprar). Total com rese
 1. Eletricista: conferir a tomada da Parede D e instalar o prolongador de caixa.
 2. Pintura (paredes e teto) **antes** do ripado e dos móveis.
 3. Piso de madeira e rodapé (fora deste orçamento).
-4. Marceneiro: ripado (com recorte da tomada e vão do LED a x ≈ 0,91 m), prateleira a 1,95 m e tampo com furo para o braço.
+4. Marceneiro: ripado (com recorte da tomada e vão do LED a x ≈ 0,91 m), prateleira a 1,95 m, 3 nichos sobre a
+   cabeceira (base a 1,55 m, x 0,06–0,82) e tampo com furo para o braço (eixo dos monitores 6 cm à esquerda do centro).
 5. Montar a estrutura da mesa com o tampo novo, depois a fita LED, a fonte e o controlador.
-6. Cama, cadeira, tapete, braço dos monitores e acessórios.
+6. Cama, cadeira, tapete, braço dos monitores, PC sobre o tampo (canto direito) e acessórios.
+7. Decoração: quadros na Parede E (y 0,10–0,94; z 1,20–1,75), gancho de teto da planta pendente em (0,30; 2,25),
+   objetos dos nichos, plantas e relógio na prateleira.

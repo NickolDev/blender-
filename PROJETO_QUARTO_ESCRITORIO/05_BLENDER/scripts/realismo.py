@@ -9,7 +9,7 @@ O que faz:
 - cadeira com assento/encosto estofados e encosto em tela;
 - teclado com teclas, monitores com papel de parede;
 - materiais: brilho de tecido (sheen), verniz leve no piso, variação de rugosidade nas paredes;
-- modelos CC0 do Poly Haven: ventilador de teto, vaso, livros, quadro e porta-lápis;
+- modelos CC0 do Poly Haven: ventilador de teto, vasos, livros, porta-lápis, objetos dos nichos e samambaia;
 - câmeras panorâmicas 360° para o tour virtual.
 """
 import math
@@ -130,7 +130,7 @@ def materiais():
 # ------------------------------------------------------------------ chanfros
 def chanfros():
     alvo = ("03_MOBILIARIO", "04_MARCENARIA", "02_PORTAS_JANELAS")
-    pular = ("Monitor_27_", "Barra_Luz", "Mousepad", "Notebook_tela", "Janela_Folha")
+    pular = ("Monitor_27_", "Barra_Luz", "Mousepad", "Notebook_tela", "Janela_Folha", "PC_Gabinete_vidro", "PC_Fan_")
     for c in alvo:
         for ob in col(c).all_objects:
             if ob.type != "MESH" or ob.name.startswith(pular) or any(m.type == "BEVEL" for m in ob.modifiers):
@@ -305,17 +305,26 @@ def modelos():
     # vaso pequeno na prateleira (ponta esquerda)
     pl, _ = importar_gltf(MODELS / "potted_plant_04" / "potted_plant_04.gltf", "06_DECORACAO", "Vaso_suculenta_prateleira")
     pl.location = (MX0 + 0.16, RIP + 0.13, PT.PRAT_H + 0.025)
-    # planta média em escala reduzida sobre a mesa (canto esquerdo, atrás do notebook)
-    pl2, _ = importar_gltf(MODELS / "potted_plant_02" / "potted_plant_02.gltf", "06_DECORACAO", "Vaso_planta_mesa")
-    pl2.location, pl2.scale = (MX0 + 0.07, RIP + 0.09, MESA_Z), (0.36, 0.36, 0.36)
-    pl2.rotation_euler = (0, 0, math.radians(30))
+    # planta média em escala reduzida na prateleira (x 1,25–1,50); o canto da mesa ficou com a luminária
+    pl2, _ = importar_gltf(MODELS / "potted_plant_02" / "potted_plant_02.gltf", "06_DECORACAO", "Vaso_planta_prateleira")
+    pl2.scale = (0.36, 0.36, 0.36)
+    assentar(pl2, (1.375, RIP + 0.125), PT.PRAT_H + 0.025)
     # porta-lápis e papelaria (canto direito da mesa)
     st, _ = importar_gltf(MODELS / "stationery_supplies" / "stationery_supplies.gltf", "06_DECORACAO", "Papelaria_mesa")
     st.location, st.rotation_euler = (MX0 + MESA_W - 0.20, MY0 + 0.12, MESA_Z + 0.074), (0, 0, math.radians(-90))
-    # quadro P&B na Parede E, ao lado da cabeceira (entre a Parede D e a janela)
-    fr, _ = importar_gltf(MODELS / "hanging_picture_frame_01" / "hanging_picture_frame_01.gltf", "06_DECORACAO",
-                          "Quadro_ParedeE")
-    fr.location, fr.rotation_euler, fr.scale = (0.0, 0.55, 1.62), (0, 0, math.radians(90)), (0.8, 0.8, 0.8)
+    # objetos dos nichos (centro interno: y = RIP + 0,085; piso interno a 1,565)
+    zi = PT.NICHO_Z0 + 0.015
+    yc = RIP + 0.006 + (PT.NICHO_P - 0.006) / 2
+    cx = [PT.NICHOS_X0 + k * (PT.NICHO_W + PT.NICHO_GAP) + PT.NICHO_W / 2 for k in range(3)]
+    for k, (modelo, esc, rot) in enumerate((("ceramic_vase_02", 0.6, 0), ("carved_wooden_elephant", 1.5, 20),
+                                            ("bronze_whale_statue", 0.14, 90))):
+        r, _ = importar_gltf(MODELS / modelo / f"{modelo}.gltf", "06_DECORACAO", f"Nicho_{k+1}_objeto_{modelo}")
+        r.scale, r.rotation_euler = (esc,) * 3, (0, 0, math.radians(rot))
+        assentar(r, (cx[k], yc), zi)
+    # samambaia no vaso pendente (base do vaso a 1,95 m; vaso de 16 cm)
+    fe, _ = importar_gltf(MODELS / "fern_02" / "fern_02.gltf", "06_DECORACAO", "Planta_pendente_samambaia")
+    fe.scale = (0.22, 0.22, 0.22)
+    assentar(fe, (0.30, 2.25), 1.95 + 0.16 - 0.025)
     # livros: trecho do conjunto do Poly Haven (só os de até 24 cm de profundidade)
     blend = MODELS / "decorative_book_set_01" / "decorative_book_set_01.blend"
     with bpy.data.libraries.load(str(blend), link=False) as (src, dst):
@@ -348,6 +357,26 @@ def modelos():
         except ReferenceError:              # já removido acima
             pass
     return len(escolhidos)
+
+
+def caixa_mundo(raiz):
+    bpy.context.view_layer.update()
+    lo, hi = Vector((1e9,) * 3), Vector((-1e9,) * 3)
+    for o in raiz.children_recursive:
+        if o.type == "MESH":
+            for c in o.bound_box:
+                w = o.matrix_world @ Vector(c)
+                lo, hi = Vector(map(min, lo, w)), Vector(map(max, hi, w))
+    return lo, hi
+
+
+def assentar(raiz, centro_xy, z_base):
+    """Move a raiz para que a caixa real do modelo fique centrada em centro_xy com a base em z_base."""
+    lo, hi = caixa_mundo(raiz)
+    raiz.location += Vector((centro_xy[0] - (lo.x + hi.x) / 2, centro_xy[1] - (lo.y + hi.y) / 2, z_base - lo.z))
+    lo, hi = caixa_mundo(raiz)
+    raiz["dimensoes_reais_cm"] = " × ".join(f"{(h - l) * 100:.1f}" for l, h in zip(lo, hi))
+    print("ASSENTADO", raiz.name, raiz["dimensoes_reais_cm"], tuple(round(v, 3) for v in lo), tuple(round(v, 3) for v in hi))
 
 
 def Matrix_id():

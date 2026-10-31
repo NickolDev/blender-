@@ -92,8 +92,48 @@ lo_e, hi_e = aabb("Cama_Edredom", "Cama_Manta_Caramelo")
 chk("Roupa de cama abaixo do tampo na altura mínima (sem contato)", hi_e.z < 0.73 - 0.025,
     f"topo da roupa de cama {hi_e.z:.3f} m · face inferior do tampo ≥ {0.73-0.025:.3f} m")
 sep("Mesa × Parede C", ["Mesa_Tampo_Freijo_170x70x2_5"], ["Parede_C"], 0.019)
-sep("PC × perna direita da estrutura", ["PC_Gabinete_em_suporte_suspenso"], ["Mesa_Estrutura_coluna_dir"], 0.02)
-sep("PC × perna esquerda da estrutura", ["PC_Gabinete_em_suporte_suspenso"], ["Mesa_Estrutura_coluna_esq"], 0.5)
+# --- PC sobre o tampo, notebook, decoração (plano aprovado em 30/10/2026)
+PC = ["PC_Gabinete_*"]
+lo_pc, hi_pc = aabb(*PC)
+lo_t, hi_t = aabb("Mesa_Tampo_Freijo_170x70x2_5")
+chk("PC dentro do tampo (x, y) e apoiado nele", lo_pc.x >= lo_t.x - 1e-4 and hi_pc.x <= hi_t.x + 1e-4 and lo_pc.y >= lo_t.y - 1e-4
+    and hi_pc.y <= hi_t.y + 1e-4 and abs(lo_pc.z - hi_t.z) <= TOL,
+    f"PC x {lo_pc.x:.3f}–{hi_pc.x:.3f}, y {lo_pc.y:.3f}–{hi_pc.y:.3f}, base z {lo_pc.z:.3f} · tampo x {lo_t.x:.3f}–{hi_t.x:.3f}, "
+    f"y {lo_t.y:.3f}–{hi_t.y:.3f}, z {hi_t.z:.3f}")
+d = tuple(round(h - l, 3) for l, h in zip(lo_pc, hi_pc))
+chk("Gabinete 23 × 45 × 46 (com pés)", all(abs(a - b) <= TOL for a, b in zip(d, (PT.PC_W, PT.PC_P, PT.PC_H))), f"medido {d}")
+sep("PC × monitor direito", PC, ["Monitor_27_2", "Monitor_27_2_tela"], 0.02)
+sep("PC × coluna do braço dos monitores", PC, ["Braco_ELG_F160N_*"], 0.02)
+chk("PC × prateleira com a mesa no máximo (1,18)", hi_pc.z + (1.18 - 0.73) < PT.PRAT_H,
+    f"topo do PC no máximo = {hi_pc.z + 0.45:.3f} m · prateleira = {PT.PRAT_H} m")
+NBK = ["Notebook_*", "Suporte_Notebook_*"]
+sep("Notebook × monitor esquerdo", NBK, ["Monitor_27_1", "Monitor_27_1_tela"], 0.01)
+sep("Notebook × teclado", NBK, ["Teclado"], 0.02)
+sep("Luminária de mesa × monitor esquerdo", ["Luminaria_mesa_*"], ["Monitor_27_1"], 0.02)
+sep("Luminária de mesa × notebook", ["Luminaria_mesa_*"], NBK, 0.02)
+sep("Caneca × mousepad", ["Caneca", "Caneca_alca"], ["Mousepad"], 0.01)
+sep("Headphone × PC", ["Suporte_headphone_*", "Headphone_*"], PC, 0.02)
+for nome in ("Suporte_headphone_*", "Caneca", "Luminaria_mesa_*"):
+    lo, hi = aabb(nome)
+    chk(f"{nome.rstrip('*_')} dentro do tampo", lo.x >= lo_t.x and hi.x <= hi_t.x and lo.y >= lo_t.y and hi.y <= hi_t.y,
+        f"x {lo.x:.3f}–{hi.x:.3f}, y {lo.y:.3f}–{hi.y:.3f}")
+lo_n, hi_n = aabb("Nicho_*")
+chk("Nichos ≥ 0,90 m acima do colchão", lo_n.z - PT.CAMA_H >= 0.90 - 1e-4,
+    f"base dos nichos z = {lo_n.z:.3f} · colchão {PT.CAMA_H:.2f} → {lo_n.z - PT.CAMA_H:.3f} m")
+chk("Nichos dentro da largura da cama (sobre a cabeceira)", lo_n.x >= 0 and hi_n.x <= P.CAMA_W,
+    f"x {lo_n.x:.3f}–{hi_n.x:.3f} · cama 0–{P.CAMA_W}")
+sep("Nichos × perfil de LED vertical", ["Nicho_*"], ["L2_Fita_LED_vertical"], 0.05)
+sep("Nichos × arandela", ["Nicho_*"], ["L4_Arandela_*"], 0.30)
+lo, hi = aabb("Planta_pendente_vaso")
+chk("Planta pendente com a base ≥ 1,95 m", lo.z >= 1.95 - 1e-4, f"base do vaso z = {lo.z:.3f}")
+sep("Planta pendente × ventilador", ["Planta_pendente_*"], ["Ventilador_*"], 0.30)
+lo, hi = aabb("Quadro_A_*", "Quadro_B_*", "Quadro_C_*")
+chk("Quadros da Parede E antes da janela (y < 1,10)", hi.y < P.JAN_Y0 and hi.y <= 1.10,
+    f"quadros até y = {hi.y:.3f} · janela começa em y = {P.JAN_Y0:.3f}")
+sep("Quadros × nichos", ["Quadro_A_*", "Quadro_B_*", "Quadro_C_*"], ["Nicho_*"], 0.02)
+lo, hi = aabb("Quadro_D_*", "Quadro_E_*", "Relogio_LED_*")
+chk("Itens da prateleira dentro dela", lo.x >= PT.MX0 and hi.x <= PT.MX0 + PT.MESA_W and hi.y <= P.RIP + PT.PRAT_P,
+    f"x {lo.x:.3f}–{hi.x:.3f}, y até {hi.y:.3f}")
 sep("Cadeira × cama", ["Cadeira_*"], ["Cama_*"], 0.05)
 sep("Cama × face das portas do armário (partes rígidas; planta = 0,94)", CAMA_RIGIDA, ["Armario_existente_porta_*"], 0.939)
 sep("Cama × puxadores do armário (puxadores estimados, 1,5 cm)", CAMA_RIGIDA, ["Armario_existente_puxador_*"], 0.92)
@@ -105,8 +145,8 @@ sep("Cadeira × armário (circulação atrás da cadeira)", ["Cadeira_*"], ["Arm
 lo, hi = aabb("Monitor_27_*")
 chk("Monitores na altura da elevação (0,90–1,265 sentado)", abs(lo.z - 0.90) <= 0.01 and abs(hi.z - 1.265) <= 0.01,
     f"monitores de z = {lo.z:.3f} a {hi.z:.3f}")
-chk("Monitores centrados na mesa", abs((lo.x + hi.x) / 2 - (PT.MX0 + PT.MESA_W / 2)) <= 0.02,
-    f"centro x = {(lo.x + hi.x) / 2:.3f} · mesa {PT.MX0 + PT.MESA_W / 2:.3f}")
+chk("Monitores no eixo do braço (6 cm à esquerda do centro da mesa)", abs((lo.x + hi.x) / 2 - PT.MON_CX) <= 0.01,
+    f"centro x = {(lo.x + hi.x) / 2:.3f} · braço {PT.MON_CX:.3f} · mesa {PT.MX0 + PT.MESA_W / 2:.3f}")
 topo_max = hi.z + (1.18 - 0.73)
 chk("Monitores × prateleira com a mesa no máximo (1,18)", topo_max < PT.PRAT_H,
     f"topo dos monitores no máximo = {topo_max:.3f} m · prateleira = {PT.PRAT_H} m")

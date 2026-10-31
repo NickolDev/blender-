@@ -14,7 +14,12 @@ MY0 = RIP + GAP                    # 0,05
 PRAT_P, PRAT_H = 0.25, 1.95        # prateleira: profundidade e altura da face inferior
 LED_V_X = (CAMA_W + MX0) / 2       # perfil vertical no vão de 5 cm entre cama e mesa
 ARAND_X, ARAND_H = 0.44, 1.10
-CPU_X0 = MX0 + MESA_W - 0.55       # PC entre as pernas da estrutura (perna direita em x ≈ 2,38), 88 cm livres p/ joelhos
+# PC sobre o tampo, canto direito (gabinete com vidro frontal e lateral −x): 23 × 45 × 46 cm
+PC_X0, PC_Y0, PC_W, PC_P, PC_H = 2.37, 0.12, 0.23, 0.45, 0.46
+CPU_X0 = PC_X0
+MON_CX = 1.72                      # centro dos monitores no braço (6 cm à esquerda do centro da mesa)
+NB = (0.97, 0.42, 1.29, 0.66)      # notebook em suporte baixo, na frente à esquerda (x0, y0, x1, y1)
+NICHOS_X0, NICHO_W, NICHO_H, NICHO_P, NICHO_Z0, NICHO_GAP = 0.06, 0.24, 0.26, 0.16, 1.55, 0.02
 TOM_D = D / 2
 CAMA_H = 0.62
 TAP = (1.08, 0.78, 2.48, 2.78)     # tapete 1,40 × 2,00 (x0, y0, x1, y1) — 7 cm livres até o armário
@@ -30,8 +35,13 @@ def mobiliada():
     s.rect(0.06, RIP + 0.04, CAMA_W - 0.06, RIP + 0.40, "#d9d9d9", "#555", 1)
     movel(s, MX0, MY0, MX0 + MESA_W, MY0 + MESA_P, C_["mesa"], "MESA (2)", "170 × 70", dy=0.10)
     s.rect(MX0, RIP, MX0 + MESA_W, RIP + PRAT_P, "none", C_["marc"], 2, "calc")
-    s.rect(CPU_X0, MY0 + 0.15, CPU_X0 + 0.24, MY0 + 0.63, "none", "#bbb", 1.2, "est")
-    s.text(CPU_X0 + 0.12, MY0 + 0.11, "PC", 9, "#ccc")
+    s.rect(PC_X0, PC_Y0, PC_X0 + PC_W, PC_Y0 + PC_P, "#2a2a2a", "#e0e0e0", 1.5)
+    s.text(PC_X0 + PC_W / 2, PC_Y0 + PC_P / 2, "PC", 9, "#fff", bold=True)
+    s.rect(*NB, "none", "#777", 1.0, "est")
+    s.text((NB[0] + NB[2]) / 2, (NB[1] + NB[3]) / 2, "notebook", 8, "#777")
+    for k in range(3):
+        nx = NICHOS_X0 + k * (NICHO_W + NICHO_GAP)
+        s.rect(nx, RIP, nx + NICHO_W, RIP + NICHO_P, "none", C_["marc"], 1.5, "calc")
     cadeira(s, MX0 + MESA_W / 2 - 0.10, MY0 + MESA_P + 0.38)
     zona(s, 0.0, RIP + CAMA_L, D, E, "")
     s.text(1.32, 2.55, "circulação / acesso ao armário", 10, C_["circ"], bold=True)
@@ -57,15 +67,18 @@ def mobiliada():
         ("sw", ("#ffffff", "calc", "(3) Prateleira 170 × 25 · face inferior a 195")),
         ("sw", ("url(#rip)", "conf", "(4) Ripado 265 × 3 × 264 (piso → teto)")),
         ("sw", ("#3d3f44", "conf", "(5) Cadeira — base ~65 (est.)")),
-        ("sw", ("#ffffff", "est", "(6) PC em suporte suspenso sob a mesa")),
+        ("sw", ("#2a2a2a", "conf", "(6) PC sobre a mesa 23 × 45 × 46 (vidro)")),
         ("sw", ("#d8d8d8", "est", "(7) Tapete 140 × 200")),
+        ("sw", ("#ffffff", "calc", "(8) 3 nichos 24 × 26 × 16 sobre a cabeceira")),
         ("h", "VERIFICAÇÕES"),
         ("t", "✓ Cadeira recua até ~1,50 m; 1,35 m livres até o armário"),
         ("t", "✓ 0,94 m entre o pé da cama e o armário"),
         ("t", "✓ Portas de entrada e do banheiro sem interferência"),
         ("t", "✓ A mesa sobe e desce sem tocar no ripado (folga de 2 cm)"),
         ("t", "✓ O PC fica longe da cabeceira (ruído/luz)"),
-        ("t", "✓ PC entre as pernas da estrutura; 0,88 m livres p/ joelhos"),
+        ("t", "✓ PC no tampo: topo a 1,64 m com a mesa no máximo"),
+        ("t", "   (< 1,95 da prateleira); carga ≈ 64 kg < 80 kg"),
+        ("t", "✓ Notebook à frente: não cruza o monitor esquerdo"),
         ("warn", "⚠ Braço do monitor: fixar pelo FURO no tampo"),
         ("t", "   (a presilha de borda não cabe na folga de 2 cm)"),
     ]
@@ -161,12 +174,18 @@ def elevacao_D():
         s.rect(lx - 0.03, 0, lx + 0.03, 0.705, "#1a1a1a")
     s.rect(x0, 1.155, x1, 1.18, "none", "#5a3a1e", 1.2, "calc")
     # monitores (2 × 27" ≈ 61 × 36 cm) em braço, altura sentada
-    for cx in ((x0 + x1) / 2 - 0.32, (x0 + x1) / 2 + 0.32):
+    for cx in (xm(MON_CX) - 0.32, xm(MON_CX) + 0.32):
         s.rect(cx - 0.305, 0.90, cx + 0.305, 1.26, "#222", "#000", 1)
-    s.text((x0 + x1) / 2, 1.30, "2 × 27\" (posição sentada)", 10, "#222")
-    # PC suspenso
-    s.rect(xm(CPU_X0 + 0.24), 0.22, xm(CPU_X0), 0.68, "none", "#666", 1.2, "est")
-    s.text(xm(CPU_X0 + 0.12), 0.45, "PC", 10, "#666")
+    s.text(xm(MON_CX), 1.30, "2 × 27\" (posição sentada)", 10, "#222")
+    # PC sobre o tampo (posição sentada) e contorno na altura máxima
+    s.rect(xm(PC_X0 + PC_W), 0.73, xm(PC_X0), 0.73 + PC_H, "#2a2a2a", "#000", 1.2)
+    s.text(xm(PC_X0 + PC_W / 2), 0.73 + PC_H / 2, "PC", 10, "#fff", bold=True)
+    s.rect(xm(PC_X0 + PC_W), 1.18, xm(PC_X0), 1.18 + PC_H, "none", "#666", 1.0, "calc")
+    # nichos iluminados sobre a cabeceira
+    for k in range(3):
+        nx = NICHOS_X0 + k * (NICHO_W + NICHO_GAP)
+        s.rect(xm(nx + NICHO_W), NICHO_Z0, xm(nx), NICHO_Z0 + NICHO_H, "#1a1a1a", C_["marc"], 1.4)
+        s.line(xm(nx + NICHO_W) + 0.02, NICHO_Z0 + NICHO_H - 0.015, xm(nx) - 0.02, NICHO_Z0 + NICHO_H - 0.015, "#ffb46b", 3)
     # prateleira + LED
     s.rect(x0, PRAT_H, x1, PRAT_H + 0.025, "#b8875a", "#5a3a1e", 1.2)
     s.line(x0 + 0.03, PRAT_H - 0.01, x1 - 0.03, PRAT_H - 0.01, "#ffb46b", 4)
@@ -196,6 +215,8 @@ def elevacao_D():
         ("t", "   junto à mesa (padrão 1,80–1,85)"),
         ("t", "✓ Arandela a 1,10: ~45 cm acima do colchão"),
         ("t", "✓ O ar-condicionado (Parede C) não toca a prateleira"),
+        ("t", "✓ PC no máximo: topo 1,64 < 1,95 da prateleira"),
+        ("t", "✓ Nichos 1,55–1,81: 0,93 m acima do colchão"),
         ("warn", "⚠ Altura da tomada: medir antes de cortar o ripado"),
         ("warn", "⚠ Monitores desenhados como referência (27\" ≈ 61 × 36)"),
     ]

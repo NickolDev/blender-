@@ -1,4 +1,9 @@
-# Plano: decoração + PC na mesa (aprovado pelo usuário em 30/10/2026, NÃO IMPLEMENTADO ainda)
+# Plano: decoração + PC na mesa (aprovado pelo usuário em 30/10/2026, IMPLEMENTADO em 31/10/2026)
+
+> Implementado como descrito abaixo, com estas diferenças: o elefante já tem 11 cm no arquivo, então a escala
+> é 1,5 (a de ~0,14 vale só para a baleia, que também foi girada 90° para caber no fundo de 14,5 cm); a planta
+> que ficava no canto esquerdo da mesa foi para a prateleira (x 1,25–1,50), porque o canto agora é da luminária.
+> Validação: 58 de 58 verificações OK (`validacao_tecnica.md`).
 
 Escolhas do usuário: PC sobre a mesa com gabinete de vidro; quadros P&B, nichos iluminados, plantas e
 acessórios de setup.
