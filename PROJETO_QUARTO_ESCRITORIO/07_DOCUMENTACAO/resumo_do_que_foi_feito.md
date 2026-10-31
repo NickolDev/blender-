@@ -1,4 +1,4 @@
-# O que foi feito até agora — Fases A a F
+# O que foi feito até agora — Fases A a G
 
 Atualizado em 31/10/2026. Projeto: Suíte 01 (quarto + escritório).
 
@@ -144,3 +144,18 @@ instalado como módulo Python `bpy`; o Blender MCP não está disponível aqui).
   vista de cima e a verificação completa do layout.
 - **Correção achada no caminho:** o porta-lápis da mesa ficava dentro do gabinete do PC (sobra de antes de o PC ir para
   o tampo). Foi removido.
+
+## Fase G — Entrega sem as limitações anteriores (31/10/2026)
+
+- **Renders dos temas em 1920×1200** (antes 1280×800): as 36 imagens dos 6 temas × 3 layouts, de dia e de noite,
+  mais as 3 plantas vistas de cima.
+- **Tour 360° com os 6 temas**: 40 panoramas novos em 2048 px (5 temas × 4 pontos × dia/noite, no layout A); o tema
+  escuro usa os panoramas do projeto aprovado. O tema se escolhe no canto superior do tour (ou pelo link `#japandi`).
+- **Preços reais da decoração**: cada tema tem lista de compras com produto, loja, link e preço (busca web de
+  31/10/2026, conferir no link); o orçamento passou a usar o pacote do tema aprovado: R$ 10.115 / 14.584 / 23.101.
+- **Tinta**: no Industrial, produto real (Suvinil Efeito Cimento Queimado, R$ 299,90 a lata de 5 kg). O site da
+  Suvinil estava bloqueado nesta sessão, então os demais tons de parede seguem como referência hex para o leque.
+- **Páginas para celular**: apresentação e tour publicadas como páginas privadas no Claude e ajustadas para tela de
+  celular.
+- **Entrega em .zip**: `ENTREGA/` com o projeto em partes de até 90 MB (`ENTREGA/gerar_zip.py`), ou *Download ZIP* do
+  GitHub.
