@@ -267,12 +267,12 @@
   {
    "verificacao": "Janela: frente livre acima do peitoril",
    "status": "ATENÇÃO",
-   "detalhe": "na frente da janela: monitores (topo 1.26 m), PC (topo 1.19 m), luminária (topo 1.41 m)"
+   "detalhe": "na frente da janela: monitores (topo 1.26 m), PC (topo 1.19 m)"
   },
   {
    "verificacao": "Ar-condicionado: ninguém no jato direto",
-   "status": "ATENÇÃO",
-   "detalhe": "a menos de 0,6 m do aparelho: cama — direcionar as aletas para o centro do quarto"
+   "status": "OK",
+   "detalhe": "nada a menos de 0,6 m do aparelho"
   },
   {
    "verificacao": "Faixa de entrada e porta do banheiro livres",
@@ -296,8 +296,8 @@
   },
   {
    "verificacao": "Planta pendente × ventilador",
-   "status": "FALHA",
-   "detalhe": "folga 8.5 cm (mínimo 10.0 cm)"
+   "status": "OK",
+   "detalhe": "folga 13.5 cm (mínimo 10.0 cm)"
   },
   {
    "verificacao": "Planta de chão × cadeira",
@@ -321,8 +321,8 @@
   },
   {
    "verificacao": "Luminária de braço × monitores",
-   "status": "FALHA",
-   "detalhe": "folga -1.4 cm (mínimo 1.5 cm)"
+   "status": "OK",
+   "detalhe": "folga 2.7 cm (mínimo 1.5 cm)"
   },
   {
    "verificacao": "Luminária de braço × ripado/paredes",

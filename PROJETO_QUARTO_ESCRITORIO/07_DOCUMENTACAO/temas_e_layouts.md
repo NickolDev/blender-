@@ -183,7 +183,7 @@ Contra:
 - A ponta da mesa fica a 20 cm do armário: a 1ª porta só abre se for de correr
 - Sem prateleira sobre a mesa (ela vai para cima da cama)
 
-Verificação no modelo 3D: **17 OK, 3 atenção, 2 falha(s)**
+Verificação no modelo 3D: **20 OK, 2 atenção, 0 falha(s)**
 
 | Status | Verificação | Medição |
 |---|---|---|
@@ -195,18 +195,18 @@ Verificação no modelo 3D: **17 OK, 3 atenção, 2 falha(s)**
 | OK | Cadeira × armário (recuo + passagem) | folga 83.5 cm (mínimo 60.0 cm) |
 | OK | PC longe da cabeceira (ruído e LED) | folga 158.0 cm (mínimo 90.0 cm) |
 | OK | Prateleira fora da mesa | a prateleira não fica sobre a mesa neste layout |
-| ATENÇÃO | Janela: frente livre acima do peitoril | na frente da janela: monitores (topo 1.26 m), PC (topo 1.19 m), luminária (topo 1.41 m) |
-| ATENÇÃO | Ar-condicionado: ninguém no jato direto | a menos de 0,6 m do aparelho: cama — direcionar as aletas para o centro do quarto |
+| ATENÇÃO | Janela: frente livre acima do peitoril | na frente da janela: monitores (topo 1.26 m), PC (topo 1.19 m) |
+| OK | Ar-condicionado: ninguém no jato direto | nada a menos de 0,6 m do aparelho |
 | OK | Faixa de entrada e porta do banheiro livres | livres |
 | ATENÇÃO | Arco das portas do armário (se forem de abrir) | no arco: mesa (até y = 2.65) — ok se as portas forem de correr |
 | OK | Nichos ≥ 0,90 m acima do colchão | folga 93.0 cm (mínimo 90.0 cm) |
 | OK | Planta pendente: folhas acima de 1,90 m | folga 3.9 cm (mínimo 0.0 cm) |
-| FALHA | Planta pendente × ventilador | folga 8.5 cm (mínimo 10.0 cm) |
+| OK | Planta pendente × ventilador | folga 13.5 cm (mínimo 10.0 cm) |
 | OK | Planta de chão × cadeira | folga 65.1 cm (mínimo 5.0 cm) |
 | OK | Planta de chão × mesa e cama | folga 19.7 cm (mínimo 0.0 cm) |
 | OK | Planta de chão dentro do quarto | x 2.08–2.52, y 0.19–0.71 |
 | OK | Tapete dentro do quarto | x 0.62–2.62, y 1.05–2.45 |
-| FALHA | Luminária de braço × monitores | folga -1.4 cm (mínimo 1.5 cm) |
+| OK | Luminária de braço × monitores | folga 2.7 cm (mínimo 1.5 cm) |
 | OK | Luminária de braço × ripado/paredes | folga 1.0 cm (mínimo 0.5 cm) |
 | OK | Tomada usada pela mesa (Parede E) | cabos descem até (0.01, 1.43, 0.33) |
 
