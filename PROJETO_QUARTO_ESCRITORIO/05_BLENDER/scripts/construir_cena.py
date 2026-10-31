@@ -37,7 +37,9 @@ CAMA_W, CAMA_L, CAMA_H = P.CAMA_W, P.CAMA_L, PT.CAMA_H
 MX0, MY0, MESA_W, MESA_P = PT.MX0, PT.MY0, PT.MESA_W, PT.MESA_P
 PRAT_P, PRAT_H = PT.PRAT_P, PT.PRAT_H
 ARAND_X, ARAND_H = PT.ARAND_X, PT.ARAND_H
-CPU_X0 = PT.CPU_X0
+PC_X0, PC_Y0, PC_W, PC_P, PC_H = PT.PC_X0, PT.PC_Y0, PT.PC_W, PT.PC_P, PT.PC_H
+MON_CX = PT.MON_CX
+NB = PT.NB
 TAP = PT.TAP
 TOM_D = PT.TOM_D
 PORTA_H = 2.10                       # estimada (padrão)
@@ -262,6 +264,24 @@ def tela(name):
     return m
 
 
+def arte(name, arquivo):
+    """Impressão P&B fosca; a imagem cobre a face pela coordenada Generated (Y → horizontal, Z → vertical)."""
+    m = principled(name, "#FFFFFF", 0.8)
+    nt = m.node_tree
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    sp = nt.nodes.new("ShaderNodeSeparateXYZ")
+    cb = nt.nodes.new("ShaderNodeCombineXYZ")
+    im = nt.nodes.new("ShaderNodeTexImage")
+    im.image = bpy.data.images.load(str(ASSETS / "textures" / f"{arquivo}.jpg"), check_existing=True)
+    im.extension = "EXTEND"
+    nt.links.new(tc.outputs["Generated"], sp.inputs["Vector"])
+    nt.links.new(sp.outputs["Y"], cb.inputs["X"])
+    nt.links.new(sp.outputs["Z"], cb.inputs["Y"])
+    nt.links.new(cb.outputs["Vector"], im.inputs["Vector"])
+    nt.links.new(im.outputs["Color"], nt.nodes["Principled BSDF"].inputs["Base Color"])
+    return m
+
+
 def materiais():
     M = {}
     M["grafite"] = tinta("Tinta_Grafite_3A3C40", "#3A3C40", 0.82)
@@ -300,6 +320,15 @@ def materiais():
     M["led"] = emissor("LED_3000K", 3000, 8.0)
     M["lampada"] = emissor("Lampada_3000K", 3000, 6.0)
     M["led_bar"] = emissor("LED_Barra_Monitor_4000K", 4000, 4.0)
+    M["led_pc"] = emissor("LED_PC_3000K", 3000, 3.0)
+    M["vidro_fume"] = principled("Vidro_Fume_Gabinete", "#3A3A3C", 0.03, transm=1.0)
+    M["pcb"] = principled("Placa_Mae_PCB", "#1E2124", 0.45)
+    M["ceramica_preta"] = principled("Ceramica_Preta_Fosca", "#202020", 0.55)
+    M["corda"] = principled("Corda_Juta", "#9C7B55", 0.95)
+    M["passe"] = principled("Passe_Partout", "#EFEDE8", 0.9)
+    M["caneca"] = principled("Ceramica_Caneca", "#E9E5DE", 0.3)
+    for nome in ("quadro_A", "quadro_B", "quadro_C", "quadro_D", "quadro_E"):
+        M[nome] = arte(f"Arte_PB_{nome}", nome)
     return M
 
 
@@ -429,13 +458,13 @@ def mobiliario(M):
     parent(p, mesa)
 
     # suporte articulado ELG F160N (fixação por furo) + 2 monitores 27"
-    pole = cyl("Braco_ELG_F160N_coluna", cx, MY0 + 0.07, MESA_Z, 0.02, 0.42, M["preto_metal"], c)
+    pole = cyl("Braco_ELG_F160N_coluna", MON_CX, MY0 + 0.07, MESA_Z, 0.02, 0.42, M["preto_metal"], c)
     parent(pole, mesa)
     mw, mh, md = 0.615, 0.365, 0.045
     for i, sgn in enumerate((-1, 1)):
-        mx = cx + sgn * 0.312
+        mx = MON_CX + sgn * 0.312
         ang = -sgn * math.radians(8)
-        arm_ = box(f"Braco_ELG_F160N_braco_{i+1}", min(cx, mx), MY0 + 0.06, MESA_Z + 0.33, max(cx, mx), MY0 + 0.09,
+        arm_ = box(f"Braco_ELG_F160N_braco_{i+1}", min(MON_CX, mx), MY0 + 0.06, MESA_Z + 0.33, max(MON_CX, mx), MY0 + 0.09,
                    MESA_Z + 0.36, M["preto_metal"], c)
         parent(arm_, mesa)
         mon = box(f"Monitor_27_{i+1}", -mw / 2, 0, -mh / 2, mw / 2, md, mh / 2, M["preto"], c, bevel=0.004, local=True)
@@ -449,7 +478,7 @@ def mobiliario(M):
         parent(mon, mesa)
     # barra de luz sobre o monitor 1
     bar = box("Barra_Luz_Monitor", -0.22, -0.02, 0, 0.22, 0.03, 0.02, M["preto"], c, local=True)
-    bar.location = (cx - 0.312, MY0 + 0.20, MESA_Z + 0.17 + mh + 0.002)
+    bar.location = (MON_CX - 0.312, MY0 + 0.20, MESA_Z + 0.17 + mh + 0.002)
     bar.rotation_euler = (0, 0, math.radians(8))
     parent(bar, mesa)
     led_b = box("Barra_Luz_Monitor_LED", -0.20, 0.0, -0.002, 0.20, 0.012, 0.0, M["led_bar"], c, local=True)
@@ -459,31 +488,27 @@ def mobiliario(M):
     # periféricos
     tp = box("Mousepad", cx - 0.45, MY0 + MESA_P - 0.40, MESA_Z, cx + 0.45, MY0 + MESA_P - 0.04, MESA_Z + 0.003, M["preto"], c)
     parent(tp, mesa)
-    kb = box("Teclado", cx - 0.20, MY0 + MESA_P - 0.26, MESA_Z + 0.003, cx + 0.16, MY0 + MESA_P - 0.13, MESA_Z + 0.03,
+    kb = box("Teclado", MON_CX - 0.20, MY0 + MESA_P - 0.26, MESA_Z + 0.003, MON_CX + 0.16, MY0 + MESA_P - 0.13, MESA_Z + 0.03,
              M["teclado"], c, bevel=0.004)
     parent(kb, mesa)
-    ms = box("Mouse", cx + 0.25, MY0 + MESA_P - 0.24, MESA_Z + 0.003, cx + 0.31, MY0 + MESA_P - 0.12, MESA_Z + 0.04,
+    ms = box("Mouse", MON_CX + 0.25, MY0 + MESA_P - 0.24, MESA_Z + 0.003, MON_CX + 0.31, MY0 + MESA_P - 0.12, MESA_Z + 0.04,
              M["teclado"], c, bevel=0.015)
     parent(ms, mesa)
-    # notebook em suporte (à esquerda)
-    sx = MX0 + 0.08
-    st = box("Suporte_Notebook", sx, MY0 + 0.12, MESA_Z, sx + 0.26, MY0 + 0.40, MESA_Z + 0.012, M["preto_metal"], c)
+    # notebook em suporte baixo, na frente à esquerda (não cruza o monitor esquerdo)
+    nx0, ny0, nx1, ny1 = NB
+    st = box("Suporte_Notebook_baixo", nx0 + 0.01, ny0 + 0.02, MESA_Z, nx1 - 0.01, ny1 - 0.01, MESA_Z + 0.018, M["preto_metal"], c)
     parent(st, mesa)
-    nb = box("Notebook_base", 0, 0, 0, 0.32, 0.22, 0.016, M["aluminio"], c, bevel=0.003)
-    nb.location = (sx - 0.03, MY0 + 0.15, MESA_Z + 0.10)
-    nb.rotation_euler = (math.radians(-15), 0, 0)
+    zb = MESA_Z + 0.018
+    nb = box("Notebook_base", nx0, ny0 + 0.01, zb, nx1, ny1, zb + 0.016, M["aluminio"], c, bevel=0.003)
     parent(nb, mesa)
-    nbs = box("Notebook_tela", 0, -0.008, 0, 0.32, 0, 0.21, M["tela"], c, local=True)
-    nbs.location = (sx - 0.03, MY0 + 0.15, MESA_Z + 0.10)
-    nbs.rotation_euler = (math.radians(-15 + 100 - 90 + 10), 0, 0)
+    nbs = box("Notebook_tela", 0, -0.008, 0, nx1 - nx0, 0, 0.21, M["tela"], c, local=True)
+    nbs.location = (nx0, ny0 + 0.01, zb + 0.016)            # dobradiça em y = 0,43
+    nbs.rotation_euler = (math.radians(15), 0, 0)           # tela inclinada 15° para trás (−y)
     parent(nbs, mesa)
-    # PC em suporte suspenso entre as pernas
-    pc = box("PC_Gabinete_em_suporte_suspenso", CPU_X0, MY0 + 0.15, 0.22, CPU_X0 + 0.23, MY0 + 0.63, 0.68, M["preto"], c,
-             bevel=0.005)
-    parent(pc, mesa)
-    pcs = box("Suporte_Gabinete_suspenso", CPU_X0 - 0.01, MY0 + 0.38, 0.20, CPU_X0 + 0.24, MY0 + 0.42, MESA_Z - TAMPO,
-              M["preto_metal"], c)
-    parent(pcs, mesa)
+    nbt = box("Notebook_tampa", 0, -0.014, 0, nx1 - nx0, -0.008, 0.21, M["aluminio"], c, local=True)
+    nbt.location, nbt.rotation_euler = nbs.location, nbs.rotation_euler
+    parent(nbt, mesa)
+    pc_gabinete(M, mesa)
 
     # cama box solteiro 88 × 188 × 62 (Gazin Maximus)
     y0 = RIP
@@ -525,6 +550,49 @@ def mobiliario(M):
         parent(p, raiz)
 
 
+def pc_gabinete(M, mesa):
+    """PC sobre o tampo (canto direito): gabinete 23 × 45 × 46 com vidro na frente (+y) e no lado −x, 3 fans
+    frontais com anel de LED 3000 K. Tudo é filho do tampo: sobe e desce com a mesa."""
+    c = "03_MOBILIARIO"
+    x0, y0, z0 = PC_X0, PC_Y0, MESA_Z
+    x1, y1, z1 = x0 + PC_W, y0 + PC_P, z0 + PC_H
+    e, p = 0.006, []
+    k = M["preto"]
+    p.append(box("PC_Gabinete_fundo", x0, y0, z0 + 0.02, x1, y0 + e, z1, k, c))
+    p.append(box("PC_Gabinete_lateral_direita", x1 - e, y0, z0 + 0.02, x1, y1, z1, k, c))
+    p.append(box("PC_Gabinete_base", x0, y0, z0 + 0.02, x1, y1, z0 + 0.02 + e, k, c))
+    p.append(box("PC_Gabinete_tampa_topo", x0, y0, z1 - e, x1, y1, z1, k, c))
+    p.append(box("PC_Gabinete_moldura_frente_dir", x1 - 0.012, y1 - 0.012, z0 + 0.02, x1, y1, z1, k, c))
+    p.append(box("PC_Gabinete_coluna_canto", x0, y1 - 0.012, z0 + 0.02, x0 + 0.012, y1, z1, k, c))
+    p.append(box("PC_Gabinete_coluna_fundo", x0, y0, z0 + 0.02, x0 + 0.012, y0 + 0.012, z1, k, c))
+    v1 = box("PC_Gabinete_vidro_frente", x0 + 0.012, y1 - 0.005, z0 + 0.02 + e, x1 - 0.012, y1 - 0.001, z1 - e, M["vidro_fume"], c)
+    v2 = box("PC_Gabinete_vidro_lateral", x0 + 0.001, y0 + 0.012, z0 + 0.02 + e, x0 + 0.005, y1 - 0.012, z1 - e,
+             M["vidro_fume"], c)
+    for v in (v1, v2):
+        v.visible_shadow = False
+    p += [v1, v2]
+    for i, (fx, fy) in enumerate(((x0 + 0.04, y0 + 0.08), (x1 - 0.04, y0 + 0.08), (x0 + 0.04, y1 - 0.06), (x1 - 0.04, y1 - 0.06))):
+        p.append(box(f"PC_Gabinete_pe_{i+1}", fx - 0.02, fy - 0.02, z0, fx + 0.02, fy + 0.02, z0 + 0.02, M["preto_metal"], c))
+    # internos: placa-mãe na lateral direita, placa de vídeo, cooler, fonte embaixo
+    p.append(box("PC_Placa_mae", x1 - e - 0.004, y0 + 0.03, z0 + 0.15, x1 - e, y0 + 0.28, z1 - 0.03, M["pcb"], c))
+    p.append(box("PC_Placa_video", x0 + 0.07, y0 + 0.03, z0 + 0.20, x1 - e - 0.004, y0 + 0.31, z0 + 0.25, M["preto_metal"], c,
+                 bevel=0.003))
+    p.append(cyl("PC_Cooler_CPU", x1 - 0.06, y0 + 0.17, z0 + 0.34, 0.045, 0.05, M["cromo"], c, rot=Euler((0, -math.pi / 2, 0))))
+    p.append(box("PC_Fonte_shroud", x0 + 0.012, y0 + e, z0 + 0.02 + e, x1 - e, y1 - 0.04, z0 + 0.12, k, c))
+    for i in range(3):
+        fz = z0 + 0.17 + i * 0.125
+        anel = cyl(f"PC_Fan_{i+1}_anel_LED", (x0 + x1) / 2, y1 - 0.035, fz, 0.058, 0.010, M["led_pc"], c, verts=48,
+                   rot=Euler((-math.pi / 2, 0, 0)))
+        anel.location.y = y1 - 0.030
+        miolo = cyl(f"PC_Fan_{i+1}_pas", (x0 + x1) / 2, y1 - 0.029, fz, 0.052, 0.014, M["preto"], c, verts=48,
+                    rot=Euler((-math.pi / 2, 0, 0)))
+        p += [anel, miolo]
+    # sem luz pontual dentro do gabinete: a 10 cm das peças ela estourava em branco; os anéis emissivos já iluminam
+    for o in p:
+        parent(o, mesa)
+    mesa["pc_sobre_tampo"] = "gabinete 23 × 45 × 46, ≈ 12 kg; carga total ≈ 64 kg < 80 kg (Starlift)"
+
+
 # ------------------------------------------------------------------ 04 marcenaria
 def marcenaria(M):
     c = "04_MARCENARIA"
@@ -539,6 +607,22 @@ def marcenaria(M):
     box("Tomada_Parede_D_prolongador", TOM_D - 0.04, RIP - 0.002, 0.24, TOM_D + 0.04, RIP + 0.006, 0.36, M["porta"], c)
     # prateleira 170 × 25 × 2,5 a 1,95 m
     box("Prateleira_Freijo_170x25", MX0, RIP, PRAT_H, MX0 + MESA_W, RIP + PRAT_P, PRAT_H + 0.025, M["freijo"], c, bevel=0.002)
+    # 3 nichos iluminados sobre a cabeceira (24 × 26 × 16 cm, MDF freijó 15 mm, fundo preto, LED 3000 K)
+    t = 0.015
+    z0, z1 = PT.NICHO_Z0, PT.NICHO_Z0 + PT.NICHO_H
+    y0, y1 = RIP, RIP + PT.NICHO_P
+    for k in range(3):
+        x0 = PT.NICHOS_X0 + k * (PT.NICHO_W + PT.NICHO_GAP)
+        x1 = x0 + PT.NICHO_W
+        n = f"Nicho_{k+1}"
+        box(f"{n}_base", x0, y0, z0, x1, y1, z0 + t, M["freijo"], c, bevel=0.001)
+        box(f"{n}_topo", x0, y0, z1 - t, x1, y1, z1, M["freijo"], c, bevel=0.001)
+        box(f"{n}_lateral_esq", x0, y0, z0 + t, x0 + t, y1, z1 - t, M["freijo"], c, bevel=0.001)
+        box(f"{n}_lateral_dir", x1 - t, y0, z0 + t, x1, y1, z1 - t, M["freijo"], c, bevel=0.001)
+        box(f"{n}_fundo_preto", x0 + t, y0, z0 + t, x1 - t, y0 + 0.006, z1 - t, M["fundo_ripado"], c)
+        box(f"{n}_fita_LED", x0 + t + 0.01, y1 - 0.03, z1 - t - 0.003, x1 - t - 0.01, y1 - 0.02, z1 - t, M["led"], c)
+        luz_area(f"L5_Luz_nicho_{k+1}", ((x0 + x1) / 2, y1 - 0.025, z1 - t - 0.004), (0, 0, 0), PT.NICHO_W - 2 * t - 0.02,
+                 0.01, 1.2, 3000, "05_ILUMINACAO")
 
 
 # ------------------------------------------------------------------ 05 iluminação
@@ -567,7 +651,7 @@ def iluminacao(M):
     box("L2_Fita_LED_vertical", LED_V_X - 0.006, FUNDO - 0.001, 0.10, LED_V_X + 0.006, FUNDO + 0.004, 2.50, M["led"], c)
     L["L2"] = luz_area("L2_Luz_vertical", (LED_V_X, FUNDO + 0.006, 1.30), (math.radians(-90), 0, 0), 0.012, 2.40, 6.0, 3000, c)
     # L3 — barra de luz do monitor
-    L["L3"] = luz_area("L3_Luz_barra_monitor", (MX0 + MESA_W / 2 - 0.312, MY0 + 0.23, MESA_Z + 0.17 + 0.365),
+    L["L3"] = luz_area("L3_Luz_barra_monitor", (MON_CX - 0.312, MY0 + 0.23, MESA_Z + 0.17 + 0.365),
                        (math.radians(25), 0, math.radians(8)), 0.40, 0.02, 3.0, 4000, c)
     # L4 — arandela articulada na cabeceira
     ax, az = ARAND_X, ARAND_H
@@ -632,16 +716,94 @@ def decoracao(M):
                                    (0.028, 0.23, "livro1"), (0.03, 0.21, "livro2"))):
         box(f"Livro_{k+1}", xs, RIP + 0.04, z, xs + w, RIP + 0.20, z + h, M[m], c)
         xs += w + 0.002
-    cyl("Vaso_planta", MX0 + 0.20, RIP + 0.12, z, 0.06, 0.12, M["vaso"], c)
-    pl = bpy.data.meshes.new("Planta")
-    bm = bmesh.new()
-    bmesh.ops.create_icosphere(bm, subdivisions=2, radius=0.11)
-    bm.to_mesh(pl)
-    bm.free()
-    ob = bpy.data.objects.new("Planta_folhagem", pl)
-    ob.location, ob.scale = (MX0 + 0.20, RIP + 0.13, z + 0.20), (1.0, 0.8, 0.9)
-    pl.materials.append(M["planta"])
-    link(ob, c)
+    quadros(M, c)
+    planta_pendente(M, c)
+    acessorios(M, c)
+
+
+# Quadros P&B na Parede E, entre a Parede D e a janela (y < 1,10). (nome, y0, y1, z0, z1, arte)
+QUADROS = (("Quadro_A_40x55", 0.10, 0.50, 1.20, 1.75, "quadro_A"),
+           ("Quadro_B_36x26", 0.58, 0.94, 1.49, 1.75, "quadro_B"),
+           ("Quadro_C_36x26", 0.58, 0.94, 1.20, 1.46, "quadro_C"))
+PENDENTE = (0.30, 2.25, 1.95)       # (x, y, z da base do vaso) — sobre a circulação, longe do ventilador
+
+
+def quadro_parede(M, c, nome, y0, y1, z0, z1, arte_):
+    box(f"{nome}_moldura", 0.0, y0, z0, 0.022, y1, z1, M["preto"], c, bevel=0.002)
+    box(f"{nome}_passe_partout", 0.022, y0 + 0.012, z0 + 0.012, 0.024, y1 - 0.012, z1 - 0.012, M["passe"], c)
+    m = 0.045
+    box(f"{nome}_arte", 0.024, y0 + m, z0 + m, 0.025, y1 - m, z1 - m, M[arte_], c)
+
+
+def quadros(M, c):
+    for q in QUADROS:
+        quadro_parede(M, c, *q)
+    # 2 quadros pequenos apoiados na prateleira (encostados no ripado, inclinados 8°)
+    z = PRAT_H + 0.025
+    for nome, xa, w, h, arte_ in (("Quadro_D_20x25_prateleira", 1.58, 0.20, 0.25, "quadro_D"),
+                                  ("Quadro_E_15x20_prateleira", 1.81, 0.15, 0.20, "quadro_E")):
+        raiz = bpy.data.objects.new(nome, None)
+        raiz.location = (xa, RIP + 0.05, z)
+        raiz.rotation_euler = (math.radians(-8), 0, 0)
+        link(raiz, c)
+        fr = box(f"{nome}_moldura", 0, -0.018, 0, w, 0, h, M["preto"], c, bevel=0.002, local=True)
+        pp = box(f"{nome}_passe_partout", 0.010, 0.0, 0.010, w - 0.010, 0.001, h - 0.010, M["passe"], c, local=True)
+        ar = box(f"{nome}_arte", 0.03, 0.001, 0.03, w - 0.03, 0.002, h - 0.03, M[arte_], c, local=True)
+        for o in (fr, pp, ar):
+            o.location, o.rotation_euler = raiz.location, raiz.rotation_euler
+            parent(o, raiz)
+
+
+def planta_pendente(M, c):
+    px, py, pz = PENDENTE
+    cyl("Planta_pendente_vaso", px, py, pz, 0.09, 0.16, M["ceramica_preta"], c, verts=48)
+    gancho = Vector((px, py, PE - 0.25))
+    box("Planta_pendente_gancho_teto", px - 0.02, py - 0.02, PE - 0.008, px + 0.02, py + 0.02, PE, M["preto_metal"], c)
+    cyl("Planta_pendente_corda_principal", px, py, gancho.z, 0.003, PE - gancho.z, M["corda"], c, verts=8)
+    for k in range(3):
+        a = k * 2 * math.pi / 3
+        base = Vector((px + 0.088 * math.cos(a), py + 0.088 * math.sin(a), pz + 0.14))
+        d = gancho - base
+        o = cyl(f"Planta_pendente_corda_{k+1}", base.x, base.y, base.z, 0.002, d.length, M["corda"], c, verts=8)
+        o.rotation_euler = d.to_track_quat("Z", "Y").to_euler()
+
+
+def acessorios(M, c):
+    mesa = bpy.data.objects["Mesa_Tampo_Freijo_170x70x2_5"]
+    z = MESA_Z
+    ps = []
+    # suporte de headphone (2,50, 0,67) + headphone
+    hx, hy = 2.50, 0.67
+    ps.append(cyl("Suporte_headphone_base", hx, hy, z, 0.05, 0.008, M["preto_metal"], c, verts=40))
+    ps.append(cyl("Suporte_headphone_haste", hx, hy, z + 0.008, 0.008, 0.25, M["preto_metal"], c))
+    ps.append(box("Suporte_headphone_apoio", hx - 0.045, hy - 0.012, z + 0.25, hx + 0.045, hy + 0.012, z + 0.265, M["preto_metal"], c))
+    for s_ in (-1, 1):
+        ps.append(box(f"Headphone_concha_{'esq' if s_ < 0 else 'dir'}", hx + s_ * 0.075 - 0.02, hy - 0.045, z + 0.10,
+                      hx + s_ * 0.075 + 0.02, hy + 0.045, z + 0.20, M["preto"], c, bevel=0.015))
+    ps.append(box("Headphone_arco", hx - 0.08, hy - 0.015, z + 0.265, hx + 0.08, hy + 0.015, z + 0.285, M["preto"], c, bevel=0.006))
+    # caneca (2,30, 0,66)
+    ps.append(cyl("Caneca", 2.30, 0.66, z, 0.04, 0.095, M["caneca"], c, verts=40))
+    ps.append(box("Caneca_alca", 2.338, 0.655, z + 0.025, 2.355, 0.665, z + 0.075, M["caneca"], c, bevel=0.004))
+    # luminária de mesa articulada (1,01, 0,12) — spot 2700 K sobre o notebook
+    lx, ly = 1.01, 0.12
+    ps.append(cyl("Luminaria_mesa_base", lx, ly, z, 0.06, 0.015, M["preto_metal"], c, verts=40))
+    ps.append(cyl("Luminaria_mesa_haste", lx, ly, z + 0.015, 0.007, 0.38, M["preto_metal"], c))
+    ps.append(box("Luminaria_mesa_braco", lx - 0.006, ly, z + 0.385, lx + 0.006, ly + 0.14, z + 0.397, M["preto_metal"], c))
+    ps.append(cyl("Luminaria_mesa_cupula", lx, ly + 0.15, z + 0.33, 0.04, 0.07, M["preto"], c, verts=40,
+                  rot=Euler((math.radians(-25), 0, 0))))
+    ld = bpy.data.lights.new("L6_Luz_luminaria_mesa", "SPOT")
+    ld.energy, ld.spot_size, ld.spot_blend, ld.shadow_soft_size = 10.0, math.radians(80), 0.5, 0.03
+    ld.color = kelvin(2700)
+    ob = bpy.data.objects.new("L6_Luz_luminaria_mesa", ld)
+    ob.location, ob.rotation_euler = (lx, ly + 0.16, z + 0.325), (math.radians(-25), 0, 0)
+    link(ob, "05_ILUMINACAO")
+    ps.append(ob)
+    for o in ps:
+        parent(o, mesa)
+    # relógio LED na prateleira
+    zp = PRAT_H + 0.025
+    box("Relogio_LED_prateleira", 2.02, RIP + 0.10, zp, 2.14, RIP + 0.14, zp + 0.06, M["preto"], c, bevel=0.004)
+    box("Relogio_LED_display", 2.03, RIP + 0.14, zp + 0.015, 2.13, RIP + 0.141, zp + 0.045, M["led"], c)
 
 
 # ------------------------------------------------------------------ 07 câmeras

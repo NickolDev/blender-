@@ -1,6 +1,7 @@
 """Renderiza os panoramas 360° (equirretangulares) do tour virtual.
 
 Uso: blender -b quarto_escritorio_realista.blend --python renderizar_360.py -- [--teste] [--so PANO_a,PANO_b] [--modos dia,noite]
+     [--largura 4096] [--amostras 160]   (para máquinas sem GPU: --largura 2048 --amostras 64)
 Saída: 06_RENDERS/360/<ponto>_<modo>.jpg  (teste: 06_RENDERS/360/_teste/)
 """
 import sys
@@ -13,10 +14,12 @@ ARGS = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
 TESTE = "--teste" in ARGS
 SO = ARGS[ARGS.index("--so") + 1].split(",") if "--so" in ARGS else None
 MODOS = ARGS[ARGS.index("--modos") + 1].split(",") if "--modos" in ARGS else ["dia", "noite"]
+LARG = int(ARGS[ARGS.index("--largura") + 1]) if "--largura" in ARGS else 4096
+AMOSTRAS = int(ARGS[ARGS.index("--amostras") + 1]) if "--amostras" in ARGS else 160
 OUT = PROJ / "06_RENDERS" / "360" / ("_teste" if TESTE else "")
 
 LUZES = ["L1_Luz_prateleira", "L2_Luz_vertical", "L3_Luz_barra_monitor", "L4_Luz_arandela", "Luz_Ventilador_3000K",
-         "Luz_Plafon_faixa"]
+         "Luz_Plafon_faixa", "L5_Luz_nicho_1", "L5_Luz_nicho_2", "L5_Luz_nicho_3", "L6_Luz_luminaria_mesa"]
 EMISSORES = {"LED_3000K": 8.0, "Lampada_3000K": 6.0, "LED_Barra_Monitor_4000K": 4.0}
 # no ponto da mesa a pessoa está sentada na cadeira: a cadeira some da vista
 OCULTAR = {"PANO_mesa": ("Cadeira_",)}
@@ -49,9 +52,10 @@ def modo(m):
         if n in bpy.data.materials:
             em = next(x for x in bpy.data.materials[n].node_tree.nodes if x.type == "EMISSION")
             em.inputs["Strength"].default_value = forca if noite else 0.0
-    tela = bpy.data.materials["Tela_Monitor"]
-    b = next(x for x in tela.node_tree.nodes if x.type == "BSDF_PRINCIPLED")
-    b.inputs["Emission Strength"].default_value = tela.get("emissao_noite", 0.9) if noite else tela.get("emissao_dia", 1.6)
+    for tela in bpy.data.materials:                 # telas (monitores e notebook): mais fortes de dia
+        if "emissao_noite" in tela:
+            b = next(x for x in tela.node_tree.nodes if x.type == "BSDF_PRINCIPLED")
+            b.inputs["Emission Strength"].default_value = tela["emissao_noite"] if noite else tela["emissao_dia"]
     bpy.data.objects["Sol_Manha_Leste"].hide_render = noite
     env = sc.world.node_tree.nodes["HDRI"]
     env.image = bpy.data.images["modern_buildings_night_2k.hdr" if noite else "modern_buildings_2_2k.hdr"]
@@ -69,9 +73,9 @@ def modo(m):
 def main():
     sc = bpy.context.scene
     print("DISPOSITIVO", gpu())
-    sc.render.resolution_x, sc.render.resolution_y = (1024, 512) if TESTE else (4096, 2048)
+    sc.render.resolution_x, sc.render.resolution_y = (1024, 512) if TESTE else (LARG, LARG // 2)
     sc.render.resolution_percentage = 100
-    sc.cycles.samples = 40 if TESTE else 160
+    sc.cycles.samples = 40 if TESTE else AMOSTRAS
     sc.cycles.use_adaptive_sampling = True
     sc.cycles.adaptive_threshold = 0.02
     sc.render.image_settings.file_format = "JPEG"

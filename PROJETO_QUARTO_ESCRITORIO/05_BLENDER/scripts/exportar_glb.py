@@ -21,7 +21,7 @@ TEXTURAS = {
     "Tecido_Manta_caramelo": ("manta", 0.27),
 }
 REMOVER = ("Teto", "Ventilador_", "Plafon_faixa", "Persiana_externa_caixa", "Banheiro_fechamento", "Banheiro_piso",
-           "Portal_", "Sol_", "L1_Luz", "L2_Luz", "L3_Luz", "L4_Luz", "Luz_", "REF_", "COTA_", "CAM_")
+           "Portal_", "Sol_", "L1_Luz", "L2_Luz", "L3_Luz", "L4_Luz", "L5_Luz", "L6_Luz", "L7_Luz", "Luz_", "REF_", "COTA_", "CAM_")
 
 for ob in list(bpy.data.objects):
     if ob.name.startswith(REMOVER):

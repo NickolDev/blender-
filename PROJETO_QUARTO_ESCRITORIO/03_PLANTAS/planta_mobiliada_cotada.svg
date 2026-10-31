@@ -61,8 +61,13 @@
 <text x="426.2" y="615.4" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">MESA (2)</text>
 <text x="426.2" y="639.2" font-size="10" fill="#fff" text-anchor="middle">170 × 70</text>
 <rect x="307.2" y="651.8" width="238.0" height="35.0" fill="none" fill-opacity="1" stroke="#c58c55" stroke-width="2" stroke-dasharray="10 6"/>
-<rect x="468.2" y="595.8" width="33.6" height="67.2" fill="none" fill-opacity="1" stroke="#bbb" stroke-width="1.2" stroke-dasharray="2 5"/>
-<text x="485.0" y="668.6" font-size="9" fill="#ccc" text-anchor="middle">PC</text>
+<rect x="508.8" y="611.2" width="32.2" height="63.0" fill="#2a2a2a" fill-opacity="1" stroke="#e0e0e0" stroke-width="1.5" />
+<text x="524.9" y="642.7" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">PC</text>
+<rect x="312.8" y="598.6" width="44.8" height="33.6" fill="none" fill-opacity="1" stroke="#777" stroke-width="1.0" stroke-dasharray="2 5"/>
+<text x="335.2" y="615.4" font-size="8" fill="#777" text-anchor="middle">notebook</text>
+<rect x="185.4" y="664.4" width="33.6" height="22.4" fill="none" fill-opacity="1" stroke="#c58c55" stroke-width="1.5" stroke-dasharray="10 6"/>
+<rect x="221.8" y="664.4" width="33.6" height="22.4" fill="none" fill-opacity="1" stroke="#c58c55" stroke-width="1.5" stroke-dasharray="10 6"/>
+<rect x="258.2" y="664.4" width="33.6" height="22.4" fill="none" fill-opacity="1" stroke="#c58c55" stroke-width="1.5" stroke-dasharray="10 6"/>
 <circle cx="412.2" cy="532.8" r="42.0" fill="none" stroke="#666" stroke-dasharray="4 3"/>
 <rect x="377.2" y="502.0" width="70.0" height="65.8" fill="#3d3f44" fill-opacity="1" stroke="#111" stroke-width="1.2" />
 <rect x="381.4" y="490.8" width="61.6" height="14.0" fill="#26282c" fill-opacity="1" stroke="#111" stroke-width="1" />
@@ -133,16 +138,19 @@
 <rect x="950.0" y="361" width="26" height="13" fill="#ffffff" stroke="#333" stroke-dasharray="10 6"/><text x="984.0" y="372" font-size="12">(3) Prateleira 170 × 25 · face inferior a 195</text>
 <rect x="950.0" y="381" width="26" height="13" fill="url(#rip)" stroke="#333" /><text x="984.0" y="392" font-size="12">(4) Ripado 265 × 3 × 264 (piso → teto)</text>
 <rect x="950.0" y="401" width="26" height="13" fill="#3d3f44" stroke="#333" /><text x="984.0" y="412" font-size="12">(5) Cadeira — base ~65 (est.)</text>
-<rect x="950.0" y="421" width="26" height="13" fill="#ffffff" stroke="#333" stroke-dasharray="2 5"/><text x="984.0" y="432" font-size="12">(6) PC em suporte suspenso sob a mesa</text>
+<rect x="950.0" y="421" width="26" height="13" fill="#2a2a2a" stroke="#333" /><text x="984.0" y="432" font-size="12">(6) PC sobre a mesa 23 × 45 × 46 (vidro)</text>
 <rect x="950.0" y="441" width="26" height="13" fill="#d8d8d8" stroke="#333" stroke-dasharray="2 5"/><text x="984.0" y="452" font-size="12">(7) Tapete 140 × 200</text>
-<text x="950.0" y="482" font-size="15" font-weight="bold">VERIFICAÇÕES</text>
-<text x="950.0" y="504" font-size="12" fill="#333">✓ Cadeira recua até ~1,50 m; 1,35 m livres até o armário</text>
-<text x="950.0" y="522" font-size="12" fill="#333">✓ 0,94 m entre o pé da cama e o armário</text>
-<text x="950.0" y="540" font-size="12" fill="#333">✓ Portas de entrada e do banheiro sem interferência</text>
-<text x="950.0" y="558" font-size="12" fill="#333">✓ A mesa sobe e desce sem tocar no ripado (folga de 2 cm)</text>
-<text x="950.0" y="576" font-size="12" fill="#333">✓ O PC fica longe da cabeceira (ruído/luz)</text>
-<text x="950.0" y="594" font-size="12" fill="#333">✓ PC entre as pernas da estrutura; 0,88 m livres p/ joelhos</text>
-<text x="950.0" y="612" font-size="12" fill="#c0392b" font-weight="bold">⚠ Braço do monitor: fixar pelo FURO no tampo</text>
-<text x="950.0" y="630" font-size="12" fill="#333">   (a presilha de borda não cabe na folga de 2 cm)</text>
+<rect x="950.0" y="461" width="26" height="13" fill="#ffffff" stroke="#333" stroke-dasharray="10 6"/><text x="984.0" y="472" font-size="12">(8) 3 nichos 24 × 26 × 16 sobre a cabeceira</text>
+<text x="950.0" y="502" font-size="15" font-weight="bold">VERIFICAÇÕES</text>
+<text x="950.0" y="524" font-size="12" fill="#333">✓ Cadeira recua até ~1,50 m; 1,35 m livres até o armário</text>
+<text x="950.0" y="542" font-size="12" fill="#333">✓ 0,94 m entre o pé da cama e o armário</text>
+<text x="950.0" y="560" font-size="12" fill="#333">✓ Portas de entrada e do banheiro sem interferência</text>
+<text x="950.0" y="578" font-size="12" fill="#333">✓ A mesa sobe e desce sem tocar no ripado (folga de 2 cm)</text>
+<text x="950.0" y="596" font-size="12" fill="#333">✓ O PC fica longe da cabeceira (ruído/luz)</text>
+<text x="950.0" y="614" font-size="12" fill="#333">✓ PC no tampo: topo a 1,64 m com a mesa no máximo</text>
+<text x="950.0" y="632" font-size="12" fill="#333">   (&lt; 1,95 da prateleira); carga ≈ 64 kg &lt; 80 kg</text>
+<text x="950.0" y="650" font-size="12" fill="#333">✓ Notebook à frente: não cruza o monitor esquerdo</text>
+<text x="950.0" y="668" font-size="12" fill="#c0392b" font-weight="bold">⚠ Braço do monitor: fixar pelo FURO no tampo</text>
+<text x="950.0" y="686" font-size="12" fill="#333">   (a presilha de borda não cabe na folga de 2 cm)</text>
 <rect x="950.0" y="812" width="70.0" height="8" fill="#000"/><rect x="1020.0" y="812" width="70.0" height="8" fill="#fff" stroke="#000"/><text x="950.0" y="836" font-size="11" text-anchor="middle">0</text><text x="1020.0" y="836" font-size="11" text-anchor="middle">0,5</text><text x="1090.0" y="836" font-size="11" text-anchor="middle">1 m</text><text x="1110.0" y="821" font-size="11">escala gráfica (1 m = 140 px)</text>
 </svg>

@@ -73,6 +73,7 @@ body { margin: 0; background: #0d0d0f; color: var(--ink); font-family: var(--fon
   position: fixed; right: max(14px, env(safe-area-inset-right, 0px)); top: calc(env(safe-area-inset-top, 0px) + 74px);
   width: min(340px, calc(100vw - 28px)); padding: 16px; display: grid; gap: 8px;
 }
+#card[hidden] { display: none; }   /* sem isto o display: grid acima vence o atributo hidden */
 #card h2 { font: 600 18px/1.2 var(--font-display); margin: 0; padding-right: 28px; }
 #card .dim { font: 500 13px var(--font-mono); color: var(--led); }
 #card p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
@@ -134,7 +135,11 @@ const PONTOS = {
 const ORDEM = ["entrada", "centro", "mesa", "cama"];
 const ITENS = [
   { p: [1.05, 0.0, 1.62], t: "Painel ripado em freijó", d: "2,65 × 2,64 m · 75 ripas 2 × 1,8 cm", x: "Parede D inteira, do piso ao teto, sobre fundo MDF preto. Funciona como fundo da mesa e cabeceira da cama. Perfil de LED vertical no vão a 0,91 m. Marcenaria: estimativa de R$ 400/m²." },
-  { p: [1.92, 0.40, 0.73], t: "Mesa regulável", d: "170 × 70 cm · altura 73–118 cm", x: "Estrutura elétrica Pichau Starlift Pro com tampo de freijó de 25 mm sob medida. Braço ELG F160N para dois monitores de 27\" fixado por furo no tampo. PC em suporte suspenso entre as pernas." },
+  { p: [1.92, 0.40, 0.73], t: "Mesa regulável", d: "170 × 70 cm · altura 73–118 cm", x: "Estrutura elétrica Pichau Starlift Pro com tampo de freijó de 25 mm sob medida. Braço ELG F160N para dois monitores de 27\" fixado por furo no tampo. Monitores 6 cm à esquerda do centro; notebook em suporte baixo à frente, à esquerda." },
+  { p: [2.485, 0.345, 0.96], t: "PC com gabinete de vidro", d: "23 × 45 × 46 cm · sobre o tampo", x: "Canto direito da mesa, com vidro na frente e na lateral e 3 fans com anel de LED 3000 K. Sobe junto com a mesa: no máximo o topo fica a 1,64 m, abaixo da prateleira (1,95 m). Carga total na estrutura ≈ 64 kg (limite 80 kg)." },
+  { p: [0.44, 0.11, 1.68], t: "Nichos iluminados", d: "3 × 24 × 26 × 16 cm · base a 1,55 m", x: "Sobre a cabeceira, em freijó com fundo preto e LED 3000 K no topo. 0,93 m acima do colchão. Vaso de cerâmica, elefante de madeira e escultura de baleia. Marcenaria: estimativa de R$ 450." },
+  { p: [0.0, 0.52, 1.48], t: "Quadros P&B", d: "40 × 55 + 2 × 36 × 26 cm · Parede E", x: "Entre a Parede D e a janela (y 0,10–0,94; alturas 1,20–1,75). Mais dois quadros pequenos apoiados na prateleira." },
+  { p: [0.30, 2.25, 2.05], t: "Planta pendente", d: "vaso Ø 18 cm · base a 1,95 m", x: "Samambaia em vaso de cerâmica preta, presa ao teto por corda. Fica sobre a circulação, acima da cabeça, e a 62 cm do ventilador." },
   { p: [1.78, 0.16, 1.95], t: "Prateleira com LED", d: "170 × 25 cm · face inferior a 1,95 m", x: "Fita COB 24 V 3000 K embaixo. Fica acima dos monitores mesmo com a mesa na altura máxima (topo dos monitores a 1,72 m)." },
   { p: [0.44, 1.05, 0.66], t: "Cama box de solteiro", d: "88 × 188 × 62 cm", x: "Gazin Maximus, molas ensacadas, linho grafite. A cabeceira é o próprio ripado. 0,94 m livres entre o pé da cama e o armário." },
   { p: [0.0, 1.82, 1.60], t: "Janela de correr", d: "1,45 × 1,20 m · peitoril 1,00 m", x: "Duas folhas e persiana metálica externa (blackout). Fica a leste: sol da manhã. A largura é calculada pela planta; confirmar com trena." },

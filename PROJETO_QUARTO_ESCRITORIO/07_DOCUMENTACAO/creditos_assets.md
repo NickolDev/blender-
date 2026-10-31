@@ -14,14 +14,27 @@ Download feito em 30/10/2026, resolução 2k, em `05_BLENDER/assets/`.
 | modern_buildings_night | HDRI | Céu e prédios vistos pela janela (noite) | Poly Haven | — |
 | ceiling_fan | Modelo 3D | Ventilador de teto (representa o existente; escala estimada Ø ~1,10 m) | Ulan Cabanilla | Ø 1,46 m original |
 | potted_plant_04 | Modelo 3D | Suculenta na prateleira | James Ray Cock | 0,27 m de altura |
-| potted_plant_02 | Modelo 3D | Planta sobre a mesa (escala 36%) | Rico Cilliers | 0,84 m original |
+| potted_plant_02 | Modelo 3D | Planta na prateleira (escala 36%) | Rico Cilliers | 0,84 m original |
 | decorative_book_set_01 | Modelo 3D | 10 livros na prateleira (trecho do conjunto) | James Ray Cock | — |
-| hanging_picture_frame_01 | Modelo 3D | Quadro na Parede E (escala 80%) | James Ray Cock | 0,59 × 0,84 m original |
+| ceramic_vase_02 | Modelo 3D | Vaso no nicho 1 (escala 60% → 13 × 19 cm) | ver https://polyhaven.com/a/ceramic_vase_02 | 0,22 × 0,31 m original |
+| carved_wooden_elephant | Modelo 3D | Elefante de madeira no nicho 2 (escala 150% → 18 × 14 cm) | ver https://polyhaven.com/a/carved_wooden_elephant | 0,11 × 0,10 m original |
+| bronze_whale_statue | Modelo 3D | Escultura de baleia no nicho 3 (escala 14% → 19 × 15 cm) | ver https://polyhaven.com/a/bronze_whale_statue | 1,37 × 1,07 m original |
+| fern_02 | Modelo 3D | Samambaia do vaso pendente (escala 22% → 43 × 38 cm) | ver https://polyhaven.com/a/fern_02 | 1,97 × 1,72 m original |
 | stationery_supplies | Modelo 3D | Porta-lápis e papelaria na mesa | Mateusz Sadek | — |
 
+Os autores dos 4 modelos acima não estão gravados nos arquivos baixados, e o site do Poly Haven não estava acessível
+na sessão de 31/10/2026; consulte a página de cada asset. A licença CC0 não exige atribuição.
+O modelo `hanging_picture_frame_01` continua baixado, mas saiu da cena (os quadros P&B novos são modelados com as
+medidas reais).
+
 ## Observação sobre a decoração
-Plantas, livros, quadro e papelaria são **ilustrativos** (para o tour parecer um quarto habitado) e **não entram no orçamento**.
-O papel de parede dos monitores foi gerado proceduralmente (ImageMagick).
+Livros e papelaria são **ilustrativos** e não entram no orçamento. A decoração escolhida (quadros P&B, nichos,
+plantas, luminária de mesa, suporte de headphone, relógio) entra na categoria **Decoração (opcional)** do orçamento,
+com preço estimado.
+As imagens das telas (`assets/textures/tela_monitor_codigo.jpg`, `tela_monitor_planta.jpg`, `tela_notebook_email.jpg`)
+foram geradas renderizando páginas HTML no Chromium; a da planta usa o próprio desenho do projeto. O e-mail é fictício.
+As 5 artes P&B dos quadros (`assets/textures/quadro_A…E.jpg`) e o papel de parede dos monitores foram gerados com
+ImageMagick; podem ser trocados por qualquer imagem.
 
 ## Sketchfab
 **Não utilizado.** O download de modelos exige token da API do Sketchfab, e nenhum foi configurado.

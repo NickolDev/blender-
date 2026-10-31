@@ -3,6 +3,7 @@
 Uso:
     blender -b quarto_escritorio.blend --python renderizar.py -- [--teste] [--so nome1,nome2]
 --teste: 50% da resolução e 48 amostras, saída em 06_RENDERS/_teste/
+--amostras N: troca as 256 amostras do render final (para máquinas sem GPU, ex.: 96)
 """
 import math
 import sys
@@ -14,10 +15,12 @@ PROJ = Path(bpy.data.filepath).resolve().parents[1]
 ARGS = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
 TESTE = "--teste" in ARGS
 SO = ARGS[ARGS.index("--so") + 1].split(",") if "--so" in ARGS else None
+AMOSTRAS = int(ARGS[ARGS.index("--amostras") + 1]) if "--amostras" in ARGS else 256
 OUT = PROJ / "06_RENDERS" / ("_teste" if TESTE else "")
 
 LUZES_INTERNAS = ["L1_Luz_prateleira", "L2_Luz_vertical", "L3_Luz_barra_monitor", "L4_Luz_arandela",
-                  "Luz_Ventilador_3000K", "Luz_Plafon_faixa"]
+                  "Luz_Ventilador_3000K", "Luz_Plafon_faixa", "L5_Luz_nicho_1", "L5_Luz_nicho_2", "L5_Luz_nicho_3",
+                  "L6_Luz_luminaria_mesa"]
 EMISSORES = ["LED_3000K", "Lampada_3000K", "LED_Barra_Monitor_4000K"]
 SEM_TETO = ["Teto", "Ventilador_", "Plafon_faixa"]
 CORTE_ISO = SEM_TETO + ["Parede_Fundo_Armario", "Armario_existente", "Parede_Leste", "Banheiro_", "Parede_C",
@@ -64,6 +67,10 @@ def modo(m):
             continue
         em = [x for x in bpy.data.materials[n].node_tree.nodes if x.type == "EMISSION"][0]
         em.inputs["Strength"].default_value = (8.0 if "LED_3000" in n else 6.0 if "Lampada" in n else 4.0) if noite else 0.0
+    for tela in bpy.data.materials:                 # telas (monitores e notebook): mais fortes de dia
+        if "emissao_noite" in tela:
+            b = next(x for x in tela.node_tree.nodes if x.type == "BSDF_PRINCIPLED")
+            b.inputs["Emission Strength"].default_value = tela["emissao_noite"] if noite else tela["emissao_dia"]
     bpy.data.objects["Sol_Manha_Leste"].hide_render = noite
     env = sc.world.node_tree.nodes["HDRI"]
     env.image = bpy.data.images[("modern_buildings_night_2k.hdr" if noite else "modern_buildings_2_2k.hdr")]
@@ -96,7 +103,7 @@ def main():
     if TESTE:
         sc.render.resolution_percentage, sc.cycles.samples = 50, 48
     else:
-        sc.render.resolution_percentage, sc.cycles.samples = 100, 256
+        sc.render.resolution_percentage, sc.cycles.samples = 100, AMOSTRAS
     OUT.mkdir(parents=True, exist_ok=True)
     for nome, cam, m, ocultos in VISTAS:
         if SO and nome not in SO:
@@ -119,4 +126,5 @@ def main():
                 del ob["_hide_base"]
 
 
-main()
+if __name__ == "__main__":
+    main()

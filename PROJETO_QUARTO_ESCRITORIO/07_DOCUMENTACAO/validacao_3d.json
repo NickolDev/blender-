@@ -85,14 +85,119 @@
   "detalhe": "folga 2.0 cm (mínimo 1.9 cm)"
  },
  {
-  "verificacao": "PC × perna direita da estrutura",
+  "verificacao": "PC dentro do tampo (x, y) e apoiado nele",
   "status": "OK",
-  "detalhe": "folga 3.3 cm (mínimo 2.0 cm)"
+  "detalhe": "PC x 2.370–2.600, y 0.120–0.570, base z 0.730 · tampo x 0.930–2.630, y 0.050–0.750, z 0.730"
  },
  {
-  "verificacao": "PC × perna esquerda da estrutura",
+  "verificacao": "Gabinete 23 × 45 × 46 (com pés)",
   "status": "OK",
-  "detalhe": "folga 86.2 cm (mínimo 50.0 cm)"
+  "detalhe": "medido (0.23, 0.45, 0.46)"
+ },
+ {
+  "verificacao": "PC × monitor direito",
+  "status": "OK",
+  "detalhe": "folga 2.8 cm (mínimo 2.0 cm)"
+ },
+ {
+  "verificacao": "PC × coluna do braço dos monitores",
+  "status": "OK",
+  "detalhe": "folga 33.8 cm (mínimo 2.0 cm)"
+ },
+ {
+  "verificacao": "PC × prateleira com a mesa no máximo (1,18)",
+  "status": "OK",
+  "detalhe": "topo do PC no máximo = 1.640 m · prateleira = 1.95 m"
+ },
+ {
+  "verificacao": "Notebook × monitor esquerdo",
+  "status": "OK",
+  "detalhe": "folga 2.5 cm (mínimo 1.0 cm)"
+ },
+ {
+  "verificacao": "Notebook × teclado",
+  "status": "OK",
+  "detalhe": "folga 23.0 cm (mínimo 2.0 cm)"
+ },
+ {
+  "verificacao": "Luminária de mesa × monitor esquerdo",
+  "status": "OK",
+  "detalhe": "folga 2.8 cm (mínimo 2.0 cm)"
+ },
+ {
+  "verificacao": "Luminária de mesa × notebook",
+  "status": "OK",
+  "detalhe": "folga 2.6 cm (mínimo 2.0 cm)"
+ },
+ {
+  "verificacao": "Caneca × mousepad",
+  "status": "OK",
+  "detalhe": "folga 3.0 cm (mínimo 1.0 cm)"
+ },
+ {
+  "verificacao": "Headphone × PC",
+  "status": "OK",
+  "detalhe": "folga 5.0 cm (mínimo 2.0 cm)"
+ },
+ {
+  "verificacao": "Suporte_headphone dentro do tampo",
+  "status": "OK",
+  "detalhe": "x 2.450–2.550, y 0.620–0.720"
+ },
+ {
+  "verificacao": "Caneca dentro do tampo",
+  "status": "OK",
+  "detalhe": "x 2.260–2.340, y 0.620–0.700"
+ },
+ {
+  "verificacao": "Luminaria_mesa dentro do tampo",
+  "status": "OK",
+  "detalhe": "x 0.950–1.070, y 0.060–0.336"
+ },
+ {
+  "verificacao": "Nichos ≥ 0,90 m acima do colchão",
+  "status": "OK",
+  "detalhe": "base dos nichos z = 1.550 · colchão 0.62 → 0.930 m"
+ },
+ {
+  "verificacao": "Nichos dentro da largura da cama (sobre a cabeceira)",
+  "status": "OK",
+  "detalhe": "x 0.060–0.820 · cama 0–0.88"
+ },
+ {
+  "verificacao": "Nichos × perfil de LED vertical",
+  "status": "OK",
+  "detalhe": "folga 8.4 cm (mínimo 5.0 cm)"
+ },
+ {
+  "verificacao": "Nichos × arandela",
+  "status": "OK",
+  "detalhe": "folga 34.7 cm (mínimo 30.0 cm)"
+ },
+ {
+  "verificacao": "Planta pendente com a base ≥ 1,95 m",
+  "status": "OK",
+  "detalhe": "base do vaso z = 1.950"
+ },
+ {
+  "verificacao": "Planta pendente × ventilador",
+  "status": "OK",
+  "detalhe": "folga 61.8 cm (mínimo 30.0 cm)"
+ },
+ {
+  "verificacao": "Quadros da Parede E antes da janela (y < 1,10)",
+  "status": "OK",
+  "detalhe": "quadros até y = 0.940 · janela começa em y = 1.100"
+ },
+ {
+  "verificacao": "Quadros × nichos",
+  "status": "OK",
+  "detalhe": "folga 3.5 cm (mínimo 2.0 cm)"
+ },
+ {
+  "verificacao": "Itens da prateleira dentro dela",
+  "status": "OK",
+  "detalhe": "x 1.580–2.140, y até 0.171"
  },
  {
   "verificacao": "Cadeira × cama",
@@ -135,9 +240,9 @@
   "detalhe": "monitores de z = 0.900 a 1.265"
  },
  {
-  "verificacao": "Monitores centrados na mesa",
+  "verificacao": "Monitores no eixo do braço (6 cm à esquerda do centro da mesa)",
   "status": "OK",
-  "detalhe": "centro x = 1.780 · mesa 1.780"
+  "detalhe": "centro x = 1.720 · braço 1.720 · mesa 1.780"
  },
  {
   "verificacao": "Monitores × prateleira com a mesa no máximo (1,18)",
@@ -177,7 +282,7 @@
  {
   "verificacao": "Arquivo .blend reaberto em processo novo",
   "status": "OK",
-  "detalhe": "/home/nickolas/Documentos/room/PROJETO_QUARTO_ESCRITORIO/05_BLENDER/quarto_escritorio.blend"
+  "detalhe": "/home/user/blender-/PROJETO_QUARTO_ESCRITORIO/05_BLENDER/quarto_escritorio.blend"
  },
  {
   "verificacao": "Coleções 01–08 presentes",

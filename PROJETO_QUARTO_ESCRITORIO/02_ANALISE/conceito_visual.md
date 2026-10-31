@@ -62,8 +62,9 @@ pareceriam uma caverna. A madeira clara do ripado e o teto claro equilibram.
 ## Área de trabalho
 
 Mesa regulável de 170 × 70 cm, com dois monitores de 27" lado a lado (cerca de 123 cm) ou um ultrawide
-de 34" (cerca de 81 cm), mais o notebook em suporte lateral. O gabinete fica num suporte sob o tampo
-(sobe junto com a mesa) ou no chão, ao lado. Os cabos descem por uma calha sob o tampo.
+de 34" (cerca de 81 cm), mais o notebook em suporte baixo à frente, à esquerda. **Atualizado em 31/10/2026:**
+o gabinete, com vidro e fans de LED 3000 K, fica sobre o tampo no canto direito (sobe junto com a mesa). Os cabos
+descem por uma calha sob o tampo.
 
 ## Área de descanso
 

@@ -1,6 +1,6 @@
-# O que foi feito até agora — Fases A, B e C
+# O que foi feito até agora — Fases A a E
 
-Atualizado em 30/10/2026. Projeto: Suíte 01 (quarto + escritório).
+Atualizado em 31/10/2026. Projeto: Suíte 01 (quarto + escritório).
 
 ## Fase A — Levantamento da planta
 
@@ -50,16 +50,19 @@ pediu verificação de conta e não foi usado. Cada preço está marcado como:
 ### Orçamento (`04_ORCAMENTO/orcamento_completo.xlsx`)
 | Cenário | Itens | Reserva 10% | **Total** | Parte estimada |
 |---|---:|---:|---:|---:|
-| Econômico | R$ 6.609 | R$ 661 | **R$ 7.270** | R$ 2.565 |
-| Equilibrado | R$ 10.563 | R$ 1.056 | **R$ 11.620** | R$ 5.357 |
-| Premium | R$ 18.258 | R$ 1.826 | **R$ 20.083** | R$ 8.371 |
+| Econômico | R$ 7.708 | R$ 771 | **R$ 8.479** | R$ 3.621 |
+| Equilibrado | R$ 12.095 | R$ 1.209 | **R$ 13.304** | R$ 6.887 |
+| Premium | R$ 20.486 | R$ 2.049 | **R$ 22.535** | R$ 10.799 |
+
+*Valores atualizados em 31/10/2026 (Fase E). Incluem a categoria "Decoração (opcional)", com preços estimados:
+R$ 756 / R$ 1.080 / R$ 1.728. Sem ela, o Equilibrado fica em ≈ R$ 12.117 com a reserva.*
 
 A planilha tem fórmulas: mude quantidades e preços (em azul) e os totais se recalculam. A aba
 **Quantitativos** calcula áreas, galões de tinta, metros de LED e barras de perfil. Os totais foram
 conferidos recalculando as fórmulas de forma independente.
 
 **Quantitativos principais:** 15,0 m² de paredes grafite (3 demãos → 2 galões), 9,2 m² de teto
-(2 demãos → 1 galão), 7,0 m² de ripado e 4,5 m de fita LED (1 rolo; o Premium usa 7,2 m, 2 rolos).
+(2 demãos → 1 galão), 7,0 m² de ripado e 5,3 m de fita LED com os nichos (2 rolos; o Premium usa 7,9 m, também 2 rolos).
 
 ## O que precisa de profissional habilitado
 - Conferir o circuito e a bitola da tomada da Parede D (PC + monitores + LED).
@@ -80,3 +83,36 @@ conferidos recalculando as fórmulas de forma independente.
 - **Sketchfab:** não usado (exige token). Todos os móveis foram modelados com as medidas reais.
 - **Validação:** 35 de 35 verificações OK depois de duas correções reais (posição do PC e comprimento do tapete),
   aplicadas também na planta 2D. Detalhes em `07_DOCUMENTACAO/validacao_tecnica.md`.
+
+## Fase E — Decoração e PC sobre a mesa (31/10/2026)
+
+Plano aprovado em 30/10 (`plano_decoracao_pc.md`), implementado nesta sessão (em nuvem, com o mesmo Blender 5.2.3
+instalado como módulo Python `bpy`; o Blender MCP não está disponível aqui).
+
+- **Interferência corrigida:** o notebook cruzava o monitor esquerdo. Os monitores foram 6 cm para a esquerda no braço
+  e o notebook foi para a frente, num suporte baixo (folga de 2,5 cm).
+- **PC sobre a mesa:** gabinete 23 × 45 × 46 cm com vidro na frente e na lateral e 3 fans com anel de LED 3000 K, no
+  canto direito do tampo. Com a mesa no máximo, o topo fica a 1,64 m (prateleira a 1,95 m). O suporte suspenso saiu do
+  modelo e do orçamento.
+- **Marcenaria:** 3 nichos iluminados de 24 × 26 × 16 cm sobre a cabeceira (base a 1,55 m, 0,93 m acima do colchão),
+  com vaso, elefante de madeira e escultura de baleia (Poly Haven, escalados pelas medidas reais).
+- **Decoração:** 3 quadros P&B na Parede E (antes da janela) e 2 pequenos na prateleira; samambaia em vaso pendente
+  (base a 1,95 m) sobre a circulação; luminária de mesa 2700 K, suporte de headphone, caneca, relógio LED e a planta
+  média movida para a prateleira.
+- **Validação:** 58 de 58 verificações OK, incluindo as novas (`validacao_tecnica.md`).
+- **Atualizados:** plantas 2D (mobiliada, iluminação, elevação da Parede D), orçamento (XLSX, CSV, gráficos), lista de
+  compras (agora gerada por `04_ORCAMENTO/fonte/gerar_lista_compras.py`), renders, panoramas do tour 360°, modelo do
+  visualizador 3D e créditos.
+- **Renders desta rodada:** feitos em CPU (sem GPU na nuvem), com qualidade reduzida: vistas com 96 amostras e
+  panoramas 360° com 2048 × 1024 px e 64 amostras. Para a qualidade final, rode no desktop (GPU RX 6750 XT) sem as
+  opções `--amostras`/`--largura`: os padrões dos scripts continuam 256 amostras e 4096 px.
+- **Passe de realismo (31/10/2026, a pedido):** telas com conteúdo real renderizado no Chromium (editor de código,
+  planta do projeto num visualizador de PDF, e-mail no notebook) com orientação corrigida (sem espelhamento);
+  headphone modelado (arco, conchas e almofadas); fans do PC com 7 pás, moldura e anel de LED; cooler torre e
+  memórias dentro do gabinete; samambaia pendente com 6 touceiras caindo pela borda de um vaso cônico com terra
+  (ponta mais baixa das folhas a 1,92 m; o vaso continua com a base a 1,95 m); vidro com reflexo nos quadros; cabos
+  dos monitores, do PC e da luminária descendo até a tomada; caneca com café e alça; relógio com dígitos que acendem à
+  noite; teclado e touchpad no notebook; cúpula aberta com lâmpada na luminária.
+  Dois defeitos achados nos close-ups de teste e corrigidos: a luz pontual dentro do PC estourava as peças em branco
+  (removida) e as luzes apareciam como discos para a câmera (agora só as peças emissivas aparecem).
+- **Preços da decoração:** estimados. A Amazon não está liberada na rede desta sessão; pesquisar antes de comprar.
