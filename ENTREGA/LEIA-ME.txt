@@ -1,0 +1,15 @@
+SUÍTE 01 — PROJETO QUARTO + ESCRITÓRIO (entrega em 3 partes)
+
+1. Baixe TODAS as partes (Suite01_quarto_escritorio_parte1_de_3.zip, Suite01_quarto_escritorio_parte2_de_3.zip, Suite01_quarto_escritorio_parte3_de_3.zip).
+2. Extraia todas na MESMA pasta (no Windows: botão direito > Extrair tudo, escolhendo a mesma pasta de destino).
+   Cada parte é um .zip normal; juntas formam a pasta PROJETO_QUARTO_ESCRITORIO completa.
+3. Abra:
+   - PROJETO_QUARTO_ESCRITORIO/08_VISUALIZADOR_3D/index.html  → apresentação, modelo 3D e temas/layouts
+   - PROJETO_QUARTO_ESCRITORIO/09_TOUR_360/index.html         → tour 360° (escolha o tema no canto superior)
+   - PROJETO_QUARTO_ESCRITORIO/07_DOCUMENTACAO/               → resumo, lista de compras, temas, validações
+   - PROJETO_QUARTO_ESCRITORIO/04_ORCAMENTO/orcamento_completo.xlsx
+   - PROJETO_QUARTO_ESCRITORIO/05_BLENDER/quarto_escritorio_realista.blend (Blender 5.2)
+   As páginas usam bibliotecas da internet (three.js, model-viewer): abra com internet. Alguns navegadores bloqueiam
+   o modelo 3D aberto direto do disco; nesse caso use um servidor local: na pasta do projeto, "python -m http.server"
+   e acesse http://localhost:8000/08_VISUALIZADOR_3D/
+4. Renders na qualidade máxima (GPU): veja 07_DOCUMENTACAO/temas_e_layouts.md ("Como gerar qualquer combinação").
