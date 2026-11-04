@@ -50,14 +50,14 @@ pediu verificação de conta e não foi usado. Cada preço está marcado como:
 ### Orçamento (`04_ORCAMENTO/orcamento_completo.xlsx`)
 | Cenário | Itens | Reserva 10% | **Total** | Parte estimada |
 |---|---:|---:|---:|---:|
-| Econômico | R$ 9.196 | R$ 920 | **R$ 10.115** | R$ 3.175 |
-| Equilibrado | R$ 13.258 | R$ 1.326 | **R$ 14.584** | R$ 6.117 |
-| Premium | R$ 21.001 | R$ 2.100 | **R$ 23.101** | R$ 9.381 |
+| Econômico | R$ 9.444 | R$ 944 | **R$ 10.388** | R$ 3.175 |
+| Equilibrado | R$ 13.902 | R$ 1.390 | **R$ 15.292** | R$ 6.387 |
+| Premium | R$ 22.596 | R$ 2.260 | **R$ 24.856** | R$ 10.551 |
 
-*Valores atualizados em 31/10/2026. Incluem a categoria "Decoração (opcional)" (R$ 2.243, igual nos 3 cenários): o
+*Valores atualizados em 04/11/2026, já com a categoria "Automação (Alexa)" (Fase I). Incluem a categoria "Decoração (opcional)" (R$ 2.243, igual nos 3 cenários): o
 pacote de decoração do tema aprovado com preços pesquisados na busca da web (persiana romana de linho sob medida,
 luminária de braço, almofadas, planta de chão, samambaia pendente, quadros, roupa de cama e manta). Sem ela, o
-Equilibrado fica em ≈ R$ 12.117 com a reserva.*
+Equilibrado fica em ≈ R$ 12.825 com a reserva.*
 
 A planilha tem fórmulas: mude quantidades e preços (em azul) e os totais se recalculam. A aba
 **Quantitativos** calcula áreas, galões de tinta, metros de LED e barras de perfil. Os totais foram
@@ -171,3 +171,20 @@ instalado como módulo Python `bpy`; o Blender MCP não está disponível aqui).
 - **Conferido no Chromium:** do disco, o tour carregou a imagem cheia nas 48 combinações (6 temas × dia/noite × 4
   pontos) e a apresentação carregou o modelo 3D; por servidor, as duas seguem iguais.
 - Depois de renderizar panoramas novos ou exportar o modelo de novo, rode `python3 gerar_arquivos_offline.py`.
+
+## Fase I — Quarto integrado à Alexa (04/11/2026)
+
+- **Plano completo** em `07_DOCUMENTACAO/automacao_alexa.md`: o que a Alexa controla e com que nome, onde fica cada
+  aparelho, zonas de luz, 12 rotinas (voz e automáticas), configuração passo a passo e compras por cenário.
+- **Usa o Echo que você já tem.** Os aparelhos são Wi-Fi 2,4 GHz sem hub: 2 controles Wi-Fi da fita (zona mesa L1 + L2 e
+  zona cabeceira L5), lâmpada Wi-Fi na luminária, tomada Wi-Fi na arandela, controle IR do ar-condicionado e, a partir
+  do Equilibrado, interruptor Wi-Fi do ventilador, sensor de presença e sensor de temperatura. O Premium soma sensor de
+  porta e motor na persiana externa.
+- **Posições conferidas no modelo 3D:** Echo no canto esquerdo do tampo (vão livre de 15 × 26 cm entre a luminária e o
+  notebook, a ~25 cm do travesseiro); controle IR na prateleira, de frente para o ar; sensor de presença no canto da
+  Parede C com a faixa de entrada; sensor de temperatura no nicho esquerdo. Tudo marcado na planta de iluminação.
+- **Orçamento:** nova categoria *Automação (Alexa)* nos 3 cenários (preços da busca web de 04/11/2026, conferir no link).
+  Itens da Alexa: R$ 280 / R$ 687 / R$ 1.681. Totais com reserva: **R$ 10.388 / R$ 15.292 / R$ 24.856**, conferidos no
+  LibreOffice.
+- **Apresentação:** nova seção *Casa inteligente com a Alexa*; o total do cabeçalho passou para R$ 15.292.
+- Os renders não mudaram: o Echo e os sensores são pequenos e ficam só na planta e no documento.

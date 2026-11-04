@@ -32,3 +32,14 @@ piso (madeira colante, fora do orçamento), símbolos (descartados) e pilares (e
 | 11 | Renders finais em GPU | Os desta rodada saíram em CPU com qualidade reduzida; rodar no desktop sem `--amostras`/`--largura` |
 | 12 | Tipo de porta do armário (correr ou abrir) | Agora decide também o layout C (mesa a 20 cm do armário) e a planta pendente do A/B |
 | 13 | Cor de parede dos temas | Os hex são referência de tom; escolher no leque da marca de tinta e testar amostra na parede |
+
+## Novas (04/11/2026, integração com a Alexa)
+| # | Item | Situação |
+|---|------|----------|
+| 14 | Modelo do Echo | Qualquer um serve (aparelhos Wi-Fi sem hub). Echo Dot 5ª ger. ou Echo 4ª ger. têm sensor de temperatura e dispensam o HONP |
+| 15 | Fio neutro na caixa do interruptor do ventilador | Eletricista confere antes de comprar o interruptor Wi-Fi; sem neutro, usar a lâmpada Wi-Fi do Econômico |
+| 16 | Marca/modelo do ar-condicionado | Conferir na biblioteca do controle IR (Smart Life) antes de comprar |
+| 17 | Quantos soquetes tem a luz do ventilador | Uma lâmpada Wi-Fi por soquete no Econômico |
+| 18 | Tipo da persiana externa (Premium) | Motor tubular só serve para persiana de enrolar; precisa de energia na caixa |
+| 19 | Corrente máxima do controle Wi-Fi da fita | Zona da mesa ≈ 2,7 A (Premium ≈ 4,3 A): conferir no anúncio |
+| 20 | Sinal Wi-Fi 2,4 GHz no quarto | Testar junto da mesa antes de parear os aparelhos |

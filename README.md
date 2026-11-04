@@ -13,6 +13,7 @@ renders, tour 360° e 6 temas de decoração × 3 layouts.
 | Resumo de tudo o que foi feito | `PROJETO_QUARTO_ESCRITORIO/07_DOCUMENTACAO/resumo_do_que_foi_feito.md` |
 | Lista de compras (cenário Equilibrado) | `PROJETO_QUARTO_ESCRITORIO/07_DOCUMENTACAO/lista_compras.md` |
 | Temas, layouts, validações e compras por tema | `PROJETO_QUARTO_ESCRITORIO/07_DOCUMENTACAO/temas_e_layouts.md` |
+| Integração com a Alexa (rotinas, posições, compras) | `PROJETO_QUARTO_ESCRITORIO/07_DOCUMENTACAO/automacao_alexa.md` |
 | Orçamento com fórmulas (3 cenários) | `PROJETO_QUARTO_ESCRITORIO/04_ORCAMENTO/orcamento_completo.xlsx` |
 | Plantas e elevação (PDF/PNG) | `PROJETO_QUARTO_ESCRITORIO/03_PLANTAS/` |
 | Cena do Blender 5.2 | `PROJETO_QUARTO_ESCRITORIO/05_BLENDER/quarto_escritorio_realista.blend` |

@@ -21,6 +21,13 @@ MON_CX = 1.72                      # centro dos monitores no braço (6 cm à esq
 NB = (0.97, 0.42, 1.29, 0.66)      # notebook em suporte baixo, na frente à esquerda (x0, y0, x1, y1)
 NICHOS_X0, NICHO_W, NICHO_H, NICHO_P, NICHO_Z0, NICHO_GAP = 0.06, 0.24, 0.26, 0.16, 1.55, 0.02
 TOM_D = D / 2
+# Alexa (planta, em metros): Echo no tampo entre a base da luminária e o notebook; controle IR na ponta esquerda da
+# prateleira (h 1,97), de frente para o ar-condicionado da Parede C; sensor de presença no canto da Parede C com a faixa
+# de entrada (h 2,10); sensor de temperatura no nicho esquerdo, longe do PC e do sopro do ar.
+ECHO = (1.02, 0.31)
+IR_POS = (1.29, 0.11)
+SENS_PRES = (2.60, 1.95)
+SENS_TEMP = (0.18, 0.10)
 CAMA_H = 0.62
 TAP = (1.08, 0.78, 2.48, 2.78)     # tapete 1,40 × 2,00 (x0, y0, x1, y1) — 7 cm livres até o armário
 
@@ -87,7 +94,7 @@ def mobiliada():
 
 def iluminacao():
     s = Svg("Planta de iluminação e pontos elétricos — proposta",
-            "Suíte 01 · usa apenas os pontos existentes · fitas de LED 24 V em baixa tensão · 30/10/2026")
+            "Suíte 01 · usa apenas os pontos existentes · fitas de LED 24 V em baixa tensão · integrada à Alexa · 04/11/2026")
     ambiente(s, cotas=False)
     s.rect(0, 0, D, RIP, "url(#rip)", "#5a3a1e", 1)
     s.rect(0, RIP, CAMA_W, RIP + CAMA_L, "#eeeeee", "#aaa", 1, "est")
@@ -129,20 +136,34 @@ def iluminacao():
     fio([(fx - 0.10, fy - 0.02), (LED_V_X, MY0 + 0.05), (LED_V_X, RIP / 2)])
     fio([(LED_V_X, RIP / 2), (NICHOS_X0 + 3 * NICHO_W + 2 * NICHO_GAP, RIP + 0.04)])   # sobe pelo vão do L2 até os nichos
     fio([(0.06, E / 2), (0.30, E / 2), (0.30, 0.12), (ARAND_X, 0.08)], "#999")
+    # Alexa: Echo, controle IR, sensores (posições conferidas no modelo 3D; ver 07_DOCUMENTACAO/automacao_alexa.md)
+    alx = "#0a7ea4"
+    def marca(x, y, rot, tx, ty, lado="start"):
+        s.add(f'<rect x="{s.X(x) - 7:.1f}" y="{s.Y(y) - 7:.1f}" width="14" height="14" rx="3" fill="{alx}" stroke="#000"/>')
+        s.text(tx, ty, rot, 11, alx, bold=True, anchor=lado)
+    marca(ECHO[0], ECHO[1], "A · Echo", ECHO[0] - 0.02, ECHO[1] + 0.13)
+    marca(IR_POS[0], IR_POS[1], "IR", IR_POS[0] + 0.06, IR_POS[1] + 0.02)
+    marca(SENS_PRES[0], SENS_PRES[1], "S · presença h 2,10", SENS_PRES[0] - 0.07, SENS_PRES[1] + 0.035, lado="end")
+    marca(SENS_TEMP[0], SENS_TEMP[1], "T", SENS_TEMP[0], SENS_TEMP[1] + 0.17, lado="middle")
     painel = painel_base() + [
         ("h", "ILUMINAÇÃO PROPOSTA (luz quente 2700–3000 K)"),
-        ("t", "Geral: ventilador c/ luz existente → lâmpada LED 3000 K"),
+        ("t", "Geral: ventilador c/ luz → interruptor Wi-Fi (luz + vel.)"),
         ("t", "L1  Fita COB 24 V sob a prateleira — tarefa/ambiente"),
         ("t", "L2  Fita COB em perfil vertical no ripado — decorativa"),
         ("t", "L3  Barra de luz no monitor — tarefa, sem reflexo na tela"),
-        ("t", "L4  Arandela articulada na cabeceira — leitura"),
+        ("t", "L4  Arandela articulada na cabeceira — tomada Wi-Fi"),
         ("t", "L5  Fita COB nos 3 nichos (0,72 m), mesma fonte 24 V"),
-        ("t", "L6  Luminária de mesa 2700 K — plugue no filtro"),
+        ("t", "L6  Luminária de mesa — lâmpada Wi-Fi 2700–6500 K"),
         ("t", "F   Filtro c/ DPS + fonte 24 V presos sob o tampo"),
-        ("t", "L1 + L2 + L5 dimerizáveis por controle Wi-Fi"),
         ("t", "Fonte 24 V: 5,3 m × 16 W/m ≈ 85 W (fonte de 120 W)"),
+        ("h", "ALEXA (voz e rotinas · Wi-Fi 2,4 GHz, sem hub)"),
+        ("t", "Zonas: mesa (L1 + L2) e cabeceira (L5), 2 controles Wi-Fi"),
+        ("t", "A   Echo no canto esquerdo da mesa (alcança da cama)"),
+        ("t", "IR  Controle IR na ponta da prateleira, de frente p/ o ar"),
+        ("t", "S   Sensor de presença: luz de passagem à noite"),
+        ("t", "T   Sensor de temperatura no nicho esquerdo (liga o ar)"),
         ("h", "ALIMENTAÇÃO (sem pontos novos)"),
-        ("t", "Tomada Parede D → filtro c/ DPS → PC, monitores, fonte LED"),
+        ("t", "Tomada Parede D → filtro c/ DPS → PC, monitores, LED, Echo"),
         ("t", "Tomada Parede E → arandela + carregador da cama"),
         ("t", "Tomada D recebe prolongador de caixa (ripado de 3 cm)"),
         ("warn", "⚠ Conferir com eletricista: circuito e bitola da"),

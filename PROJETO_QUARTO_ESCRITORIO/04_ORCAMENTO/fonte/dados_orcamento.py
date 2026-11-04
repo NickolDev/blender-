@@ -18,7 +18,7 @@ FONTE_PINTOR = ("Faixa R$ 15–35/m² simples; R$ 35–60/m² com preparo (Lar P
 
 # Cada item: (categoria, item, produto, loja, link, dimensões, material, status, qtd, preço_unit, unidade)
 # qtd pode ser uma string "Q:<nome>" que aponta para a aba Quantitativos (fórmula no XLSX).
-CAT = ["Mobiliário", "Marcenaria", "Iluminação", "Pintura", "Complementares", "Decoração (opcional)", "Serviços"]
+CAT = ["Mobiliário", "Marcenaria", "Iluminação", "Pintura", "Complementares", "Automação (Alexa)", "Decoração (opcional)", "Serviços"]
 
 def _mesa_pichau():
     return ("Mobiliário", "Mesa regulável elétrica", "Pichau Starlift Pro 160×70 (1 motor, 80 kg, tampo MDP 15 mm)",
@@ -46,7 +46,8 @@ ECONOMICO = [
     ("Iluminação", "Fonte 24 V", "Fonte chaveada slim 24V 5A 120W bivolt", "Amazon", AMZ + "B0H7CQ2BY2", "—", "—", "LIST", 1, 61.99, "un"),
     ("Iluminação", "Perfil de alumínio p/ LED", "Perfil LED embutir 24×7 mm slim 2 m preto", "Amazon", AMZ + "B0F1ZBZZTP",
      "200 cm", "Alumínio", "LIST", "Q:barras_perfil", 29.90, "barra"),
-    ("Iluminação", "Dimmer da fita", "Controle remoto IR c/ dimmer 12/24V", "Amazon", AMZ + "B0FJH6572V", "—", "—", "LIST", 1, 31.50, "un"),
+    ("Iluminação", "Controle Wi-Fi da fita (2 zonas)", "Controlador Wi-Fi c/ dimmer (Alexa/Google) — zona mesa (L1+L2) e zona cabeceira (L5)",
+     "Amazon", AMZ + "B0FS91PKKL", "—", "—", "LIST", 2, 43.02, "un"),
     ("Iluminação", "Barra de luz p/ monitor", "Luminária p/ monitor 3 temperaturas, toque", "Amazon", AMZ + "B0GXZ9CN8M", "—", "—", "LIST", 1, 56.99, "un"),
     ("Iluminação", "Arandela da cama", "Arandela tubo articulada preta c/ interruptor (conferir se tem plugue)", "Amazon",
      AMZ + "B0DND64VLW", "—", "Metal", "LIST", 1, 74.95, "un"),
@@ -93,7 +94,8 @@ EQUILIBRADO = [
     ("Iluminação", "Fonte 24 V", "Fonte chaveada slim 24V 5A 120W bivolt", "Amazon", AMZ + "B0H7CQ2BY2", "—", "—", "LIST", 1, 61.99, "un"),
     ("Iluminação", "Perfil de alumínio p/ LED", "Perfil LED embutir 24×7 mm slim 2 m preto", "Amazon", AMZ + "B0F1ZBZZTP",
      "200 cm", "Alumínio", "LIST", "Q:barras_perfil", 29.90, "barra"),
-    ("Iluminação", "Controle Wi-Fi da fita", "Controlador Wi-Fi c/ dimmer (Alexa/Google)", "Amazon", AMZ + "B0FS91PKKL", "—", "—", "LIST", 1, 43.02, "un"),
+    ("Iluminação", "Controle Wi-Fi da fita (2 zonas)", "Controlador Wi-Fi c/ dimmer (Alexa/Google) — zona mesa (L1+L2) e zona cabeceira (L5)",
+     "Amazon", AMZ + "B0FS91PKKL", "—", "—", "LIST", 2, 43.02, "un"),
     ("Iluminação", "Barra de luz p/ monitor", "Quntis Light Bar PRO+ c/ controle remoto", "Amazon", AMZ + "B0B6P9J3J5", "—", "—", "LIST", 1, 293.55, "un"),
     ("Iluminação", "Arandela da cama", "Arandela tubo articulada preta c/ interruptor (conferir se tem plugue)", "Amazon",
      AMZ + "B0DND64VLW", "—", "Metal", "LIST", 1, 74.95, "un"),
@@ -142,7 +144,8 @@ PREMIUM = [
     ("Iluminação", "Fonte 24 V", "Fonte chaveada slim 24V 5A 120W bivolt", "Amazon", AMZ + "B0H7CQ2BY2", "—", "—", "LIST", 2, 61.99, "un"),
     ("Iluminação", "Perfil de alumínio p/ LED", "Perfil LED embutir 24×7 mm slim 2 m preto", "Amazon", AMZ + "B0F1ZBZZTP",
      "200 cm", "Alumínio", "LIST", "Q:barras_perfil_prem", 29.90, "barra"),
-    ("Iluminação", "Controle Wi-Fi da fita", "Controlador Wi-Fi c/ dimmer (Alexa/Google)", "Amazon", AMZ + "B0FS91PKKL", "—", "—", "LIST", 2, 43.02, "un"),
+    ("Iluminação", "Controle Wi-Fi da fita (2 zonas)", "Controlador Wi-Fi c/ dimmer (Alexa/Google) — zona mesa (L1 + 2× L2) e zona cabeceira (L5)",
+     "Amazon", AMZ + "B0FS91PKKL", "—", "—", "LIST", 2, 43.02, "un"),
     ("Iluminação", "Barra de luz p/ monitor", "BenQ ScreenBar Pro (sensor de presença)", "Amazon", AMZ + "B0CZ9P1QW9", "—", "—", "LIST", 1, 1389.20, "un"),
     ("Iluminação", "Arandela da cama", "GOODATE arandela plug-in c/ interruptor regulável, braço oscilante", "Amazon",
      AMZ + "B094QSBVNB", "—", "Metal", "LIST", 1, 344.79, "un"),
@@ -169,6 +172,38 @@ PREMIUM = [
     ("Serviços", "Frete e taxas de importação", "Reserva (Amazon Global pode ter impostos)", "—", "Estimativa", "—", "—", "EST", 1, 450.00, "vb"),
 ]
 
+# Automação (Alexa): tudo por voz e por rotina, usando o Echo que o usuário já tem (pesquisa de 04/11/2026).
+# Dispositivos Wi-Fi 2,4 GHz, sem hub: funcionam com qualquer Echo. Detalhes, posições e rotinas em
+# 07_DOCUMENTACAO/automacao_alexa.md.
+DATA_AUTOMACAO = "04/11/2026"
+A = "Automação (Alexa)"
+_LAMP_KIT = (A, "Lâmpadas Wi-Fi (luz do ventilador + luminária de mesa)", "Positivo Smart Lâmpada 9W 806 lm, branco 2700–6500 K + RGB (kit 2)",
+             "Amazon", AMZ + "B09GBHTCTN", "E27", "—", "BUSCA", 1, 99.00, "kit")
+_LAMP_1 = (A, "Lâmpada Wi-Fi da luminária de mesa (L6)", "Positivo Smart Lâmpada 9W 806 lm, branco 2700–6500 K + RGB",
+           "Amazon", AMZ + "B082FTRR76", "E27", "—", "BUSCA", 1, 79.90, "un")
+_PLUG = (A, "Tomada Wi-Fi da arandela (L4)", "Positivo Smart Plug 10A/1000W (mede consumo)", "Amazon", AMZ + "B07S14JHF2",
+         "—", "—", "BUSCA", 1, 51.70, "un")
+_IR = (A, "Controle IR Wi-Fi do ar-condicionado", "Novadigital SRW-004 (Tuya/Smart Life, IR 360°, 8 m)", "Amazon", AMZ + "B0CLQ1NNJQ",
+       "—", "—", "BUSCA", 1, 43.00, "un")
+_FAN = (A, "Interruptor Wi-Fi do ventilador de teto (luz + velocidades)", "Painel touch Wi-Fi Tuya p/ ventilador, 10 A (precisa de neutro na caixa)",
+        "Casas Bahia", "https://www.casasbahia.com.br/painel-de-interruptor-inteligente-coibeu-para-ventilador-funcao-wifi-24ghz-touch-app-tuya/p/1581529833",
+        "caixa 4×2", "—", "EST", 1, 120.00, "un")
+_PRES = (A, "Sensor de presença (luz de passagem à noite)", "WEG Home sensor de presença Wi-Fi, bateria recarregável, 6 m / 115°",
+         "Amazon", AMZ + "B098PJWQB6", "—", "—", "BUSCA", 1, 96.73, "un")
+_TEMP = (A, "Sensor de temperatura e umidade (liga o ar sozinho)", "HONP Tuya Wi-Fi c/ display LCD (pilhas à parte)",
+         "Amazon", AMZ + "B0BK1J96H7", "—", "—", "BUSCA", 1, 59.90, "un")
+_INST = (A, "Instalação do interruptor do ventilador", "Eletricista: troca do interruptor e teste do neutro", "Profissional local",
+         "Estimativa", "—", "—", "EST", 1, 150.00, "vb")
+_PORTA = (A, "Sensor de porta (chegou/saiu)", "WEG Home sensor de abertura Wi-Fi, bateria recarregável", "Pichau",
+          PCH + "sensor-porta-ou-janela-weg-home-wi-fi-branco-15718937", "—", "—", "LIST", 1, 93.49, "un")
+_PERS = (A, "Motor Wi-Fi na persiana externa + instalação", "Motor tubular Wi-Fi (Tuya) no eixo da persiana de enrolar — confirmar o tipo",
+         "Profissional local", "Estimativa", "—", "—", "EST", 1, 900.00, "vb")
+AUTOMACAO = {
+    "Econômico": [_LAMP_KIT, _PLUG, _IR],
+    "Equilibrado": [_LAMP_1, _PLUG, _IR, _FAN, _PRES, _TEMP, _INST],
+    "Premium": [_LAMP_1, _PLUG, _IR, _FAN, _PRES, _TEMP, _INST, _PORTA, _PERS],
+}
+
 # Decoração (opcional): pacote do tema aprovado (Moderno Escuro), pesquisado em 31/10/2026 — mesmo nos 3 cenários.
 import sys as _sys
 from pathlib import Path as _Path
@@ -183,9 +218,9 @@ DECORACAO += [
     ("Decoração (opcional)", "Relógio LED de prateleira", "Relógio digital LED 12 cm", "A pesquisar", "Estimativa", "—", "—",
      "EST", 1, 70.00, "un"),
 ]
-for _lista in (ECONOMICO, EQUILIBRADO, PREMIUM):
+for _nome, _lista in (("Econômico", ECONOMICO), ("Equilibrado", EQUILIBRADO), ("Premium", PREMIUM)):
     _i = next(i for i, it in enumerate(_lista) if it[0] == "Serviços")
-    _lista[_i:_i] = DECORACAO
+    _lista[_i:_i] = AUTOMACAO[_nome] + DECORACAO
 
 CENARIOS = {"Econômico": ECONOMICO, "Equilibrado": EQUILIBRADO, "Premium": PREMIUM}
 
