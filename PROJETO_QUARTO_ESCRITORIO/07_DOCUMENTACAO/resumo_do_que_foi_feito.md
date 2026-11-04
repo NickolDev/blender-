@@ -159,3 +159,15 @@ instalado como módulo Python `bpy`; o Blender MCP não está disponível aqui).
   celular.
 - **Entrega em .zip**: `ENTREGA/` com o projeto em partes de até 90 MB (`ENTREGA/gerar_zip.py`), ou *Download ZIP* do
   GitHub.
+
+## Fase H — Páginas abertas direto do disco (04/11/2026)
+
+- **Problema:** aberto com dois cliques (`file://`), o tour 360° ficava sem imagem ("panorama não encontrado") e a
+  apresentação ficava sem o modelo 3D. O navegador bloqueia, por segurança (CORS), que uma página aberta do disco leia
+  imagens para o WebGL ou arquivos com `fetch`. Por um servidor (ou nas páginas publicadas) tudo já funcionava.
+- **Correção:** `gerar_arquivos_offline.py` cria cópias `.js` dos panoramas (`09_TOUR_360/pano/js/`) e do modelo
+  (`08_VISUALIZADOR_3D/quarto_modelo.js`), com o conteúdo embutido. Scripts o navegador aceita do disco. As páginas só
+  usam essas cópias quando estão em `file://`; num servidor continuam lendo os `.jpg` e o `quarto.json`.
+- **Conferido no Chromium:** do disco, o tour carregou a imagem cheia nas 48 combinações (6 temas × dia/noite × 4
+  pontos) e a apresentação carregou o modelo 3D; por servidor, as duas seguem iguais.
+- Depois de renderizar panoramas novos ou exportar o modelo de novo, rode `python3 gerar_arquivos_offline.py`.

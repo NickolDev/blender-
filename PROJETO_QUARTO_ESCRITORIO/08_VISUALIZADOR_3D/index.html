@@ -150,6 +150,25 @@ dialog button { position: absolute; top: 10px; right: 10px; font: 600 13px var(-
       shadow-intensity="0.7" min-camera-orbit="auto 0deg 0.3m" max-camera-orbit="auto 180deg 14m"
       field-of-view="45deg" min-field-of-view="20deg" max-field-of-view="80deg" interpolation-decay="120"
       camera-target="1.45m 0.3m -1.25m" camera-orbit="145deg 22deg 6.0m"></model-viewer>
+    <script>
+      // Aberto direto do disco (file://), o navegador bloqueia a leitura do quarto.json (CORS).
+      // Nesse caso o modelo vem de quarto_modelo.js, que traz o .glb embutido (gerar_arquivos_offline.py).
+      if (location.protocol === "file:") {
+        const mv = document.getElementById("mv");
+        mv.removeAttribute("src");
+        const s = document.createElement("script");
+        s.src = "quarto_modelo.js";
+        s.onload = () => {
+          const bin = atob(window.__MODELO_GLB || "");
+          const bytes = new Uint8Array(bin.length);
+          for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+          delete window.__MODELO_GLB;
+          mv.src = URL.createObjectURL(new Blob([bytes], { type: "model/gltf-binary" }));
+        };
+        s.onerror = () => console.warn("falta quarto_modelo.js: rode gerar_arquivos_offline.py ou abra por um servidor local");
+        document.head.appendChild(s);
+      }
+    </script>
     <div class="views" role="group" aria-label="Vistas prontas">
       <button type="button" id="v-geral" data-target="1.45m 0.3m -1.25m" data-orbit="145deg 22deg 6.0m" data-fov="45deg" aria-pressed="true">Visão geral</button>
       <button type="button" id="v-planta" data-target="2.25m 0m -1.6m" data-orbit="0deg 0.5deg 7.5m" data-fov="45deg" aria-pressed="false">De cima</button>

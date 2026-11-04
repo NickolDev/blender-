@@ -17,9 +17,9 @@ renders, tour 360° e 6 temas de decoração × 3 layouts.
 | Plantas e elevação (PDF/PNG) | `PROJETO_QUARTO_ESCRITORIO/03_PLANTAS/` |
 | Cena do Blender 5.2 | `PROJETO_QUARTO_ESCRITORIO/05_BLENDER/quarto_escritorio_realista.blend` |
 
-As páginas usam three.js e model-viewer da internet. Alguns navegadores não carregam o modelo 3D aberto direto do
-disco: nesse caso, rode `python -m http.server` dentro de `PROJETO_QUARTO_ESCRITORIO` e abra
-`http://localhost:8000/08_VISUALIZADOR_3D/`.
+As páginas abrem direto do disco, com dois cliques, mas precisam de internet para carregar o three.js e o
+model-viewer. Também funcionam por um servidor local: rode `python -m http.server` dentro de
+`PROJETO_QUARTO_ESCRITORIO` e abra `http://localhost:8000/08_VISUALIZADOR_3D/`.
 
 ## Baixar tudo
 
@@ -36,6 +36,7 @@ Tudo é gerado por scripts a partir das mesmas medidas (`03_PLANTAS/fonte/`):
 - `05_BLENDER/scripts/variantes.py` → qualquer tema × layout (ex.: `-- --tema japandi --layout C --render dia,noite`)
 - `04_ORCAMENTO/fonte/gerar_orcamento.py` → planilha, CSV e gráficos; `gerar_lista_compras.py` → lista de compras
 - `05_BLENDER/scripts/gerar_html_temas.py` → dados da página e documento de temas
+- `gerar_arquivos_offline.py` → cópias `.js` dos panoramas e do modelo 3D, para as páginas abrirem direto do disco
 
 Os renders deste repositório foram feitos em CPU. Na GPU do desktop, rode os scripts sem `--amostras`/`--res` para a
 qualidade máxima.

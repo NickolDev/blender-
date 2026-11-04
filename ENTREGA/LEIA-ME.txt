@@ -9,7 +9,7 @@ SUÍTE 01 — PROJETO QUARTO + ESCRITÓRIO (entrega em 3 partes)
    - PROJETO_QUARTO_ESCRITORIO/07_DOCUMENTACAO/               → resumo, lista de compras, temas, validações
    - PROJETO_QUARTO_ESCRITORIO/04_ORCAMENTO/orcamento_completo.xlsx
    - PROJETO_QUARTO_ESCRITORIO/05_BLENDER/quarto_escritorio_realista.blend (Blender 5.2)
-   As páginas usam bibliotecas da internet (three.js, model-viewer): abra com internet. Alguns navegadores bloqueiam
-   o modelo 3D aberto direto do disco; nesse caso use um servidor local: na pasta do projeto, "python -m http.server"
-   e acesse http://localhost:8000/08_VISUALIZADOR_3D/
+   As páginas abrem direto, com dois cliques, mas precisam de internet para as bibliotecas (three.js, model-viewer).
+   Também funcionam por um servidor local: na pasta do projeto, "python -m http.server" e acesse
+   http://localhost:8000/08_VISUALIZADOR_3D/
 4. Renders na qualidade máxima (GPU): veja 07_DOCUMENTACAO/temas_e_layouts.md ("Como gerar qualquer combinação").
