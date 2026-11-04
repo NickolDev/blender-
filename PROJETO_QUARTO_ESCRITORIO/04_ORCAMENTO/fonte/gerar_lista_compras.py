@@ -18,6 +18,8 @@ ORDEM = """## Ordem sugerida de execução
 6. Cama, cadeira, tapete, braço dos monitores, PC sobre o tampo (canto direito) e acessórios.
 7. Decoração: quadros na Parede E (y 0,10–0,94; z 1,20–1,75), gancho de teto da planta pendente em (0,30; 2,25),
    objetos dos nichos, plantas e relógio na prateleira.
+8. Alexa: eletricista troca o interruptor do ventilador pelo Wi-Fi (conferir o neutro; dá para ser na visita do passo 1);
+   depois parear tudo no app, ligar as skills na Alexa e criar as rotinas de `07_DOCUMENTACAO/automacao_alexa.md`.
 """
 
 

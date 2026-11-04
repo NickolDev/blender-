@@ -176,6 +176,7 @@ def gerar_xlsx():
         "• Tinta grafite: o preço é o da base branca; a cor preparada em loja pode custar mais. Confirmar na loja.",
         "• Marcenaria (ripado, tampo, prateleira, nichos) e mão de obra = estimativas por faixa de mercado; pedir 3 orçamentos locais.",
         "• Decoração (opcional): pacote do tema aprovado, preços vistos na busca da web em 31/10/2026 (conferir no link); 4 itens estimados.",
+        "• Automação (Alexa): usa o Echo que você já tem; dispositivos Wi-Fi 2,4 GHz sem hub; preços da busca web de 04/11/2026 (conferir no link). Ver 07_DOCUMENTACAO/automacao_alexa.md.",
         "• PC: fica sobre o tampo (suporte de gabinete removido em 31/10/2026). Monitores, PC e notebook são do usuário.",
         "• Premium: a estrutura Marsail é vendida pela Amazon Global (importação); prazo e impostos podem variar.",
     ]):
@@ -203,7 +204,7 @@ def gerar_csv():
 
 # ------------------------------------------------------------- gráficos
 SURF, INK, INK2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e6e4df"
-SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#7a5cd6", "#008300"]
+SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#4fb8c6", "#7a5cd6", "#008300"]
 RESERVA = "#a9a7a1"
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 11, "axes.edgecolor": GRID,
                      "axes.labelcolor": INK2, "xtick.color": INK2, "ytick.color": INK2,
@@ -259,7 +260,7 @@ def _stack(ax, T, pct):
         for i, v in enumerate(vals):
             if (pct and v >= 7) or (not pct and v >= 1500):
                 ax.text(left[i] + v / 2, i, f"{v:.0f}%" if pct else brl(v).replace("R$ ", ""),
-                        ha="center", va="center", fontsize=9, color="#ffffff" if cor in (SERIES[0], SERIES[5]) else INK)
+                        ha="center", va="center", fontsize=9, color="#ffffff" if cor in (SERIES[0], SERIES[6]) else INK)
         left = [l + v for l, v in zip(left, vals)]
     return cens, left
 

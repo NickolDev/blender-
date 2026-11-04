@@ -200,13 +200,29 @@ const caminho = (p, m, prev) => tema === "aprovado" ? `pano/${prev ? "prev/" : "
 let lon = 0, lat = -5, fov = 75, ponto = "entrada", modo = "noite";
 let alvoLon = null;
 
+// Aberto direto do disco (file://), o navegador não deixa o WebGL usar os .jpg da pasta (CORS).
+// Nesse caso cada panorama vem de pano/js/<caminho>.js, que traz a imagem embutida (gerar_arquivos_offline.py).
+const NO_DISCO = location.protocol === "file:";
+const pendentes = {};
+window.__PANO = (url, dados) => { if (pendentes[url]) { pendentes[url](dados); delete pendentes[url]; } };
+function viaScript(url) {
+  return new Promise((ok, err) => {
+    pendentes[url] = ok;
+    const s = document.createElement("script");
+    s.src = "pano/js/" + url.slice("pano/".length).replace(/\.jpg$/, ".js");
+    s.onload = () => { s.remove(); if (pendentes[url]) { delete pendentes[url]; err(new Error("vazio: " + s.src)); } };
+    s.onerror = () => { s.remove(); delete pendentes[url]; err(new Error("não encontrado: " + s.src)); };
+    document.head.appendChild(s);
+  });
+}
 function tex(url) {
   if (!cache[url]) {
-    cache[url] = new Promise((ok, err) => loader.load(url, (t) => {
+    cache[url] = (NO_DISCO ? viaScript(url) : Promise.resolve(url)).then((src) => new Promise((ok, err) => loader.load(src, (t) => {
       t.encoding = THREE.sRGBEncoding;
       t.anisotropy = renderer.capabilities.getMaxAnisotropy();
       ok(t);
-    }, undefined, err));
+    }, undefined, err)));
+    cache[url].catch(() => { delete cache[url]; });   // deixa tentar de novo depois
   }
   return cache[url];
 }
@@ -216,7 +232,12 @@ async function mostrar(p, m) {
   let prev;
   try { prev = await tex(caminho(p, m, true)); }
   catch (e) {                                   // panorama inexistente: avisa em vez de quebrar o tour
-    if (p === ponto && m === modo && t === tema) { loading.textContent = "panorama não encontrado para este tema"; loading.hidden = false; }
+    console.warn("panorama:", e && e.message);
+    if (p === ponto && m === modo && t === tema) {
+      loading.textContent = NO_DISCO ? "panorama não encontrado: falta a pasta pano/js (rode gerar_arquivos_offline.py) ou abra por um servidor local"
+                                     : "panorama não encontrado para este tema";
+      loading.hidden = false;
+    }
     return;
   }
   loading.textContent = "carregando em alta resolução…";

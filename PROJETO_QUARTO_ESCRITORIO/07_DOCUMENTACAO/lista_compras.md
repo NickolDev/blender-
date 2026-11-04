@@ -1,6 +1,6 @@
 # Lista de compras — cenário Equilibrado
 
-Preços consultados em 30/10/2026 (reconfirmar antes de comprar). Total com reserva de 10%: **R$ 14.584**. Detalhes e fórmulas em `04_ORCAMENTO/orcamento_completo.xlsx`.
+Preços consultados em 30/10/2026 (reconfirmar antes de comprar). Total com reserva de 10%: **R$ 15.292**. Detalhes e fórmulas em `04_ORCAMENTO/orcamento_completo.xlsx`.
 
 Itens marcados *estimativa* não têm cotação: pedir orçamento ou pesquisar o preço antes de comprar.
 
@@ -24,7 +24,7 @@ Itens marcados *estimativa* não têm cotação: pedir orçamento ou pesquisar o
 - [ ] **Fita LED COB 3000 K** — [Stella All Light Pro 16W/m 24V COB 3000K IRC 95+ 5 m](https://www.amazon.com.br/dp/B0F7ZGD3M2) · 2 rolo × R$ 200.69 = **R$ 401.38**
 - [ ] **Fonte 24 V** — [Fonte chaveada slim 24V 5A 120W bivolt](https://www.amazon.com.br/dp/B0H7CQ2BY2) · 1 un × R$ 61.99 = **R$ 61.99**
 - [ ] **Perfil de alumínio p/ LED** — [Perfil LED embutir 24×7 mm slim 2 m preto](https://www.amazon.com.br/dp/B0F1ZBZZTP) · 3 barra × R$ 29.90 = **R$ 89.70**
-- [ ] **Controle Wi-Fi da fita** — [Controlador Wi-Fi c/ dimmer (Alexa/Google)](https://www.amazon.com.br/dp/B0FS91PKKL) · 1 un × R$ 43.02 = **R$ 43.02**
+- [ ] **Controle Wi-Fi da fita (2 zonas)** — [Controlador Wi-Fi c/ dimmer (Alexa/Google) — zona mesa (L1+L2) e zona cabeceira (L5)](https://www.amazon.com.br/dp/B0FS91PKKL) · 2 un × R$ 43.02 = **R$ 86.04**
 - [ ] **Barra de luz p/ monitor** — [Quntis Light Bar PRO+ c/ controle remoto](https://www.amazon.com.br/dp/B0B6P9J3J5) · 1 un × R$ 293.55 = **R$ 293.55**
 - [ ] **Arandela da cama** — [Arandela tubo articulada preta c/ interruptor (conferir se tem plugue)](https://www.amazon.com.br/dp/B0DND64VLW) · 1 un × R$ 74.95 = **R$ 74.95**
 - [ ] **Lâmpadas 3000 K (ventilador/teto)** — [LEDVANCE OSRAM CLA60 9W 3000K E27 (kit 10)](https://www.amazon.com.br/dp/B0HNY3SPM6) · 1 kit × R$ 69.90 = **R$ 69.90**
@@ -45,6 +45,16 @@ Itens marcados *estimativa* não têm cotação: pedir orçamento ou pesquisar o
 - [ ] **Prolongador da tomada (ripado)** — [Margirius prolongador caixa 4×2](https://www.amazon.com.br/dp/B089M44PPG) · 1 un × R$ 23.27 = **R$ 23.27**
 - [ ] **Bandeja de cabos sob a mesa** — [Bandeja organizadora sem perfuração](https://www.amazon.com.br/dp/B0GJRDZM82) · 1 un × R$ 119.69 = **R$ 119.69**
 - [ ] **Suporte de notebook** — [Suporte dobrável alumínio c/ regulagem](https://www.amazon.com.br/dp/B0H13G1VTW) · 1 un × R$ 65.78 = **R$ 65.78**
+
+## Automação (Alexa)
+
+- [ ] **Lâmpada Wi-Fi da luminária de mesa (L6)** — [Positivo Smart Lâmpada 9W 806 lm, branco 2700–6500 K + RGB](https://www.amazon.com.br/dp/B082FTRR76) · 1 un × R$ 79.90 = **R$ 79.90** *(preço da busca web — conferir no link)*
+- [ ] **Tomada Wi-Fi da arandela (L4)** — [Positivo Smart Plug 10A/1000W (mede consumo)](https://www.amazon.com.br/dp/B07S14JHF2) · 1 un × R$ 51.70 = **R$ 51.70** *(preço da busca web — conferir no link)*
+- [ ] **Controle IR Wi-Fi do ar-condicionado** — [Novadigital SRW-004 (Tuya/Smart Life, IR 360°, 8 m)](https://www.amazon.com.br/dp/B0CLQ1NNJQ) · 1 un × R$ 43.00 = **R$ 43.00** *(preço da busca web — conferir no link)*
+- [ ] **Interruptor Wi-Fi do ventilador de teto (luz + velocidades)** — Painel touch Wi-Fi Tuya p/ ventilador, 10 A (precisa de neutro na caixa) · 1 un × R$ 120.00 = **R$ 120.00** *(estimativa — pedir orçamento)*
+- [ ] **Sensor de presença (luz de passagem à noite)** — [WEG Home sensor de presença Wi-Fi, bateria recarregável, 6 m / 115°](https://www.amazon.com.br/dp/B098PJWQB6) · 1 un × R$ 96.73 = **R$ 96.73** *(preço da busca web — conferir no link)*
+- [ ] **Sensor de temperatura e umidade (liga o ar sozinho)** — [HONP Tuya Wi-Fi c/ display LCD (pilhas à parte)](https://www.amazon.com.br/dp/B0BK1J96H7) · 1 un × R$ 59.90 = **R$ 59.90** *(preço da busca web — conferir no link)*
+- [ ] **Instalação do interruptor do ventilador** — Eletricista: troca do interruptor e teste do neutro · 1 vb × R$ 150.00 = **R$ 150.00** *(estimativa — pedir orçamento)*
 
 ## Decoração (opcional)
 
@@ -84,3 +94,5 @@ Itens marcados *estimativa* não têm cotação: pedir orçamento ou pesquisar o
 6. Cama, cadeira, tapete, braço dos monitores, PC sobre o tampo (canto direito) e acessórios.
 7. Decoração: quadros na Parede E (y 0,10–0,94; z 1,20–1,75), gancho de teto da planta pendente em (0,30; 2,25),
    objetos dos nichos, plantas e relógio na prateleira.
+8. Alexa: eletricista troca o interruptor do ventilador pelo Wi-Fi (conferir o neutro; dá para ser na visita do passo 1);
+   depois parear tudo no app, ligar as skills na Alexa e criar as rotinas de `07_DOCUMENTACAO/automacao_alexa.md`.

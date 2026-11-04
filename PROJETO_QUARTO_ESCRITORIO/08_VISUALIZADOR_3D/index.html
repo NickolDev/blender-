@@ -125,6 +125,12 @@ dialog button { position: absolute; top: 10px; right: 10px; font: 600 13px var(-
 .mini img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
 .mini span { padding: 5px 7px; }
 .mini[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+/* Alexa: tabela nome → aparelho e lista de rotinas */
+.alx { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.alx td { border-top: 1px solid var(--line); padding: 6px 4px; vertical-align: top; color: var(--muted); }
+.alx td:first-child { white-space: nowrap; color: var(--fg); font-weight: 600; padding-right: 12px; }
+.rot { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--muted); }
+.rot b { color: var(--fg); font-weight: 600; }
 .descart { font-size: 13px; color: var(--muted); margin: 0; padding-left: 18px; display: grid; gap: 3px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -140,7 +146,8 @@ dialog button { position: absolute; top: 10px; right: 10px; font: 600 13px var(-
       <span><b>Mesa</b>170 × 70 cm, 73–118 cm</span>
       <span><b>Cama</b>88 × 188 cm</span>
       <span><b>Ripado</b>2,65 × 2,64 m</span>
-      <span><b>Total</b>R$ 14.584</span>
+      <span><b>Total</b>R$ 15.292</span>
+      <span><b>Alexa</b>voz + rotinas</span>
     </div>
   </header>
 
@@ -150,6 +157,25 @@ dialog button { position: absolute; top: 10px; right: 10px; font: 600 13px var(-
       shadow-intensity="0.7" min-camera-orbit="auto 0deg 0.3m" max-camera-orbit="auto 180deg 14m"
       field-of-view="45deg" min-field-of-view="20deg" max-field-of-view="80deg" interpolation-decay="120"
       camera-target="1.45m 0.3m -1.25m" camera-orbit="145deg 22deg 6.0m"></model-viewer>
+    <script>
+      // Aberto direto do disco (file://), o navegador bloqueia a leitura do quarto.json (CORS).
+      // Nesse caso o modelo vem de quarto_modelo.js, que traz o .glb embutido (gerar_arquivos_offline.py).
+      if (location.protocol === "file:") {
+        const mv = document.getElementById("mv");
+        mv.removeAttribute("src");
+        const s = document.createElement("script");
+        s.src = "quarto_modelo.js";
+        s.onload = () => {
+          const bin = atob(window.__MODELO_GLB || "");
+          const bytes = new Uint8Array(bin.length);
+          for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+          delete window.__MODELO_GLB;
+          mv.src = URL.createObjectURL(new Blob([bytes], { type: "model/gltf-binary" }));
+        };
+        s.onerror = () => console.warn("falta quarto_modelo.js: rode gerar_arquivos_offline.py ou abra por um servidor local");
+        document.head.appendChild(s);
+      }
+    </script>
     <div class="views" role="group" aria-label="Vistas prontas">
       <button type="button" id="v-geral" data-target="1.45m 0.3m -1.25m" data-orbit="145deg 22deg 6.0m" data-fov="45deg" aria-pressed="true">Visão geral</button>
       <button type="button" id="v-planta" data-target="2.25m 0m -1.6m" data-orbit="0deg 0.5deg 7.5m" data-fov="45deg" aria-pressed="false">De cima</button>
@@ -191,6 +217,55 @@ dialog button { position: absolute; top: 10px; right: 10px; font: 600 13px var(-
     <div class="ficha">
       <h4>Arranjos descartados (não cabem ou pioram o uso)</h4>
       <ul class="descart" id="t-descart"></ul>
+    </div>
+  </section>
+
+  <section class="temas" id="alexa" aria-labelledby="t-alexa">
+    <h2 id="t-alexa">Casa inteligente com a Alexa</h2>
+    <p class="lede">Usa o Echo que você já tem. Luzes, ventilador e ar-condicionado passam a obedecer à voz e a rotinas automáticas. Todos os aparelhos são Wi-Fi 2,4 GHz e dispensam hub, então funcionam com qualquer Echo.</p>
+    <div class="tema-main">
+      <div>
+        <button type="button" class="tema-img" id="a-img-btn" aria-label="Ampliar a planta de iluminação"><img id="a-img" src="renders/planta_iluminacao_alexa.png" alt="Planta de iluminação com a posição do Echo, do controle do ar-condicionado e dos sensores" loading="lazy"></button>
+        <p class="tema-cap" id="a-cap">Planta de iluminação: A = Echo no canto esquerdo da mesa (alcança da cama) · IR = controle do ar na prateleira · S = sensor de presença · T = sensor de temperatura no nicho</p>
+      </div>
+      <div class="ficha">
+        <h3>O que a Alexa controla</h3>
+        <table class="alx">
+          <tr><td>“Luz da mesa”</td><td>Fita sob a prateleira + perfil vertical (L1 + L2), com dimmer</td></tr>
+          <tr><td>“Nichos”</td><td>Fita dos 3 nichos da cabeceira (L5), com dimmer</td></tr>
+          <tr><td>“Luminária”</td><td>Luminária de mesa (L6): lâmpada Wi-Fi de 2700 a 6500 K</td></tr>
+          <tr><td>“Arandela”</td><td>Arandela da cama (L4), por uma tomada Wi-Fi</td></tr>
+          <tr><td>“Luz do teto”</td><td>Luz do ventilador: interruptor Wi-Fi (no Econômico, lâmpada Wi-Fi)</td></tr>
+          <tr><td>“Ventilador”</td><td>Liga, desliga e muda a velocidade (Equilibrado e Premium)</td></tr>
+          <tr><td>“Ar”</td><td>Ar-condicionado por controle IR Wi-Fi: liga, desliga e temperatura</td></tr>
+          <tr><td>“Persiana”</td><td>Persiana externa com motor (só no Premium)</td></tr>
+        </table>
+        <p>Sensores de presença e de temperatura (Equilibrado e Premium) e de porta (Premium) disparam rotinas sozinhos. Ficam fora a barra do monitor, que liga junto com ele, o PC e a mesa elétrica.</p>
+      </div>
+    </div>
+    <div class="fichas2">
+      <div class="ficha">
+        <h3>Rotinas</h3>
+        <ul class="rot">
+          <li><b>“Alexa, bom dia”</b> (ou o despertador): nichos em 20% e, 5 min depois, 60% com a luz do teto; desliga o ar e fala a previsão.</li>
+          <li><b>“Alexa, hora de trabalhar”</b>: luz da mesa 100%, luminária 100% em 4000 K, nichos apagados, ventilador na 2.</li>
+          <li><b>“Alexa, modo reunião”</b>: luminária 80% em 3000 K no rosto, luz da mesa 60%, ventilador desligado (sem ruído no microfone).</li>
+          <li><b>“Alexa, relaxar”</b>: luz do teto apagada, luz da mesa 30%, nichos 50%.</li>
+          <li><b>“Alexa, modo jogo”</b>: luz da mesa 10%, nichos 15%, o resto apagado.</li>
+          <li><b>“Alexa, hora de ler”</b>: arandela acesa, nichos 20%, o resto apagado.</li>
+          <li><b>“Alexa, boa noite”</b>: apaga tudo, deixa os nichos em 5% por 5 min, ar em 23 °C, ventilador na 1.</li>
+          <li><b>Automáticas</b>: no pôr do sol acende nichos e mesa; com movimento entre 23 h e 6 h acende a luz da mesa em 5% por 3 min; acima de 27 °C liga o ar em 24 °C.</li>
+        </ul>
+      </div>
+      <div class="ficha">
+        <h3>Quanto custa</h3>
+        <table class="alx">
+          <tr><td>Econômico</td><td><span class="custo">R$ 280</span> · 2 controles Wi-Fi da fita, 2 lâmpadas Wi-Fi (teto e luminária), tomada Wi-Fi da arandela, controle IR do ar</td></tr>
+          <tr><td>Equilibrado</td><td><span class="custo">R$ 687</span> · o mesmo, com interruptor Wi-Fi do ventilador (com eletricista), sensor de presença e sensor de temperatura</td></tr>
+          <tr><td>Premium</td><td><span class="custo">R$ 1.681</span> · o mesmo, com sensor de porta e motor na persiana externa (estimativa)</td></tr>
+        </table>
+        <p>Já está no orçamento: o total do Equilibrado passou de R$ 14.584 para R$ 15.292. Os preços são da busca web de 04/11/2026; confira no link antes de comprar. O interruptor do ventilador precisa de fio neutro na caixa, e o eletricista confere isso antes. Produtos, links, posições e o passo a passo estão em <code>07_DOCUMENTACAO/automacao_alexa.md</code>.</p>
+      </div>
     </div>
   </section>
 
@@ -299,6 +374,10 @@ chips("c-tema", Object.entries(TD.temas).map(([id, t]) => [id, t.nome, t.paleta]
 chips("c-layout", Object.entries(TD.layouts).map(([id, L]) => [id, `${id} · ${L.curto}`]), "layout");
 document.querySelectorAll("[data-modo]").forEach((b) => b.addEventListener("click", () => { EST.modo = b.dataset.modo; render(); }));
 $("t-descart").innerHTML = TD.descartados.map(([n, m]) => `<li><b>${esc(n)}:</b> ${esc(m)}</li>`).join("");
+$("a-img-btn").addEventListener("click", () => {
+  $("lb-img").src = $("a-img").src; $("lb-img").alt = $("a-img").alt; $("lb-cap").textContent = $("a-cap").textContent;
+  lb.showModal();
+});
 $("t-img-btn").addEventListener("click", () => {
   $("lb-img").src = $("t-img").src; $("lb-img").alt = $("t-img").alt; $("lb-cap").textContent = $("t-cap").textContent;
   lb.showModal();
